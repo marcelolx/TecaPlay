@@ -13,6 +13,9 @@ import javax.swing.JToolBar;
 import javax.swing.SpringLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JMenuBar;
 import javax.swing.JButton;
 import javax.swing.JMenuItem;
@@ -57,6 +60,14 @@ public class frmMain extends JFrame {
 		
 		JMenuItem mntmSair = new JMenuItem("Sair");
 		mnArquivo.add(mntmSair);
+		mntmSair.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+				
+			}
+		});
 	}
 
 }

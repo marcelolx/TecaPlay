@@ -13,12 +13,10 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
-import java.awt.Toolkit;
-import javax.swing.JDesktopPane;
-import java.awt.Window.Type;
 import java.awt.Font;
-import javax.swing.JInternalFrame;
 import javax.swing.JTextPane;
+
+import br.edu.pii.tecaplaygui.LoginGUI;
 
 public class frmMain extends JFrame {
 
@@ -28,16 +26,22 @@ public class frmMain extends JFrame {
 	 */
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
+				LoginGUI lg = new LoginGUI();
 				try {
 					frmMain frame = new frmMain();
 					frame.setSize(new Dimension(980, 560));
 					frame.setLocationRelativeTo(null);
-					frame.setVisible(true);
+					frame.setVisible(false);
 					frame.getContentPane().setBackground(new Color(169,169,169));
 				} catch (Exception e) {
 					e.printStackTrace();

@@ -26,6 +26,7 @@ public class LoginGUI {
 		
 		/**
 		 * Login somente com usuário, sem necessidade de senhas.
+		 * teste
 		 */
 		JPanel logPanel = new JPanel();
 		logPanel.setBackground(new Color(169, 169, 169));

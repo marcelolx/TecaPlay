@@ -1,4 +1,4 @@
-package br.edu.pii.tecaplaygui;
+package br.edu.pii.tecaplay.ui;
 
 public class FilmesAdd {
 

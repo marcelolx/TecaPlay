@@ -4,10 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 
 public class FilmesAdd {
@@ -18,14 +15,15 @@ public class FilmesAdd {
 	private JTextField textFieldProcurar;
 	public FilmesAdd(){
 		JFrame fadd = new JFrame();
-		fadd.getContentPane().setBackground(Color.BLACK);
+		fadd.getContentPane().setBackground(new Color(169,169,169));
 		fadd.getContentPane().setForeground(Color.WHITE);
 		fadd.getContentPane().setLayout(null);
 		fadd.setVisible(true);
+		fadd.setSize(450, 300);
+		fadd.setLocationRelativeTo(null);
 		
 		JLabel lblTipo = new JLabel("Tipo:");
 		lblTipo.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblTipo.setForeground(Color.RED);
 		lblTipo.setBounds(10, 22, 59, 17);
 		fadd.getContentPane().add(lblTipo);
 		
@@ -37,36 +35,27 @@ public class FilmesAdd {
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBackground(new Color(107,107,107));
-		btnCancelar.setForeground(Color.RED);
 		btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnCancelar.setBounds(10, 227, 207, 23);
 		fadd.getContentPane().add(btnCancelar);
 		
 		JButton btnAdicionar = new JButton("Adicionar");
 		btnAdicionar.setBackground(new Color(107,107,107));
-		btnAdicionar.setForeground(Color.RED);
 		btnAdicionar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnAdicionar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
 		btnAdicionar.setBounds(217, 227, 207, 23);
 		fadd.getContentPane().add(btnAdicionar);
 		
 		JLabel lblCategoria = new JLabel("Categoria:");
 		lblCategoria.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblCategoria.setForeground(Color.RED);
 		lblCategoria.setBounds(10, 59, 83, 20);
 		fadd.getContentPane().add(lblCategoria);
 		
 		JLabel lblNome = new JLabel("Nome:");
-		lblNome.setForeground(Color.RED);
 		lblNome.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNome.setBounds(10, 109, 46, 14);
 		fadd.getContentPane().add(lblNome);
 		
 		JLabel lblAno = new JLabel("Ano:");
-		lblAno.setForeground(Color.RED);
 		lblAno.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblAno.setBounds(10, 157, 46, 14);
 		fadd.getContentPane().add(lblAno);
@@ -92,7 +81,6 @@ public class FilmesAdd {
 		JButton btnProcurar = new JButton("Procurar");
 		btnProcurar.setBackground(new Color(107,107,107));
 		btnProcurar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnProcurar.setForeground(Color.RED);
 		btnProcurar.setBounds(309, 185, 115, 23);
 		fadd.getContentPane().add(btnProcurar);
 		

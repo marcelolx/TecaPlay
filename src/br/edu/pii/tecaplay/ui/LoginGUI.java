@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -70,7 +72,7 @@ public class LoginGUI extends JFrame {
 								userName = usr.getText();//pega usuário no textfield
 								usr.setText("");
 								FileUtil.FileUserVerify();
-								login.dispose();
+								//login.dispose();
 							}
 							
 						}
@@ -93,6 +95,13 @@ public class LoginGUI extends JFrame {
 					addUsrIcon.setSize(new Dimension(13, 2));
 					addUsrIcon.setBackground(new Color(107, 107, 107));
 					logPanel.add(addUsrIcon, BorderLayout.CENTER);
+					addUsrIcon.addActionListener(new ActionListener() {
+						
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							RegisterUser RegisterUser = new RegisterUser();
+						}
+					});
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

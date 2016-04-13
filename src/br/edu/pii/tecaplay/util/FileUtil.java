@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 import br.edu.pii.tecaplay.ui.LoginGUI;
 import br.edu.pii.tecaplay.ui.RegisterUser;
-import br.edu.pii.tecaplay.ui.homePage;
+import br.edu.pii.tecaplay.ui.HomePage;
 
 public class FileUtil {
 
@@ -37,7 +37,7 @@ public class FileUtil {
 					System.out.println(file2);
 					if(file2.exists()){//verefica se usuário já existe, se existir abre a homePage do TecaPlay
 						if(file2.isDirectory()){
-							homePage HomePage = new homePage();
+							HomePage HomePage = new HomePage();
 							logou = true;
 						}
 					}else{//senão deve-se reinserir o usuário

@@ -16,7 +16,7 @@ public class FilmesAdd {
 	private JTextField textFieldNome;
 	private JTextField textFieldAno;
 	private JTextField textFieldProcurar;
-	public FilmesAdd(){
+	public FilmesAdd(){ 
 		JFrame fadd = new JFrame();
 		fadd.setTitle("Filmes - TecaPlay");
 		fadd.setIconImage(Toolkit.getDefaultToolkit().getImage("resources\\images\\newLogo.png"));

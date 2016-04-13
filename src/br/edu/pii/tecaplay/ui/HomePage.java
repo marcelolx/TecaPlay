@@ -35,7 +35,7 @@ public class HomePage {
 			@Override
 			public void windowClosing(WindowEvent args){
 				home.setDefaultCloseOperation(home.DO_NOTHING_ON_CLOSE);
-				FileUtil.sair();
+				FileUtil.sair(); 
 			}
 		});
 

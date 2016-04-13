@@ -26,7 +26,7 @@ public class Sobre extends JFrame {
 	 * Launch the application.
 	 */
 	
-
+ 
 	/**
 	 * Create the frame.
 	 */

@@ -71,6 +71,7 @@ public class homePage {
 		*/
 		
 		JButton btnVdeo = new JButton("V\u00EDdeo");
+		btnVdeo.setToolTipText("Op\u00E7\u00E3o de acesso a aba V\u00EDdeo!");
 		btnVdeo.setIcon(new ImageIcon("resources\\images\\imgBtnVideo.png"));//icone do botao
 		btnVdeo.setFont(new Font("Tahoma", Font.BOLD, 14)); //tipo de fonte do botao
 		btnVdeo.setBackground(Color.LIGHT_GRAY);
@@ -79,6 +80,7 @@ public class homePage {
 		home.isCursorSet();
 		
 		JButton btnMusica = new JButton("Música");
+		btnMusica.setToolTipText("Op\u00E7\u00E3o de acesso a aba M\u00FAsica!");
 		btnMusica.setIcon(new ImageIcon("resources\\images\\imgBtnMusica.png"));//icone do botao
 		btnMusica.setFont(new Font("Tahoma", Font.BOLD, 14)); //tipo de fonte do botao
 		btnMusica.setPreferredSize(new Dimension(173,42));
@@ -87,6 +89,7 @@ public class homePage {
 		home.isCursorSet();
 		
 		JButton btnImagem = new JButton("Imagem");
+		btnImagem.setToolTipText("Op\u00E7\u00E3o de acesso a aba Imagem!");
 		btnImagem.setIcon(new ImageIcon("resources\\images\\imgBtnImagem.png")); //icone do botao
 		btnImagem.setFont(new Font("Tahoma", Font.BOLD, 14)); //tipo de fonte do botao
 		btnImagem.setPreferredSize(new Dimension(173,42));
@@ -105,7 +108,7 @@ public class homePage {
 		
 		//jButton Adicionar
 		JButton btnAdicionar = new JButton("Adicionar");
-		btnAdicionar.setVerticalAlignment(SwingConstants.BOTTOM);
+		btnAdicionar.setToolTipText("Op\u00E7\u00E3o de acesso a aba Adicionar!");
 		btnAdicionar.setIcon(new ImageIcon("resources\\images\\imgBtnAdd.png"));
 		btnAdicionar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnAdicionar.setPreferredSize(new Dimension(173,34));
@@ -115,7 +118,7 @@ public class homePage {
 		
 		//jButton Remover
 		JButton btnRemover = new JButton("Remover");
-		btnRemover.setVerticalAlignment(SwingConstants.BOTTOM);
+		btnRemover.setToolTipText("Op\u00E7\u00E3o de acesso a aba Remover!");
 		btnRemover.setIcon(new ImageIcon("resources\\images\\imgBtnRemover.png"));
 		btnRemover.setPreferredSize(new Dimension(172,34));
 		btnRemover.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -125,7 +128,11 @@ public class homePage {
 		
 		//jButton Favoritos
 		JButton btnFavoritos = new JButton("Favoritos");
-		btnFavoritos.setVerticalAlignment(SwingConstants.BOTTOM);
+		btnFavoritos.setToolTipText("Op\u00E7\u00E3o de acesso a aba dos Favoritos!");
+		btnFavoritos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnFavoritos.setIcon(new ImageIcon("resources\\images\\imgBtnFavorito.png"));
 		btnFavoritos.setPreferredSize(new Dimension(172,34));
 		btnFavoritos.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -135,7 +142,7 @@ public class homePage {
 		
 		//jButton Sorteio de algum filme
 		JButton btnSorteio = new JButton("Sorteio de Filme");
-		btnSorteio.setVerticalAlignment(SwingConstants.TOP);
+		btnSorteio.setToolTipText("Op\u00E7\u00E3o de acesso a aba Sorteio!");
 		btnSorteio.setPreferredSize(new Dimension(172,34));
 		btnSorteio.setIcon(new ImageIcon("resources\\images\\imgBtnRandom.png"));
 		btnSorteio.setFont(new Font("Tahoma", Font.BOLD, 14));

@@ -38,6 +38,7 @@ public class RegisterUser {
 		ruPanel.add(usrNameLabel);
 		
 		JTextField usrNameField = new JTextField();
+		usrNameField.setToolTipText("Informe nome do usu\u00E1rio existente ou a ser registrado!");
 		ruPanel.add(usrNameField);
 		usrNameField.setBounds(0, 0, 294, 29);
 		usrNameField.setBackground(new Color(192, 192, 192));

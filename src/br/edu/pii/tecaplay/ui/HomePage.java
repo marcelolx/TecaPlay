@@ -20,13 +20,15 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 import br.edu.pii.tecaplay.util.FileUtil;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 
 
-public class homePage {
+public class HomePage {
    /**
     * 
     */
-	public homePage() {
+	public HomePage() {
 		//formatação do JFrame
 		JFrame home = new JFrame();
 		home.addWindowListener(new WindowAdapter() {
@@ -52,6 +54,7 @@ public class homePage {
 
 		//adição de botao de menu
 		JMenu menuArquivo = new JMenu("Arquivo");
+		menuArquivo.setMnemonic('A');
 		menuArquivo.setBackground(Color.DARK_GRAY);
 		menuArquivo.setIcon(new ImageIcon("resources\\images\\imgMenuArquivo.png"));//adição de icone na frente do botão
 		menuBar.add(menuArquivo); // adicionado ao container do menu do topo
@@ -69,12 +72,27 @@ public class homePage {
 		menuArquivo.add(subMenuSair);
 		 
 		//menu sobre adicionado do lado do menu arquivo
-		JMenu menuSobre = new JMenu("Sobre");
-		menuSobre.setIcon(new ImageIcon("resources\\images\\imgMenuSobre.png")); // adiçção do icone sobre
-		menuBar.add(menuSobre);
+		JMenu menuAjuda = new JMenu("Ajuda");
+		menuAjuda.setMnemonic('J');
+		menuAjuda.setHorizontalAlignment(SwingConstants.LEFT);
+		menuAjuda.setIcon(new ImageIcon("resources\\images\\imgMenuSobre.png")); // adiçção do icone sobre
+		menuBar.add(menuAjuda);
+		
+		JMenuItem mntmSobre = new JMenuItem("Sobre");
+		mntmSobre.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Sobre info = new Sobre();
+			}
+		});
+		mntmSobre.setIcon(new ImageIcon("C:\\Users\\jonas\\git\\tecaplayd\\resources\\images\\imgBtnSobre.png"));
+		menuAjuda.add(mntmSobre);
 		
 		//criado painel aonde ficarão os botoes para a escolha de musica, video ou imagem
 		JPanel panelTopo = new JPanel();
+		panelTopo.setAutoscrolls(true);
+		panelTopo.setFocusTraversalPolicyProvider(true);
+		panelTopo.setFocusCycleRoot(true);
+		panelTopo.setIgnoreRepaint(true);
 		panelTopo.setBackground(new Color(127, 127, 127));
 		home.getContentPane().add(panelTopo, BorderLayout.NORTH);
 		
@@ -88,6 +106,7 @@ public class homePage {
 				
 			}
 		});
+		panelTopo.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		btnVdeo.setToolTipText("Op\u00E7\u00E3o de acesso a aba V\u00EDdeo!");
 		btnVdeo.setIcon(new ImageIcon("resources\\images\\imgBtnVideo.png"));//icone do botao
 		btnVdeo.setFont(new Font("Tahoma", Font.BOLD, 14)); //tipo de fonte do botao
@@ -125,6 +144,11 @@ public class homePage {
 		
 		//jButton Adicionar
 		JButton btnAdicionar = new JButton("Adicionar");
+		btnAdicionar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				FilmesAdd addFilme = new FilmesAdd();
+			}
+		});
 		btnAdicionar.setToolTipText("Op\u00E7\u00E3o de acesso a aba Adicionar!");
 		btnAdicionar.setIcon(new ImageIcon("resources\\images\\imgBtnAdd.png"));
 		btnAdicionar.setFont(new Font("Tahoma", Font.BOLD, 14));

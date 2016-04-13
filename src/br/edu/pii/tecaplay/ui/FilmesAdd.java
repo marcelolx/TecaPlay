@@ -7,6 +7,8 @@ import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class FilmesAdd {
 	private JTextField textFieldTipo;
@@ -17,11 +19,12 @@ public class FilmesAdd {
 	public FilmesAdd(){
 		JFrame fadd = new JFrame();
 		fadd.setTitle("Filmes - TecaPlay");
-		fadd.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Matheus\\git\\tecaplay\\resources\\images\\newLogo.png"));
+		fadd.setIconImage(Toolkit.getDefaultToolkit().getImage("resources\\images\\newLogo.png"));
 		fadd.getContentPane().setBackground(new Color(169,169,169));
 		fadd.getContentPane().setForeground(Color.WHITE);
 		fadd.getContentPane().setLayout(null);
 		fadd.setVisible(true);
+		fadd.setResizable(false);
 		fadd.setSize(450, 300);
 		fadd.setLocationRelativeTo(null);
 		
@@ -39,6 +42,14 @@ public class FilmesAdd {
 		textFieldTipo.setColumns(10);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				    if(e.getSource() == btnCancelar) {  
+				        fadd.dispose();
+				    
+				}
+			}
+		});
 		btnCancelar.setBackground(new Color(107,107,107));
 		btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnCancelar.setBounds(10, 227, 207, 23);

@@ -72,7 +72,10 @@ public class LoginGUI extends JFrame {
 								userName = usr.getText();//pega usuário no textfield
 								usr.setText("");
 								FileUtil.FileUserVerify();
-								//login.dispose();
+								if(FileUtil.loged() == true){
+									login.dispose();
+								}
+
 							}
 							
 						}

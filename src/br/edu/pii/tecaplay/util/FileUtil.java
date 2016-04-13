@@ -11,7 +11,8 @@ import br.edu.pii.tecaplay.ui.homePage;
 public class FileUtil {
 
 	static char vo;
-	
+	boolean logou=false;
+
 	public static void main() {
 		String vos;
 		vos = System.getProperty("os.name");//pega nome o S.O.
@@ -37,6 +38,7 @@ public class FileUtil {
 					if(file2.exists()){//verefica se usuário já existe, se existir abre a homePage do TecaPlay
 						if(file2.isDirectory()){
 							homePage HomePage = new homePage();
+							logou = true;
 						}
 					}else{//senão deve-se reinserir o usuário
 						JOptionPane.showMessageDialog(null, "Usuário inválido.");
@@ -46,6 +48,10 @@ public class FileUtil {
 		}else{
 			System.out.println("For Linux and Mac OSX");
 		}
+	}
+	
+	public boolean loged(){
+		return logou;
 	}
 	
 	public void RegisterNewUser(){
@@ -68,4 +74,12 @@ public class FileUtil {
 			JOptionPane.showMessageDialog(null, "Insira um nome de usuário.");
 		}
 	}
+	
+	public static void sair() {
+		int op = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Sair", JOptionPane.YES_NO_OPTION);
+		if(op == JOptionPane.YES_OPTION){
+			System.exit(0);
+		}
+	}
+
 }

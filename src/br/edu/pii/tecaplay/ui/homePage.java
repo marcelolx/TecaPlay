@@ -1,21 +1,25 @@
 package br.edu.pii.tecaplay.ui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Toolkit;
-import javax.swing.JFrame;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.ImageIcon;
-import javax.swing.JMenuItem;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import javax.swing.JButton;
-import java.awt.Font;
 import java.awt.FlowLayout;
-import javax.swing.SwingConstants;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+
+import br.edu.pii.tecaplay.util.FileUtil;
 
 
 public class homePage {
@@ -25,6 +29,14 @@ public class homePage {
 	public homePage() {
 		//formatação do JFrame
 		JFrame home = new JFrame();
+		home.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent args){
+				home.setDefaultCloseOperation(home.DO_NOTHING_ON_CLOSE);
+				FileUtil.sair();
+			}
+		});
+
 		home.setVisible(true);//Deixar visivel
 		home.setBackground(new Color(25, 25, 25));// cor de Background
 		home.setTitle("Home - TecaPlay"); // titulo na barra do windows
@@ -49,7 +61,7 @@ public class homePage {
 		//evento de fechar o programa
 		subMenuSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				System.exit(0);
+				FileUtil.sair();
 			}
 		});
 		subMenuSair.setIcon(new ImageIcon("resources\\images\\imgMenuSair.png"));
@@ -71,6 +83,11 @@ public class homePage {
 		*/
 		
 		JButton btnVdeo = new JButton("V\u00EDdeo");
+		btnVdeo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 		btnVdeo.setToolTipText("Op\u00E7\u00E3o de acesso a aba V\u00EDdeo!");
 		btnVdeo.setIcon(new ImageIcon("resources\\images\\imgBtnVideo.png"));//icone do botao
 		btnVdeo.setFont(new Font("Tahoma", Font.BOLD, 14)); //tipo de fonte do botao

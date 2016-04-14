@@ -10,7 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,10 +17,9 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-
 import br.edu.pii.tecaplay.util.FileUtil;
 import javax.swing.SwingConstants;
-import javax.swing.UIManager;
+import javax.swing.WindowConstants;
 
 
 public class HomePage {
@@ -34,7 +32,7 @@ public class HomePage {
 		home.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent args){
-				home.setDefaultCloseOperation(home.DO_NOTHING_ON_CLOSE);
+				home.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 				FileUtil.sair(); 
 			}
 		});
@@ -81,6 +79,7 @@ public class HomePage {
 		JMenuItem mntmSobre = new JMenuItem("Sobre");
 		mntmSobre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				@SuppressWarnings("unused")
 				Sobre info = new Sobre();
 			}
 		});
@@ -101,11 +100,7 @@ public class HomePage {
 		*/
 		
 		JButton btnVdeo = new JButton("V\u00EDdeo");
-		btnVdeo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-		});
+		
 		panelTopo.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		btnVdeo.setToolTipText("Op\u00E7\u00E3o de acesso a aba V\u00EDdeo!");
 		btnVdeo.setIcon(new ImageIcon("resources\\images\\imgBtnVideo.png"));//icone do botao
@@ -136,16 +131,17 @@ public class HomePage {
 		 * gerenciar o que será apresentado
 		 */
 		
-		JPanel panelLateral = new JPanel();
-		panelLateral.setLayout(new FlowLayout(FlowLayout.LEFT, 4, 4));
-		panelLateral.setPreferredSize(new Dimension(180,400));
-		panelLateral.setBackground(new Color(128,128,128));
-		home.getContentPane().add(panelLateral, BorderLayout.WEST);
+		JPanel panelLateralVideo = new JPanel();
+		panelLateralVideo.setLayout(new FlowLayout(FlowLayout.LEFT, 4, 4));
+		panelLateralVideo.setPreferredSize(new Dimension(180,400));
+		panelLateralVideo.setBackground(new Color(128,128,128));
+		
 		
 		//jButton Adicionar
 		JButton btnAdicionar = new JButton("Adicionar");
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				@SuppressWarnings("unused")
 				FilmesAdd addFilme = new FilmesAdd();
 			}
 		});
@@ -153,7 +149,7 @@ public class HomePage {
 		btnAdicionar.setIcon(new ImageIcon("resources\\images\\imgBtnAdd.png"));
 		btnAdicionar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnAdicionar.setPreferredSize(new Dimension(173,34));
-		panelLateral.add(btnAdicionar);
+		panelLateralVideo.add(btnAdicionar);
 		btnAdicionar.setBackground(Color.LIGHT_GRAY);
 		home.isCursorSet();
 		
@@ -163,22 +159,44 @@ public class HomePage {
 		btnRemover.setIcon(new ImageIcon("resources\\images\\imgBtnRemover.png"));
 		btnRemover.setPreferredSize(new Dimension(172,34));
 		btnRemover.setFont(new Font("Tahoma", Font.BOLD, 14));
-		panelLateral.add(btnRemover);
+		panelLateralVideo.add(btnRemover);
 		btnRemover.setBackground(Color.LIGHT_GRAY);
-	
 		
-		//jButton Favoritos
-		JButton btnFavoritos = new JButton("Favoritos");
-		btnFavoritos.setToolTipText("Op\u00E7\u00E3o de acesso a aba dos Favoritos!");
-		btnFavoritos.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnFavoritos.setIcon(new ImageIcon("resources\\images\\imgBtnFavorito.png"));
-		btnFavoritos.setPreferredSize(new Dimension(172,34));
-		btnFavoritos.setFont(new Font("Tahoma", Font.BOLD, 14));
-		panelLateral.add(btnFavoritos);
-		btnFavoritos.setBackground(Color.LIGHT_GRAY);
+			
+			//jButton Favoritos
+			JButton btnFavoritos = new JButton("Favoritos");
+			btnFavoritos.setToolTipText("Op\u00E7\u00E3o de acesso a aba dos Favoritos!");
+			btnFavoritos.setIcon(new ImageIcon("resources\\images\\imgBtnFavorito.png"));
+			btnFavoritos.setPreferredSize(new Dimension(172,34));
+			btnFavoritos.setFont(new Font("Tahoma", Font.BOLD, 14));
+			panelLateralVideo.add(btnFavoritos);
+			btnFavoritos.setBackground(Color.LIGHT_GRAY);
+		
+			//Jbuttom para listar os Filmes
+		JButton btnFilmes = new JButton("Filmes");
+		btnFilmes.setIcon(new ImageIcon("resources\\images\\imgBtnFilme.png"));
+		btnFilmes.setToolTipText("Op\u00E7\u00E3o de acesso a aba Adicionar!");
+		btnFilmes.setPreferredSize(new Dimension(173, 34));
+		btnFilmes.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnFilmes.setBackground(Color.LIGHT_GRAY);
+		panelLateralVideo.add(btnFilmes);
+		
+		//Jbuttom para listar os Animes
+		JButton btnAnimes = new JButton("Animes");
+		btnAnimes.setIcon(new ImageIcon("\resources\\images\\imgBtnAnimes.png"));
+		btnAnimes.setToolTipText("Op\u00E7\u00E3o de acesso a aba Adicionar!");
+		btnAnimes.setPreferredSize(new Dimension(173, 34));
+		btnAnimes.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnAnimes.setBackground(Color.LIGHT_GRAY);
+		panelLateralVideo.add(btnAnimes);
+		//Jbuttom para listar as Séries
+		JButton btnSeries = new JButton("S\u00E9ries");
+		btnSeries.setIcon(new ImageIcon("resources\\images\\imgBtnSeries.png"));
+		btnSeries.setToolTipText("Op\u00E7\u00E3o de acesso a aba Adicionar!");
+		btnSeries.setPreferredSize(new Dimension(173, 34));
+		btnSeries.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnSeries.setBackground(Color.LIGHT_GRAY);
+		panelLateralVideo.add(btnSeries);
 		
 		
 		//jButton Sorteio de algum filme
@@ -187,8 +205,19 @@ public class HomePage {
 		btnSorteio.setPreferredSize(new Dimension(172,34));
 		btnSorteio.setIcon(new ImageIcon("resources\\images\\imgBtnRandom.png"));
 		btnSorteio.setFont(new Font("Tahoma", Font.BOLD, 14));
-		panelLateral.add(btnSorteio);
+		panelLateralVideo.add(btnSorteio);
 		btnSorteio.setBackground(Color.LIGHT_GRAY);
+		
+		//Ação que será realizada ao apertar o botao de fimes do jpanelTopo
+		btnVdeo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				home.getContentPane().add(panelLateralVideo, BorderLayout.WEST);//Adiciona o panel Lateral relacionada a Filmes
+				panelTopo.setVisible(false); //Torna a visibilidade do painel topo falsa
+				home.getContentPane().remove(panelTopo); //Remove esse painel	
+				panelLateralVideo.setVisible(true); //Ativa o painel lateral referente ao video
+				panelLateralVideo.revalidate();//revalida o loyout			
+				}
+		});
 		
 	}
 }

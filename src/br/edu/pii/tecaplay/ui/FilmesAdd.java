@@ -9,6 +9,7 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Dialog.ModalExclusionType;
 
 public class FilmesAdd {
 	private JTextField textFieldTipo;
@@ -18,13 +19,16 @@ public class FilmesAdd {
 	private JTextField textFieldProcurar;
 	public FilmesAdd(){ 
 		JFrame fadd = new JFrame();
-		fadd.setTitle("Filmes - TecaPlay");
+		fadd.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+		fadd.setAlwaysOnTop(true);
+		fadd.setResizable(false);
+		fadd.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		fadd.setTitle("Add Filmes - TecaPlay");
 		fadd.setIconImage(Toolkit.getDefaultToolkit().getImage("resources\\images\\newLogo.png"));
 		fadd.getContentPane().setBackground(new Color(169,169,169));
 		fadd.getContentPane().setForeground(Color.WHITE);
 		fadd.getContentPane().setLayout(null);
 		fadd.setVisible(true);
-		fadd.setResizable(false);
 		fadd.setSize(450, 300);
 		fadd.setLocationRelativeTo(null);
 		

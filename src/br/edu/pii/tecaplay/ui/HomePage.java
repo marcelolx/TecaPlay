@@ -136,9 +136,22 @@ public class HomePage {
 		panelLateralVideo.setPreferredSize(new Dimension(180,400));
 		panelLateralVideo.setBackground(new Color(128,128,128));
 		
-		JButton btnVoltar = new JButton();
+		JButton btnVoltar = new JButton("<--");
 		btnVoltar.setToolTipText("Voltar");
-		
+		btnVoltar.setPreferredSize(new Dimension(86, 34));
+		panelLateralVideo.add(btnVoltar);
+		btnVoltar.setBackground(Color.LIGHT_GRAY);
+		btnVoltar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				home.getContentPane().add(panelTopo, BorderLayout.NORTH);
+				panelLateralVideo.setVisible(false);
+				home.getContentPane().remove(panelLateralVideo);
+				panelTopo.setVisible(true);
+				panelTopo.revalidate();
+			}
+		});	
 		
 		//jButton Adicionar
 		JButton btnAdicionar = new JButton("Adicionar");

@@ -69,7 +69,7 @@ public class Sobre extends JFrame {
 		btnOk.setBackground(Color.LIGHT_GRAY);
 		panelRodape.add(btnOk);
 		
-		JLabel lblVersao = new JLabel("Vers\u00E3o: 1.0.0");
+		JLabel lblVersao = new JLabel("Vers\u00E3o: 0.0.28");
 		lblVersao.setFont(new Font("Sylfaen", Font.BOLD, 14));
 		lblVersao.setLabelFor(panelRodape);
 		lblVersao.setIcon(new ImageIcon("C:\\Users\\jonas\\git\\tecaplayd\\resources\\images\\imgVersion.png"));
@@ -89,7 +89,7 @@ public class Sobre extends JFrame {
 		lblTecaplay.setBounds(296, 11, 141, 46);
 		panelRodape.add(lblTecaplay);
 		
-		JLabel lblCriaoJonasHalmenschlager = new JLabel("<html>Cria\u00E7\u00E3o: Jonas Halmenschlager, Matheus Endler Hass e Marcelo Lauxen.<html>");
+		JLabel lblCriaoJonasHalmenschlager = new JLabel("<html>Cria\u00E7\u00E3o: Jonas Halmenschlager, Matheus Endler Haas e Marcelo Lauxen.<html>");
 		lblCriaoJonasHalmenschlager.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCriaoJonasHalmenschlager.setFont(new Font("Sylfaen", Font.BOLD, 14));
 		lblCriaoJonasHalmenschlager.setBounds(38, 169, 430, 44);

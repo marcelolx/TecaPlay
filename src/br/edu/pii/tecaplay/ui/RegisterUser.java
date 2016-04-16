@@ -16,7 +16,6 @@ import javax.swing.JTextField;
 import br.edu.pii.tecaplay.util.FileUtil;
 
 public class RegisterUser {
-	public static String newUserName;
 	
 	public RegisterUser(){
 		JFrame reUser = new JFrame();
@@ -67,14 +66,11 @@ public class RegisterUser {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				FileUtil FileUtil = new FileUtil();//Chama classe FileUtil
+				String newUserName;
 				newUserName = usrNameField.getText();//Var que armazena o nome do novo usuário
 				usrNameField.setText("");//limpando o textfield
-				FileUtil.RegisterNewUser();//chamando o método que vai executar a tarefa de criar o novo usuário
+				FileUtil.RegisterNewUser(newUserName);//chamando o método que vai executar a tarefa de criar o novo usuário
 			}
 		});
-	}
-	
-	public String getNewUser(){//método para pegar o nome do novo usuário em qualquer outra classe
-		return newUserName;
 	}
 }

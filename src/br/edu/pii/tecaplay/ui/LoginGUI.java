@@ -21,10 +21,7 @@ import javax.swing.WindowConstants;
 import br.edu.pii.tecaplay.util.FileUtil;
 
 public class LoginGUI extends JFrame {
-	public static String userName;//variavel pública que armazena o usuário
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -69,9 +66,10 @@ public class LoginGUI extends JFrame {
 						public void keyPressed(KeyEvent e) {
 							if(e.getKeyCode() == KeyEvent.VK_ENTER){
 								FileUtil FileUtil = new FileUtil();
+								String userName;
 								userName = usr.getText();//pega usuário no textfield
 								usr.setText("");
-								FileUtil.FileUserVerify();
+								FileUtil.FileUserVerify(userName);
 								if(FileUtil.loged() == true){
 									login.dispose();
 								}
@@ -112,12 +110,5 @@ public class LoginGUI extends JFrame {
 		});
 	}
 		
-	/**
-	 * 
-	 * @return UserName for use on FileUtil.java
-	 */
-	public String getUser(){
-		return userName;
-	}
 
 }

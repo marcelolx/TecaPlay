@@ -19,8 +19,7 @@ public class FileUtil {
 		vo = vos.charAt(0);
 	}
 	
-	public void FileUserVerify(){
-		LoginGUI lgui = new LoginGUI();
+	public void FileUserVerify(String usrName){
 		main();
 		//System.out.println(vo);
 		if(vo == 'W'){//se for windows executa
@@ -32,7 +31,6 @@ public class FileUtil {
 				if(file.isDirectory()){//verefica se é um diretório
 					String[] conteudo = file.list();
 					System.out.println("É um diretório.");
-					String usrName =  lgui.getUser();//pega usuário insirido na tela de login
 					File file2 = new File("C:\\TecaPlay\\"+usrName);
 					System.out.println(file2);
 					if(file2.exists()){//verefica se usuário já existe, se existir abre a homePage do TecaPlay
@@ -54,10 +52,9 @@ public class FileUtil {
 		return logou;
 	}
 	
-	public void RegisterNewUser(){
-		RegisterUser reUser = new RegisterUser();
-		
-		String newUsrName = reUser.getNewUser();//pega do JTextField o nome do usuário
+	public void RegisterNewUser(String newUsrName){
+		//String newUsrName = reUser.getNewUser();//pega do JTextField o nome do usuário
+		newUsrName = newUsrName.toLowerCase();
 		if(!newUsrName.isEmpty()){
 			File newUserFile = new File("C:\\TecaPlay\\"+newUsrName+"\\Videos");//diretórios que vão ser criados
 			File newUserFile2 = new File("C:\\TecaPlay\\"+newUsrName+"\\Musicas");

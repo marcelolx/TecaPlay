@@ -136,6 +136,9 @@ public class HomePage {
 		panelLateralVideo.setPreferredSize(new Dimension(180,400));
 		panelLateralVideo.setBackground(new Color(128,128,128));
 		
+		JButton btnVoltar = new JButton();
+		btnVoltar.setToolTipText("Voltar");
+		
 		
 		//jButton Adicionar
 		JButton btnAdicionar = new JButton("Adicionar");

@@ -32,7 +32,7 @@ public class MusicAdd {
 		fadd.setSize(450, 300);
 		fadd.setLocationRelativeTo(null);
 		
-		JLabel lblTipo = new JLabel("Tipo:");
+		JLabel lblTipo = new JLabel("Cantor:");
 		lblTipo.setToolTipText("Informe qual \u00E9 o Cantor/Banda da M\u00FAsica!");
 		lblTipo.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblTipo.setBounds(10, 22, 59, 17);

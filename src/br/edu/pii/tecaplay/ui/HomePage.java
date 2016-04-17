@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import br.edu.pii.tecaplay.util.FileUtil;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
+import javax.swing.JLabel;
 
 public class HomePage {
 	/**
@@ -82,7 +83,7 @@ public class HomePage {
 				Sobre info = new Sobre();
 			}
 		});
-		mntmSobre.setIcon(new ImageIcon("C:\\Users\\jonas\\git\\tecaplayd\\resources\\images\\imgBtnSobre.png"));
+		mntmSobre.setIcon(new ImageIcon("resources\\images\\imgBtnSobre.png"));
 		menuAjuda.add(mntmSobre);
 
 		// criado painel aonde ficarão os botoes para a escolha de musica, video
@@ -126,6 +127,11 @@ public class HomePage {
 		btnImagem.setPreferredSize(new Dimension(173, 42));
 		btnImagem.setBackground(Color.LIGHT_GRAY);
 		panelTopo.add(btnImagem);
+		
+		JLabel label = new JLabel("");
+		label.setSize(400,400);
+		label.setIcon(new ImageIcon("resources\\images\\bannerPrincipal.jpg"));
+		home.getContentPane().add(label, BorderLayout.CENTER);
 
 		/**
 		 * Adição de Painel Lateral para abrigar os botoes de gerenciar o que

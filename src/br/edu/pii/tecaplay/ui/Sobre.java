@@ -17,21 +17,8 @@ import javax.swing.SwingConstants;
 
 public class Sobre extends JFrame {
 
-	
-
-	/**
-	 * Launch the application.
-	 */
-	
- 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Create the frame.
-	 */
 	public Sobre() {
 		setAlwaysOnTop(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -56,7 +43,7 @@ public class Sobre extends JFrame {
 		JButton btnOk = new JButton("Ok");
 		btnOk.setHorizontalAlignment(SwingConstants.LEFT);
 		btnOk.setBounds(394, 224, 75, 29);
-		btnOk.setIcon(new ImageIcon("C:\\Users\\jonas\\git\\tecaplayd\\resources\\images\\imgBtnOk.png"));
+		btnOk.setIcon(new ImageIcon("resources\\images\\imgBtnOk.png"));
 		btnOk.setMnemonic('O');
 		btnOk.setSize(80,35);
 		btnOk.addActionListener(new ActionListener() {
@@ -69,12 +56,12 @@ public class Sobre extends JFrame {
 		btnOk.setBackground(Color.LIGHT_GRAY);
 		panelRodape.add(btnOk);
 		
-		JLabel lblVersao = new JLabel("Vers\u00E3o: 0.0.28");
+		JLabel lblVersao = new JLabel("Vers\u00E3o: 0.0.30");
 		lblVersao.setFont(new Font("Sylfaen", Font.BOLD, 14));
 		lblVersao.setLabelFor(panelRodape);
-		lblVersao.setIcon(new ImageIcon("C:\\Users\\jonas\\git\\tecaplayd\\resources\\images\\imgVersion.png"));
+		lblVersao.setIcon(new ImageIcon("resources\\images\\imgVersion.png"));
 		lblVersao.setDisplayedMnemonic('N');
-		lblVersao.setBounds(246, 116, 141, 35);
+		lblVersao.setBounds(246, 116, 160, 35);
 		panelRodape.add(lblVersao);
 		
 		JLabel lblGerenciadorDeArquivos = new JLabel("<html><p align=”Justify”>Gerenciador de Arquivos de Imagens,M\u00FAsica e de V\u00EDdeo para o Windows</p></html>");
@@ -95,13 +82,13 @@ public class Sobre extends JFrame {
 		lblCriaoJonasHalmenschlager.setBounds(38, 169, 430, 44);
 		panelRodape.add(lblCriaoJonasHalmenschlager);
 		
-		JLabel lblTodosOs = new JLabel("Todos os Direitos Reservados ");
-		lblTodosOs.setFont(new Font("Sylfaen", Font.BOLD, 14));
-		lblTodosOs.setBounds(148, 219, 203, 42);
-		panelRodape.add(lblTodosOs);
+		JLabel lblTodos = new JLabel("Todos os Direitos Reservados ");
+		lblTodos.setFont(new Font("Sylfaen", Font.BOLD, 14));
+		lblTodos.setBounds(148, 219, 203, 42);
+		panelRodape.add(lblTodos);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\jonas\\git\\tecaplayd\\resources\\images\\imgLogoSobre.png"));
+		lblNewLabel.setIcon(new ImageIcon("resources\\images\\imgLogoSobre.png"));
 		lblNewLabel.setBounds(28, 26, 195, 140);
 		panelRodape.add(lblNewLabel);
 		

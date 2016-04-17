@@ -128,10 +128,10 @@ public class HomePage {
 		btnImagem.setBackground(Color.LIGHT_GRAY);
 		panelTopo.add(btnImagem);
 		
-		JLabel label = new JLabel("");
-		label.setSize(400,400);
-		label.setIcon(new ImageIcon("resources\\images\\bannerPrincipal.jpg"));
-		home.getContentPane().add(label, BorderLayout.CENTER);
+		JLabel labelFundo = new JLabel("");
+		labelFundo.setSize(400,400);
+		labelFundo.setIcon(new ImageIcon("resources\\images\\bannerPrincipal.jpg"));
+		home.getContentPane().add(labelFundo, BorderLayout.CENTER);
 
 		/**
 		 * Adição de Painel Lateral para abrigar os botoes de gerenciar o que

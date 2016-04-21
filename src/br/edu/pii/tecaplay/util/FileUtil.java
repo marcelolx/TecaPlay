@@ -4,8 +4,6 @@ import java.io.File;
 
 import javax.swing.JOptionPane;
 
-import br.edu.pii.tecaplay.ui.LoginGUI;
-import br.edu.pii.tecaplay.ui.RegisterUser;
 import br.edu.pii.tecaplay.ui.HomePage;
 
 public class FileUtil {

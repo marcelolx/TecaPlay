@@ -10,19 +10,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import br.edu.pii.tecaplay.util.FileUtil;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
-import javax.swing.JLabel;
 
-public class HomePage {
+import br.edu.pii.tecaplay.util.FileUtil;
+import br.edu.pii.tecaplay.util.TimerToLabel;
+
+public class HomePage{
 	/**
 	* 
 	*/
@@ -128,9 +131,15 @@ public class HomePage {
 		btnImagem.setBackground(Color.LIGHT_GRAY);
 		panelTopo.add(btnImagem);
 		
+		//BANNER PRINCIPAL
 		JLabel labelFundo = new JLabel("");
 		labelFundo.setSize(400,400);
 		labelFundo.setIcon(new ImageIcon("resources\\images\\bannerPrincipal.jpg"));
+		/**
+		 * @TimerToLabel Classe que faz o trabalho de mudar a imagem de fundo.
+		 */
+		final TimerToLabel timer = new TimerToLabel(30000, labelFundo);
+		timer.init();
 		home.getContentPane().add(labelFundo, BorderLayout.CENTER);
 
 		/**
@@ -142,7 +151,7 @@ public class HomePage {
 		 * Imagem LATERAL imagem LATERAL Imagem LATERAL Imagem LATERAL Imagem
 		 * LATERAL
 		 */
-
+		
 		JPanel panelLateralImagem = new JPanel();
 		panelLateralImagem.setLayout(new FlowLayout(FlowLayout.LEFT, 4, 4));
 		panelLateralImagem.setPreferredSize(new Dimension(180, 400));
@@ -321,17 +330,6 @@ public class HomePage {
 		panelLateralVideo.add(btnVoltarVideo);
 		btnVoltarVideo.setBackground(Color.LIGHT_GRAY);
 		btnVoltarVideo.setIcon(new ImageIcon("resources\\images\\imgVoltar.png"));
-		btnVoltarVideo.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				home.getContentPane().add(panelTopo, BorderLayout.NORTH);
-				panelLateralVideo.setVisible(false);
-				home.getContentPane().remove(panelLateralVideo);
-				panelTopo.setVisible(true);
-				panelTopo.revalidate();
-			}
-		});
 
 		// jButton Adicionar
 		JButton btnAdicionarVideo = new JButton("Adicionar");
@@ -402,8 +400,169 @@ public class HomePage {
 		btnSorteioVideo.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelLateralVideo.add(btnSorteioVideo);
 		btnSorteioVideo.setBackground(Color.LIGHT_GRAY);
-
-		// Ação que será realizada ao apertar o botao de fimes do jpanelTopo
+		/*
+		 * 
+		 * 
+		 * FILMES/CAREGORIAS   FILMES/CAREGORIAS   FILMES/CAREGORIAS   FILMES/CAREGORIAS   FILMES/CAREGORIAS   
+		 * 
+		 * 
+		 * 
+		 */
+		
+		JPanel panelCategoriasFilmes = new JPanel();
+		panelCategoriasFilmes.setLayout(new FlowLayout(FlowLayout.CENTER));
+		panelCategoriasFilmes.setPreferredSize(new Dimension(500, 300));
+		panelCategoriasFilmes.setBackground(new Color(120, 120, 120));
+		
+		JButton btnCatAcao = new JButton("Ação");
+		btnCatAcao.setToolTipText("Categoria Ação.");
+		btnCatAcao.setPreferredSize(new Dimension(127, 135));
+		//btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnCatAcao.setFont(new Font("Tahoma", Font.BOLD, 14));
+		panelCategoriasFilmes.add(btnCatAcao);
+		btnCatAcao.setBackground(Color.LIGHT_GRAY);
+		
+		JButton btnCatAnimacao = new JButton("Animação");
+		btnCatAnimacao.setToolTipText("Categoria Animação.");
+		btnCatAnimacao.setPreferredSize(new Dimension(127, 135));
+		//btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnCatAnimacao.setFont(new Font("Tahoma", Font.BOLD, 14));
+		panelCategoriasFilmes.add(btnCatAnimacao);
+		btnCatAnimacao.setBackground(Color.LIGHT_GRAY);
+		
+		JButton btnCatAventura = new JButton("Aventura");
+		btnCatAventura.setToolTipText("Categoria Ação.");
+		btnCatAventura.setPreferredSize(new Dimension(127, 135));
+		//btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnCatAventura.setFont(new Font("Tahoma", Font.BOLD, 14));
+		panelCategoriasFilmes.add(btnCatAventura);
+		btnCatAventura.setBackground(Color.LIGHT_GRAY);
+		
+		JButton btnCatClassico = new JButton("Classico");
+		btnCatClassico.setToolTipText("Categoria Classico.");
+		btnCatClassico.setPreferredSize(new Dimension(127, 135));
+		//btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnCatClassico.setFont(new Font("Tahoma", Font.BOLD, 14));
+		panelCategoriasFilmes.add(btnCatClassico);
+		btnCatClassico.setBackground(Color.LIGHT_GRAY);
+		
+		JButton btnCatComedia = new JButton("Comédia");
+		btnCatComedia.setToolTipText("Categoria Comédia.");
+		btnCatComedia.setPreferredSize(new Dimension(127, 135));
+		//btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnCatComedia.setFont(new Font("Tahoma", Font.BOLD, 14));
+		panelCategoriasFilmes.add(btnCatComedia);
+		btnCatComedia.setBackground(Color.LIGHT_GRAY);
+		
+		JButton btnCatComediaRomantica = new JButton("<html><CENTER>Comédia</br> Romantica</CENTER></html>");
+		btnCatComediaRomantica.setToolTipText("Categoria Comédia Romantica.");
+		btnCatComediaRomantica.setPreferredSize(new Dimension(127, 135));
+		//btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnCatComediaRomantica.setFont(new Font("Tahoma", Font.BOLD, 14));
+		panelCategoriasFilmes.add(btnCatComediaRomantica);
+		btnCatComediaRomantica.setBackground(Color.LIGHT_GRAY);
+		
+		JButton btnCatCrime= new JButton("Crime");
+		btnCatCrime.setToolTipText("Categoria Crime.");
+		btnCatCrime.setPreferredSize(new Dimension(127, 135));
+		//btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnCatCrime.setFont(new Font("Tahoma", Font.BOLD, 14));
+		panelCategoriasFilmes.add(btnCatCrime);
+		btnCatCrime.setBackground(Color.LIGHT_GRAY);
+		
+		JButton btnCatDocumentario = new JButton("Documentário");
+		btnCatDocumentario.setToolTipText("Categoria Documentário.");
+		btnCatDocumentario.setPreferredSize(new Dimension(127, 135));
+		//btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnCatDocumentario.setFont(new Font("Tahoma", Font.BOLD, 14));
+		panelCategoriasFilmes.add(btnCatDocumentario);
+		btnCatDocumentario.setBackground(Color.LIGHT_GRAY);
+		
+		JButton btnCatDrama = new JButton("Drama");
+		btnCatDrama.setToolTipText("Categoria Drama.");
+		btnCatDrama.setPreferredSize(new Dimension(127, 135));
+		//btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnCatDrama.setFont(new Font("Tahoma", Font.BOLD, 14));
+		panelCategoriasFilmes.add(btnCatDrama);
+		btnCatDrama.setBackground(Color.LIGHT_GRAY);
+		
+		JButton btnCatFaroeste = new JButton("Faroeste");
+		btnCatFaroeste.setToolTipText("Categoria Faroeste.");
+		btnCatFaroeste.setPreferredSize(new Dimension(127, 135));
+		//btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnCatFaroeste.setFont(new Font("Tahoma", Font.BOLD, 14));
+		panelCategoriasFilmes.add(btnCatFaroeste);
+		btnCatFaroeste.setBackground(Color.LIGHT_GRAY);
+		
+		JButton btnCatFicaoCient = new JButton("<html><center>Ficção</br> Científica</center></html>");
+		btnCatFicaoCient.setToolTipText("Categoria Ficção Científica.");
+		btnCatFicaoCient.setPreferredSize(new Dimension(127, 135));
+		//btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnCatFicaoCient.setFont(new Font("Tahoma", Font.BOLD, 14));
+		panelCategoriasFilmes.add(btnCatFicaoCient);
+		btnCatFicaoCient.setBackground(Color.LIGHT_GRAY);
+		
+		JButton btnCatGuerra = new JButton("Guerra");
+		btnCatGuerra.setToolTipText("Categoria Guerra.");
+		btnCatGuerra.setPreferredSize(new Dimension(127, 135));
+		//btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnCatGuerra.setFont(new Font("Tahoma", Font.BOLD, 14));
+		panelCategoriasFilmes.add(btnCatGuerra);
+		btnCatGuerra.setBackground(Color.LIGHT_GRAY);
+		
+		JButton btnCatMusical = new JButton("Musical");
+		btnCatMusical.setToolTipText("Categoria Musical.");
+		btnCatMusical.setPreferredSize(new Dimension(127, 135));
+		//btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnCatMusical.setFont(new Font("Tahoma", Font.BOLD, 14));
+		panelCategoriasFilmes.add(btnCatMusical);
+		btnCatMusical.setBackground(Color.LIGHT_GRAY);
+		
+		JButton btnCatPolicial = new JButton("Policial");
+		btnCatPolicial.setToolTipText("Categoria Policial.");
+		btnCatPolicial.setPreferredSize(new Dimension(127, 135));
+		//btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnCatPolicial.setFont(new Font("Tahoma", Font.BOLD, 14));
+		panelCategoriasFilmes.add(btnCatPolicial);
+		btnCatPolicial.setBackground(Color.LIGHT_GRAY);
+		
+		JButton btnCatRomance = new JButton("Romance");
+		btnCatRomance.setToolTipText("Categoria Romance.");
+		btnCatRomance.setPreferredSize(new Dimension(127, 135));
+		//btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnCatRomance.setFont(new Font("Tahoma", Font.BOLD, 14));
+		panelCategoriasFilmes.add(btnCatRomance);
+		btnCatRomance.setBackground(Color.LIGHT_GRAY);
+		
+		JButton btnCatSuspense = new JButton("Suspense");
+		btnCatSuspense.setToolTipText("Categoria Suspense.");
+		btnCatSuspense.setPreferredSize(new Dimension(127, 135));
+		//btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnCatSuspense.setFont(new Font("Tahoma", Font.BOLD, 14));
+		panelCategoriasFilmes.add(btnCatSuspense);
+		btnCatSuspense.setBackground(Color.LIGHT_GRAY);
+		
+		JButton btnCatTerror = new JButton("Terror");
+		btnCatTerror.setToolTipText("Categoria Terror.");
+		btnCatTerror.setPreferredSize(new Dimension(127, 135));
+		//btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnCatTerror.setFont(new Font("Tahoma", Font.BOLD, 14));
+		panelCategoriasFilmes.add(btnCatTerror);
+		btnCatTerror.setBackground(Color.LIGHT_GRAY);
+		
+		JButton btnCatThriller = new JButton("Thriller");
+		btnCatThriller.setToolTipText("Categoria Thriller.");
+		btnCatThriller.setPreferredSize(new Dimension(127, 135));
+		//btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnCatThriller.setFont(new Font("Tahoma", Font.BOLD, 14));
+		panelCategoriasFilmes.add(btnCatThriller);
+		btnCatThriller.setBackground(Color.LIGHT_GRAY);
+		
+		/*
+		 * AÇÃO DE BUTTONS	AÇÃO DE BUTTONS	AÇÃO DE BUTTONS	AÇÃO DE BUTTONS	
+		 * 
+		 */
+		// Ação que será realizada ao apertar o botao de VIDEOS do jpanelTopo
 		btnVdeo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				home.getContentPane().add(panelLateralVideo, BorderLayout.WEST);
@@ -413,7 +572,36 @@ public class HomePage {
 				panelLateralVideo.revalidate();// revalida o loyout
 			}
 		});
+			
+		
+		//Ação ao clicar no button lateral Filmes
+		btnFilmes.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				home.getContentPane().remove(labelFundo);
+				home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
+				panelCategoriasFilmes.setVisible(true);
+				panelCategoriasFilmes.revalidate();
+				timer.clse();
+			}
+		});
+		//Ação do botão voltar
+		btnVoltarVideo.addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				home.getContentPane().add(panelTopo, BorderLayout.NORTH);
+				panelLateralVideo.setVisible(false);
+				home.getContentPane().remove(panelLateralVideo);
+				panelTopo.setVisible(true);
+				panelCategoriasFilmes.setVisible(false);
+				home.getContentPane().remove(panelCategoriasFilmes);
+				home.getContentPane().add(labelFundo, BorderLayout.CENTER);
+				panelTopo.revalidate();
+				timer.init();
+			}
+		});
 	}
 
 }

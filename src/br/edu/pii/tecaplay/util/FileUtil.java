@@ -5,6 +5,7 @@ import java.io.File;
 import javax.swing.JOptionPane;
 
 import br.edu.pii.tecaplay.ui.HomePage;
+import br.edu.pii.tecaplay.ui.FilmesAdd;
 
 public class FileUtil {
 
@@ -69,6 +70,42 @@ public class FileUtil {
 			JOptionPane.showMessageDialog(null, "Insira um nome de usuário.");
 		}
 	}
+	
+	public void AddFilme(String origem,String ano, String nome, String genero,String tipo){
+		nome = nome.toLowerCase();
+		origem = origem.toLowerCase();
+		File criar = new File("c:\\TecaPlay\\"+vo+"\\Videos\\"+tipo+"\\"+genero);
+		if(!(criar).exists()){
+			criar.mkdirs();
+		}
+        File arquivo = new File(origem);
+ 
+        boolean ok = arquivo.renameTo(new File(criar, arquivo.getName()));
+        if(ok){
+            System.out.println("Arquivo foi movido com sucesso");
+        }
+        else{
+            System.out.println("Nao foi possivel mover o arquivo");
+        }
+		}
+	
+	
+	
+	public void retornoPasta() {
+		File raiz = new File("c:\\TecaPlay");
+		File[] files = raiz.listFiles();
+		 
+		for (File file : files) {
+		  // copia os arquivos / subdiretórios
+		}
+		for (int i = 0; i < files.length; i++) {
+			System.out.println(files[i]);
+		}
+		
+		
+	}
+	
+	
 	
 	public static void sair() {
 		int op = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Sair", JOptionPane.YES_NO_OPTION);

@@ -377,7 +377,7 @@ public class HomePage{
 		// Jbuttom para listar os Animes
 
 		JButton btnAnimes = new JButton("Animes");
-		btnAnimes.setIcon(new ImageIcon("\resources\\images\\imgBtnAnimes.png"));
+		btnAnimes.setIcon(new ImageIcon("resources\\images\\imgBtnAnimes.png"));
 		btnAnimes.setToolTipText("Op\u00E7\u00E3o de acesso a aba Adicionar!");
 		btnAnimes.setPreferredSize(new Dimension(173, 34));
 		btnAnimes.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -558,10 +558,17 @@ public class HomePage{
 		panelCategoriasFilmes.add(btnCatThriller);
 		btnCatThriller.setBackground(Color.LIGHT_GRAY);
 		
+		
+		
+		
+		
 		/*
 		 * AÇÃO DE BUTTONS	AÇÃO DE BUTTONS	AÇÃO DE BUTTONS	AÇÃO DE BUTTONS	
 		 * 
 		 */
+		
+		
+		
 		// Ação que será realizada ao apertar o botao de VIDEOS do jpanelTopo
 		btnVdeo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

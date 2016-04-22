@@ -29,7 +29,7 @@ public class HomePage{
 	/**
 	* 
 	*/
-	public HomePage() {
+	public HomePage(String usrName) {
 		// formatação do JFrame
 		JFrame home = new JFrame();
 		home.addWindowListener(new WindowAdapter() {
@@ -336,7 +336,7 @@ public class HomePage{
 		btnAdicionarVideo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				@SuppressWarnings("unused")
-				FilmesAdd addFilme = new FilmesAdd();
+				FilmesAdd addFilme = new FilmesAdd(usrName);
 			}
 		});
 		btnAdicionarVideo.setToolTipText("Op\u00E7\u00E3o de acesso a aba Adicionar!");

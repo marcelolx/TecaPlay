@@ -5,7 +5,6 @@ import java.io.File;
 import javax.swing.JOptionPane;
 
 import br.edu.pii.tecaplay.ui.HomePage;
-import br.edu.pii.tecaplay.ui.FilmesAdd;
 
 public class FileUtil {
 
@@ -28,13 +27,15 @@ public class FileUtil {
 				System.out.println("pasta tecaplay criada");
 			}else{
 				if(file.isDirectory()){//verefica se é um diretório
+					@SuppressWarnings("unused")
 					String[] conteudo = file.list();
 					System.out.println("É um diretório.");
 					File file2 = new File("C:\\TecaPlay\\"+usrName);
 					System.out.println(file2);
 					if(file2.exists()){//verefica se usuário já existe, se existir abre a homePage do TecaPlay
 						if(file2.isDirectory()){
-							HomePage HomePage = new HomePage();
+							@SuppressWarnings("unused")
+							HomePage HomePage = new HomePage(usrName);
 							logou = true;
 						}
 					}else{//senão deve-se reinserir o usuário
@@ -71,10 +72,11 @@ public class FileUtil {
 		}
 	}
 	
-	public void AddFilme(String origem,String ano, String nome, String genero,String tipo){
+	//Aqui jaz o codigo para mover os arquivos do adicionar.
+	public void AddFilme(String origem,String ano, String nome, String genero,String tipo,String usrName){
 		nome = nome.toLowerCase();
 		origem = origem.toLowerCase();
-		File criar = new File("c:\\TecaPlay\\"+vo+"\\Videos\\"+tipo+"\\"+genero);
+		File criar = new File("c:\\TecaPlay\\"+usrName+"\\Videos\\"+tipo+"\\"+genero);
 		if(!(criar).exists()){
 			criar.mkdirs();
 		}
@@ -82,10 +84,11 @@ public class FileUtil {
  
         boolean ok = arquivo.renameTo(new File(criar, arquivo.getName()));
         if(ok){
-            System.out.println("Arquivo foi movido com sucesso");
+           JOptionPane.showMessageDialog(null,"Arquivo foi movido com sucesso","Sucesso",1);
+           
         }
         else{
-            System.out.println("Nao foi possivel mover o arquivo");
+            JOptionPane.showMessageDialog(null,"Nao foi possivel mover o arquivo","Erro",0);
         }
 		}
 	
@@ -95,7 +98,7 @@ public class FileUtil {
 		File raiz = new File("c:\\TecaPlay");
 		File[] files = raiz.listFiles();
 		 
-		for (File file : files) {
+		for (@SuppressWarnings("unused") File file : files) {
 		  // copia os arquivos / subdiretórios
 		}
 		for (int i = 0; i < files.length; i++) {

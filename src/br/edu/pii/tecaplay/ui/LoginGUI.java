@@ -100,6 +100,7 @@ public class LoginGUI extends JFrame {
 						
 						@Override
 						public void actionPerformed(ActionEvent e) {
+							@SuppressWarnings("unused")
 							RegisterUser RegisterUser = new RegisterUser();
 						}
 					});

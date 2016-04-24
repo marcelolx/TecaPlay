@@ -559,7 +559,96 @@ public class HomePage{
 		btnCatThriller.setBackground(Color.LIGHT_GRAY);
 		
 		
+		//Jpanels para cada Categoria de Filmes
+		JPanel filmesCatAcao = new JPanel();
+		filmesCatAcao.setLayout(new FlowLayout(FlowLayout.CENTER));
+		filmesCatAcao.setPreferredSize(new Dimension(500, 300));
+		filmesCatAcao.setBackground(new Color(120, 120, 120));
 		
+		JPanel filmesCatAnimacao = new JPanel();
+		filmesCatAnimacao.setLayout(new FlowLayout(FlowLayout.CENTER));
+		filmesCatAnimacao.setPreferredSize(new Dimension(500, 300));
+		filmesCatAnimacao.setBackground(new Color(120, 120, 120));
+		
+		JPanel filmesCatAventura = new JPanel();
+		filmesCatAventura.setLayout(new FlowLayout(FlowLayout.CENTER));
+		filmesCatAventura.setPreferredSize(new Dimension(500, 300));
+		filmesCatAventura.setBackground(new Color(120, 120, 120));
+		
+		JPanel filmesCatClassico = new JPanel();
+		filmesCatClassico.setLayout(new FlowLayout(FlowLayout.CENTER));
+		filmesCatClassico.setPreferredSize(new Dimension(500, 300));
+		filmesCatClassico.setBackground(new Color(120, 120, 120));
+		
+		JPanel filmesCatComedia = new JPanel();
+		filmesCatComedia.setLayout(new FlowLayout(FlowLayout.CENTER));
+		filmesCatComedia.setPreferredSize(new Dimension(500, 300));
+		filmesCatComedia.setBackground(new Color(120, 120, 120));
+		
+		JPanel filmesCatComediaRomantico = new JPanel();
+		filmesCatComediaRomantico.setLayout(new FlowLayout(FlowLayout.CENTER));
+		filmesCatComediaRomantico.setPreferredSize(new Dimension(500, 300));
+		filmesCatComediaRomantico.setBackground(new Color(120, 120, 120));
+		
+		JPanel filmesCatCrime = new JPanel();
+		filmesCatCrime.setLayout(new FlowLayout(FlowLayout.CENTER));
+		filmesCatCrime.setPreferredSize(new Dimension(500, 300));
+		filmesCatCrime.setBackground(new Color(120, 120, 120));
+		
+		JPanel filmesCatDocumentario = new JPanel();
+		filmesCatDocumentario.setLayout(new FlowLayout(FlowLayout.CENTER));
+		filmesCatDocumentario.setPreferredSize(new Dimension(500, 300));
+		filmesCatDocumentario.setBackground(new Color(120, 120, 120));
+		
+		JPanel filmesCatDrama = new JPanel();
+		filmesCatDrama.setLayout(new FlowLayout(FlowLayout.CENTER));
+		filmesCatDrama.setPreferredSize(new Dimension(500, 300));
+		filmesCatDrama.setBackground(new Color(120, 120, 120));
+		
+		JPanel filmesCatFaroeste = new JPanel();
+		filmesCatFaroeste.setLayout(new FlowLayout(FlowLayout.CENTER));
+		filmesCatFaroeste.setPreferredSize(new Dimension(500, 300));
+		filmesCatFaroeste.setBackground(new Color(120, 120, 120));
+		
+		JPanel filmesCatFiccaoCient = new JPanel();
+		filmesCatFiccaoCient.setLayout(new FlowLayout(FlowLayout.CENTER));
+		filmesCatFiccaoCient.setPreferredSize(new Dimension(500, 300));
+		filmesCatFiccaoCient.setBackground(new Color(120, 120, 120));
+		
+		JPanel filmesCatGuerra = new JPanel();
+		filmesCatGuerra.setLayout(new FlowLayout(FlowLayout.CENTER));
+		filmesCatGuerra.setPreferredSize(new Dimension(500, 300));
+		filmesCatGuerra.setBackground(new Color(120, 120, 120));
+		
+		JPanel filmesCatMusical = new JPanel();
+		filmesCatMusical.setLayout(new FlowLayout(FlowLayout.CENTER));
+		filmesCatMusical.setPreferredSize(new Dimension(500, 300));
+		filmesCatMusical.setBackground(new Color(120, 120, 120));
+		
+		JPanel filmesCatPolicial = new JPanel();
+		filmesCatPolicial.setLayout(new FlowLayout(FlowLayout.CENTER));
+		filmesCatPolicial.setPreferredSize(new Dimension(500, 300));
+		filmesCatPolicial.setBackground(new Color(120, 120, 120));
+		
+		JPanel filmesCatRomance= new JPanel();
+		filmesCatRomance.setLayout(new FlowLayout(FlowLayout.CENTER));
+		filmesCatRomance.setPreferredSize(new Dimension(500, 300));
+		filmesCatRomance.setBackground(new Color(120, 120, 120));
+		
+		JPanel filmesCatSuspense = new JPanel();
+		filmesCatSuspense.setLayout(new FlowLayout(FlowLayout.CENTER));
+		filmesCatSuspense.setPreferredSize(new Dimension(500, 300));
+		filmesCatSuspense.setBackground(new Color(120, 120, 120));
+		
+		JPanel filmesCatTerror = new JPanel();
+		filmesCatTerror.setLayout(new FlowLayout(FlowLayout.CENTER));
+		filmesCatTerror.setPreferredSize(new Dimension(500, 300));
+		filmesCatTerror.setBackground(new Color(120, 120, 120));
+		
+		JPanel filmesCatThriller = new JPanel();
+		filmesCatThriller.setLayout(new FlowLayout(FlowLayout.CENTER));
+		filmesCatThriller.setPreferredSize(new Dimension(500, 300));
+		filmesCatThriller.setBackground(new Color(120, 120, 120));
 		
 		
 		/*

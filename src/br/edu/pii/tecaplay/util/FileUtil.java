@@ -72,43 +72,6 @@ public class FileUtil {
 		}
 	}
 	
-	//Aqui jaz o codigo para mover os arquivos do adicionar.
-	public void AddFilme(String origem,String ano, String nome, String genero,String tipo,String usrName){
-		nome = nome.toLowerCase();
-		origem = origem.toLowerCase();
-		File criar = new File("c:\\TecaPlay\\"+usrName+"\\Videos\\"+tipo+"\\"+genero);
-		if(!(criar).exists()){
-			criar.mkdirs();
-		}
-        File arquivo = new File(origem);
- 
-        boolean ok = arquivo.renameTo(new File(criar, arquivo.getName()));
-        if(ok){
-           JOptionPane.showMessageDialog(null,"Arquivo foi movido com sucesso","Sucesso",1);
-           
-        }
-        else{
-            JOptionPane.showMessageDialog(null,"Nao foi possivel mover o arquivo","Erro",0);
-        }
-		}
-	
-	
-	
-	public void retornoPasta() {
-		File raiz = new File("c:\\TecaPlay");
-		File[] files = raiz.listFiles();
-		 
-		for (@SuppressWarnings("unused") File file : files) {
-		  // copia os arquivos / subdiretórios
-		}
-		for (int i = 0; i < files.length; i++) {
-			System.out.println(files[i]);
-		}
-		
-		
-	}
-	
-	
 	
 	public static void sair() {
 		int op = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Sair", JOptionPane.YES_NO_OPTION);

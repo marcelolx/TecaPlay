@@ -1,21 +1,21 @@
 package br.edu.pii.tecaplay.ui;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
-
-import br.edu.pii.tecaplay.util.FileUtil;
 import java.awt.Button;
 import java.awt.Color;
+import java.awt.Dialog.ModalExclusionType;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.awt.event.ActionEvent;
-import java.awt.Dialog.ModalExclusionType;
+
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+import br.edu.pii.tecaplay.util.MoveFile;
 
 public class FilmesAdd {
 	public void Topo(){};
@@ -271,7 +271,7 @@ public class FilmesAdd {
 
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
-			    	FileUtil fileUtil = new FileUtil();
+			    	MoveFile MoveFile = new MoveFile();
 			    	String origem = textFieldProcurar.getText();
 			    	String ano = textFieldAno.getText();
 			    	String nome = textFieldTitulo.getText();
@@ -282,7 +282,7 @@ public class FilmesAdd {
 			   
 			    	JFrameAdd.setAlwaysOnTop(false); 
 
-		    		fileUtil.AddFilme(origem,ano,nome,genero,tipo,usrName);
+		    		MoveFile.AddFilme(origem, ano, nome, genero, duracao, pais, tipo, usrName);
 			 //Limpa os campos de escrita
 		    		
 			    		textFieldGenero.setText("");

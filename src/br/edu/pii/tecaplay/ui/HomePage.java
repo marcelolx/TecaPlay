@@ -656,203 +656,7 @@ public class HomePage{
 		 * 
 		 */
 		
-		//Ação do botão filmes categoria Ação
-		btnCatAcao.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
-				filmesCatAcao.setVisible(true);
-				filmesCatAcao.revalidate();
-			}
-		});
 		
-		//Ação do botão filmes categoria Animação
-				btnCatAnimacao.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
-						filmesCatAnimacao.setVisible(true);
-						filmesCatAnimacao.revalidate();
-					}
-				});
-				
-		//Ação do botão filmes categoria Aventura
-				btnCatAventura.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
-						filmesCatAventura.setVisible(true);
-						filmesCatAventura.revalidate();
-					}
-				});
-				
-		//Ação do botão filmes categoria Classico
-				btnCatClassico.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
-						filmesCatClassico.setVisible(true);
-						filmesCatClassico.revalidate();
-					}
-				});
-				
-		//Ação do botão filmes categoria Comedia
-				btnCatComedia.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
-						filmesCatComedia.setVisible(true);
-						filmesCatComedia.revalidate();
-					}
-				});
-				
-		//Ação do botão filmes categoria ComediaRomantica
-				btnCatComediaRomantica.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
-						filmesCatComediaRomantico.setVisible(true);
-						filmesCatComediaRomantico.revalidate();
-					}
-				});
-				
-		//Ação do botão filmes categoria Crime
-				btnCatCrime.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
-						filmesCatCrime.setVisible(true);
-						filmesCatCrime.revalidate();
-					}
-				});
-				
-		//Ação do botão filmes categoria Documentario
-				btnCatDocumentario.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
-						filmesCatDocumentario.setVisible(true);
-						filmesCatDocumentario.revalidate();
-					}
-				});	
-				
-		//Ação do botão filmes categoria Drama
-				btnCatDrama.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
-						filmesCatDrama.setVisible(true);
-						filmesCatDrama.revalidate();
-					}
-				});
-				
-		//Ação do botão filmes categoria Faroeste
-				btnCatFaroeste.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
-						filmesCatFaroeste.setVisible(true);
-						filmesCatFaroeste.revalidate();
-					}
-				});
-				
-		//Ação do botão filmes categoria FiccaoCientifica
-				btnCatFicaoCient.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
-						filmesCatFiccaoCient.setVisible(true);
-						filmesCatFiccaoCient.revalidate();
-					}
-				});
-				
-		//Ação do botão filmes categoria Guerra
-				btnCatGuerra.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
-						filmesCatGuerra.setVisible(true);
-						filmesCatGuerra.revalidate();
-					}
-				});
-				
-		//Ação do botão filmes categoria Musical
-				btnCatMusical.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
-						filmesCatMusical.setVisible(true);
-						filmesCatMusical.revalidate();
-					}
-				});
-				
-		//Ação do botão filmes categoria Policial
-				btnCatPolicial.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
-						filmesCatPolicial.setVisible(true);
-						filmesCatPolicial.revalidate();
-					}
-				});
-				
-		//Ação do botão filmes categoria Romance
-				btnCatRomance.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
-						filmesCatRomance.setVisible(true);
-						filmesCatRomance.revalidate();
-					}
-				});
-				
-		//Ação do botão filmes categoria Suspense
-				btnCatSuspense.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
-						filmesCatSuspense.setVisible(true);
-						filmesCatSuspense.revalidate();
-					}
-				});
-				
-		//Ação do botão filmes categoria Terror
-				btnCatTerror.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
-						filmesCatTerror.setVisible(true);
-						filmesCatTerror.revalidate();
-					}
-				});
-				
-		//Ação do botão filmes categoria Thriller
-				btnCatThriller.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
-						filmesCatThriller.setVisible(true);
-						filmesCatThriller.revalidate();
-					}
-				});
 				
 		// Ação que será realizada ao apertar o botao de VIDEOS do jpanelTopo
 		btnVdeo.addActionListener(new ActionListener() {
@@ -895,5 +699,239 @@ public class HomePage{
 				timer.init();
 			}
 		});
+		
+		//Ação do botão filmes categoria Ação
+				btnCatAcao.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						panelCategoriasFilmes.setVisible(false);
+						home.getContentPane().remove(panelCategoriasFilmes);
+						home.getContentPane().add(filmesCatAcao, BorderLayout.CENTER);
+						filmesCatAcao.setVisible(true);
+						filmesCatAcao.revalidate();
+					}
+				});
+				
+				//Ação do botão filmes categoria Animação
+						btnCatAnimacao.addActionListener(new ActionListener() {
+							
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								panelCategoriasFilmes.setVisible(false);
+								home.getContentPane().remove(panelCategoriasFilmes);
+								home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
+								filmesCatAnimacao.setVisible(true);
+								filmesCatAnimacao.revalidate();
+							}
+						});
+						
+				//Ação do botão filmes categoria Aventura
+						btnCatAventura.addActionListener(new ActionListener() {
+							
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								panelCategoriasFilmes.setVisible(false);
+								home.getContentPane().remove(panelCategoriasFilmes);
+								home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
+								filmesCatAventura.setVisible(true);
+								filmesCatAventura.revalidate();
+							}
+						});
+						
+				//Ação do botão filmes categoria Classico
+						btnCatClassico.addActionListener(new ActionListener() {
+							
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								panelCategoriasFilmes.setVisible(false);
+								home.getContentPane().remove(panelCategoriasFilmes);
+								home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
+								filmesCatClassico.setVisible(true);
+								filmesCatClassico.revalidate();
+							}
+						});
+						
+				//Ação do botão filmes categoria Comedia
+						btnCatComedia.addActionListener(new ActionListener() {
+							
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								panelCategoriasFilmes.setVisible(false);
+								home.getContentPane().remove(panelCategoriasFilmes);
+								home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
+								filmesCatComedia.setVisible(true);
+								filmesCatComedia.revalidate();
+							}
+						});
+						
+				//Ação do botão filmes categoria ComediaRomantica
+						btnCatComediaRomantica.addActionListener(new ActionListener() {
+							
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								panelCategoriasFilmes.setVisible(false);
+								home.getContentPane().remove(panelCategoriasFilmes);
+								home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
+								filmesCatComediaRomantico.setVisible(true);
+								filmesCatComediaRomantico.revalidate();
+							}
+						});
+						
+				//Ação do botão filmes categoria Crime
+						btnCatCrime.addActionListener(new ActionListener() {
+							
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								panelCategoriasFilmes.setVisible(false);
+								home.getContentPane().remove(panelCategoriasFilmes);
+								home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
+								filmesCatCrime.setVisible(true);
+								filmesCatCrime.revalidate();
+							}
+						});
+						
+				//Ação do botão filmes categoria Documentario
+						btnCatDocumentario.addActionListener(new ActionListener() {
+							
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								panelCategoriasFilmes.setVisible(false);
+								home.getContentPane().remove(panelCategoriasFilmes);
+								home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
+								filmesCatDocumentario.setVisible(true);
+								filmesCatDocumentario.revalidate();
+							}
+						});	
+						
+				//Ação do botão filmes categoria Drama
+						btnCatDrama.addActionListener(new ActionListener() {
+							
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								panelCategoriasFilmes.setVisible(false);
+								home.getContentPane().remove(panelCategoriasFilmes);
+								home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
+								filmesCatDrama.setVisible(true);
+								filmesCatDrama.revalidate();
+							}
+						});
+						
+				//Ação do botão filmes categoria Faroeste
+						btnCatFaroeste.addActionListener(new ActionListener() {
+							
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								panelCategoriasFilmes.setVisible(false);
+								home.getContentPane().remove(panelCategoriasFilmes);
+								home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
+								filmesCatFaroeste.setVisible(true);
+								filmesCatFaroeste.revalidate();
+							}
+						});
+						
+				//Ação do botão filmes categoria FiccaoCientifica
+						btnCatFicaoCient.addActionListener(new ActionListener() {
+							
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								panelCategoriasFilmes.setVisible(false);
+								home.getContentPane().remove(panelCategoriasFilmes);
+								home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
+								filmesCatFiccaoCient.setVisible(true);
+								filmesCatFiccaoCient.revalidate();
+							}
+						});
+						
+				//Ação do botão filmes categoria Guerra
+						btnCatGuerra.addActionListener(new ActionListener() {
+							
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								panelCategoriasFilmes.setVisible(false);
+								home.getContentPane().remove(panelCategoriasFilmes);
+								home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
+								filmesCatGuerra.setVisible(true);
+								filmesCatGuerra.revalidate();
+							}
+						});
+						
+				//Ação do botão filmes categoria Musical
+						btnCatMusical.addActionListener(new ActionListener() {
+							
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								panelCategoriasFilmes.setVisible(false);
+								home.getContentPane().remove(panelCategoriasFilmes);
+								home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
+								filmesCatMusical.setVisible(true);
+								filmesCatMusical.revalidate();
+							}
+						});
+						
+				//Ação do botão filmes categoria Policial
+						btnCatPolicial.addActionListener(new ActionListener() {
+							
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								panelCategoriasFilmes.setVisible(false);
+								home.getContentPane().remove(panelCategoriasFilmes);
+								home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
+								filmesCatPolicial.setVisible(true);
+								filmesCatPolicial.revalidate();
+							}
+						});
+						
+				//Ação do botão filmes categoria Romance
+						btnCatRomance.addActionListener(new ActionListener() {
+							
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								panelCategoriasFilmes.setVisible(false);
+								home.getContentPane().remove(panelCategoriasFilmes);
+								home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
+								filmesCatRomance.setVisible(true);
+								filmesCatRomance.revalidate();
+							}
+						});
+						
+				//Ação do botão filmes categoria Suspense
+						btnCatSuspense.addActionListener(new ActionListener() {
+							
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								panelCategoriasFilmes.setVisible(false);
+								home.getContentPane().remove(panelCategoriasFilmes);
+								home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
+								filmesCatSuspense.setVisible(true);
+								filmesCatSuspense.revalidate();
+							}
+						});
+						
+				//Ação do botão filmes categoria Terror
+						btnCatTerror.addActionListener(new ActionListener() {
+							
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								panelCategoriasFilmes.setVisible(false);
+								home.getContentPane().remove(panelCategoriasFilmes);
+								home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
+								filmesCatTerror.setVisible(true);
+								filmesCatTerror.revalidate();
+							}
+						});
+						
+				//Ação do botão filmes categoria Thriller
+						btnCatThriller.addActionListener(new ActionListener() {
+							
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								panelCategoriasFilmes.setVisible(false);
+								home.getContentPane().remove(panelCategoriasFilmes);
+								home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
+								filmesCatThriller.setVisible(true);
+								filmesCatThriller.revalidate();
+							}
+						});
 	}
 }

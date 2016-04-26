@@ -23,6 +23,7 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
 import br.edu.pii.tecaplay.util.FileUtil;
+import br.edu.pii.tecaplay.util.MoveFile;
 import br.edu.pii.tecaplay.util.TimerToLabel;
 
 public class HomePage{
@@ -47,7 +48,7 @@ public class HomePage{
 		home.setResizable(false); // impossibilidade de altarar tamanho da janela
 		home.setLocationRelativeTo(null); // iniciar aplicação centralizada na tela
 		home.setIconImage(Toolkit.getDefaultToolkit().getImage("resources\\images\\newLogo.png")); // icone da barra
-
+		MoveFile retornoPasta = new MoveFile();
 		// criação do menu superior
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBackground(Color.LIGHT_GRAY);// background do menu
@@ -695,6 +696,8 @@ public class HomePage{
 				panelCategoriasFilmes.setVisible(false);
 				home.getContentPane().remove(panelCategoriasFilmes);
 				home.getContentPane().add(labelFundo, BorderLayout.CENTER);
+				//Retira o bug de voltar caso aperte em qualquer butao de seleção do genero
+				home.getContentPane().remove(filmesCatAcao);
 				panelTopo.revalidate();
 				timer.init();
 			}

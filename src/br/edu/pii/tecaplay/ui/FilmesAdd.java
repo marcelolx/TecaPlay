@@ -8,14 +8,16 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-
 import br.edu.pii.tecaplay.util.MoveFile;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 
 public class FilmesAdd {
 	public void Topo(){};
@@ -62,138 +64,15 @@ public class FilmesAdd {
 		btnFilmes.setBounds(120, 107, 207, 43);
 		JFrameSelecao.getContentPane().add(btnFilmes);
 		
-		
-		/**
-		 * 
-		 * JFRAME ADD FILMES
-		 * JFRAME ADD FILMES
-		 * JFRAME ADD FILMES
-		 * JFRAME ADD FILMES
-		 * JFRAME ADD FILMES
-		 * JFRAME ADD FILMES
-		 * JFRAME ADD FILMES
-		 * 
-		 * 
-		 * 
-		 */
+		JFormattedTextField frmtdtxtfldXxxxxx = new JFormattedTextField();
+		frmtdtxtfldXxxxxx.setToolTipText("xx/xx/xx");
+		frmtdtxtfldXxxxxx.setBounds(54, 172, 273, 20);
+		JFrameSelecao.getContentPane().add(frmtdtxtfldXxxxxx);
 		
 		
+	
 		
 		
-		JFrame JFrameAdd = new JFrame();
-		JFrameAdd.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
-		JFrameAdd.setAlwaysOnTop(true);
-		JFrameAdd.setResizable(false);
-		JFrameAdd.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		JFrameAdd.setTitle("Add Filmes - TecaPlay");
-		JFrameAdd.setIconImage(Toolkit.getDefaultToolkit().getImage("resources\\images\\newLogo.png"));
-		JFrameAdd.getContentPane().setBackground(new Color(169,169,169));
-		JFrameAdd.getContentPane().setForeground(Color.WHITE);
-		JFrameAdd.getContentPane().setLayout(null);
-		JFrameAdd.setVisible(false);
-		JFrameAdd.setSize(450, 300);
-		JFrameAdd.setLocationRelativeTo(null);
-		
-		
-		JLabel lblTitulo = new JLabel("T\u00EDtulo:");
-		lblTitulo.setToolTipText("Informe qual \u00E9 o t\u00EDtulo do filme!");
-		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblTitulo.setBounds(10, 22, 59, 17);
-		JFrameAdd.getContentPane().add(lblTitulo);
-		
-		JTextField textFieldTitulo = new JTextField();
-		textFieldTitulo.setToolTipText("Informe qual \u00E9 o t\u00EDtulo do filme!");
-		textFieldTitulo.setBackground(new Color(192,192,192));
-		textFieldTitulo.setBounds(87, 19, 337, 20);
-		JFrameAdd.getContentPane().add(textFieldTitulo);
-		textFieldTitulo.setColumns(10);
-		
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				    if(e.getSource() == btnCancelar) {  
-				        JFrameAdd.dispose();
-				    
-				}
-			}
-		});
-		btnCancelar.setBackground(new Color(107,107,107));
-		btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCancelar.setBounds(10, 227, 207, 23);
-		JFrameAdd.getContentPane().add(btnCancelar);
-		
-		JButton btnAdicionar = new JButton("Adicionar");
-		btnAdicionar.setToolTipText("Adicionar o filme a biblioteca!");
-		btnAdicionar.setBackground(new Color(107,107,107));
-		btnAdicionar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnAdicionar.setBounds(217, 227, 207, 23);
-		JFrameAdd.getContentPane().add(btnAdicionar);
-		
-		JLabel lblGenero = new JLabel("G\u00EAnero:");
-		lblGenero.setToolTipText("Informe qual \u00E9 o g\u00EAnero do filme!");
-		lblGenero.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblGenero.setBounds(10, 59, 83, 20);
-		JFrameAdd.getContentPane().add(lblGenero);
-		
-		JLabel lblPais = new JLabel("Pa\u00EDs:");
-		lblPais.setToolTipText("Informe qual \u00E9 o pa\u00EDs do filme!");
-		lblPais.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblPais.setBounds(10, 109, 46, 14);
-		JFrameAdd.getContentPane().add(lblPais);
-		
-		JLabel lblAno = new JLabel("Ano:");
-		lblAno.setToolTipText("Informe qual \u00E9 o ano do filme!");
-		lblAno.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblAno.setBounds(10, 157, 46, 14);
-		JFrameAdd.getContentPane().add(lblAno);
-		
-		JTextField	textFieldGenero = new JTextField();
-		textFieldGenero.setToolTipText("Informe qual \u00E9 o g\u00EAnero do filme!");
-		textFieldGenero.setBackground(new Color(192,192,192));
-		textFieldGenero.setBounds(87, 59, 337, 20);
-		JFrameAdd.getContentPane().add(textFieldGenero);
-		textFieldGenero.setColumns(10);
-		
-		JTextField textFieldPais = new JTextField();
-		textFieldPais.setToolTipText("Informe qual \u00E9 o pa\u00EDs de origem(lan\u00E7amento) do filme!");
-		textFieldPais.setBackground(new Color(192,192,192));
-		textFieldPais.setBounds(87, 106, 337, 20);
-		JFrameAdd.getContentPane().add(textFieldPais);
-		textFieldPais.setColumns(10);
-		
-		JTextField textFieldAno = new JTextField();
-		textFieldAno.setToolTipText("Informe qual \u00E9 o ano de lan\u00E7amento do filme!");
-		textFieldAno.setBackground(new Color(192,192,192));
-		textFieldAno.setBounds(87, 154, 130, 20);
-		JFrameAdd.getContentPane().add(textFieldAno);
-		textFieldAno.setColumns(10);
-		
-		JButton btnProcurar = new JButton("Procurar");
-		btnProcurar.setToolTipText("Clique sobre para procurar o filme em seu sistema.");
-		btnProcurar.setBackground(new Color(107,107,107));
-		btnProcurar.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnProcurar.setBounds(309, 185, 115, 23);
-		JFrameAdd.getContentPane().add(btnProcurar);
-		
-		JTextField textFieldProcurar = new JTextField();
-		textFieldProcurar.setToolTipText("Diret\u00F3rio onde o filme est\u00E1 localizado.");
-		textFieldProcurar.setBackground(new Color(192,192,192));
-		textFieldProcurar.setBounds(10, 185, 289, 20);
-		JFrameAdd.getContentPane().add(textFieldProcurar);
-		textFieldProcurar.setColumns(10);
-		
-		JTextField textFieldDuracao = new JTextField();
-		textFieldDuracao.setToolTipText("Informe qual \u00E9 a dura\u00E7\u00E3o do filme(em minutos)!");
-		textFieldDuracao.setColumns(10);
-		textFieldDuracao.setBackground(Color.LIGHT_GRAY);
-		textFieldDuracao.setBounds(304, 151, 130, 20);
-		JFrameAdd.getContentPane().add(textFieldDuracao);
-		
-		JLabel lblDuracao = new JLabel("Dura\u00E7\u00E3o:");
-		lblDuracao.setToolTipText("");
-		lblDuracao.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblDuracao.setBounds(227, 154, 72, 14);
-		JFrameAdd.getContentPane().add(lblDuracao);
 		
 		
 		/**
@@ -207,37 +86,12 @@ public class FilmesAdd {
 		 * * Função Botoes
 		 */
 		
-		//Jbutton de procurar endereço do arquivo no pc
-		//
-		//
-		btnProcurar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				    if(e.getSource() == btnProcurar) {  
-				    	JFileChooser file = new JFileChooser(); 
-				    	JFrameAdd.setAlwaysOnTop(false);
-				        file.setFileSelectionMode(JFileChooser.FILES_ONLY);
-				        int i= file.showSaveDialog(null);
-				      if (i==1){
-				          textFieldProcurar.setText("");
-				      } else {
-				          File arquivo = file.getSelectedFile();
-				          textFieldProcurar.setText(arquivo.getPath());
-				      }
-				    
-				}
-			}
-		});
-
-		
-		//Jbuttons para fazer a escolha do tipo de arquivo.
-		//se for serie, filme ou anime
-
 		btnAnimes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			    if(e.getSource() == btnAnimes) {  
 			        JFrameSelecao.dispose();
 			        tipo = "Anime";
-			        JFrameAdd.setVisible(true);
+			        AddAnime(usrName);
 			    
 			}
 		}
@@ -249,7 +103,7 @@ public class FilmesAdd {
 			    if(e.getSource() == btnSeries) {  
 			        JFrameSelecao.dispose();
 			        tipo = "serie";
-			        JFrameAdd.setVisible(true);
+			       AddSerie(usrName);
 			    
 			}
 		}
@@ -260,41 +114,685 @@ public class FilmesAdd {
 			    if(e.getSource() == btnFilmes) {  
 			        JFrameSelecao.dispose();
 			        tipo = "filme";
-			        JFrameAdd.setVisible(true);
+			        AddFilme(usrName);
 			    
 			}
 		}
 	});
+		//Jbutton de procurar endereço do arquivo no pc
+		//
+		//
+	
+	}
+	
+	
+	public void AddFilme(String usrName) {
+		
+		/**
+		 * 
+		 * JFRAME ADD FILMES
+		 * JFRAME ADD FILMES
+		 * JFRAME ADD FILMES
+		 * JFRAME ADD FILMES
+		 * JFRAME ADD FILMES
+		 * JFRAME ADD FILMES
+		 * JFRAME ADD FILMES
+		 * 
+		 * 
+		 * 
+		 */
+		
+		
+		
+		
+		JFrame JFrameAddFilme = new JFrame();
+		JFrameAddFilme.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+		JFrameAddFilme.setAlwaysOnTop(true);
+		JFrameAddFilme.setResizable(false);
+		JFrameAddFilme.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		JFrameAddFilme.setTitle("Add Filmes - TecaPlay");
+		JFrameAddFilme.setIconImage(Toolkit.getDefaultToolkit().getImage("resources\\images\\newLogo.png"));
+		JFrameAddFilme.getContentPane().setBackground(new Color(169,169,169));
+		JFrameAddFilme.getContentPane().setForeground(Color.WHITE);
+		JFrameAddFilme.getContentPane().setLayout(null);
+		JFrameAddFilme.setVisible(true);
+		JFrameAddFilme.setSize(450, 300);
+		JFrameAddFilme.setLocationRelativeTo(null);
+		
+		
+		JLabel lblTituloFilme = new JLabel("T\u00EDtulo:");
+		lblTituloFilme.setToolTipText("Informe qual \u00E9 o t\u00EDtulo do filme!");
+		lblTituloFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblTituloFilme.setBounds(10, 22, 59, 17);
+		JFrameAddFilme.getContentPane().add(lblTituloFilme);
+		
+		JTextField textFieldTituloFilme = new JTextField();
+		textFieldTituloFilme.setToolTipText("Informe qual \u00E9 o t\u00EDtulo do filme!");
+		textFieldTituloFilme.setBackground(new Color(192,192,192));
+		textFieldTituloFilme.setBounds(87, 19, 337, 20);
+		JFrameAddFilme.getContentPane().add(textFieldTituloFilme);
+		textFieldTituloFilme.setColumns(10);
+		
+		JButton btnCancelarFilme = new JButton("Cancelar");
+		btnCancelarFilme.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				    if(e.getSource() == btnCancelarFilme) {  
+				        JFrameAddFilme.dispose();
+				    
+				}
+			}
+		});
+		btnCancelarFilme.setBackground(new Color(107,107,107));
+		btnCancelarFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnCancelarFilme.setBounds(10, 227, 207, 23);
+		JFrameAddFilme.getContentPane().add(btnCancelarFilme);
+		
+		JButton btnAdicionarFilme = new JButton("Adicionar");
+		btnAdicionarFilme.setToolTipText("Adicionar o filme a biblioteca!");
+		btnAdicionarFilme.setBackground(new Color(107,107,107));
+		btnAdicionarFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnAdicionarFilme.setBounds(217, 227, 207, 23);
+		JFrameAddFilme.getContentPane().add(btnAdicionarFilme);
+		
+		JLabel lblGeneroFilme = new JLabel("G\u00EAnero:");
+		lblGeneroFilme.setToolTipText("Informe qual \u00E9 o g\u00EAnero do filme!");
+		lblGeneroFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblGeneroFilme.setBounds(10, 59, 83, 20);
+		JFrameAddFilme.getContentPane().add(lblGeneroFilme);
+		
+		JLabel lblPaisFilme = new JLabel("Pa\u00EDs:");
+		lblPaisFilme.setToolTipText("Informe qual \u00E9 o pa\u00EDs do filme!");
+		lblPaisFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblPaisFilme.setBounds(10, 109, 46, 14);
+		JFrameAddFilme.getContentPane().add(lblPaisFilme);
+		
+		JLabel lblAnoFilme = new JLabel("Ano:");
+		lblAnoFilme.setToolTipText("Informe qual \u00E9 o ano do filme!");
+		lblAnoFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblAnoFilme.setBounds(10, 157, 46, 14);
+		JFrameAddFilme.getContentPane().add(lblAnoFilme);
+		
+		JComboBox<String> panelListGenero = new JComboBox<String>();
+		ArrayList<String> listaGenero = new ArrayList<>();
+		listaGenero.add("Selecione");
+		listaGenero.add("Ac\u00E3o");
+		listaGenero.add("Anima\u00E7\u00E3o");
+		listaGenero.add("Aventura");
+		listaGenero.add("Cl\u00E1ssico");
+		listaGenero.add("Com\u00E9dia");
+		listaGenero.add("Com\u00E9dia Rom\u00E2ntica");
+		listaGenero.add("Crime");
+		listaGenero.add("Document\u00E1rio");
+		listaGenero.add("Drama");
+		listaGenero.add("Faroeste");
+		listaGenero.add("Fic\u00E7\u00E3o Cientifica");
+		listaGenero.add("Guerra");
+		listaGenero.add("Musical");
+		listaGenero.add("Policial");
+		listaGenero.add("Romance");
+		listaGenero.add("Suspense");
+		listaGenero.add("Terror");
+		listaGenero.add("Thriller");
+		panelListGenero.setBackground(Color.LIGHT_GRAY);
+		panelListGenero.setFont(new Font("Tahoma", Font.BOLD, 13));
+		panelListGenero.setForeground(Color.BLACK);
+		for (int i = 0; i < listaGenero.size(); i++) {
+			panelListGenero.addItem(listaGenero.get(i));
+		}
+		panelListGenero.setMaximumRowCount(15);
+		panelListGenero.setEditable(false);
+		panelListGenero.setBounds(87, 59, 337, 20);
+		JFrameAddFilme.getContentPane().add(panelListGenero);
+		
+		
+	/**	JTextField	textFieldGeneroFilme = new JTextField();
+		textFieldGeneroFilme.setToolTipText("Informe qual \u00E9 o g\u00EAnero do filme!");
+		textFieldGeneroFilme.setBackground(new Color(192,192,192));
+		textFieldGeneroFilme.setBounds(87, 59, 337, 20);
+		JFrameAddFilme.getContentPane().add(textFieldGeneroFilme);
+		textFieldGeneroFilme.setColumns(10);
+		*/
+		
+		JTextField textFieldPaisFilme = new JTextField();
+		textFieldPaisFilme.setToolTipText("Informe qual \u00E9 o pa\u00EDs de origem(lan\u00E7amento) do filme!");
+		textFieldPaisFilme.setBackground(new Color(192,192,192));
+		textFieldPaisFilme.setBounds(87, 106, 337, 20);
+		JFrameAddFilme.getContentPane().add(textFieldPaisFilme);
+		textFieldPaisFilme.setColumns(10);
+		
+		JTextField textFieldAnoFilme = new JTextField();
+		textFieldAnoFilme.setToolTipText("Informe qual \u00E9 o ano de lan\u00E7amento do filme!");
+		textFieldAnoFilme.setBackground(new Color(192,192,192));
+		textFieldAnoFilme.setBounds(87, 154, 130, 20);
+		JFrameAddFilme.getContentPane().add(textFieldAnoFilme);
+		textFieldAnoFilme.setColumns(10);
+		
+		JButton btnProcurarFilme = new JButton("Procurar");
+		btnProcurarFilme.setToolTipText("Clique sobre para procurar o filme em seu sistema.");
+		btnProcurarFilme.setBackground(new Color(107,107,107));
+		btnProcurarFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnProcurarFilme.setBounds(309, 185, 115, 23);
+		JFrameAddFilme.getContentPane().add(btnProcurarFilme);
+		
+		JTextField textFieldProcurarFilme = new JTextField();
+		textFieldProcurarFilme.setToolTipText("Diret\u00F3rio onde o filme est\u00E1 localizado.");
+		textFieldProcurarFilme.setBackground(new Color(192,192,192));
+		textFieldProcurarFilme.setBounds(10, 185, 289, 20);
+		JFrameAddFilme.getContentPane().add(textFieldProcurarFilme);
+		textFieldProcurarFilme.setColumns(10);
+		
+		JTextField textFieldDuracaoFilme = new JTextField();
+		textFieldDuracaoFilme.setToolTipText("Informe qual \u00E9 a dura\u00E7\u00E3o do filme(em minutos)!");
+		textFieldDuracaoFilme.setColumns(10);
+		textFieldDuracaoFilme.setBackground(Color.LIGHT_GRAY);
+		textFieldDuracaoFilme.setBounds(304, 151, 130, 20);
+		JFrameAddFilme.getContentPane().add(textFieldDuracaoFilme);
+		
+		JLabel lblDuracaoFilme = new JLabel("Dura\u00E7\u00E3o:");
+		lblDuracaoFilme.setToolTipText("");
+		lblDuracaoFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblDuracaoFilme.setBounds(227, 154, 72, 14);
+		JFrameAddFilme.getContentPane().add(lblDuracaoFilme);
+		
+		
+		btnProcurarFilme.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				    if(e.getSource() == btnProcurarFilme) {  
+				    	JFileChooser file = new JFileChooser(); 
+				    	JFrameAddFilme.setAlwaysOnTop(false);
+				        file.setFileSelectionMode(JFileChooser.FILES_ONLY);
+				        int i= file.showSaveDialog(null);
+				      if (i==1){
+				          textFieldProcurarFilme.setText("");
+				      } else {
+				          File arquivo = file.getSelectedFile();
+				          textFieldProcurarFilme.setText(arquivo.getPath());
+				      }
+				    
+				}
+			}
+		});
+
+		
+		//Jbuttons para fazer a escolha do tipo de arquivo.
+		//se for serie, filme ou anime
+
+		
 		//Função de mover o arquivo para o diretorio do programa.
 		//a função esta no br.edu.pii.tecaplay.util.FileUtil
 		
 
-		btnAdicionar.addActionListener(new ActionListener() {
+		btnAdicionarFilme.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
 			    	MoveFile MoveFile = new MoveFile();
-			    	String origem = textFieldProcurar.getText();
-			    	String ano = textFieldAno.getText();
-			    	String nome = textFieldTitulo.getText();
-			    	String genero = textFieldGenero.getText();
-			    	String pais = textFieldPais.getText();
-			    	String duracao = textFieldDuracao.getText();
-			    	
-			   
-			    	JFrameAdd.setAlwaysOnTop(false); 
-
+			    	String genero = (String) panelListGenero.getSelectedItem();
+			    	//faz o texte se a pessoa selecionou algum genero.
+			    	if (!(genero == "Selecione")){
+					    String origem = textFieldProcurarFilme.getText();
+				    	String ano = textFieldAnoFilme.getText();
+				    	String nome = textFieldTituloFilme.getText();
+				    	String pais = textFieldPaisFilme.getText();
+				    	String duracao = textFieldDuracaoFilme.getText();
+				  //testa se existem fildtexts em branco  	
+			    	if(!(origem.equals("")||(ano.equals(""))|| (nome.equals(""))|| (pais.equals("")))){
+			    	JFrameAddFilme.setAlwaysOnTop(false); 
+			    	//Executa o comando de mover o arquivo e renomealo.
 		    		MoveFile.AddFilme(origem, ano, nome, genero, duracao, pais, tipo, usrName);
 			 //Limpa os campos de escrita
+		    			panelListGenero.setSelectedIndex(0);
+				    	textFieldPaisFilme.setText("");
+				    	textFieldAnoFilme.setText("");
+				    	textFieldProcurarFilme.setText("");
+				    	textFieldTituloFilme.setText("");
+				    	textFieldDuracaoFilme.setText("");
+			} //ELSE DO PRIMEIRO IF
+			    	else{
+			    		JFrameAddFilme.setAlwaysOnTop(false); 
+		    		JOptionPane.showMessageDialog(null, "Por favor, preenche todos os campos com o Asterisco *", "Preencha todos os campos", 0);	
+			    	}
+			    	
+			    	}
+			  //ELSE DO SEGUNDO IF  	
+				else{
+		    		JFrameAddFilme.setAlwaysOnTop(false); 
+		    		JOptionPane.showMessageDialog(null, "Por favor, selecione o componente gênero", "Selecione o Genero", 0);
+		
+		    	}
+		}
+
+	});
+		
+		
+		
+	}
+	public void AddSerie(String usrName) {
+
+		
+		
+		
+		JFrame JFrameAddSerie = new JFrame();
+		JFrameAddSerie.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+		JFrameAddSerie.setAlwaysOnTop(true);
+		JFrameAddSerie.setResizable(false);
+		JFrameAddSerie.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		JFrameAddSerie.setTitle("Add Filmes - TecaPlay");
+		JFrameAddSerie.setIconImage(Toolkit.getDefaultToolkit().getImage("resources\\images\\newLogo.png"));
+		JFrameAddSerie.getContentPane().setBackground(new Color(169,169,169));
+		JFrameAddSerie.getContentPane().setForeground(Color.WHITE);
+		JFrameAddSerie.getContentPane().setLayout(null);
+		JFrameAddSerie.setVisible(true);
+		JFrameAddSerie.setSize(450, 300);
+		JFrameAddSerie.setLocationRelativeTo(null);
+		
+		
+		JLabel lblTituloSerie = new JLabel("T\u00EDtulo*:");
+		lblTituloSerie.setToolTipText("Informe qual \u00E9 o t\u00EDtulo da Série!");
+		lblTituloSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblTituloSerie.setBounds(10, 22, 59, 17);
+		JFrameAddSerie.getContentPane().add(lblTituloSerie);
+		
+		JTextField textFieldTituloSerie = new JTextField();
+		textFieldTituloSerie.setToolTipText("Informe qual \u00E9 o t\u00EDtulo da Série!");
+		textFieldTituloSerie.setBackground(new Color(192,192,192));
+		textFieldTituloSerie.setBounds(87, 19, 337, 20);
+		JFrameAddSerie.getContentPane().add(textFieldTituloSerie);
+		textFieldTituloSerie.setColumns(10);
+		
+		
+		
+		JLabel lblGeneroSerie = new JLabel("G\u00EAnero*:");
+		lblGeneroSerie.setToolTipText("Informe qual \u00E9 o g\u00EAnero da Série!");
+		lblGeneroSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblGeneroSerie.setBounds(10, 59, 83, 20);
+		JFrameAddSerie.getContentPane().add(lblGeneroSerie);
+
+
+		JComboBox<String> panelListGenero = new JComboBox<String>();
+		ArrayList<String> listaGenero = new ArrayList<>();
+		listaGenero.add("Selecione");
+		listaGenero.add("Ac\u00E3o");
+		listaGenero.add("Anima\u00E7\u00E3o");
+		listaGenero.add("Aventura");
+		listaGenero.add("Cl\u00E1ssico");
+		listaGenero.add("Com\u00E9dia");
+		listaGenero.add("Com\u00E9dia Rom\u00E2ntica");
+		listaGenero.add("Crime");
+		listaGenero.add("Document\u00E1rio");
+		listaGenero.add("Drama");
+		listaGenero.add("Faroeste");
+		listaGenero.add("Fic\u00E7\u00E3o Cientifica");
+		listaGenero.add("Guerra");
+		listaGenero.add("Musical");
+		listaGenero.add("Policial");
+		listaGenero.add("Romance");
+		listaGenero.add("Suspense");
+		listaGenero.add("Terror");
+		listaGenero.add("Thriller");
+		panelListGenero.setBackground(Color.LIGHT_GRAY);
+		panelListGenero.setFont(new Font("Tahoma", Font.BOLD, 13));
+		panelListGenero.setForeground(Color.BLACK);
+		for (int i = 0; i < listaGenero.size(); i++) {
+			panelListGenero.addItem(listaGenero.get(i));
+		}
+		panelListGenero.setMaximumRowCount(15);
+		panelListGenero.setEditable(false);
+		panelListGenero.setBounds(87, 59, 337, 20);
+		JFrameAddSerie.getContentPane().add(panelListGenero);
+		
+		
+		
+		
+		JLabel lblNumTemporada = new JLabel("Temporada*:");
+		lblNumTemporada.setToolTipText("Informe qual \u00E9 o Numero da Temporada:!");
+		lblNumTemporada.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNumTemporada.setBounds(10, 151, 96, 14);
+		JFrameAddSerie.getContentPane().add(lblNumTemporada);
+	
+		JTextField textFieldNumTemporada = new JTextField();
+		textFieldNumTemporada.setToolTipText("Informe qual \u00E9 o Numero da Temporada:!");
+		textFieldNumTemporada.setBackground(new Color(192,192,192));
+		textFieldNumTemporada.setBounds(110, 151, 40, 20);
+		JFrameAddSerie.getContentPane().add(textFieldNumTemporada);
+		textFieldNumTemporada.setColumns(10);
+		
+		JLabel lblEpisodio = new JLabel("Episódio*:");
+		lblEpisodio.setToolTipText("Informe qual \u00E9 o Episódio da Série!");
+		lblEpisodio.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblEpisodio.setBounds(10, 106, 76, 14);
+		JFrameAddSerie.getContentPane().add(lblEpisodio);
+		
+		JTextField textFieldEpisodio = new JTextField();
+		textFieldEpisodio.setToolTipText("Informe qual \u00E9 número de episódio da série!");
+		textFieldEpisodio.setBackground(new Color(192,192,192));
+		textFieldEpisodio.setBounds(89, 106, 37, 20);
+		JFrameAddSerie.getContentPane().add(textFieldEpisodio);
+		textFieldEpisodio.setColumns(10);
+		
+		JButton btnProcurarFilme = new JButton("Procurar");
+		btnProcurarFilme.setToolTipText("Clique sobre para procurar a Série em seu sistema.");
+		btnProcurarFilme.setBackground(new Color(107,107,107));
+		btnProcurarFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnProcurarFilme.setBounds(309, 185, 115, 23);
+		JFrameAddSerie.getContentPane().add(btnProcurarFilme);
+		
+		JTextField textFieldProcurarFilme = new JTextField();
+		textFieldProcurarFilme.setToolTipText("Diret\u00F3rio onde a série est\u00E1 localizado.");
+		textFieldProcurarFilme.setBackground(new Color(192,192,192));
+		textFieldProcurarFilme.setBounds(10, 185, 289, 20);
+		JFrameAddSerie.getContentPane().add(textFieldProcurarFilme);
+		textFieldProcurarFilme.setColumns(10);
+		
+		JLabel lblDuracaoFilme = new JLabel("Dura\u00E7\u00E3o:");
+		lblDuracaoFilme.setToolTipText("");
+		lblDuracaoFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblDuracaoFilme.setBounds(227, 151, 72, 14);
+		JFrameAddSerie.getContentPane().add(lblDuracaoFilme);
+		
+		
+		JTextField textFieldDuracaoFilme = new JTextField();
+		textFieldDuracaoFilme.setToolTipText("Informe qual \u00E9 a dura\u00E7\u00E3o do filme(em minutos)!");
+		textFieldDuracaoFilme.setColumns(10);
+		textFieldDuracaoFilme.setBackground(Color.LIGHT_GRAY);
+		textFieldDuracaoFilme.setBounds(304, 151, 118, 20);
+		JFrameAddSerie.getContentPane().add(textFieldDuracaoFilme);
+		
+		JButton btnCancelarSerie = new JButton("Cancelar");
+		btnCancelarSerie.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				    if(e.getSource() == btnCancelarSerie) {  
+				        JFrameAddSerie.dispose();
+				    
+				}
+			}
+		});
+		btnCancelarSerie.setBackground(new Color(107,107,107));
+		btnCancelarSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnCancelarSerie.setBounds(10, 227, 207, 23);
+		JFrameAddSerie.getContentPane().add(btnCancelarSerie);
+		
+		JButton btnAdicionarSerie = new JButton("Adicionar");
+		btnAdicionarSerie.setToolTipText("Adicionar o filme a biblioteca!");
+		btnAdicionarSerie.setBackground(new Color(107,107,107));
+		btnAdicionarSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnAdicionarSerie.setBounds(217, 227, 207, 23);
+		JFrameAddSerie.getContentPane().add(btnAdicionarSerie);
+		
+	
+		
+		btnProcurarFilme.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				    if(e.getSource() == btnProcurarFilme) {  
+				    	JFileChooser file = new JFileChooser(); 
+				    	JFrameAddSerie.setAlwaysOnTop(false);
+				        file.setFileSelectionMode(JFileChooser.FILES_ONLY);
+				        int i= file.showSaveDialog(null);
+				      if (i==1){
+				          textFieldProcurarFilme.setText("");
+				      } else {
+				          File arquivo = file.getSelectedFile();
+				          textFieldProcurarFilme.setText(arquivo.getPath());
+				      }
+				    
+				}
+			}
+		});
+
+		btnAdicionarSerie.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) { 
+					//faz o chamado da classe para mover o arquivo e renomealo
+			    	MoveFile MoveFile = new MoveFile();
+			    	String genero = (String) panelListGenero.getSelectedItem();
+			    	if (!(genero=="Selecione")){
+			    	//Converte todas as FielText em Strings
+			    	String origem = textFieldProcurarFilme.getText();
+			    	String ano = textFieldNumTemporada.getText();
+			    	String nome = textFieldTituloSerie.getText();
+			    	String pais = textFieldEpisodio.getText();
+			    	String duracao = textFieldDuracaoFilme.getText();
+			    	
+			    	//qualquer funcao que o MoveFile fazer vai ficar sobre exposto
+			    	JFrameAddSerie.setAlwaysOnTop(false); 
+			    	//envia as variaveis para a classe movefile
+		    		MoveFile.AddFilme(origem, ano, nome, genero, duracao, pais, tipo, usrName);
 		    		
-			    		textFieldGenero.setText("");
-				    	textFieldPais.setText("");
-				    	textFieldAno.setText("");
-				    	textFieldProcurar.setText("");
-				    	textFieldTitulo.setText("");
-				    	textFieldDuracao.setText("");
+		    		//Limpa os campos de escrita
+
+		    			panelListGenero.setSelectedIndex(0);
+				    	textFieldEpisodio.setText("");
+				    	textFieldNumTemporada.setText("");
+				    	textFieldProcurarFilme.setText("");
+				    	textFieldTituloSerie.setText("");
+				    	textFieldDuracaoFilme.setText("");
+			}
+			    	else{
+			    		JFrameAddSerie.setAlwaysOnTop(false); 
+			    		JOptionPane.showMessageDialog(null, "Por favor, selecione o componente gênero", "Selecione o Genero", 0);
+			
+			    	}
+			}
+	});
+		
+
+		btnAdicionarSerie.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) { 
+			    	MoveFile MoveFile = new MoveFile();
+			    	String genero = (String) panelListGenero.getSelectedItem();
+			    	//faz o texte se a pessoa selecionou algum genero.
+			    	if (!(genero == "Selecione")){
+					    String origem = textFieldProcurarFilme.getText();
+				    	String numTemp = textFieldNumTemporada.getText();
+				    	String nome = textFieldTituloSerie.getText();
+				    	String numEpisodio = textFieldEpisodio.getText();
+				    	String duracao = textFieldDuracaoFilme.getText();
+				  //testa se existem fildtexts em branco  	
+			    	if(!(origem.equals("")||(numTemp.equals(""))|| (nome.equals(""))|| (numEpisodio.equals("")))){
+			    	JFrameAddSerie.setAlwaysOnTop(false); 
+			    	//Executa o comando de mover o arquivo e renomealo.
+		    		MoveFile.AddFilme(origem, numTemp, nome, genero, duracao, numEpisodio, tipo, usrName);
+			 //Limpa os campos de escrita
+		    			panelListGenero.setSelectedIndex(0);
+				    	textFieldEpisodio.setText("");
+				    	textFieldNumTemporada.setText("");
+				    	textFieldProcurarFilme.setText("");
+				    	textFieldTituloSerie.setText("");
+				    	textFieldDuracaoFilme.setText("");
+			} //ELSE DO PRIMEIRO IF
+			    	else{
+			    		JFrameAddSerie.setAlwaysOnTop(false); 
+		    		JOptionPane.showMessageDialog(null, "Por favor, preenche todos os campos com o Asterisco *", "Preencha todos os campos", 0);	
+			    	}
+			    	
+			    	}
+			  //ELSE DO SEGUNDO IF  	
+				else{
+		    		JFrameAddSerie.setAlwaysOnTop(false); 
+		    		JOptionPane.showMessageDialog(null, "Por favor, selecione o componente gênero", "Selecione o Genero", 0);
+		
+		    	}
+		}
+
+	});
+		
+		
+
+	}
+	public void AddAnime(String usrName){
+
+		
+		
+		
+		JFrame JFrameAddFilme = new JFrame();
+		JFrameAddFilme.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+		JFrameAddFilme.setAlwaysOnTop(true);
+		JFrameAddFilme.setResizable(false);
+		JFrameAddFilme.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		JFrameAddFilme.setTitle("Add Filmes - TecaPlay");
+		JFrameAddFilme.setIconImage(Toolkit.getDefaultToolkit().getImage("resources\\images\\newLogo.png"));
+		JFrameAddFilme.getContentPane().setBackground(new Color(169,169,169));
+		JFrameAddFilme.getContentPane().setForeground(Color.WHITE);
+		JFrameAddFilme.getContentPane().setLayout(null);
+		JFrameAddFilme.setVisible(true);
+		JFrameAddFilme.setSize(450, 300);
+		JFrameAddFilme.setLocationRelativeTo(null);
+		
+		
+		JLabel lblTituloFilme = new JLabel("T\u00EDtulo:");
+		lblTituloFilme.setToolTipText("Informe qual \u00E9 o t\u00EDtulo do filme!");
+		lblTituloFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblTituloFilme.setBounds(10, 22, 59, 17);
+		JFrameAddFilme.getContentPane().add(lblTituloFilme);
+		
+		JTextField textFieldTituloFilme = new JTextField();
+		textFieldTituloFilme.setToolTipText("Informe qual \u00E9 o t\u00EDtulo do filme!");
+		textFieldTituloFilme.setBackground(new Color(192,192,192));
+		textFieldTituloFilme.setBounds(87, 19, 337, 20);
+		JFrameAddFilme.getContentPane().add(textFieldTituloFilme);
+		textFieldTituloFilme.setColumns(10);
+		
+		JButton btnCancelarFilme = new JButton("Cancelar");
+		btnCancelarFilme.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				    if(e.getSource() == btnCancelarFilme) {  
+				        JFrameAddFilme.dispose();
+				    
+				}
+			}
+		});
+		btnCancelarFilme.setBackground(new Color(107,107,107));
+		btnCancelarFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnCancelarFilme.setBounds(10, 227, 207, 23);
+		JFrameAddFilme.getContentPane().add(btnCancelarFilme);
+		
+		JButton btnAdicionarFilme = new JButton("Adicionar");
+		btnAdicionarFilme.setToolTipText("Adicionar o filme a biblioteca!");
+		btnAdicionarFilme.setBackground(new Color(107,107,107));
+		btnAdicionarFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnAdicionarFilme.setBounds(217, 227, 207, 23);
+		JFrameAddFilme.getContentPane().add(btnAdicionarFilme);
+		
+		JLabel lblGeneroFilme = new JLabel("G\u00EAnero:");
+		lblGeneroFilme.setToolTipText("Informe qual \u00E9 o g\u00EAnero do filme!");
+		lblGeneroFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblGeneroFilme.setBounds(10, 59, 83, 20);
+		JFrameAddFilme.getContentPane().add(lblGeneroFilme);
+		
+		JLabel lblPaisFilme = new JLabel("Pa\u00EDs:");
+		lblPaisFilme.setToolTipText("Informe qual \u00E9 o pa\u00EDs do filme!");
+		lblPaisFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblPaisFilme.setBounds(10, 109, 46, 14);
+		JFrameAddFilme.getContentPane().add(lblPaisFilme);
+		
+		JLabel lblAnoFilme = new JLabel("Ano:");
+		lblAnoFilme.setToolTipText("Informe qual \u00E9 o ano do filme!");
+		lblAnoFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblAnoFilme.setBounds(10, 157, 46, 14);
+		JFrameAddFilme.getContentPane().add(lblAnoFilme);
+		
+		JTextField	textFieldGeneroFilme = new JTextField();
+		textFieldGeneroFilme.setToolTipText("Informe qual \u00E9 o g\u00EAnero do filme!");
+		textFieldGeneroFilme.setBackground(new Color(192,192,192));
+		textFieldGeneroFilme.setBounds(87, 59, 337, 20);
+		JFrameAddFilme.getContentPane().add(textFieldGeneroFilme);
+		textFieldGeneroFilme.setColumns(10);
+		
+		JTextField textFieldPaisFilme = new JTextField();
+		textFieldPaisFilme.setToolTipText("Informe qual \u00E9 o pa\u00EDs de origem(lan\u00E7amento) do filme!");
+		textFieldPaisFilme.setBackground(new Color(192,192,192));
+		textFieldPaisFilme.setBounds(87, 106, 337, 20);
+		JFrameAddFilme.getContentPane().add(textFieldPaisFilme);
+		textFieldPaisFilme.setColumns(10);
+		
+		JTextField textFieldAnoFilme = new JTextField();
+		textFieldAnoFilme.setToolTipText("Informe qual \u00E9 o ano de lan\u00E7amento do filme!");
+		textFieldAnoFilme.setBackground(new Color(192,192,192));
+		textFieldAnoFilme.setBounds(87, 154, 130, 20);
+		JFrameAddFilme.getContentPane().add(textFieldAnoFilme);
+		textFieldAnoFilme.setColumns(10);
+		
+		JButton btnProcurarFilme = new JButton("Procurar");
+		btnProcurarFilme.setToolTipText("Clique sobre para procurar o filme em seu sistema.");
+		btnProcurarFilme.setBackground(new Color(107,107,107));
+		btnProcurarFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnProcurarFilme.setBounds(309, 185, 115, 23);
+		JFrameAddFilme.getContentPane().add(btnProcurarFilme);
+		
+		JTextField textFieldProcurarFilme = new JTextField();
+		textFieldProcurarFilme.setToolTipText("Diret\u00F3rio onde o filme est\u00E1 localizado.");
+		textFieldProcurarFilme.setBackground(new Color(192,192,192));
+		textFieldProcurarFilme.setBounds(10, 185, 289, 20);
+		JFrameAddFilme.getContentPane().add(textFieldProcurarFilme);
+		textFieldProcurarFilme.setColumns(10);
+		
+		JTextField textFieldDuracaoFilme = new JTextField();
+		textFieldDuracaoFilme.setToolTipText("Informe qual \u00E9 a dura\u00E7\u00E3o do filme(em minutos)!");
+		textFieldDuracaoFilme.setColumns(10);
+		textFieldDuracaoFilme.setBackground(Color.LIGHT_GRAY);
+		textFieldDuracaoFilme.setBounds(304, 151, 130, 20);
+		JFrameAddFilme.getContentPane().add(textFieldDuracaoFilme);
+		
+		JLabel lblDuracaoFilme = new JLabel("Dura\u00E7\u00E3o:");
+		lblDuracaoFilme.setToolTipText("");
+		lblDuracaoFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblDuracaoFilme.setBounds(227, 154, 72, 14);
+		JFrameAddFilme.getContentPane().add(lblDuracaoFilme);
+		
+		
+		btnProcurarFilme.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				    if(e.getSource() == btnProcurarFilme) {  
+				    	JFileChooser file = new JFileChooser(); 
+				    	JFrameAddFilme.setAlwaysOnTop(false);
+				        file.setFileSelectionMode(JFileChooser.FILES_ONLY);
+				        int i= file.showSaveDialog(null);
+				      if (i==1){
+				          textFieldProcurarFilme.setText("");
+				      } else {
+				          File arquivo = file.getSelectedFile();
+				          textFieldProcurarFilme.setText(arquivo.getPath());
+				      }
+				    
+				}
+			}
+		});
+
+		
+		//Jbuttons para fazer a escolha do tipo de arquivo.
+		//se for serie, filme ou anime
+
+		
+		//Função de mover o arquivo para o diretorio do programa.
+		//a função esta no br.edu.pii.tecaplay.util.FileUtil
+		
+
+		btnAdicionarFilme.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) { 
+					//faz o chamado da classe para mover o arquivo e renomealo
+			    	MoveFile MoveFile = new MoveFile();
+			    	//Converte todas as FielText em Strings
+			    	String origem = textFieldProcurarFilme.getText();
+			    	String ano = textFieldAnoFilme.getText();
+			    	String nome = textFieldTituloFilme.getText();
+			    	String genero = textFieldGeneroFilme.getText();
+			    	String pais = textFieldPaisFilme.getText();
+			    	String duracao = textFieldDuracaoFilme.getText();
+			    	
+			    	//qualquer funcao que o MoveFile fazer vai ficar sobre exposto
+			    	JFrameAddFilme.setAlwaysOnTop(false); 
+			    	//envia as variaveis para a classe movefile
+		    		MoveFile.AddFilme(origem, ano, nome, genero, duracao, pais, tipo, usrName);
+		    		
+		    		//Limpa os campos de escrita
+		    		
+			    		textFieldGeneroFilme.setText("");
+				    	textFieldPaisFilme.setText("");
+				    	textFieldAnoFilme.setText("");
+				    	textFieldProcurarFilme.setText("");
+				    	textFieldTituloFilme.setText("");
+				    	textFieldDuracaoFilme.setText("");
 			}
 
 	});
 		
+		
 	}
-	
 }

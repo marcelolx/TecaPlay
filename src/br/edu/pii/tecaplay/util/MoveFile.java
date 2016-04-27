@@ -46,7 +46,6 @@ public class MoveFile {
 		} else {
 			JOptionPane.showMessageDialog(null, "Nao foi possivel mover o arquivo", "Erro", 0);
 		}
-		
 	}
 
 	public void retornoPasta() {

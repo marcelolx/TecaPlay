@@ -184,6 +184,7 @@ public class HomePage{
 				ImagemAdd addFilme = new ImagemAdd();
 			}
 		});
+		
 		btnAdicionarImagem.setToolTipText("Op\u00E7\u00E3o de acesso a aba Adicionar!");
 		btnAdicionarImagem.setIcon(new ImageIcon("resources\\images\\imgBtnAdd.png"));
 		btnAdicionarImagem.setFont(new Font("Tahoma", Font.BOLD, 14));

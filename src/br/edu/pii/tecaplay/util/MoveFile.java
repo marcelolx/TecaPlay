@@ -1,14 +1,20 @@
 package br.edu.pii.tecaplay.util;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
 
 import javax.swing.JOptionPane;
 
 public class MoveFile {
+	private FileWriter escrita;
 	// Aqui jaz o codigo para mover os arquivos do adicionar.
 	/**
 	 * 
@@ -41,11 +47,11 @@ public class MoveFile {
 		//pegando a extensao do arquivo a ser movido e renomeando o arquivo.
 		String extensao = arquivo.getName().substring(arquivo.getName().lastIndexOf('.', arquivo.getName().length()));
 		String newFileName = nome + "_" + genero + "_" + ano + "_" + duracao+"_"+pais+"_"+extensao;
-		
+		System.out.println(destinoPasta.getAbsolutePath());
 		boolean ok = arquivo.renameTo(new File(destinoPasta, newFileName));
 		
 		if (ok) {
-			JOptionPane.showMessageDialog(null, "Arquivo foi movido com sucesso-"+arquivo.getName(), "Sucesso", 1);
+			JOptionPane.showMessageDialog(null, "Arquivo foi movido com sucesso-"+destinoPasta.getName(), "Sucesso", 1);
 
 		} else {
 			JOptionPane.showMessageDialog(null, "Nao foi possivel mover o arquivo", "Erro", 0);
@@ -76,56 +82,34 @@ public class MoveFile {
 		}
 		String pasta ="c:\\TecaPlay\\" + usrName + "\\Videos\\" + tipo ;
 		System.out.println(pasta);
-		gravarTxt(pasta,nome,temporada,episodio,duracao,genero);
+		String fileFinal = destinoPasta.getAbsolutePath()+"\\"+newFileName;
+		System.out.println(fileFinal);
+		gravarTxt(pasta,nome,temporada,episodio,duracao,genero,fileFinal);
 	}
 	
-	public void gravarTxt(String pasta, String nome, String temporada, String episodio,String duracao,String genero){
+	public void gravarTxt(String pasta, String nome, String temporada, String episodio,String duracao,String genero,String file){
+		//String do diretorio do TXT
 		String criarTxt = pasta + "\\"+genero+".txt";
 		FileReader diretorio = null;
 		try {
 			diretorio = new FileReader(criarTxt);
+			System.out.println(diretorio);
 		} catch (FileNotFoundException e2) {
-			System.out.println("nao foi possiovel criar o .txt");
-		}
-		
 			try {
-				diretorio = new FileReader(pasta);
-			} catch (FileNotFoundException e) {
-				System.out.println("Erro na filereader do arquivo");
-				e.printStackTrace();
+				FileWriter arq = new FileWriter(criarTxt);
+			} catch (IOException e) {
+				System.out.println("Criação .txt nao possivel");
 			}
-			
-		BufferedReader br = new BufferedReader(diretorio);
-		
-		String resul = null;
+		}
 		try {
-			resul = br.readLine();
-			System.out.println("teste teste"+resul);
-		} catch (IOException e1) {
-			System.out.println("Erro na leitura");
-		}
-		
-		if (resul == null){
-			resul = "vazio";
-		}
-		
-		if (!resul.equals("vazio")){
-			System.out.println(br);
-			try {
-				br.close();
-			} catch (IOException e) {
-				JOptionPane.showMessageDialog(null, "Erro ao fechar o arquivo","Erro",0);
-				e.printStackTrace();
-			}
-		}
-		else{
-			System.out.println(br);
-			try {
-				br.close();
-			} catch (IOException e) {
-				JOptionPane.showMessageDialog(null, "Erro ao fechar o arquivo","Erro",0);
-				e.printStackTrace();
-			}
+			FileWriter buffer = null;  
+			buffer = new FileWriter(criarTxt); 
+			String texto = temporada+"#"+episodio+"#"+nome+"#"+duracao+"#"+file;
+			buffer.write(texto);  
+		//	buffer.newLine();
+			buffer.close();
+		} catch (IOException e) {
+			System.out.println("não foi posssivel fazer a conexao ocm o txt)");
 		}
 		
 	}

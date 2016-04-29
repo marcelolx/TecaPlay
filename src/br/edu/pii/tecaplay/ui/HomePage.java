@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.FileNotFoundException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,10 +19,12 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
+import br.edu.pii.tecaplay.util.FRarquivos;
 import br.edu.pii.tecaplay.util.FileUtil;
 import br.edu.pii.tecaplay.util.MoveFile;
 import br.edu.pii.tecaplay.util.TimerToLabel;
@@ -709,11 +712,21 @@ public class HomePage{
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						panelCategoriasFilmes.setVisible(false);
-						home.getContentPane().remove(panelCategoriasFilmes);
-						home.getContentPane().add(filmesCatAcao, BorderLayout.CENTER);
-						filmesCatAcao.setVisible(true);
-						filmesCatAcao.revalidate();
+						String genero = "acão";
+						FRarquivos retorno = new FRarquivos();
+						Boolean ler = false;
+							ler = retorno.VerificaGeneroExistente(usrName,genero);			
+						if (ler){
+							panelCategoriasFilmes.setVisible(false);
+							home.getContentPane().remove(panelCategoriasFilmes);
+							home.getContentPane().add(filmesCatAcao, BorderLayout.CENTER);
+							filmesCatAcao.setVisible(true);
+							filmesCatAcao.revalidate();
+						}	else
+						{
+							JOptionPane.showMessageDialog(null, "Não à nada a ser listado","Inválido",0);
+						}
+					
 					}
 				});
 				
@@ -722,11 +735,21 @@ public class HomePage{
 							
 							@Override
 							public void actionPerformed(ActionEvent e) {
-								panelCategoriasFilmes.setVisible(false);
-								home.getContentPane().remove(panelCategoriasFilmes);
-								home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
-								filmesCatAnimacao.setVisible(true);
-								filmesCatAnimacao.revalidate();
+								String genero = "Animação";
+								FRarquivos retorno = new FRarquivos();
+								Boolean ler = false;
+									ler = retorno.VerificaGeneroExistente(usrName,genero);			
+								if (ler){
+									panelCategoriasFilmes.setVisible(false);
+									home.getContentPane().remove(panelCategoriasFilmes);
+									home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
+									filmesCatAnimacao.setVisible(true);
+									filmesCatAnimacao.revalidate();
+								}	else
+								{
+									JOptionPane.showMessageDialog(null, "Não à nada a ser listado","Invalido",0);
+								}
+								
 							}
 						});
 						

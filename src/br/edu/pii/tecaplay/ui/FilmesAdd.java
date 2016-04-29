@@ -35,7 +35,7 @@ public class FilmesAdd {
 		JFrameSelecao.getContentPane().setForeground(Color.WHITE);
 		JFrameSelecao.getContentPane().setLayout(null);
 		JFrameSelecao.setVisible(true);
-		JFrameSelecao.setSize(450, 300);
+		JFrameSelecao.setSize(205, 190);
 		JFrameSelecao.setLocationRelativeTo(null);
 		
 		
@@ -44,7 +44,7 @@ public class FilmesAdd {
 		btnSeries.setBackground(Color.LIGHT_GRAY);
 		btnSeries.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnSeries.setForeground(new Color(0,0,0));
-		btnSeries.setBounds(10, 47, 207, 43);
+		btnSeries.setBounds(10, 10, 180, 40);
 		JFrameSelecao.getContentPane().add(btnSeries);
 		
 		
@@ -53,7 +53,7 @@ public class FilmesAdd {
 		btnAnimes.setBackground(Color.LIGHT_GRAY);
 		btnAnimes.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnAnimes.setForeground(new Color(0,0,0));
-		btnAnimes.setBounds(227, 47, 207, 43);
+		btnAnimes.setBounds(10, 60, 180, 40);
 		JFrameSelecao.getContentPane().add(btnAnimes);
 		
 		Button btnFilmes = new Button("Filmes");
@@ -61,13 +61,9 @@ public class FilmesAdd {
 		btnFilmes.setBackground(Color.LIGHT_GRAY);
 		btnFilmes.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnFilmes.setForeground(new Color(0,0,0));
-		btnFilmes.setBounds(120, 107, 207, 43);
+		btnFilmes.setBounds(10, 110, 180, 40);
 		JFrameSelecao.getContentPane().add(btnFilmes);
 		
-		JFormattedTextField frmtdtxtfldXxxxxx = new JFormattedTextField();
-		frmtdtxtfldXxxxxx.setToolTipText("xx/xx/xx");
-		frmtdtxtfldXxxxxx.setBounds(54, 172, 273, 20);
-		JFrameSelecao.getContentPane().add(frmtdtxtfldXxxxxx);
 		
 		
 	
@@ -553,7 +549,7 @@ public class FilmesAdd {
 			    	if(!(origem.equals("")||(numTemp.equals(""))|| (nome.equals(""))|| (numEpisodio.equals("")))){
 			    	JFrameAddSerie.setAlwaysOnTop(false); 
 			    	//Executa o comando de mover o arquivo e renomealo.
-		    		MoveFile.AddFilme(origem, numTemp, nome, genero, duracao, numEpisodio, tipo, usrName);
+		    		MoveFile.AddSerie(origem, numTemp, nome, genero, duracao, numEpisodio, tipo, usrName);
 			 //Limpa os campos de escrita
 		    			panelListGenero.setSelectedIndex(0);
 				    	textFieldEpisodio.setText("");

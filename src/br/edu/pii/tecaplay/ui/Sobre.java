@@ -56,7 +56,7 @@ public class Sobre extends JFrame {
 		btnOk.setBackground(Color.LIGHT_GRAY);
 		panelRodape.add(btnOk);
 		
-		JLabel lblVersao = new JLabel("Vers\u00E3o: 0.0.36");
+		JLabel lblVersao = new JLabel("Vers\u00E3o: 0.0.39");
 		lblVersao.setFont(new Font("Sylfaen", Font.BOLD, 14));
 		lblVersao.setLabelFor(panelRodape);
 		lblVersao.setIcon(new ImageIcon("resources\\images\\imgVersion.png"));

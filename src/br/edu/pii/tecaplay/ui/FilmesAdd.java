@@ -152,7 +152,7 @@ public class FilmesAdd {
 		JFrameAddFilme.getContentPane().setForeground(Color.WHITE);
 		JFrameAddFilme.getContentPane().setLayout(null);
 		JFrameAddFilme.setVisible(true);
-		JFrameAddFilme.setSize(450, 300);
+		JFrameAddFilme.setSize(445, 300);
 		JFrameAddFilme.setLocationRelativeTo(null);
 		
 		
@@ -377,7 +377,7 @@ public class FilmesAdd {
 		JFrameAddSerie.getContentPane().setForeground(Color.WHITE);
 		JFrameAddSerie.getContentPane().setLayout(null);
 		JFrameAddSerie.setVisible(true);
-		JFrameAddSerie.setSize(450, 300);
+		JFrameAddSerie.setSize(440, 290);
 		JFrameAddSerie.setLocationRelativeTo(null);
 		
 		
@@ -399,7 +399,7 @@ public class FilmesAdd {
 		JLabel lblGeneroSerie = new JLabel("G\u00EAnero*:");
 		lblGeneroSerie.setToolTipText("Informe qual \u00E9 o g\u00EAnero da Série!");
 		lblGeneroSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblGeneroSerie.setBounds(10, 59, 83, 20);
+		lblGeneroSerie.setBounds(10, 50, 83, 20);
 		JFrameAddSerie.getContentPane().add(lblGeneroSerie);
 
 
@@ -432,11 +432,22 @@ public class FilmesAdd {
 		}
 		panelListGenero.setMaximumRowCount(15);
 		panelListGenero.setEditable(false);
-		panelListGenero.setBounds(87, 59, 337, 20);
+		panelListGenero.setBounds(87, 50, 337, 20);
 		JFrameAddSerie.getContentPane().add(panelListGenero);
 		
 		
+		JLabel lblNomeEpisodio = new JLabel("Nome do Episódio:");
+		lblNomeEpisodio.setToolTipText("Informe o nome do episódio.");
+		lblNomeEpisodio.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNomeEpisodio.setBounds(10, 80, 150, 17);
+		JFrameAddSerie.getContentPane().add(lblNomeEpisodio);
 		
+		JTextField txtFieldNomeEp = new JTextField();
+		txtFieldNomeEp.setToolTipText("Insira aqui o nome do episódio.");
+		txtFieldNomeEp.setBackground(new Color(192,192,192));
+		txtFieldNomeEp.setBounds(143, 80, 280, 20);
+		JFrameAddSerie.getContentPane().add(txtFieldNomeEp);
+		txtFieldNomeEp.setColumns(10);
 		
 		JLabel lblNumTemporada = new JLabel("Temporada*:");
 		lblNumTemporada.setToolTipText("Informe qual \u00E9 o Numero da Temporada:!");
@@ -543,13 +554,14 @@ public class FilmesAdd {
 					    String origem = textFieldProcurarFilme.getText();
 				    	String numTemp = textFieldNumTemporada.getText();
 				    	String nome = textFieldTituloSerie.getText();
+				    	String nomeEp = txtFieldNomeEp.getText();
 				    	String numEpisodio = textFieldEpisodio.getText();
 				    	String duracao = textFieldDuracaoFilme.getText();
 				  //testa se existem fildtexts em branco  	
 			    	if(!(origem.equals("")||(numTemp.equals(""))|| (nome.equals(""))|| (numEpisodio.equals("")))){
 			    	JFrameAddSerie.setAlwaysOnTop(false); 
 			    	//Executa o comando de mover o arquivo e renomealo.
-		    		MoveFile.AddSerie(origem, numTemp, nome, genero, duracao, numEpisodio, tipo, usrName);
+		    		MoveFile.AddSerie(origem, numTemp, nome, nomeEp, genero, duracao, numEpisodio, tipo, usrName);
 			 //Limpa os campos de escrita
 		    			panelListGenero.setSelectedIndex(0);
 				    	textFieldEpisodio.setText("");
@@ -557,6 +569,7 @@ public class FilmesAdd {
 				    	textFieldProcurarFilme.setText("");
 				    	textFieldTituloSerie.setText("");
 				    	textFieldDuracaoFilme.setText("");
+				    	txtFieldNomeEp.setText("");
 			} //ELSE DO PRIMEIRO IF
 			    	else{
 			    		JFrameAddSerie.setAlwaysOnTop(false); 

@@ -1,15 +1,10 @@
 package br.edu.pii.tecaplay.util;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.Writer;
 
 import javax.swing.JOptionPane;
 
@@ -62,20 +57,18 @@ public class MoveFile {
 		gravarTxtFilmes(pasta, nome, ano, genero, pais, fileFinal);
 	}
 
-	public void AddSerie(String origem, String temporada, String nome, String nomeEp, String genero, String duracao, String episodio, String tipo, String usrName) {
+	public void AddSerie(String origem, String temporada, String nome, String genero, String duracao, String episodio, String tipo, String usrName) {
 		nome = nome.toLowerCase();
-		String nomeEptoFile = nomeEp;
-		nomeEp = nomeEp.toLowerCase();
 		origem = origem.toLowerCase();
 		genero = genero.toLowerCase();
-		File destinoPasta = new File("c:\\TecaPlay\\" + usrName + "\\Videos\\" + tipo + "\\" + genero + "\\" + nome + "\\" + temporada);
+		File destinoPasta = new File("c:\\TecaPlay\\" + usrName + "\\Videos\\" + tipo + "\\" + genero);
 		if (!(destinoPasta).exists()) {
 			destinoPasta.mkdirs();
 		}
 		File arquivo = new File(origem);
 		//pegando a extensao do arquivo a ser movido e renomeando o arquivo.
 		String extensao = arquivo.getName().substring(arquivo.getName().lastIndexOf('.', arquivo.getName().length()));
-		String newFileName = nomeEptoFile + extensao;
+		String newFileName = nome + extensao;
 		
 		boolean ok = arquivo.renameTo(new File(destinoPasta, newFileName));
 		
@@ -89,10 +82,10 @@ public class MoveFile {
 		System.out.println(pasta);
 		String fileFinal = destinoPasta.getAbsolutePath()+"\\"+newFileName;
 		System.out.println(fileFinal);
-		gravarTxt(pasta,nomeEptoFile,temporada,episodio,duracao,genero,fileFinal);
+		gravarTxt(pasta,nome,temporada,episodio,duracao,genero,fileFinal);
 	}
 	
-	public void gravarTxtFilmes(String pasta, String nomeEp, String ano, String genero, String pais, String file){
+	public void gravarTxtFilmes(String pasta, String nome, String ano, String genero, String pais, String file){
 		String criarTxt = pasta + "\\" + genero + ".txt";
 		FileReader diretorio = null;
 		try{
@@ -108,7 +101,7 @@ public class MoveFile {
 		try{
 			FileWriter buffer = null;
 			buffer = new FileWriter(criarTxt, true);
-			String text = ano+"#"+genero+"#"+pais+"#"+nomeEp+"#"+file;
+			String text = ano+"#"+genero+"#"+pais+"#"+nome+"#"+file;
 			buffer.write(text+"\r\n");
 			buffer.close();
 		}catch(IOException e21){
@@ -117,7 +110,7 @@ public class MoveFile {
 	}
 	//gravarTxt só está apto para séries, necessário criar outro para filmes,
 	//o mesmo pode ser utilizado para animes também.
-	public void gravarTxt(String pasta, String nomeEp, String temporada, String episodio,String duracao,String genero,String file){
+	public void gravarTxt(String pasta, String nome, String temporada, String episodio,String duracao,String genero,String file){
 		//String do diretorio do TXT
 		String criarTxt = pasta + "\\"+genero+".txt";
 		FileReader diretorio = null;
@@ -134,7 +127,7 @@ public class MoveFile {
 		try {
 			FileWriter buffer = null;  
 			buffer = new FileWriter(criarTxt, true); 
-			String texto = temporada+"#"+episodio+"#"+nomeEp+"#"+duracao+"#"+file;
+			String texto = temporada+"#"+episodio+"#"+nome+"#"+duracao+"#"+file;
 			buffer.write(texto+"\r\n");  
 			buffer.close();
 		} catch (IOException e) {

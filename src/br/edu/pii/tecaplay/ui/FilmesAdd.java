@@ -18,6 +18,11 @@ import javax.swing.JTextField;
 import br.edu.pii.tecaplay.util.MoveFile;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
+/**
+ * 
+ * @author matheus
+ *
+ */
 
 public class FilmesAdd {
 	public void Topo() {

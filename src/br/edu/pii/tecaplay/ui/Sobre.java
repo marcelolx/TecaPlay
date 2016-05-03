@@ -14,7 +14,11 @@ import java.awt.GridLayout;
 import java.awt.Cursor;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-
+/**
+ * 
+ * @author jonas
+ *
+ */
 public class Sobre extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -56,7 +60,7 @@ public class Sobre extends JFrame {
 		btnOk.setBackground(Color.LIGHT_GRAY);
 		panelRodape.add(btnOk);
 		
-		JLabel lblVersao = new JLabel("Vers\u00E3o: 0.0.41");
+		JLabel lblVersao = new JLabel("Vers\u00E3o: 0.0.54");
 		lblVersao.setFont(new Font("Sylfaen", Font.BOLD, 14));
 		lblVersao.setLabelFor(panelRodape);
 		lblVersao.setIcon(new ImageIcon("resources\\images\\imgVersion.png"));

@@ -25,9 +25,9 @@ public class LoginGUI extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Launch the application.
+	 * Launch the application login.
 	 */
-	public static void main(String[] args) {
+	public void executa() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -50,7 +50,7 @@ public class LoginGUI extends JFrame {
 					logPanel.setBackground(new Color(169, 169, 169));
 					login.getContentPane().add(logPanel, BorderLayout.CENTER);
 					
-					ImageIcon imag = new ImageIcon("resources\\images\\newLogo4.png");
+					ImageIcon imag = new ImageIcon("resources\\images\\newLogo42.png");
 					JLabel img = new JLabel(imag);
 					logPanel.add(img, BorderLayout.NORTH);
 					

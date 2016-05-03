@@ -14,7 +14,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import br.edu.pii.tecaplay.util.FileUtil;
-
+/**
+ * 
+ * @author marcelo
+ *
+ */
 public class RegisterUser {
 	
 	public RegisterUser(){

@@ -44,9 +44,17 @@ public class HomePage{
 		home.setVisible(true);// Deixar visivel
 		home.setBackground(new Color(25, 25, 25));// cor de Background
 		home.setTitle("Home - TecaPlay"); // titulo na barra do windows
-		home.setSize(980, 560); // tamanho da janela
+		
+		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+		int width = (screen.width) - 386;
+		int height = (screen.height) - 208;
+		System.out.println("widht = " + screen.width + "  Height: " + screen.height);
+		int x = (screen.width - width) / 2;
+		int y = (screen.height-height)/2;
+	    home.setBounds(x,y,width,height);
+	    //	home.setSize(980, 560); // tamanho da janela
 		home.setResizable(false); // impossibilidade de altarar tamanho da janela
-		home.setLocationRelativeTo(null); // iniciar aplicação centralizada na tela
+	//	home.setLocationRelativeTo(null); // iniciar aplicação centralizada na tela
 		home.setIconImage(Toolkit.getDefaultToolkit().getImage("resources\\images\\newLogo.png")); // icone da barra
 	//	MoveFile retornoPasta = new MoveFile();
 		// criação do menu superior
@@ -143,14 +151,16 @@ public class HomePage{
 		timer.init();
 		home.getContentPane().add(labelFundo, BorderLayout.CENTER);
 
-		/**
-		 * Adição de Painel Lateral para abrigar os botoes de gerenciar o que
-		 * será apresentado
-		 */
+		
 
 		/**
-		 * Imagem LATERAL imagem LATERAL Imagem LATERAL Imagem LATERAL Imagem
-		 * LATERAL
+		 * 
+		 * Adição de Painel Lateral para abrigar os botoes de gerenciar o que
+		 * será apresentado
+		 * 
+		 * 
+		 * Imagem LATERAL
+		 * 
 		 */
 		
 		JPanel panelLateralImagem = new JPanel();
@@ -221,7 +231,7 @@ public class HomePage{
 		panelLateralImagem.add(btnColecaoImagem);
 		btnColecaoImagem.setBackground(Color.LIGHT_GRAY);
 
-		// Ação que será realizada ao apertar o botao de fimes do jpanelTopo
+		// Ação que será realizada ao apertar o botao de Imagem do jpanelTopo
 		btnImagem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				home.getContentPane().add(panelLateralImagem, BorderLayout.WEST);
@@ -231,9 +241,9 @@ public class HomePage{
 				panelLateralImagem.revalidate();// revalida o loyout
 			}
 		});
+		
 		/**
-		 * Musica LATERAL Musica LATERAL Musica LATERAL Musica LATERAL Musica
-		 * LATERAL
+		 * JPanel Lateral para a mostrar o panel Musica LATERAL
 		 */
 
 		JPanel panelLateralMusica = new JPanel();
@@ -302,7 +312,7 @@ public class HomePage{
 		panelLateralMusica.add(btnSorteioMusica);
 		btnSorteioMusica.setBackground(Color.LIGHT_GRAY);
 
-		// Ação que será realizada ao apertar o botao de fimes do jpanelTopo
+		// Ação que será realizada ao apertar o botao de Musica do jpanelTopo
 		btnMusica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				home.getContentPane().add(panelLateralMusica, BorderLayout.WEST);
@@ -314,11 +324,7 @@ public class HomePage{
 		});
 
 		/**
-		 * 
-		 *
-		 * VIDEO LATERAL VIDEO LATERAL VIDEO LATERAL VIDEO LATERAL VIDEO LATERAL
-		 * 
-		 * 
+		 * Jpanel Lateral para o chamamento do panel de Videos
 		 */
 
 		JPanel panelLateralVideo = new JPanel();
@@ -396,7 +402,8 @@ public class HomePage{
 		/*
 		 * 
 		 * 
-		 * FILMES/CAREGORIAS   FILMES/CAREGORIAS   FILMES/CAREGORIAS   FILMES/CAREGORIAS   FILMES/CAREGORIAS   
+		 * FILMES/CAREGORIAS
+		 * Painel de categorias que será chamado ao apertar no jbutton btnFilmes
 		 * 
 		 * 
 		 * TODO

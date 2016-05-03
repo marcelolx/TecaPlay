@@ -10,7 +10,11 @@ import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dialog.ModalExclusionType;
-
+/**
+ * 
+ * @author matheus
+ *
+ */
 public class ImagemAdd {
 	private JTextField textFieldCategoria;
 	private JTextField textFieldNome;

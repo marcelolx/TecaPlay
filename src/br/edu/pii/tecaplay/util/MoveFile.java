@@ -1,18 +1,16 @@
 package br.edu.pii.tecaplay.util;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
-import java.io.FileReader;
 import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
 public class MoveFile {
+	@SuppressWarnings("unused")
 	private FileWriter escrita;
 	// Aqui jaz o codigo para mover os arquivos do adicionar.
 	/**
-	 * 
 	 * @param origem 
 	 * 		Diretório de onde o filme está.
 	 * @param ano 
@@ -90,17 +88,6 @@ public class MoveFile {
 	public void gravarTxtFilmes(String pasta, String nomeEp, String ano, String genero, String pais, String file){
 		//string que serve para fazer a criacao do txt
 		String criarTxt = pasta + "\\" + genero + ".txt";
-		FileReader diretorio = null;
-		//verifica se o arquivo existe. se existir, ele nao faz nada, se não existir ele vai tentar criar
-		try{
-			diretorio = new FileReader(criarTxt);
-		}catch(FileNotFoundException e){
-			try{
-				FileWriter arq = new FileWriter(criarTxt);
-			}catch(IOException e1){
-				System.out.println("Criação do .txt inviável.");
-			}
-		}
 		
 		//grava as informaões no txt
 		try{
@@ -118,17 +105,7 @@ public class MoveFile {
 	public void gravarTxt(String pasta, String nomeEp, String temporada, String episodio,String duracao,String genero,String file){
 		//String do diretorio do TXT
 		String criarTxt = pasta + "\\"+genero+".txt";
-		FileReader diretorio = null;
-		try {
-			diretorio = new FileReader(criarTxt);
-			System.out.println(diretorio);
-		} catch (FileNotFoundException e2) {
-			try {
-				FileWriter arq = new FileWriter(criarTxt);
-			} catch (IOException e) {
-				System.out.println("Criação .txt nao possivel");
-			}
-		}
+
 		try {
 			FileWriter buffer = null;  
 			buffer = new FileWriter(criarTxt, true); 

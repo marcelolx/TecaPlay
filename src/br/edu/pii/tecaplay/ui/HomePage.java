@@ -375,16 +375,7 @@ public class HomePage{
 		btnFilmes.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnFilmes.setBackground(Color.LIGHT_GRAY);
 		panelLateralVideo.add(btnFilmes);
-
-		// Jbuttom para listar os Animes
-
-		JButton btnAnimes = new JButton("Animes");
-		btnAnimes.setIcon(new ImageIcon("resources\\images\\imgBtnAnimes.png"));
-		btnAnimes.setToolTipText("Op\u00E7\u00E3o de acesso a aba Adicionar!");
-		btnAnimes.setPreferredSize(new Dimension(173, 34));
-		btnAnimes.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnAnimes.setBackground(Color.LIGHT_GRAY);
-		panelLateralVideo.add(btnAnimes);
+		
 		// Jbuttom para listar as Séries
 		JButton btnSeries = new JButton("S\u00E9ries");
 		btnSeries.setIcon(new ImageIcon("resources\\images\\imgBtnSeries.png"));
@@ -684,6 +675,15 @@ public class HomePage{
 		btnCatAnimacaoSerie.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasSerie.add(btnCatAnimacaoSerie);
 		
+
+		JButton btnCatAnimeSerie = new JButton("Anime");
+		btnCatAnimeSerie.setToolTipText("Categoria Faroeste.");
+		btnCatAnimeSerie.setPreferredSize(new Dimension(127, 135));
+		//btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnCatAnimeSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnCatAnimeSerie.setBackground(Color.LIGHT_GRAY);
+		panelCategoriasSerie.add(btnCatAnimeSerie);
+		
 		JButton btnCatAventuraSerie = new JButton("Aventura");
 		btnCatAventuraSerie.setToolTipText("Categoria Ação.");
 		btnCatAventuraSerie.setPreferredSize(new Dimension(127, 135));
@@ -739,14 +739,6 @@ public class HomePage{
 		btnCatDramaSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnCatDramaSerie.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasSerie.add(btnCatDramaSerie);
-		
-		JButton btnCatFaroesteSerie = new JButton("Faroeste");
-		btnCatFaroesteSerie.setToolTipText("Categoria Faroeste.");
-		btnCatFaroesteSerie.setPreferredSize(new Dimension(127, 135));
-		//btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
-		btnCatFaroesteSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatFaroesteSerie.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasSerie.add(btnCatFaroesteSerie);
 		
 		JButton btnCatFicaoCientSerie = new JButton("<html><center>Ficção</br> Científica</center></html>");
 		btnCatFicaoCientSerie.setToolTipText("Categoria Ficção Científica.");
@@ -825,6 +817,11 @@ public class HomePage{
 		serieCatAnimacao.setLayout(new FlowLayout(FlowLayout.CENTER));
 		serieCatAnimacao.setPreferredSize(new Dimension(500, 300));
 		serieCatAnimacao.setBackground(new Color(120, 120, 120));
+	
+		JPanel serieCatAnime = new JPanel();
+		serieCatAnime.setLayout(new FlowLayout(FlowLayout.CENTER));
+		serieCatAnime.setPreferredSize(new Dimension(500, 300));
+		serieCatAnime.setBackground(new Color(120, 120, 120));
 		
 		JPanel serieCatAventura = new JPanel();
 		serieCatAventura.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -860,11 +857,6 @@ public class HomePage{
 		serieCatDrama.setLayout(new FlowLayout(FlowLayout.CENTER));
 		serieCatDrama.setPreferredSize(new Dimension(500, 300));
 		serieCatDrama.setBackground(new Color(120, 120, 120));
-		
-		JPanel serieCatFaroeste = new JPanel();
-		serieCatFaroeste.setLayout(new FlowLayout(FlowLayout.CENTER));
-		serieCatFaroeste.setPreferredSize(new Dimension(500, 300));
-		serieCatFaroeste.setBackground(new Color(120, 120, 120));
 		
 		JPanel serieCatFiccaoCient = new JPanel();
 		serieCatFiccaoCient.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -1638,11 +1630,11 @@ public class HomePage{
 										});
 										
 								//Ação do botão filmes categoria Faroeste
-										btnCatFaroesteSerie.addActionListener(new ActionListener() {
+										btnCatAnimeSerie.addActionListener(new ActionListener() {
 											
 											@Override
 											public void actionPerformed(ActionEvent e) {
-												String genero = "Faroeste";
+												String genero = "Anime";
 												FRarquivos retorno = new FRarquivos();
 												Boolean ler = false;
 													ler = retorno.VerificaGeneroExistenteSerie(usrName,genero);			
@@ -1650,8 +1642,8 @@ public class HomePage{
 													panelCategoriasSerie.setVisible(false);
 													home.getContentPane().remove(panelCategoriasSerie);
 													home.getContentPane().add(panelCategoriasSerie, BorderLayout.CENTER);
-													serieCatFaroeste.setVisible(true);
-													serieCatFaroeste.revalidate();
+													serieCatAnime.setVisible(true);
+													serieCatAnime.revalidate();
 
 
 												}	else
@@ -1831,7 +1823,7 @@ public class HomePage{
 											
 											@Override
 											public void actionPerformed(ActionEvent e) {
-												String genero = "thriller";
+												String genero = "médico";
 												FRarquivos retorno = new FRarquivos();
 												Boolean ler = false;
 													ler = retorno.VerificaGeneroExistenteSerie(usrName,genero);			
@@ -1843,6 +1835,7 @@ public class HomePage{
 													serieCatMedico.revalidate();
 												}	else
 												{
+													JOptionPane.showMessageDialog(null, "Não à nada a ser listado","Inválido",0);
 												}
 											}
 										});

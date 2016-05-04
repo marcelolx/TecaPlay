@@ -21,7 +21,8 @@ import javax.swing.JFormattedTextField;
 /**
  * 
  * @author matheus
- *
+ * @since 04/04/2016
+ * @version 0.0.55
  */
 
 public class FilmesAdd {
@@ -31,7 +32,8 @@ public class FilmesAdd {
 	String tipo = "";
 
 	public FilmesAdd(String usrName) {
-
+		
+		/** Janela principal para Filmes, definido cor, tamanho, posição... */
 		JFrame JFrameSelecao = new JFrame();
 		JFrameSelecao.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
 		JFrameSelecao.setAlwaysOnTop(true);
@@ -45,7 +47,8 @@ public class FilmesAdd {
 		JFrameSelecao.setVisible(true);
 		JFrameSelecao.setSize(205, 140);
 		JFrameSelecao.setLocationRelativeTo(null);
-
+		
+		/** Botão Séries, definido cor, tamanho, posição... */
 		Button btnSeries = new Button("Séries");
 		btnSeries.setSize(200, 150);
 		btnSeries.setBackground(Color.LIGHT_GRAY);
@@ -53,7 +56,8 @@ public class FilmesAdd {
 		btnSeries.setForeground(new Color(0, 0, 0));
 		btnSeries.setBounds(10, 10, 180, 40);
 		JFrameSelecao.getContentPane().add(btnSeries);
-
+		
+		/** Botão FIlmes, definido cor, tamanho, posição... */
 		Button btnFilmes = new Button("Filmes");
 		btnFilmes.setSize(200, 150);
 		btnFilmes.setBackground(Color.LIGHT_GRAY);
@@ -65,10 +69,11 @@ public class FilmesAdd {
 		/**
 		 * 
 		 * 
-		 * Função Botoes * Função Botoes * Função Botoes * Função Botoes *
-		 * Função Botoes * Função Botoes
+		 * Função Botões * Função Botões * Função Botões * Função Botões *
+		 * Função Botões * Função Botões
 		 */
 
+		/** Ação do botão Séries, caso acionado o botão, será aberta a opção para adicionar... */
 		btnSeries.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource() == btnSeries) {
@@ -79,7 +84,8 @@ public class FilmesAdd {
 				}
 			}
 		});
-
+		
+		/** Ação do botão Filmes, caso acionado o botão, será aberta a opção para adicionar... */
 		btnFilmes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource() == btnFilmes) {
@@ -107,6 +113,7 @@ public class FilmesAdd {
 		 * 
 		 */
 
+		/** Janela principal para Adicionar Filmes, definido cor, tamanho, posição, imagem... */
 		JFrame JFrameAddFilme = new JFrame();
 		JFrameAddFilme.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
 		JFrameAddFilme.setAlwaysOnTop(true);
@@ -121,12 +128,14 @@ public class FilmesAdd {
 		JFrameAddFilme.setSize(445, 300);
 		JFrameAddFilme.setLocationRelativeTo(null);
 
+		/** Título do filme, definido cor, tamanho, posição, imagem... */
 		JLabel lblTituloFilme = new JLabel("T\u00EDtulo*:");
 		lblTituloFilme.setToolTipText("Informe qual \u00E9 o t\u00EDtulo do filme!");
 		lblTituloFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblTituloFilme.setBounds(10, 22, 59, 17);
 		JFrameAddFilme.getContentPane().add(lblTituloFilme);
 
+		/** Título do filme, espaço dedicado para pedir o nome do filme a ser adicionado, definido cor, tamanho, posição, imagem... */
 		JTextField textFieldTituloFilme = new JTextField();
 		textFieldTituloFilme.setToolTipText("Informe qual \u00E9 o t\u00EDtulo do filme!");
 		textFieldTituloFilme.setBackground(new Color(192, 192, 192));
@@ -134,6 +143,7 @@ public class FilmesAdd {
 		JFrameAddFilme.getContentPane().add(textFieldTituloFilme);
 		textFieldTituloFilme.setColumns(10);
 
+		/** Ação do Botão Cancelar, caso acionado fará com que cancele uma ação realizada */
 		JButton btnCancelarFilme = new JButton("Cancelar");
 		btnCancelarFilme.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -143,11 +153,14 @@ public class FilmesAdd {
 				}
 			}
 		});
+		
+		/** Botão Cancelar, definido cor, tamanho, posição, imagem... */
 		btnCancelarFilme.setBackground(new Color(107, 107, 107));
 		btnCancelarFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnCancelarFilme.setBounds(10, 227, 207, 23);
 		JFrameAddFilme.getContentPane().add(btnCancelarFilme);
 
+		/** Botão Adicionar Filme, definido cor, tamanho, posição, imagem... */
 		JButton btnAdicionarFilme = new JButton("Adicionar");
 		btnAdicionarFilme.setToolTipText("Adicionar o filme a biblioteca!");
 		btnAdicionarFilme.setBackground(new Color(107, 107, 107));
@@ -155,24 +168,28 @@ public class FilmesAdd {
 		btnAdicionarFilme.setBounds(217, 227, 207, 23);
 		JFrameAddFilme.getContentPane().add(btnAdicionarFilme);
 
+		/** Gênero do filme, definido cor, tamanho, posição, imagem... */
 		JLabel lblGeneroFilme = new JLabel("G\u00EAnero*:");
 		lblGeneroFilme.setToolTipText("Informe qual \u00E9 o g\u00EAnero do filme!");
 		lblGeneroFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblGeneroFilme.setBounds(10, 59, 83, 20);
 		JFrameAddFilme.getContentPane().add(lblGeneroFilme);
 
+		/**País de origem do filme, definido cor, tamanho, posição, imagem... */
 		JLabel lblPaisFilme = new JLabel("Pa\u00EDs*:");
 		lblPaisFilme.setToolTipText("Informe qual \u00E9 o pa\u00EDs do filme!");
 		lblPaisFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblPaisFilme.setBounds(10, 109, 46, 14);
 		JFrameAddFilme.getContentPane().add(lblPaisFilme);
 
+		/** Ano do filme, definido cor, tamanho, posição, imagem... */
 		JLabel lblAnoFilme = new JLabel("Ano*:");
 		lblAnoFilme.setToolTipText("Informe qual \u00E9 o ano do filme!");
 		lblAnoFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblAnoFilme.setBounds(10, 157, 46, 14);
 		JFrameAddFilme.getContentPane().add(lblAnoFilme);
 
+		
 		JComboBox<String> panelListGenero = new JComboBox<String>();
 		ArrayList<String> listaGenero = new ArrayList<>();
 		listaGenero.add("Selecione");
@@ -205,6 +222,7 @@ public class FilmesAdd {
 		panelListGenero.setBounds(87, 59, 337, 20);
 		JFrameAddFilme.getContentPane().add(panelListGenero);
 
+		/** Origem do filme,espaço dedicado para mostrar local de origem do filme, definido cor, tamanho, posição, imagem... */
 		JTextField textFieldPaisFilme = new JTextField();
 		textFieldPaisFilme.setToolTipText("Informe qual \u00E9 o pa\u00EDs de origem(lan\u00E7amento) do filme!");
 		textFieldPaisFilme.setBackground(new Color(192, 192, 192));
@@ -212,6 +230,7 @@ public class FilmesAdd {
 		JFrameAddFilme.getContentPane().add(textFieldPaisFilme);
 		textFieldPaisFilme.setColumns(10);
 
+		/**ComboBox para mostrar anos dos filmes á partir de 1955 até o ano atual 2016...*/
 		JComboBox<String> panelListAno = new JComboBox<String>();
 		ArrayList<String> listaAno = new ArrayList<>();
 		for (int i = 2016; i > 1955; i--) {
@@ -230,6 +249,7 @@ public class FilmesAdd {
 		panelListAno.setBounds(87, 154, 130, 20);
 		JFrameAddFilme.getContentPane().add(panelListAno);
 
+		/** Botão Procurar Filme, botão para procurar filme existente no sistema, definido cor, tamanho, posição, imagem... */
 		JButton btnProcurarFilme = new JButton("Procurar*");
 		btnProcurarFilme.setToolTipText("Clique sobre para procurar o filme em seu sistema.");
 		btnProcurarFilme.setBackground(new Color(107, 107, 107));
@@ -237,6 +257,7 @@ public class FilmesAdd {
 		btnProcurarFilme.setBounds(309, 185, 115, 23);
 		JFrameAddFilme.getContentPane().add(btnProcurarFilme);
 
+		/** Espaço para o diretório do filme, definido cor, tamanho, posição, imagem... */
 		JTextField textFieldProcurarFilme = new JTextField();
 		textFieldProcurarFilme.setToolTipText("Diret\u00F3rio onde o filme est\u00E1 localizado.");
 		textFieldProcurarFilme.setBackground(new Color(192, 192, 192));
@@ -244,6 +265,7 @@ public class FilmesAdd {
 		JFrameAddFilme.getContentPane().add(textFieldProcurarFilme);
 		textFieldProcurarFilme.setColumns(10);
 
+		/** Espaço dedicado para mostrar duração do filme, definido cor, tamanho, posição, imagem... */
 		JTextField textFieldDuracaoFilme = new JTextField();
 		textFieldDuracaoFilme.setToolTipText("Informe qual \u00E9 a dura\u00E7\u00E3o do filme(em minutos)!");
 		textFieldDuracaoFilme.setColumns(10);
@@ -251,12 +273,14 @@ public class FilmesAdd {
 		textFieldDuracaoFilme.setBounds(304, 151, 130, 20);
 		JFrameAddFilme.getContentPane().add(textFieldDuracaoFilme);
 
+		/**Duração do filme, definido cor, tamanho, posição, imagem... */
 		JLabel lblDuracaoFilme = new JLabel("Dura\u00E7\u00E3o*:");
 		lblDuracaoFilme.setToolTipText("");
 		lblDuracaoFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblDuracaoFilme.setBounds(227, 154, 72, 14);
 		JFrameAddFilme.getContentPane().add(lblDuracaoFilme);
 
+		/**Botão Procurar Filme, caso selecionado, procura-se no sistema onde o filme está e seleciona. */
 		btnProcurarFilme.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource() == btnProcurarFilme) {
@@ -344,12 +368,14 @@ public class FilmesAdd {
 		JFrameAddSerie.setSize(440, 290);
 		JFrameAddSerie.setLocationRelativeTo(null);
 
+		/**Título da Série, definido cor, tamanho, posição, imagem... */
 		JLabel lblTituloSerie = new JLabel("T\u00EDtulo*:");
 		lblTituloSerie.setToolTipText("Informe qual \u00E9 o t\u00EDtulo da Série!");
 		lblTituloSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblTituloSerie.setBounds(10, 22, 59, 17);
 		JFrameAddSerie.getContentPane().add(lblTituloSerie);
 
+		/**Local para mostrar título da série, definido cor, tamanho, posição, imagem... */
 		JTextField textFieldTituloSerie = new JTextField();
 		textFieldTituloSerie.setToolTipText("Informe qual \u00E9 o t\u00EDtulo da Série!");
 		textFieldTituloSerie.setBackground(new Color(192, 192, 192));
@@ -357,12 +383,14 @@ public class FilmesAdd {
 		JFrameAddSerie.getContentPane().add(textFieldTituloSerie);
 		textFieldTituloSerie.setColumns(10);
 
+		/**Local para informar título da série, definido cor, tamanho, posição, imagem... */
 		JLabel lblGeneroSerie = new JLabel("G\u00EAnero*:");
 		lblGeneroSerie.setToolTipText("Informe qual \u00E9 o g\u00EAnero da Série!");
 		lblGeneroSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblGeneroSerie.setBounds(10, 50, 83, 20);
 		JFrameAddSerie.getContentPane().add(lblGeneroSerie);
 
+		/**ComboBox para mostrar tipos de filmes que podem ser selecionados...*/
 		JComboBox<String> panelListGenero = new JComboBox<String>();
 		ArrayList<String> listaGenero = new ArrayList<>();
 		listaGenero.add("Selecione");
@@ -395,12 +423,14 @@ public class FilmesAdd {
 		panelListGenero.setBounds(87, 50, 337, 20);
 		JFrameAddSerie.getContentPane().add(panelListGenero);
 
+		/**Nome do episódio, definido cor, tamanho, posição, imagem... */
 		JLabel lblNomeEpisodio = new JLabel("Nome do Episódio*:");
 		lblNomeEpisodio.setToolTipText("Informe o nome do episódio.");
 		lblNomeEpisodio.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNomeEpisodio.setBounds(10, 85, 150, 17);
 		JFrameAddSerie.getContentPane().add(lblNomeEpisodio);
 
+		/**Espaço dedicado para mostrar o nome do episódio, definido cor, tamanho, posição, imagem... */
 		JTextField txtFieldNomeEp = new JTextField();
 		txtFieldNomeEp.setToolTipText("Insira aqui o nome do episódio.");
 		txtFieldNomeEp.setBackground(new Color(192, 192, 192));
@@ -408,12 +438,14 @@ public class FilmesAdd {
 		JFrameAddSerie.getContentPane().add(txtFieldNomeEp);
 		txtFieldNomeEp.setColumns(10);
 
+		/**Número da Temporada, definido cor, tamanho, posição, imagem... */
 		JLabel lblNumTemporada = new JLabel("Temporada*:");
 		lblNumTemporada.setToolTipText("Informe qual \u00E9 o Numero da Temporada:!");
 		lblNumTemporada.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNumTemporada.setBounds(10, 151, 96, 14);
 		JFrameAddSerie.getContentPane().add(lblNumTemporada);
 
+		/**ComboBox para mostrar número da temporada. */
 		JComboBox<String> panelListTemporada = new JComboBox<String>();
 		ArrayList<String> listaTemporada = new ArrayList<>();
 		for (int i = 1; i < 50; i++) {
@@ -436,12 +468,14 @@ public class FilmesAdd {
 		panelListTemporada.setBounds(110, 151, 60, 20);
 		JFrameAddSerie.getContentPane().add(panelListTemporada);
 
+		/**Número do episódio, definido cor, tamanho, posição, imagem... */
 		JLabel lblEpisodio = new JLabel("Episódio*:");
 		lblEpisodio.setToolTipText("Informe qual \u00E9 o Episódio da Série!");
 		lblEpisodio.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblEpisodio.setBounds(10, 116, 76, 14);
 		JFrameAddSerie.getContentPane().add(lblEpisodio);
 
+		/**ComboBox para mostrar lista de episódios*/
 		JComboBox<String> panelListEpisodio = new JComboBox<String>();
 		ArrayList<String> listaEpisódio = new ArrayList<>();
 		for (int i = 1; i < 50; i++) {
@@ -464,6 +498,7 @@ public class FilmesAdd {
 		panelListEpisodio.setBounds(89, 116, 60, 20);
 		JFrameAddSerie.getContentPane().add(panelListEpisodio);
 
+		/**Botão Procura de filme, definido cor, tamanho, posição, imagem... */
 		JButton btnProcurarFilme = new JButton("Procurar");
 		btnProcurarFilme.setToolTipText("Clique sobre para procurar a Série em seu sistema.");
 		btnProcurarFilme.setBackground(new Color(107, 107, 107));
@@ -471,6 +506,7 @@ public class FilmesAdd {
 		btnProcurarFilme.setBounds(309, 185, 115, 23);
 		JFrameAddSerie.getContentPane().add(btnProcurarFilme);
 
+		/**Espaço dedicado , definido cor, tamanho, posição, imagem... */
 		JTextField textFieldProcurarFilme = new JTextField();
 		textFieldProcurarFilme.setToolTipText("Diret\u00F3rio onde a série est\u00E1 localizado.");
 		textFieldProcurarFilme.setBackground(new Color(192, 192, 192));
@@ -478,12 +514,14 @@ public class FilmesAdd {
 		JFrameAddSerie.getContentPane().add(textFieldProcurarFilme);
 		textFieldProcurarFilme.setColumns(10);
 
+		/**Duração do Filme, definido cor, tamanho, posição, imagem... */
 		JLabel lblDuracaoFilme = new JLabel("Dura\u00E7\u00E3o*:");
 		lblDuracaoFilme.setToolTipText("");
 		lblDuracaoFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblDuracaoFilme.setBounds(227, 151, 72, 14);
 		JFrameAddSerie.getContentPane().add(lblDuracaoFilme);
 
+		/**Espaço para mostrar tempo do filme, definido cor, tamanho, posição, imagem... */
 		JTextField textFieldDuracaoFilme = new JTextField();
 		textFieldDuracaoFilme.setToolTipText("Informe qual \u00E9 a dura\u00E7\u00E3o do filme(em minutos)!");
 		textFieldDuracaoFilme.setColumns(10);
@@ -491,6 +529,7 @@ public class FilmesAdd {
 		textFieldDuracaoFilme.setBounds(304, 151, 118, 20);
 		JFrameAddSerie.getContentPane().add(textFieldDuracaoFilme);
 
+		/**Ação do botão Cancelar Série, caso selecionado acionara o cancelamento da ação, definido cor, tamanho, posição, imagem... */
 		JButton btnCancelarSerie = new JButton("Cancelar");
 		btnCancelarSerie.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -505,6 +544,7 @@ public class FilmesAdd {
 		btnCancelarSerie.setBounds(10, 227, 207, 23);
 		JFrameAddSerie.getContentPane().add(btnCancelarSerie);
 
+		/**Botão Adicionar Série, definido cor, tamanho, posição, imagem... */
 		JButton btnAdicionarSerie = new JButton("Adicionar");
 		btnAdicionarSerie.setToolTipText("Adicionar o filme a biblioteca!");
 		btnAdicionarSerie.setBackground(new Color(107, 107, 107));
@@ -512,6 +552,7 @@ public class FilmesAdd {
 		btnAdicionarSerie.setBounds(217, 227, 207, 23);
 		JFrameAddSerie.getContentPane().add(btnAdicionarSerie);
 
+		/**Botão de Procura de Filme, acionando-o, pode-se mostar o diretório do filme no sistema. */
 		btnProcurarFilme.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource() == btnProcurarFilme) {
@@ -530,6 +571,7 @@ public class FilmesAdd {
 			}
 		});
 
+		/**Botão Adicionar série. */
 		btnAdicionarSerie.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MoveFile MoveFile = new MoveFile();

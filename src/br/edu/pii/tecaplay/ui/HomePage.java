@@ -48,15 +48,11 @@ public class HomePage{
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		int width = (screen.width) - 386;
 		int height = (screen.height) - 208;
-		System.out.println("widht = " + screen.width + "  Height: " + screen.height);
 		int x = (screen.width - width) / 2;
 		int y = (screen.height-height)/2;
-	    home.setBounds(x,y,width,height);
-	    //	home.setSize(980, 560); // tamanho da janela
+	    home.setBounds(x,y,width,height);//seta o tamanho da janeala e sua posição na tela.
 		home.setResizable(false); // impossibilidade de altarar tamanho da janela
-	//	home.setLocationRelativeTo(null); // iniciar aplicação centralizada na tela
 		home.setIconImage(Toolkit.getDefaultToolkit().getImage("resources\\images\\newLogo.png")); // icone da barra
-	//	MoveFile retornoPasta = new MoveFile();
 		// criação do menu superior
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBackground(Color.LIGHT_GRAY);// background do menu
@@ -101,7 +97,7 @@ public class HomePage{
 		// criado painel aonde ficarão os botoes para a escolha de musica, video
 		// ou imagem
 		JPanel panelTopo = new JPanel();
-		panelTopo.setAutoscrolls(true);
+		panelTopo.setAutoscrolls(true); 
 		panelTopo.setFocusTraversalPolicyProvider(true);
 		panelTopo.setFocusCycleRoot(true);
 		panelTopo.setIgnoreRepaint(true);
@@ -112,15 +108,15 @@ public class HomePage{
 		 * criação de botoes video/musica/imagem
 		 */
 
-		JButton btnVdeo = new JButton("V\u00EDdeo");
+		JButton btnVideo = new JButton("V\u00EDdeo");
 
 		panelTopo.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		btnVdeo.setToolTipText("Op\u00E7\u00E3o de acesso a aba V\u00EDdeo!");
-		btnVdeo.setIcon(new ImageIcon("resources\\images\\imgBtnVideo.png"));// icone do botao
-		btnVdeo.setFont(new Font("Tahoma", Font.BOLD, 14)); // tipo de fonte do botao
-		btnVdeo.setBackground(Color.LIGHT_GRAY);
-		btnVdeo.setPreferredSize(new Dimension(173, 42));
-		panelTopo.add(btnVdeo);
+		btnVideo.setToolTipText("Op\u00E7\u00E3o de acesso a aba V\u00EDdeo!");
+		btnVideo.setIcon(new ImageIcon("resources\\images\\imgBtnVideo.png"));// icone do botao
+		btnVideo.setFont(new Font("Tahoma", Font.BOLD, 14)); // tipo de fonte do botao
+		btnVideo.setBackground(Color.LIGHT_GRAY);
+		btnVideo.setPreferredSize(new Dimension(173, 42));
+		panelTopo.add(btnVideo);
 		home.isCursorSet();
 
 		JButton btnMusica = new JButton("Música");
@@ -914,7 +910,7 @@ public class HomePage{
 		
 				
 		// Ação que será realizada ao apertar o botao de VIDEOS do jpanelTopo
-		btnVdeo.addActionListener(new ActionListener() {
+		btnVideo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				home.getContentPane().add(panelLateralVideo, BorderLayout.WEST);
 				panelTopo.setVisible(false); // Torna a visibilidade do painel topo falsa

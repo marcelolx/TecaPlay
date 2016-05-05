@@ -36,6 +36,7 @@ public class HomePage {
 	* 
 	*/
 	public HomePage(String usrName) {
+
 		// formatação do JFrame
 		JFrame home = new JFrame();
 		home.addWindowListener(new WindowAdapter() {
@@ -1553,7 +1554,7 @@ public class HomePage {
 				}
 			}
 		});
-
+		
 		// Ação do botão filmes categoria ComediaRomantica
 		btnCatComediaRomanticaSerie.addActionListener(new ActionListener() {
 

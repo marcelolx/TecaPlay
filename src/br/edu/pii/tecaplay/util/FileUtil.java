@@ -16,7 +16,10 @@ public class FileUtil {
 		vos = System.getProperty("os.name");//pega nome o S.O.
 		vo = vos.charAt(0);
 	}
-	
+	/**
+	 * Verefica se existe o o usuário, se existir entra no sistema
+	 * @param usrName nome que a pessoa digita para o usuário
+	 */
 	public void FileUserVerify(String usrName){
 		main();
 		if(vo == 'W'){//se for windows executa

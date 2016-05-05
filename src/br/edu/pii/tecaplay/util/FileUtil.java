@@ -19,19 +19,15 @@ public class FileUtil {
 	
 	public void FileUserVerify(String usrName){
 		main();
-		//System.out.println(vo);
 		if(vo == 'W'){//se for windows executa
 			File file = new File("C:\\TecaPlay");//diretório padrão onde são salvos os conteúdos
 			if(!file.exists()){//caso não exista, será criada
 				file.mkdir();
-				System.out.println("pasta tecaplay criada");
 			}else{
 				if(file.isDirectory()){//verefica se é um diretório
 					@SuppressWarnings("unused")
 					String[] conteudo = file.list();
-					System.out.println("É um diretório.");
 					File file2 = new File("C:\\TecaPlay\\"+usrName);
-					System.out.println(file2);
 					if(file2.exists()){//verefica se usuário já existe, se existir abre a homePage do TecaPlay
 						if(file2.isDirectory()){
 							@SuppressWarnings("unused")

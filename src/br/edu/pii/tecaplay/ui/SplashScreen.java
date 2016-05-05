@@ -62,7 +62,7 @@ public class SplashScreen extends JWindow {
      */
     public static void main(String[] args) {        
         // Mostra uma imagem com o título da aplicação, envia os milessimos SplashScreen
-        SplashScreen splash = new SplashScreen(2700);
+        SplashScreen splash = new SplashScreen(200);
         splash.showSplashAndExit();        
     }
    

@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,21 +20,23 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
+
 import br.edu.pii.tecaplay.util.FRarquivos;
 import br.edu.pii.tecaplay.util.FileUtil;
+import br.edu.pii.tecaplay.util.ListFiles;
+import br.edu.pii.tecaplay.util.MyTableModel;
+//import br.edu.pii.tecaplay.util.MoveFile;
 import br.edu.pii.tecaplay.util.TimerToLabel;
 
 public class HomePage {
-
-	private ArrayList<JPanel> voltarPaineis = new ArrayList<>();
-
 	/**
 	* 
 	*/
 	public HomePage(String usrName) {
-
 		// formatação do JFrame
 		JFrame home = new JFrame();
 		home.addWindowListener(new WindowAdapter() {
@@ -52,15 +54,19 @@ public class HomePage {
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		int width = (screen.width) - 386;
 		int height = (screen.height) - 208;
+		System.out.println("widht = " + screen.width + "  Height: " + screen.height);
 		int x = (screen.width - width) / 2;
 		int y = (screen.height - height) / 2;
-		home.setBounds(x, y, width, height);// seta o tamanho da janeala e sua
-											// posição na tela.
+		home.setBounds(x, y, width, height);
+		// home.setSize(980, 560); // tamanho da janela
 		home.setResizable(false); // impossibilidade de altarar tamanho da
 									// janela
+		// home.setLocationRelativeTo(null); // iniciar aplicação centralizada
+		// na tela
 		home.setIconImage(Toolkit.getDefaultToolkit().getImage("resources\\images\\newLogo.png")); // icone
 																									// da
 																									// barra
+		// MoveFile retornoPasta = new MoveFile();
 		// criação do menu superior
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBackground(Color.LIGHT_GRAY);// background do menu
@@ -116,18 +122,18 @@ public class HomePage {
 		 * criação de botoes video/musica/imagem
 		 */
 
-		JButton btnVideo = new JButton("V\u00EDdeo");
+		JButton btnVdeo = new JButton("V\u00EDdeo");
 
 		panelTopo.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		btnVideo.setToolTipText("Op\u00E7\u00E3o de acesso a aba V\u00EDdeo!");
-		btnVideo.setIcon(new ImageIcon("resources\\images\\imgBtnVideo.png"));// icone
+		btnVdeo.setToolTipText("Op\u00E7\u00E3o de acesso a aba V\u00EDdeo!");
+		btnVdeo.setIcon(new ImageIcon("resources\\images\\imgBtnVideo.png"));// icone
 																				// do
 																				// botao
-		btnVideo.setFont(new Font("Tahoma", Font.BOLD, 14)); // tipo de fonte do
-																// botao
-		btnVideo.setBackground(Color.LIGHT_GRAY);
-		btnVideo.setPreferredSize(new Dimension(173, 42));
-		panelTopo.add(btnVideo);
+		btnVdeo.setFont(new Font("Tahoma", Font.BOLD, 14)); // tipo de fonte do
+															// botao
+		btnVdeo.setBackground(Color.LIGHT_GRAY);
+		btnVdeo.setPreferredSize(new Dimension(173, 42));
+		panelTopo.add(btnVdeo);
 		home.isCursorSet();
 
 		JButton btnMusica = new JButton("Música");
@@ -918,7 +924,7 @@ public class HomePage {
 		 */
 
 		// Ação que será realizada ao apertar o botao de VIDEOS do jpanelTopo
-		btnVideo.addActionListener(new ActionListener() {
+		btnVdeo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				home.getContentPane().add(panelLateralVideo, BorderLayout.WEST);
 				panelTopo.setVisible(false); // Torna a visibilidade do painel
@@ -935,15 +941,10 @@ public class HomePage {
 
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				if (voltarPaineis.size() == 2) {
-					home.getContentPane().remove(voltarPaineis.get(1));
-				}
-				voltarPaineis = new ArrayList<JPanel>();
-				voltarPaineis.removeAll(voltarPaineis);
-				voltarPaineis.add(panelCategoriasFilmes);
 				home.getContentPane().remove(labelFundo);
 				home.getContentPane().remove(panelCategoriasFilmes);
 				home.getContentPane().remove(panelCategoriasSerie);
+				panelCategoriasSerie.setEnabled(false);
 				home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
 				panelCategoriasFilmes.setVisible(true);
 				panelCategoriasFilmes.revalidate();
@@ -956,15 +957,10 @@ public class HomePage {
 
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				if (voltarPaineis.size() == 2) {
-					home.getContentPane().remove(voltarPaineis.get(1));
-				}
-				voltarPaineis = new ArrayList<JPanel>();
-				voltarPaineis.removeAll(voltarPaineis);
-				voltarPaineis.add(panelCategoriasSerie);
 				home.getContentPane().remove(labelFundo);
 				home.getContentPane().remove(panelCategoriasFilmes);
 				home.getContentPane().remove(panelCategoriasSerie);
+				panelCategoriasFilmes.setEnabled(false);
 				home.getContentPane().add(panelCategoriasSerie, BorderLayout.CENTER);
 				panelCategoriasSerie.setVisible(true);
 				panelCategoriasSerie.revalidate();
@@ -977,36 +973,28 @@ public class HomePage {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if (voltarPaineis.isEmpty()) {
-					home.getContentPane().add(panelTopo, BorderLayout.NORTH);
-					panelLateralVideo.setVisible(false);
-					home.getContentPane().remove(panelLateralVideo);
-					panelTopo.setVisible(true);
-					home.getContentPane().add(labelFundo, BorderLayout.CENTER);
-					panelTopo.revalidate();
-					home.revalidate();
-					timer.init();
-				} else if (voltarPaineis.size() == 1) {
-					home.getContentPane().remove(voltarPaineis.get(0));
-					home.getContentPane().add(labelFundo, BorderLayout.CENTER);
-					voltarPaineis.get(0).setVisible(false);
-					voltarPaineis.get(0).revalidate();
-					voltarPaineis.get(0).repaint();
-					labelFundo.revalidate();
-					labelFundo.repaint();
-					voltarPaineis.remove(voltarPaineis.size() - 1);
-				} else if (voltarPaineis.size() == 2) {
-					home.getContentPane().remove(voltarPaineis.get(1));
-					voltarPaineis.get(1).revalidate();
-					voltarPaineis.get(1).repaint();
-					// home.getContentPane().add(panelCategoria);
-					home.getContentPane().add(voltarPaineis.get(0), BorderLayout.CENTER);
-					voltarPaineis.get(0).setVisible(true);
-					voltarPaineis.get(0).revalidate();
-					voltarPaineis.get(0).repaint();
-					voltarPaineis.remove(voltarPaineis.size() - 1);
-				}
-
+				home.getContentPane().add(panelTopo, BorderLayout.NORTH);
+				panelLateralVideo.setVisible(false);
+				home.getContentPane().remove(panelLateralVideo);
+				home.getContentPane().remove(panelCategoriasFilmes);
+				home.getContentPane().remove(panelCategoriasSerie);
+				panelCategoriasFilmes.setVisible(false);
+				panelCategoriasSerie.setVisible(false);
+				panelCategoriasFilmes.revalidate();
+				panelCategoriasSerie.revalidate();
+				panelCategoriasFilmes.repaint();
+				panelCategoriasSerie.repaint();
+				panelTopo.setVisible(true);
+				home.getContentPane().add(labelFundo, BorderLayout.CENTER);
+				// Retira o bug de voltar caso aperte em qualquer butao de
+				// seleção do genero
+				home.getContentPane().remove(serieCatAcao);
+				home.getContentPane().remove(filmesCatAnimacao);
+				panelTopo.revalidate();
+				panelTopo.repaint();
+				home.repaint();
+				home.revalidate();
+				timer.init();
 			}
 		});
 		//
@@ -1025,11 +1013,25 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(filmesCatAcao);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
+					home.getContentPane().add(filmesCatAcao, BorderLayout.CENTER);
 					filmesCatAcao.setVisible(true);
+					// adiciona jtable
+					JTable table = new JTable();	
+					ListFiles listFiles = new ListFiles();
+					//criando um objeto para nossos dados
+					final Object[][] dados = null;
+					//chamando o método MyTableModel para adicionar a tabela ao jpanel
+					final MyTableModel myTableModel = new MyTableModel(dados);
+					table.setModel(myTableModel);
+					//listFiles.modelTable(table);
+					listFiles.tableInfo(table);	
+					listFiles.updateTable(table, usrName);
+					JScrollPane tableContainer = new JScrollPane(table);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					filmesCatAcao.add(tableContainer, BorderLayout.CENTER);
+					//
 					filmesCatAcao.revalidate();
 				} else {
 					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
@@ -1048,10 +1050,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(filmesCatAnimacao);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
+					home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
 					filmesCatAnimacao.setVisible(true);
 					filmesCatAnimacao.revalidate();
 				} else {
@@ -1072,10 +1073,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(filmesCatAventura);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
+					home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
 					filmesCatAventura.setVisible(true);
 					filmesCatAventura.revalidate();
 				} else {
@@ -1095,10 +1095,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(filmesCatClassico);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
+					home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
 					filmesCatClassico.setVisible(true);
 					filmesCatClassico.revalidate();
 
@@ -1118,10 +1117,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(filmesCatComedia);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
+					home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
 					filmesCatComedia.setVisible(true);
 					filmesCatComedia.revalidate();
 
@@ -1141,10 +1139,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(filmesCatComediaRomantico);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
+					home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
 					filmesCatComediaRomantico.setVisible(true);
 					filmesCatComediaRomantico.revalidate();
 
@@ -1164,12 +1161,13 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(filmesCatCrime);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
+					home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
 					filmesCatCrime.setVisible(true);
 					filmesCatCrime.revalidate();
+
 				} else {
 					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
 				}
@@ -1186,10 +1184,10 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(filmesCatDocumentario);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
+					home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
 					filmesCatDocumentario.setVisible(true);
 					filmesCatDocumentario.revalidate();
 
@@ -1209,10 +1207,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(filmesCatDrama);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
+					home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
 					filmesCatDrama.setVisible(true);
 					filmesCatDrama.revalidate();
 
@@ -1232,10 +1229,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(filmesCatFaroeste);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
+					home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
 					filmesCatFaroeste.setVisible(true);
 					filmesCatFaroeste.revalidate();
 
@@ -1255,10 +1251,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(filmesCatFiccaoCient);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
+					home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
 					filmesCatFiccaoCient.setVisible(true);
 					filmesCatFiccaoCient.revalidate();
 
@@ -1279,10 +1274,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(filmesCatGuerra);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
+					home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
 					filmesCatGuerra.setVisible(true);
 					filmesCatGuerra.revalidate();
 
@@ -1303,10 +1297,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(filmesCatMusical);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
+					home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
 					filmesCatMusical.setVisible(true);
 					filmesCatMusical.revalidate();
 				} else {
@@ -1326,10 +1319,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(filmesCatPolicial);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
+					home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
 					filmesCatPolicial.setVisible(true);
 					filmesCatPolicial.revalidate();
 
@@ -1350,10 +1342,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(filmesCatRomance);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
+					home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
 					filmesCatRomance.setVisible(true);
 					filmesCatRomance.revalidate();
 
@@ -1374,10 +1365,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(filmesCatSuspense);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
+					home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
 					filmesCatSuspense.setVisible(true);
 					filmesCatSuspense.revalidate();
 
@@ -1398,10 +1388,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(filmesCatTerror);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
+					home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
 					filmesCatTerror.setVisible(true);
 					filmesCatTerror.revalidate();
 				} else {
@@ -1421,10 +1410,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(filmesCatThriller);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
+					home.getContentPane().add(panelCategoriasFilmes, BorderLayout.CENTER);
 					filmesCatThriller.setVisible(true);
 					filmesCatThriller.revalidate();
 				} else {
@@ -1447,10 +1435,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistenteSerie(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(serieCatAcao);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasSerie.setVisible(false);
 					home.getContentPane().remove(panelCategoriasSerie);
+					home.getContentPane().add(serieCatAcao, BorderLayout.CENTER);
 					serieCatAcao.setVisible(true);
 					serieCatAcao.revalidate();
 				} else {
@@ -1470,10 +1457,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistenteSerie(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(serieCatAnimacao);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasSerie.setVisible(false);
 					home.getContentPane().remove(panelCategoriasSerie);
+					home.getContentPane().add(panelCategoriasSerie, BorderLayout.CENTER);
 					serieCatAnimacao.setVisible(true);
 					serieCatAnimacao.revalidate();
 				} else {
@@ -1494,10 +1480,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistenteSerie(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(serieCatAventura);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasSerie.setVisible(false);
 					home.getContentPane().remove(panelCategoriasSerie);
+					home.getContentPane().add(panelCategoriasSerie, BorderLayout.CENTER);
 					serieCatAventura.setVisible(true);
 					serieCatAventura.revalidate();
 				} else {
@@ -1517,10 +1502,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistenteSerie(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(serieCatClassico);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasSerie.setVisible(false);
 					home.getContentPane().remove(panelCategoriasSerie);
+					home.getContentPane().add(panelCategoriasSerie, BorderLayout.CENTER);
 					serieCatClassico.setVisible(true);
 					serieCatClassico.revalidate();
 
@@ -1540,10 +1524,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistenteSerie(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(serieCatComedia);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasSerie.setVisible(false);
 					home.getContentPane().remove(panelCategoriasSerie);
+					home.getContentPane().add(panelCategoriasSerie, BorderLayout.CENTER);
 					serieCatComedia.setVisible(true);
 					serieCatComedia.revalidate();
 
@@ -1552,7 +1535,7 @@ public class HomePage {
 				}
 			}
 		});
-		
+
 		// Ação do botão filmes categoria ComediaRomantica
 		btnCatComediaRomanticaSerie.addActionListener(new ActionListener() {
 
@@ -1563,10 +1546,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistenteSerie(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(serieCatComediaRomantico);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasSerie.setVisible(false);
 					home.getContentPane().remove(panelCategoriasSerie);
+					home.getContentPane().add(panelCategoriasSerie, BorderLayout.CENTER);
 					serieCatComediaRomantico.setVisible(true);
 					serieCatComediaRomantico.revalidate();
 
@@ -1586,10 +1568,10 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistenteSerie(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(serieCatCrime);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+
 					panelCategoriasSerie.setVisible(false);
 					home.getContentPane().remove(panelCategoriasSerie);
+					home.getContentPane().add(panelCategoriasSerie, BorderLayout.CENTER);
 					serieCatCrime.setVisible(true);
 					serieCatCrime.revalidate();
 
@@ -1609,10 +1591,10 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistenteSerie(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(serieCatDocumentario);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+
 					panelCategoriasSerie.setVisible(false);
 					home.getContentPane().remove(panelCategoriasSerie);
+					home.getContentPane().add(panelCategoriasSerie, BorderLayout.CENTER);
 					serieCatDocumentario.setVisible(true);
 					serieCatDocumentario.revalidate();
 
@@ -1632,10 +1614,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistenteSerie(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(serieCatDrama);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasSerie.setVisible(false);
 					home.getContentPane().remove(panelCategoriasSerie);
+					home.getContentPane().add(panelCategoriasSerie, BorderLayout.CENTER);
 					serieCatDrama.setVisible(true);
 					serieCatDrama.revalidate();
 
@@ -1645,7 +1626,7 @@ public class HomePage {
 			}
 		});
 
-		// Ação do botão filmes categoria Anime
+		// Ação do botão filmes categoria Faroeste
 		btnCatAnimeSerie.addActionListener(new ActionListener() {
 
 			@Override
@@ -1655,10 +1636,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistenteSerie(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(serieCatAnime);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasSerie.setVisible(false);
 					home.getContentPane().remove(panelCategoriasSerie);
+					home.getContentPane().add(panelCategoriasSerie, BorderLayout.CENTER);
 					serieCatAnime.setVisible(true);
 					serieCatAnime.revalidate();
 
@@ -1678,10 +1658,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistenteSerie(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(serieCatFiccaoCient);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasSerie.setVisible(false);
 					home.getContentPane().remove(panelCategoriasSerie);
+					home.getContentPane().add(panelCategoriasSerie, BorderLayout.CENTER);
 					serieCatFiccaoCient.setVisible(true);
 					serieCatFiccaoCient.revalidate();
 
@@ -1702,10 +1681,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistenteSerie(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(serieCatGuerra);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					home.getContentPane().remove(panelCategoriasSerie);
 					panelCategoriasSerie.setVisible(false);
+					home.getContentPane().remove(panelCategoriasSerie);
+					home.getContentPane().add(panelCategoriasSerie, BorderLayout.CENTER);
 					serieCatGuerra.setVisible(true);
 					serieCatGuerra.revalidate();
 
@@ -1726,10 +1704,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistenteSerie(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(serieCatMusical);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasSerie.setVisible(false);
 					home.getContentPane().remove(panelCategoriasSerie);
+					home.getContentPane().add(panelCategoriasSerie, BorderLayout.CENTER);
 					serieCatMusical.setVisible(true);
 					serieCatMusical.revalidate();
 				} else {
@@ -1749,10 +1726,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistenteSerie(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(serieCatPolicial);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasSerie.setVisible(false);
 					home.getContentPane().remove(panelCategoriasSerie);
+					home.getContentPane().add(panelCategoriasSerie, BorderLayout.CENTER);
 					serieCatPolicial.setVisible(true);
 					serieCatPolicial.revalidate();
 
@@ -1773,10 +1749,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistenteSerie(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(serieCatRomance);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasSerie.setVisible(false);
 					home.getContentPane().remove(panelCategoriasSerie);
+					home.getContentPane().add(panelCategoriasSerie, BorderLayout.CENTER);
 					serieCatRomance.setVisible(true);
 					serieCatRomance.revalidate();
 
@@ -1797,10 +1772,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistenteSerie(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(serieCatSuspense);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasSerie.setVisible(false);
 					home.getContentPane().remove(panelCategoriasSerie);
+					home.getContentPane().add(panelCategoriasSerie, BorderLayout.CENTER);
 					serieCatSuspense.setVisible(true);
 					serieCatSuspense.revalidate();
 
@@ -1821,10 +1795,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistenteSerie(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(serieCatTerror);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasSerie.setVisible(false);
 					home.getContentPane().remove(panelCategoriasSerie);
+					home.getContentPane().add(panelCategoriasSerie, BorderLayout.CENTER);
 					serieCatTerror.setVisible(true);
 					serieCatTerror.revalidate();
 				} else {
@@ -1844,10 +1817,9 @@ public class HomePage {
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistenteSerie(usrName, genero);
 				if (ler) {
-					voltarPaineis.add(serieCatMedico);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					panelCategoriasSerie.setVisible(false);
 					home.getContentPane().remove(panelCategoriasSerie);
+					home.getContentPane().add(panelCategoriasSerie, BorderLayout.CENTER);
 					serieCatMedico.setVisible(true);
 					serieCatMedico.revalidate();
 				} else {

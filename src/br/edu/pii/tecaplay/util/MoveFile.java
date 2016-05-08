@@ -110,7 +110,7 @@ public class MoveFile {
 	 * @param pais	pais
 	 * @param file localização final do arquivo movido
 	 */
-	public void gravarTxtFilmes(String pasta, String nomeEp, String ano, String genero, String pais, String file){
+	public void gravarTxtFilmes(String pasta, String nome, String ano, String genero, String pais, String file){
 		//string que serve para fazer a criacao do txt
 		String criarTxt = pasta + "\\" + genero + ".txt";
 		
@@ -118,7 +118,7 @@ public class MoveFile {
 		try{
 			FileWriter buffer = null;
 			buffer = new FileWriter(criarTxt, true);
-			String text = ano+"#"+genero+"#"+pais+"#"+nomeEp+"#"+file;
+			String text = nome+"#"+genero+"#"+pais+"#"+ano+"#"+file;
 			buffer.write(text+"\r\n");
 			buffer.close();
 		}catch(IOException e21){

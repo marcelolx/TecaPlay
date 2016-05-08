@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import javax.swing.JOptionPane;
 /**
  * 
  * @author jonas
@@ -32,7 +31,7 @@ public class MoveFile {
 	 * @param usrName
 	 * 		Armazena o nome do usuário atual logado no TecaPlay.
 	 */
-	public void AddFilme(String origem, String ano, String nome, String genero, String duracao, String pais, String usrName) {
+	public boolean AddFilme(String origem, String ano, String nome, String genero, String duracao, String pais, String usrName) {
 		origem = origem.toLowerCase();
 		genero = genero.toLowerCase();
 		File destinoPasta = new File("c:\\TecaPlay\\" + usrName + "\\Videos\\filme\\" + genero);
@@ -46,14 +45,14 @@ public class MoveFile {
 		boolean ok = arquivo.renameTo(new File(destinoPasta, newFileName));
 		
 		if (ok) {
-			JOptionPane.showMessageDialog(null, "Arquivo foi movido com sucesso-"+destinoPasta.getName(), "Sucesso", 1);
-
+			String pasta ="c:\\TecaPlay\\" + usrName + "\\Videos\\filme"  ;
+			String fileFinal = destinoPasta.getAbsolutePath()+"\\"+newFileName;
+			gravarTxtFilmes(pasta, nome, ano, genero, pais, fileFinal);
+			return true;
 		} else {
-			JOptionPane.showMessageDialog(null, "Nao foi possivel mover o arquivo", "Erro", 0);
+			return false;
 		}
-		String pasta ="c:\\TecaPlay\\" + usrName + "\\Videos\\filme"  ;
-		String fileFinal = destinoPasta.getAbsolutePath()+"\\"+newFileName;
-		gravarTxtFilmes(pasta, nome, ano, genero, pais, fileFinal);
+	
 	}
 	/**
 	 * 
@@ -75,7 +74,7 @@ public class MoveFile {
 	 * 	usuario logado
 	 * 
 	 */
-	public void AddSerie(String origem, String temporada, String nome, String nomeEp, String genero, String duracao, String episodio, String usrName) {
+	public boolean AddSerie(String origem, String temporada, String nome, String nomeEp, String genero, String duracao, String episodio, String usrName) {
 		nome = nome.toLowerCase();
 		origem = origem.toLowerCase();
 		String nomeEptoFile = episodio + " - "+ nomeEp;
@@ -93,15 +92,13 @@ public class MoveFile {
 		boolean ok = arquivo.renameTo(new File(destinoPasta, newFileName));
 		
 		if (ok) {
-			JOptionPane.showMessageDialog(null, "Arquivo foi movido com sucesso-"+arquivo.getName(), "Sucesso", 1);
-
+			String pasta ="c:\\TecaPlay\\" + usrName + "\\Videos\\serie" ;
+			String fileFinal = destinoPasta.getAbsolutePath()+"\\"+newFileName;//pega o caminho final do arquivo e acrescenta																		//o nome final do arquivo a ser copiado 
+			gravarTxt(pasta,nomeEptoFile,temporada,episodio,duracao,genero,fileFinal); // envia os dados para o gravartxt
+			return true;
 		} else {
-			JOptionPane.showMessageDialog(null, "Nao foi possivel mover o arquivo", "Erro", 0);
+			return false;
 		}
-		String pasta ="c:\\TecaPlay\\" + usrName + "\\Videos\\serie" ;
-		String fileFinal = destinoPasta.getAbsolutePath()+"\\"+newFileName;//pega o caminho final do arquivo e acrescenta
-																			//o nome final do arquivo a ser copiado 
-		gravarTxt(pasta,nomeEptoFile,temporada,episodio,duracao,genero,fileFinal); // envia os dados para o gravartxt
 	}
 
 	/**
@@ -125,7 +122,6 @@ public class MoveFile {
 			buffer.write(text+"\r\n");
 			buffer.close();
 		}catch(IOException e21){
-			System.out.println("Não foi possivel fazer a conexão com o txt.");
 		}
 	}
 	//gravarTxt só está apto para séries, necessário criar outro para filmes,
@@ -152,24 +148,6 @@ public class MoveFile {
 			buffer.write(texto+"\r\n");  
 			buffer.close();
 		} catch (IOException e) {
-			System.out.println("não foi posssivel fazer a conexao ocm o txt)");
 		}
-		
-	}
-	//exemplo teste
-	public boolean retornoPasta(String usrName, String genero) {
-		File raiz = new File("c:\\TecaPlay\\"+usrName+"\\Video\\filme\\"+genero);
-		File[] files = raiz.listFiles();
-		if (!raiz.mkdir())
-				return false;
-		for (@SuppressWarnings("unused")
-		File file : files) {
-			System.out.println(raiz.listFiles());
-		}
-		for (int i = 0; i < files.length; i++) {
-			System.out.println(files[i]);
-		}
-		return false;
-
 	}
 }

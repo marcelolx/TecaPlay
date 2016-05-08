@@ -22,10 +22,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
-
 import br.edu.pii.tecaplay.util.FRarquivos;
 import br.edu.pii.tecaplay.util.FileUtil;
-//import br.edu.pii.tecaplay.util.MoveFile;
 import br.edu.pii.tecaplay.util.TimerToLabel;
 
 public class HomePage {

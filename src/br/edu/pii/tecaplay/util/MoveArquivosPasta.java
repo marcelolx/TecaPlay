@@ -124,7 +124,6 @@ public class MoveArquivosPasta {
 			buffer.write(texto+"\r\n");  
 			buffer.close();
 		} catch (IOException e) {
-			System.out.println("não foi posssivel fazer a conexao ocm o txt)");
 		}
 		
 	}

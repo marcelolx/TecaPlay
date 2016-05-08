@@ -21,7 +21,7 @@ public class ListFiles {
 	public void updateTable(final JTable table, String usrName){
 		final MyTableModel tableModel = (MyTableModel) table.getModel();
 		FileTextProvider fileTextProvider = new FileTextProvider();
-		final List<String> lines = FileTextProvider.loadLines("c:\\TecaPlay\\" + usrName + "\\Videos\\filme\\acão.txt");
+		final List<String> lines = FileTextProvider.loadLines("c:\\TecaPlay\\" + usrName + "\\Videos\\filme\\ação.txt");
 		final Object[][] dados  = new Object[fileTextProvider.numOfLines()][5];
 		for(int i=0; i < lines.size(); i++){				
 			final String[] data = FileTextProvider.readData("#", lines.get(i));

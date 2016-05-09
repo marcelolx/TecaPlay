@@ -8,11 +8,19 @@ import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.util.ArrayList;
-
+/**
+ * @author Marcelo
+ * Classe que vai trabalhar na leitura dos arquivos .txt e recuperar as informações necessárias.
+ */
 public class FileTextProvider {
 	 private static int numLines;
-	//Recebe como parãmetro o path do arquivo a ser lido
-    //Retorna um ArrayList com todas as linhas gravadas no arquivo
+	private static LineNumberReader lineRead;
+	/**
+	 * @param path
+	 * 		Passa o caminho do arquivo .txt
+	 * @return
+	 * 		Retorna um ArrayList com todas as linhas gravadas no arquivo.
+	 */
     public static ArrayList<String> loadLines(String path){
         File arq = new File(path);
         try {
@@ -31,7 +39,7 @@ public class FileTextProvider {
             FileInputStream fs = new FileInputStream(arq);
             DataInputStream in = new DataInputStream(fs);
            
-            LineNumberReader lineRead = new LineNumberReader(new InputStreamReader(in));
+            lineRead = new LineNumberReader(new InputStreamReader(in));
             lineRead.skip(lengthFile);
             // conta o numero de linhas do arquivo
             numLines = lineRead.getLineNumber();
@@ -42,13 +50,23 @@ public class FileTextProvider {
             return null;
         }
     }
-
-    //Recebe como parametro o simbolo separador e uma linha
-    //e retorna um vetor de String preenchido com todos os dados separados pelo separado
+    /**
+     * 
+     * @param separador
+     * 		Caractere a ser usado como separador.
+     * @param linha
+     * 		Linha a ser percorrida.
+     * @return
+     * 		Retorna a String quebrada.
+     */
     public static String[] readData(String separador, String linha){
         return linha.split(separador);
     }
-    
+    /**
+     * 
+     * @return
+     * 	Retorna o número total de linhas que um arquivo possui.
+     */
     public int numOfLines(){
     	return numLines;
     }

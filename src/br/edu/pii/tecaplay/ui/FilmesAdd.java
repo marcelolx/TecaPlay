@@ -165,7 +165,7 @@ public class FilmesAdd {
 		JComboBox<String> panelListGenero = new JComboBox<String>();
 		ArrayList<String> listaGenero = new ArrayList<>();
 		listaGenero.add("Selecione");
-		listaGenero.add("Ac\u00E3o");
+		listaGenero.add("Ação");
 		listaGenero.add("Anima\u00E7\u00E3o");
 		listaGenero.add("Aventura");
 		listaGenero.add("Cl\u00E1ssico");

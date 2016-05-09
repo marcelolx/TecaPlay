@@ -5,7 +5,11 @@ import java.io.File;
 import javax.swing.JOptionPane;
 
 import br.edu.pii.tecaplay.ui.HomePage;
-
+/**
+ * 
+ * @author Marcelo
+ *
+ */
 public class FileUtil {
 
 	static char vo;

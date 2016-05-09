@@ -6,7 +6,7 @@ import java.io.IOException;
 
 /**
  * 
- * @author jonas
+ * @author jonas, Marcelo
  *
  */
 public class MoveFile {

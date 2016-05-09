@@ -27,12 +27,16 @@ import javax.swing.WindowConstants;
 import br.edu.pii.tecaplay.util.FRarquivos;
 import br.edu.pii.tecaplay.util.FileUtil;
 import br.edu.pii.tecaplay.util.ListFiles;
-import br.edu.pii.tecaplay.util.MyTableModel;
 import br.edu.pii.tecaplay.util.TimerToLabel;
 
 public class HomePage {
 
 	private ArrayList<JPanel> voltarPaineis = new ArrayList<>();
+	private JTable table = new JTable();
+	private ListFiles listFiles = new ListFiles();
+	private JScrollPane tableContainer = new JScrollPane(table);
+	private String currentGenre = null;
+	
 
 	/**
 	* 
@@ -1010,7 +1014,11 @@ public class HomePage {
 					voltarPaineis.get(0).repaint();
 					voltarPaineis.remove(voltarPaineis.size() - 1);
 				}
-
+				try{
+					listFiles.reUpdateTable(table, usrName, currentGenre);
+				}catch(NullPointerException ne){
+					ne.getStackTrace();
+				}
 			}
 		});
 		//
@@ -1024,7 +1032,8 @@ public class HomePage {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String genero = "A\u00E7\u00E3o";
+				String genero = "Ação";
+				currentGenre = genero;
 				FRarquivos retorno = new FRarquivos();
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
@@ -1032,18 +1041,8 @@ public class HomePage {
 					voltarPaineis.add(filmesCatAcao);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					// adiciona jtable
-					JTable table = new JTable();
-					ListFiles listFiles = new ListFiles();
-					// criando um objeto para nossos dados
-					final Object[][] dados = null;
-					// chamando o mï¿½todo MyTableModel para adicionar a tabela ao
-					// jpanel
-					final MyTableModel myTableModel = new MyTableModel(dados);
-					table.setModel(myTableModel);
-					// listFiles.modelTable(table);
-					listFiles.tableInfo(table);
-					listFiles.updateTable(table, usrName);
-					JScrollPane tableContainer = new JScrollPane(table);
+					
+					listFiles.reUpdateTable(table, usrName, currentGenre);
 					tableContainer.setPreferredSize(new Dimension(790, 500));
 					filmesCatAcao.add(tableContainer, BorderLayout.CENTER);
 
@@ -1052,7 +1051,7 @@ public class HomePage {
 					filmesCatAcao.setVisible(true);
 					filmesCatAcao.revalidate();
 				} else {
-					JOptionPane.showMessageDialog(null, "NÐ³o Ð° nada a ser listado", "InvÐ±lido", 0);
+					JOptionPane.showMessageDialog(null, "Não há nada a ser listado", "Inválido", 0);
 				}
 
 			}
@@ -1064,12 +1063,18 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Anima\u00E7\u00E3o";
+				currentGenre = genero;
 				FRarquivos retorno = new FRarquivos();
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
 					voltarPaineis.add(filmesCatAnimacao);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					//adiciona o JTable e chama os métodos para listar os filmes.
+					listFiles.reUpdateTable(table, usrName, currentGenre);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					filmesCatAnimacao.add(tableContainer, BorderLayout.CENTER);
+					//
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
 					filmesCatAnimacao.setVisible(true);
@@ -1086,14 +1091,17 @@ public class HomePage {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
 				String genero = "aventura";
+				currentGenre = genero;
 				FRarquivos retorno = new FRarquivos();
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
 					voltarPaineis.add(filmesCatAventura);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, usrName, currentGenre);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					filmesCatAventura.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
 					filmesCatAventura.setVisible(true);
@@ -1111,12 +1119,16 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Cl\u00E1ssico";
+				currentGenre = genero;
 				FRarquivos retorno = new FRarquivos();
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
 					voltarPaineis.add(filmesCatClassico);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, usrName, currentGenre);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					filmesCatClassico.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
 					filmesCatClassico.setVisible(true);
@@ -1134,12 +1146,16 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Com\u00E9dia";
+				currentGenre = genero;
 				FRarquivos retorno = new FRarquivos();
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
 					voltarPaineis.add(filmesCatComedia);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, usrName, currentGenre);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					filmesCatComedia.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
 					filmesCatComedia.setVisible(true);
@@ -1157,12 +1173,16 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Com\u00E9dia Rom\u00E2ntica";
+				currentGenre = genero;
 				FRarquivos retorno = new FRarquivos();
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
 					voltarPaineis.add(filmesCatComediaRomantico);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, usrName, currentGenre);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					filmesCatComediaRomantico.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
 					filmesCatComediaRomantico.setVisible(true);
@@ -1180,12 +1200,16 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Crime";
+				currentGenre = genero;
 				FRarquivos retorno = new FRarquivos();
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
 					voltarPaineis.add(filmesCatCrime);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, usrName, currentGenre);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					filmesCatCrime.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
 					filmesCatCrime.setVisible(true);
@@ -1202,12 +1226,16 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Document\u00E1rio";
+				currentGenre = genero;
 				FRarquivos retorno = new FRarquivos();
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
 					voltarPaineis.add(filmesCatDocumentario);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, usrName, currentGenre);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					filmesCatDocumentario.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
 					filmesCatDocumentario.setVisible(true);
@@ -1225,12 +1253,16 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Drama";
+				currentGenre = genero;
 				FRarquivos retorno = new FRarquivos();
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
 					voltarPaineis.add(filmesCatDrama);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, usrName, currentGenre);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					filmesCatDrama.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
 					filmesCatDrama.setVisible(true);
@@ -1248,12 +1280,16 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Faroeste";
+				currentGenre = genero;
 				FRarquivos retorno = new FRarquivos();
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
 					voltarPaineis.add(filmesCatFaroeste);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, usrName, currentGenre);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					filmesCatFaroeste.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
 					filmesCatFaroeste.setVisible(true);
@@ -1271,12 +1307,16 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Fic\u00E7\u00E3o Cientifica";
+				currentGenre = genero;
 				FRarquivos retorno = new FRarquivos();
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
 					voltarPaineis.add(filmesCatFiccaoCient);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, usrName, currentGenre);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					filmesCatFiccaoCient.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
 					filmesCatFiccaoCient.setVisible(true);
@@ -1295,12 +1335,16 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "guerra";
+				currentGenre = genero;
 				FRarquivos retorno = new FRarquivos();
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
 					voltarPaineis.add(filmesCatGuerra);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, usrName, currentGenre);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					filmesCatGuerra.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
 					filmesCatGuerra.setVisible(true);
@@ -1319,12 +1363,16 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "musical";
+				currentGenre = genero;
 				FRarquivos retorno = new FRarquivos();
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
 					voltarPaineis.add(filmesCatMusical);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, usrName, currentGenre);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					filmesCatMusical.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
 					filmesCatMusical.setVisible(true);
@@ -1342,12 +1390,16 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "policial";
+				currentGenre = genero;
 				FRarquivos retorno = new FRarquivos();
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
 					voltarPaineis.add(filmesCatPolicial);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, usrName, currentGenre);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					filmesCatPolicial.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
 					filmesCatPolicial.setVisible(true);
@@ -1366,12 +1418,16 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "romance";
+				currentGenre = genero;
 				FRarquivos retorno = new FRarquivos();
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
 					voltarPaineis.add(filmesCatRomance);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, usrName, currentGenre);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					filmesCatRomance.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
 					filmesCatRomance.setVisible(true);
@@ -1390,12 +1446,16 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "suspense";
+				currentGenre = genero;
 				FRarquivos retorno = new FRarquivos();
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
 					voltarPaineis.add(filmesCatSuspense);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, usrName, currentGenre);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					filmesCatSuspense.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
 					filmesCatSuspense.setVisible(true);
@@ -1414,12 +1474,16 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "terror";
+				currentGenre = genero;
 				FRarquivos retorno = new FRarquivos();
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
 					voltarPaineis.add(filmesCatTerror);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, usrName, currentGenre);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					filmesCatTerror.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
 					filmesCatTerror.setVisible(true);
@@ -1437,12 +1501,16 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "thriller";
+				currentGenre = genero;
 				FRarquivos retorno = new FRarquivos();
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistente(usrName, genero);
 				if (ler) {
 					voltarPaineis.add(filmesCatThriller);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, usrName, currentGenre);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					filmesCatThriller.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
 					filmesCatThriller.setVisible(true);

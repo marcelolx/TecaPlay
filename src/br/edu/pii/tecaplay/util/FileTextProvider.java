@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.util.ArrayList;
 /**
+ * @since 08/05/2016
  * @author Marcelo
  * Classe que vai trabalhar na leitura dos arquivos .txt e recuperar as informações necessárias.
  */

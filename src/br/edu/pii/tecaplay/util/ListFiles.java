@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.swing.JTable;
 /**
- * 
+ * @since 08/05/2016
  * @author Marcelo
  *
  */
@@ -39,6 +39,7 @@ public class ListFiles {
 		FileTextProvider fileTextProvider = new FileTextProvider();
 		final List<String> lines = FileTextProvider.loadLines("c:\\TecaPlay\\" + usrName + "\\Videos\\filme\\"+genero+".txt");
 		final Object[][] dados  = new Object[fileTextProvider.numOfLines()][6];
+		ListButtonFiles listButtonFiles = new ListButtonFiles(table, 5);
 		for(int i=0; i < lines.size(); i++){				
 			final String[] data = FileTextProvider.readData("#", lines.get(i));
 			dados[i][0] = data[0];

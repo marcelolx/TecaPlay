@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -24,8 +25,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
+
 import br.edu.pii.tecaplay.util.FRarquivos;
 import br.edu.pii.tecaplay.util.FileUtil;
+import br.edu.pii.tecaplay.util.ListButtonFiles;
 import br.edu.pii.tecaplay.util.ListFiles;
 import br.edu.pii.tecaplay.util.TimerToLabel;
 
@@ -36,13 +39,12 @@ public class HomePage {
 	private ListFiles listFiles = new ListFiles();
 	private JScrollPane tableContainer = new JScrollPane(table);
 	private String currentGenre = null;
-	
 
 	/**
 	* 
 	*/
 	public HomePage(String usrName) {
-
+		
 		// formatcao do JFrame
 		JFrame home = new JFrame();
 		home.addWindowListener(new WindowAdapter() {
@@ -1041,11 +1043,9 @@ public class HomePage {
 					voltarPaineis.add(filmesCatAcao);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					// adiciona jtable
-					
 					listFiles.reUpdateTable(table, usrName, currentGenre);
 					tableContainer.setPreferredSize(new Dimension(790, 500));
 					filmesCatAcao.add(tableContainer, BorderLayout.CENTER);
-
 					panelCategoriasFilmes.setVisible(false);
 					home.getContentPane().remove(panelCategoriasFilmes);
 					filmesCatAcao.setVisible(true);
@@ -1080,7 +1080,7 @@ public class HomePage {
 					filmesCatAnimacao.setVisible(true);
 					filmesCatAnimacao.revalidate();
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Invalido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Invalido", 0);
 				}
 
 			}
@@ -1107,7 +1107,7 @@ public class HomePage {
 					filmesCatAventura.setVisible(true);
 					filmesCatAventura.revalidate();
 				} else {
-					JOptionPane.showMessageDialog(null, "N√£o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N√£o –∞ nada a ser listado", "Inv·lido", 0);
 				}
 
 			}
@@ -1135,7 +1135,7 @@ public class HomePage {
 					filmesCatClassico.revalidate();
 
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 			}
 		});
@@ -1162,7 +1162,7 @@ public class HomePage {
 					filmesCatComedia.revalidate();
 
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 			}
 		});
@@ -1189,7 +1189,7 @@ public class HomePage {
 					filmesCatComediaRomantico.revalidate();
 
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 			}
 		});
@@ -1215,7 +1215,7 @@ public class HomePage {
 					filmesCatCrime.setVisible(true);
 					filmesCatCrime.revalidate();
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 			}
 		});
@@ -1242,7 +1242,7 @@ public class HomePage {
 					filmesCatDocumentario.revalidate();
 
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 			}
 		});
@@ -1269,7 +1269,7 @@ public class HomePage {
 					filmesCatDrama.revalidate();
 
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 			}
 		});
@@ -1296,7 +1296,7 @@ public class HomePage {
 					filmesCatFaroeste.revalidate();
 
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 			}
 		});
@@ -1323,7 +1323,7 @@ public class HomePage {
 					filmesCatFiccaoCient.revalidate();
 
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 
 			}
@@ -1351,7 +1351,7 @@ public class HomePage {
 					filmesCatGuerra.revalidate();
 
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 
 			}
@@ -1378,7 +1378,7 @@ public class HomePage {
 					filmesCatMusical.setVisible(true);
 					filmesCatMusical.revalidate();
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 
 			}
@@ -1406,7 +1406,7 @@ public class HomePage {
 					filmesCatPolicial.revalidate();
 
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 
 			}
@@ -1434,7 +1434,7 @@ public class HomePage {
 					filmesCatRomance.revalidate();
 
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 
 			}
@@ -1462,7 +1462,7 @@ public class HomePage {
 					filmesCatSuspense.revalidate();
 
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 
 			}
@@ -1489,7 +1489,7 @@ public class HomePage {
 					filmesCatTerror.setVisible(true);
 					filmesCatTerror.revalidate();
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 
 			}
@@ -1516,7 +1516,7 @@ public class HomePage {
 					filmesCatThriller.setVisible(true);
 					filmesCatThriller.revalidate();
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡  nada a ser listado", "Inv·lido", 0);
 				}
 			}
 		});
@@ -1542,7 +1542,7 @@ public class HomePage {
 					serieCatAcao.setVisible(true);
 					serieCatAcao.revalidate();
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 
 			}
@@ -1565,7 +1565,7 @@ public class HomePage {
 					serieCatAnimacao.setVisible(true);
 					serieCatAnimacao.revalidate();
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Invalido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Invalido", 0);
 				}
 
 			}
@@ -1589,7 +1589,7 @@ public class HomePage {
 					serieCatAventura.setVisible(true);
 					serieCatAventura.revalidate();
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 
 			}
@@ -1613,7 +1613,7 @@ public class HomePage {
 					serieCatClassico.revalidate();
 
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 			}
 		});
@@ -1636,7 +1636,7 @@ public class HomePage {
 					serieCatComedia.revalidate();
 
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 			}
 		});
@@ -1659,7 +1659,7 @@ public class HomePage {
 					serieCatComediaRomantico.revalidate();
 
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 			}
 		});
@@ -1682,7 +1682,7 @@ public class HomePage {
 					serieCatCrime.revalidate();
 
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 			}
 		});
@@ -1705,7 +1705,7 @@ public class HomePage {
 					serieCatDocumentario.revalidate();
 
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 			}
 		});
@@ -1728,7 +1728,7 @@ public class HomePage {
 					serieCatDrama.revalidate();
 
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 			}
 		});
@@ -1751,7 +1751,7 @@ public class HomePage {
 					serieCatAnime.revalidate();
 
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 			}
 		});
@@ -1774,7 +1774,7 @@ public class HomePage {
 					serieCatFiccaoCient.revalidate();
 
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 
 			}
@@ -1798,7 +1798,7 @@ public class HomePage {
 					serieCatGuerra.revalidate();
 
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 
 			}
@@ -1821,7 +1821,7 @@ public class HomePage {
 					serieCatMusical.setVisible(true);
 					serieCatMusical.revalidate();
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 
 			}
@@ -1845,7 +1845,7 @@ public class HomePage {
 					serieCatPolicial.revalidate();
 
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 
 			}
@@ -1869,7 +1869,7 @@ public class HomePage {
 					serieCatRomance.revalidate();
 
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 
 			}
@@ -1893,7 +1893,7 @@ public class HomePage {
 					serieCatSuspense.revalidate();
 
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 
 			}
@@ -1916,7 +1916,7 @@ public class HomePage {
 					serieCatTerror.setVisible(true);
 					serieCatTerror.revalidate();
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 
 			}
@@ -1939,7 +1939,7 @@ public class HomePage {
 					serieCatMedico.setVisible(true);
 					serieCatMedico.revalidate();
 				} else {
-					JOptionPane.showMessageDialog(null, "N–≥o –∞ nada a ser listado", "Inv–±lido", 0);
+					JOptionPane.showMessageDialog(null, "N„o ‡ nada a ser listado", "Inv·lido", 0);
 				}
 			}
 		});

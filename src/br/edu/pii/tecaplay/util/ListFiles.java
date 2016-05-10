@@ -1,6 +1,7 @@
 package br.edu.pii.tecaplay.util;
 
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -10,7 +11,6 @@ import java.util.List;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 /**
  * @since 08/05/2016
@@ -26,12 +26,30 @@ public class ListFiles {
 	public void tableInfo(JTable table) {
 		// table.setAutoCreateRowSorter(true);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		table.getColumnModel().getColumn(0).setPreferredWidth(400);
+		table.getColumnModel().getColumn(0).setPreferredWidth(350);
 		table.getColumnModel().getColumn(1).setPreferredWidth(100);
 		table.getColumnModel().getColumn(2).setPreferredWidth(79);
 		table.getColumnModel().getColumn(3).setPreferredWidth(33);
 		table.getColumnModel().getColumn(4).setPreferredWidth(75);
-		table.getColumnModel().getColumn(5).setPreferredWidth(100);
+		table.getColumnModel().getColumn(5).setPreferredWidth(60);
+		table.getColumnModel().getColumn(6).setPreferredWidth(90);
+		
+		table.getColumnModel().getColumn(0).setMaxWidth(350);
+		table.getColumnModel().getColumn(1).setMaxWidth(100);
+		table.getColumnModel().getColumn(2).setMaxWidth(79);
+		table.getColumnModel().getColumn(3).setMaxWidth(33);
+		table.getColumnModel().getColumn(4).setMaxWidth(75);
+		table.getColumnModel().getColumn(5).setMaxWidth(60);
+		table.getColumnModel().getColumn(6).setMaxWidth(90);
+		
+		table.getColumnModel().getColumn(0).setMinWidth(350);
+		table.getColumnModel().getColumn(1).setMinWidth(100);
+		table.getColumnModel().getColumn(2).setMinWidth(79);
+		table.getColumnModel().getColumn(3).setMinWidth(33);
+		table.getColumnModel().getColumn(4).setMinWidth(75);
+		table.getColumnModel().getColumn(5).setMinWidth(60);
+		table.getColumnModel().getColumn(6).setMinWidth(90);
+		
 		table.setBackground(new Color(192, 192, 192));
 		table.getTableHeader().setBackground(new Color(192, 192, 192));
 	}
@@ -52,7 +70,7 @@ public class ListFiles {
 		FileTextProvider fileTextProvider = new FileTextProvider();
 		final List<String> lines = FileTextProvider
 				.loadLines("c:\\TecaPlay\\" + usrName + "\\Videos\\filme\\" + genero + ".txt");
-		final Object[][] dados = new Object[fileTextProvider.numOfLines()][6];
+		final Object[][] dados = new Object[fileTextProvider.numOfLines()][7];
 
 		for (int i = 0; i < lines.size(); i++) {
 			final String[] data = FileTextProvider.readData("#", lines.get(i));
@@ -60,7 +78,8 @@ public class ListFiles {
 			dados[i][1] = data[1];
 			dados[i][2] = data[2];
 			dados[i][3] = data[3];
-			dados[i][5] = data[5];
+			dados[i][5] = "-X-";
+			dados[i][6] = "Assistir";
 		}
 		//
 		// Ação dos botões assistir
@@ -77,17 +96,31 @@ public class ListFiles {
 						caminho = data[4];
 					}
 				}
-				//System.out.println(caminho);
 				try {
-					java.awt.Desktop.getDesktop().open( new File(caminho) );
+					Desktop.getDesktop().open( new File(caminho) );
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
 				}
 			}
 		};
-
-		ButtonColumn buttonColumn = new ButtonColumn(table, open, 5);
+		
+	Action remove = new AbstractAction() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int modelRow = Integer.valueOf(e.getActionCommand());
+				String caminho = null;
+				for (int i = 0; i < lines.size(); i++) {
+					final String[] data = FileTextProvider.readData("#", lines.get(i));
+					if (i == table.getSelectedRow()) {
+						caminho = data[4];
+					}
+				}
+			}
+		};
+		ColumnButtonRemove remover = new ColumnButtonRemove(table, remove, 5, genero, usrName, lines.size());
+		remover.setMnemonic(KeyEvent.VK_D);
+			
+		ButtonColumn buttonColumn = new ButtonColumn(table, open, 6);
 		buttonColumn.setMnemonic(KeyEvent.VK_D);
 
 		//

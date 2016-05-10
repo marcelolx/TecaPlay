@@ -178,11 +178,6 @@ public class ColumnButtonRemove extends AbstractCellEditor
 		if(op == JOptionPane.YES_OPTION){
 			RemoveFile removeFile = new RemoveFile();
 			removeFile.Remove(usrName, table.getSelectedRow(), genero, totalLines);
-			boolean sucess = removeFile.teste();
-			if (!sucess) {
-				JOptionPane.showMessageDialog(null, "Tente Novamente, Não foi possivel remover o arquivo\n"
-						+ "Ou entre em contato com o administrador do sistema!");
-			}
 		}
 		ActionEvent event = new ActionEvent(table, ActionEvent.ACTION_PERFORMED, "" + row);
 		action.actionPerformed(event);

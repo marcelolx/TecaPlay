@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
 /**
  * Classe que remove os arquivos quando o usuario aperta o botao remover da lista
  * @author jonas
@@ -17,13 +19,16 @@ public class RemoveFile {
 	private String usrName;
 	private File file;
 	private String criarTxt;
-
+	private File arquivo;
+	private String arqPath;
+	
+	
 	public void Remove(String userName, int line, String generos, int lines) {
 		genero = generos.toLowerCase();
 		usrName = userName;
 		locationFile = "c:\\TecaPlay\\" + usrName + "\\Videos\\filme\\" + genero + ".txt";
 		criarTxt = "c:\\TecaPlay\\" + usrName + "\\Videos\\filme\\" + genero + "1.txt";
-	
+		arquivo = new File(criarTxt);
 		try {
 			file = new File(locationFile);
 			FileReader fr = new FileReader(file);
@@ -34,6 +39,8 @@ public class RemoveFile {
 				lista.add(linha);
 			}
 			FileWriter buffer = null;
+			String[] arq = FileTextProvider.readData("#", lista.get(line));
+			arqPath = arq[4];
 			buffer = new FileWriter(criarTxt, true);
 			// lê as linhas antes do arquivo a ser excluido
 			for (int i = 0; i < line; i++) {
@@ -52,7 +59,7 @@ public class RemoveFile {
 				final String[] data = FileTextProvider.readData("#", lista.get(i));
 				// grava as informaões no txt
 				try {
-					String text = data[0] + "#" + genero + "#" + data[2] + "#" + data[3] + "#" + data[4] + "#Assistir";
+					String text = data[0] + "#" + genero + "#" + data[2] + "#" + data[3] + "#" + data[4];
 					buffer.write(text + "\r\n");
 				} catch (IOException e) {
 				}
@@ -61,7 +68,7 @@ public class RemoveFile {
 			buffer.close();
 			br.close();
 			fr.close();
-
+			teste();
 		} catch (Exception ex) {
 			System.out.println("Erro no RemoveFile");
 		}
@@ -69,19 +76,27 @@ public class RemoveFile {
 	}
 
 	public boolean teste() {
-		if (file.canExecute()){
-			boolean teste = file.delete();
-			if (teste) {
-				System.out.println("Arquivo Excluído");
+		File fl = new File(arqPath);
+		fl.delete();
+		if (file.canRead()){
+			System.out.println("Consegue");
+			boolean apagado = false;
+			while(!apagado){
+			     apagado = file.delete();
+			     System.gc();
+			}
+			//boolean teste = file.delete();
+			if (apagado) {
+					JOptionPane.showMessageDialog(null, "Arquivo Excluído");
 			} else {
-				System.out.println("Arquivo não Removido");
+				JOptionPane.showMessageDialog(null, "Arquivo não Removido");
 			}
 		}
 
-		File arquivo = new File(criarTxt);
+		//File arquivo = new File(criarTxt);
 		String extensao = arquivo.getName().substring(arquivo.getName().lastIndexOf('.', arquivo.getName().length()));
 		String newFileName = genero + extensao;
-		File destinoPasta = new File("c:\\TecaPlay\\" + usrName + "\\Videos\\filme\\" + genero);
+		File destinoPasta = new File("c:\\TecaPlay\\" + usrName + "\\Videos\\filme");
 		boolean ok = arquivo.renameTo(new File(destinoPasta, newFileName));
 		if (!ok) {
 			return false;

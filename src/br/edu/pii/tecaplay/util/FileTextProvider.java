@@ -45,6 +45,8 @@ public class FileTextProvider {
             // conta o numero de linhas do arquivo
             numLines = lineRead.getLineNumber();
             //
+            fs.close();
+            in.close();
             return lista;
         }catch (Exception ex){
 

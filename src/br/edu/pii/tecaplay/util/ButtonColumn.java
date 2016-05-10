@@ -164,14 +164,17 @@ public class ButtonColumn extends AbstractCellEditor
 	 */
 	public void actionPerformed(ActionEvent e) {
 		int row = table.convertRowIndexToModel(table.getEditingRow());
+		String path=null;
 		fireEditingStopped();
 
 		// Invoke the Action
-
+		//System.out.println(table.getSelectedRow());
+		
 		ActionEvent event = new ActionEvent(table, ActionEvent.ACTION_PERFORMED, "" + row);
-		action.actionPerformed(event);
+		action.actionPerformed(event);		
 	}
-
+	
+	
 	//
 	// Implement MouseListener interface
 	//

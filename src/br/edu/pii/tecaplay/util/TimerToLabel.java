@@ -6,7 +6,11 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.Timer;
-
+/**
+ * 
+ * @author Marcelo
+ *
+ */
 public class TimerToLabel implements ActionListener {
 	private Timer timer;
     private final JLabel label;

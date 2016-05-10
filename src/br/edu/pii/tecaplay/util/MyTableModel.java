@@ -18,7 +18,7 @@ public class MyTableModel extends DefaultTableModel{
 	}
 	
 	private final Class types[] = new Class[] {java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class};
-	private final boolean[] canEdit = new boolean[] {false, false, false, false, false, false};
+	private final boolean[] canEdit = new boolean[] {false, false, false, false, false, true};
 	
 	public Class getColumnClass(final int columnIndex){
 		return types[columnIndex];

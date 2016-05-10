@@ -28,7 +28,7 @@ import javax.swing.WindowConstants;
 
 import br.edu.pii.tecaplay.util.FRarquivos;
 import br.edu.pii.tecaplay.util.FileUtil;
-import br.edu.pii.tecaplay.util.ListButtonFiles;
+import br.edu.pii.tecaplay.util.ButtonColumn;
 import br.edu.pii.tecaplay.util.ListFiles;
 import br.edu.pii.tecaplay.util.TimerToLabel;
 

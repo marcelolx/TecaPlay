@@ -44,7 +44,7 @@ public class HomePage {
 	* 
 	*/
 	public HomePage(String usrName) {
-		
+
 		// formatcao do JFrame
 		JFrame home = new JFrame();
 		home.addWindowListener(new WindowAdapter() {
@@ -112,7 +112,8 @@ public class HomePage {
 		mntmSobre.setIcon(new ImageIcon("resources\\images\\imgBtnSobre.png"));
 		menuAjuda.add(mntmSobre);
 
-		// criado painel aonde ficarÐ³o os botoes para a escolha de musica, video
+		// criado painel aonde ficarÐ³o os botoes para a escolha de musica,
+		// video
 		// ou imagem
 		JPanel panelTopo = new JPanel();
 		panelTopo.setAutoscrolls(true);
@@ -325,6 +326,16 @@ public class HomePage {
 		panelLateralMusica.add(btnFavoritosMusica);
 		btnFavoritosMusica.setBackground(Color.LIGHT_GRAY);
 
+		// jButton Estilos Musicais
+		JButton btnEstilosMusica = new JButton("Estilos Musicais");
+		btnEstilosMusica.setToolTipText("Opção de acesso a aba dos Favoritos!");
+		btnEstilosMusica.setIcon(new ImageIcon("resources\\images\\btnEstilosMusicais.png"));
+		btnEstilosMusica.setPreferredSize(new Dimension(172, 34));
+		btnEstilosMusica.setFont(new Font("Tahoma", Font.BOLD, 14));
+		panelLateralMusica.add(btnEstilosMusica);
+		btnEstilosMusica.setBackground(Color.LIGHT_GRAY);
+
+		// jButton Sorteio filmes
 		JButton btnSorteioMusica = new JButton("Random Musica");
 		btnSorteioMusica.setToolTipText("Op\u00E7\u00E3o de acesso a aba Sorteio!");
 		btnSorteioMusica.setPreferredSize(new Dimension(172, 34));
@@ -347,7 +358,7 @@ public class HomePage {
 		});
 
 		/**
-		 * Jpanel Lateral para o chamamento do panel de Videos
+		 * Jpanel Lateral para a chamada do panel de Videos
 		 */
 
 		JPanel panelLateralVideo = new JPanel();
@@ -425,8 +436,8 @@ public class HomePage {
 		/*
 		 * 
 		 * 
-		 * FILMES/CAREGORIAS Painel de categorias que serÐ± chamado ao apertar no
-		 * jbutton btnFilmes
+		 * FILMES/CAREGORIAS Painel de categorias que serÐ± chamado ao apertar
+		 * no jbutton btnFilmes
 		 * 
 		 * 
 		 * TODO
@@ -923,11 +934,184 @@ public class HomePage {
 		serieCatMedico.setPreferredSize(new Dimension(500, 300));
 		serieCatMedico.setBackground(new Color(120, 120, 120));
 
+		// jpanel categorias musicais
+		JPanel panelCategoriasMusica = new JPanel();
+		panelCategoriasMusica.setLayout(new FlowLayout(FlowLayout.CENTER));
+		panelCategoriasMusica.setPreferredSize(new Dimension(500, 300));
+		panelCategoriasMusica.setBackground(new Color(120, 120, 120));
+		
+		//Jbutoons do Estilos musicais
+		JButton btnMusicAntigas = new JButton("Antigas");
+		btnMusicAntigas.setToolTipText("Categoria Antigas.");
+		btnMusicAntigas.setPreferredSize(new Dimension(127, 135));
+		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnMusicAntigas.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnMusicAntigas.setBackground(Color.LIGHT_GRAY);
+		panelCategoriasMusica.add(btnMusicAntigas);
+		
+		JButton btnMusicAxe = new JButton("Axé");
+		btnMusicAxe.setToolTipText("Categoria Axé.");
+		btnMusicAxe.setPreferredSize(new Dimension(127, 135));
+		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnMusicAxe.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnMusicAxe.setBackground(Color.LIGHT_GRAY);
+		panelCategoriasMusica.add(btnMusicAxe);
+
+		JButton btnMusicBlack = new JButton("Black");
+		btnMusicBlack.setToolTipText("Categoria Black.");
+		btnMusicBlack.setPreferredSize(new Dimension(127, 135));
+		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnMusicBlack.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnMusicBlack.setBackground(Color.LIGHT_GRAY);
+		panelCategoriasMusica.add(btnMusicBlack);
+		
+		JButton btnMusicBrega = new JButton("Brega");
+		btnMusicBrega.setToolTipText("Categoria Brega.");
+		btnMusicBrega.setPreferredSize(new Dimension(127, 135));
+		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnMusicBrega.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnMusicBrega.setBackground(Color.LIGHT_GRAY);
+		panelCategoriasMusica.add(btnMusicBrega);
+		
+		JButton btnMusicDance = new JButton("Dance");
+		btnMusicDance.setToolTipText("Categoria Dance.");
+		btnMusicDance.setPreferredSize(new Dimension(127, 135));
+		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnMusicDance.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnMusicDance.setBackground(Color.LIGHT_GRAY);
+		panelCategoriasMusica.add(btnMusicDance);
+		
+		JButton btnMusicEletronica = new JButton("Eletrônica");
+		btnMusicEletronica.setToolTipText("Categoria Com\u00E9dia Eletrônica.");
+		btnMusicEletronica.setPreferredSize(new Dimension(127, 135));
+		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnMusicEletronica.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnMusicEletronica.setBackground(Color.LIGHT_GRAY);
+		panelCategoriasMusica.add(btnMusicEletronica);
+		
+		JButton btnMusicFunk = new JButton("Funk");
+		btnMusicFunk.setToolTipText("Categoria Funk.");
+		btnMusicFunk.setPreferredSize(new Dimension(127, 135));
+		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnMusicFunk.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnMusicFunk.setBackground(Color.LIGHT_GRAY);
+		panelCategoriasMusica.add(btnMusicFunk);
+		
+		JButton btnMusicForro = new JButton("Forró");
+		btnMusicForro.setToolTipText("Categoria Forró.");
+		btnMusicForro.setPreferredSize(new Dimension(127, 135));
+		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnMusicForro.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnMusicForro.setBackground(Color.LIGHT_GRAY);
+		panelCategoriasMusica.add(btnMusicForro);
+		
+		JButton btnMusicFolcloricas = new JButton("Folclóricas");
+		btnMusicFolcloricas.setToolTipText("Categoria Folclóricas.");
+		btnMusicFolcloricas.setPreferredSize(new Dimension(127, 135));
+		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnMusicFolcloricas.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnMusicFolcloricas.setBackground(Color.LIGHT_GRAY);
+		panelCategoriasMusica.add(btnMusicFolcloricas);
+
+		JButton btnMusicGospel = new JButton("Gospel");
+		btnMusicGospel.setToolTipText("Categoria Gospel.");
+		btnMusicGospel.setPreferredSize(new Dimension(127, 135));
+		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnMusicGospel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnMusicGospel.setBackground(Color.LIGHT_GRAY);
+		panelCategoriasMusica.add(btnMusicGospel);
+		
+		JButton btnMusicInternacional = new JButton("<html><center>Internacio-</br> nais</center></html>");
+		btnMusicInternacional.setToolTipText("Categoria Internacionais.");
+		btnMusicInternacional.setPreferredSize(new Dimension(127, 135));
+		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnMusicInternacional.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnMusicInternacional.setBackground(Color.LIGHT_GRAY);
+		panelCategoriasMusica.add(btnMusicInternacional);
+
+		JButton btnMusicModaViola = new JButton("<html><center>Moda de</br> Viola</center></html>");
+		btnMusicModaViola.setToolTipText("Categoria Moda de Viola.");
+		btnMusicModaViola.setPreferredSize(new Dimension(127, 135));
+		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnMusicModaViola.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnMusicModaViola.setBackground(Color.LIGHT_GRAY);
+		panelCategoriasMusica.add(btnMusicModaViola);
+		
+		JButton btnMusicNovas = new JButton("Novas");
+		btnMusicNovas.setToolTipText("Categoria Musicas Novas.");
+		btnMusicNovas.setPreferredSize(new Dimension(127, 135));
+		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnMusicNovas.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnMusicNovas.setBackground(Color.LIGHT_GRAY);
+		panelCategoriasMusica.add(btnMusicNovas);
+
+		JButton btnMusicPagode = new JButton("Pagode");
+		btnMusicPagode.setToolTipText("Categoria Pagode.");
+		btnMusicPagode.setPreferredSize(new Dimension(127, 135));
+		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnMusicPagode.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnMusicPagode.setBackground(Color.LIGHT_GRAY);
+		panelCategoriasMusica.add(btnMusicPagode);
+		
+		JButton btnMusicRomantica = new JButton("Romântica");
+		btnMusicRomantica.setToolTipText("Categoria Romântica.");
+		btnMusicRomantica.setPreferredSize(new Dimension(127, 135));
+		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnMusicRomantica.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnMusicRomantica.setBackground(Color.LIGHT_GRAY);
+		panelCategoriasMusica.add(btnMusicRomantica);
+		
+		JButton btnMusicReagge = new JButton("Reagge");
+		btnMusicReagge.setToolTipText("Categoria Reagge.");
+		btnMusicReagge.setPreferredSize(new Dimension(127, 135));
+		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnMusicReagge.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnMusicReagge.setBackground(Color.LIGHT_GRAY);
+		panelCategoriasMusica.add(btnMusicReagge);
+
+		JButton btnMusicSamba = new JButton("Samba");
+		btnMusicSamba.setToolTipText("Categoria Samba.");
+		btnMusicSamba.setPreferredSize(new Dimension(127, 135));
+		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnMusicSamba.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnMusicSamba.setBackground(Color.LIGHT_GRAY);
+		panelCategoriasMusica.add(btnMusicSamba);
+
+
+		JButton btnMusicSertaneja = new JButton("Sertaneja");
+		btnMusicSertaneja.setToolTipText("Categoria Sertaneja.");
+		btnMusicSertaneja.setPreferredSize(new Dimension(127, 135));
+		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		btnMusicSertaneja.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnMusicSertaneja.setBackground(Color.LIGHT_GRAY);
+		panelCategoriasMusica.add(btnMusicSertaneja);
+		
+
 		/*
-		 * AÐ—Ð“O DE BUTTONS AÐ—Ð“O DE BUTTONS AÐ—Ð“O DE BUTTONS AÐ—Ð“O DE BUTTONS TODO
+		 * AÐ—Ð“O DE BUTTONS AÐ—Ð“O DE BUTTONS AÐ—Ð“O DE BUTTONS AÐ—Ð“O DE
+		 * BUTTONS TODO
 		 */
 
 		// AÐ·Ð³o que serÐ± realizada ao apertar o botao de VIDEOS do jpanelTopo
+		btnEstilosMusica.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (voltarPaineis.size() == 2) {
+					home.getContentPane().remove(voltarPaineis.get(1));
+				}
+				voltarPaineis = new ArrayList<JPanel>();
+				voltarPaineis.removeAll(voltarPaineis);
+				voltarPaineis.add(panelCategoriasMusica);
+				home.getContentPane().remove(labelFundo);
+				home.getContentPane().add(panelCategoriasMusica, BorderLayout.CENTER);
+				panelTopo.setVisible(false); // visibilidade do painel falsa
+				home.getContentPane().remove(panelTopo); //remove o painel
+				panelCategoriasMusica.setVisible(true); //ativa o panel lateral
+				panelCategoriasMusica.revalidate();//revalida o layout
+			}
+		});
+
 		btnVideo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				home.getContentPane().add(panelLateralVideo, BorderLayout.WEST);
@@ -1016,9 +1200,9 @@ public class HomePage {
 					voltarPaineis.get(0).repaint();
 					voltarPaineis.remove(voltarPaineis.size() - 1);
 				}
-				try{
+				try {
 					listFiles.reUpdateTable(table, usrName, currentGenre);
-				}catch(NullPointerException ne){
+				} catch (NullPointerException ne) {
 					ne.getStackTrace();
 				}
 			}
@@ -1070,7 +1254,8 @@ public class HomePage {
 				if (ler) {
 					voltarPaineis.add(filmesCatAnimacao);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					//adiciona o JTable e chama os métodos para listar os filmes.
+					// adiciona o JTable e chama os métodos para listar os
+					// filmes.
 					listFiles.reUpdateTable(table, usrName, currentGenre);
 					tableContainer.setPreferredSize(new Dimension(790, 500));
 					filmesCatAnimacao.add(tableContainer, BorderLayout.CENTER);

@@ -17,10 +17,8 @@ public class ValidaPasta {
 		boolean extensao = arquivo.isDirectory();
 		System.out.println(extensao);
 		if (extensao) {
-			System.out.println("Apenas Teste");
 			return true;
 		} else {
-			System.out.println("é Falso é arquivo");
 			return false;
 		}
 	}

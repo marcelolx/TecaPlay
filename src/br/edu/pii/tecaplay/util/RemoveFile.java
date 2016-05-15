@@ -76,14 +76,21 @@ public class RemoveFile {
 	}
 
 	public boolean teste() {
-		File fl = new File(arqPath);
-		fl.delete();
+		
 		if (file.canRead()){
 			System.out.println("Consegue");
 			boolean apagado = false;
 			while(!apagado){
 			     apagado = file.delete();
-			     System.gc();
+			
+			     if(apagado){
+			    	 File fl = new File(arqPath);
+			    	 File dir = new File("c:\\TecaPlay\\" + usrName + "\\Videos\\filme\\" + genero);
+			    	 File[] arquivos = dir.listFiles();
+			    	 if(arquivos.length==0){
+			    	   FileDeleter dele= new FileDeleter();
+			    	   dele.DeletarPasta("c:\\TecaPlay\\" + usrName + "\\Videos\\filme\\" + genero, locationFile);
+			    	 }
 			}
 			//boolean teste = file.delete();
 			if (apagado) {
@@ -91,6 +98,7 @@ public class RemoveFile {
 			} else {
 				JOptionPane.showMessageDialog(null, "Arquivo não Removido");
 			}
+		}
 		}
 
 		//File arquivo = new File(criarTxt);
@@ -102,5 +110,6 @@ public class RemoveFile {
 			return false;
 		}
 		return true;
+
 	}
 }

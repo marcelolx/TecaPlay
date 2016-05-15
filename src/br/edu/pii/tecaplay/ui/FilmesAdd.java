@@ -14,8 +14,10 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
+import br.edu.pii.tecaplay.util.ListFiles;
 import br.edu.pii.tecaplay.util.MoveArquivosPasta;
 import br.edu.pii.tecaplay.util.MoveFile;
 import br.edu.pii.tecaplay.util.ValidaPasta;
@@ -37,7 +39,6 @@ public class FilmesAdd {
 	 *            nome do usuário atualmente logado
 	 */
 	public FilmesAdd(String usrName) {
-
 		/** Janela principal para Filmes, definido cor, tamanho, posição... */
 		JFrame JFrameSelecao = new JFrame();
 		JFrameSelecao.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
@@ -361,6 +362,7 @@ public class FilmesAdd {
 								textFieldProcurarFilme.setText("");
 								textFieldTituloFilme.setText("");
 								textFieldDuracaoFilme.setText("");
+								ListFiles file = new ListFiles();
 								JOptionPane.showMessageDialog(null, "Arquivos Movidos com sucesso!", "Sucesso", 1);
 							} else {
 								JOptionPane.showMessageDialog(null,
@@ -742,5 +744,5 @@ public class FilmesAdd {
 		});
 
 	}
-
+	
 }

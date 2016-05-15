@@ -23,7 +23,9 @@ public class ListFiles {
 	 *            passa a tabela por parâmetro e a partir da mesma seta algumas
 	 *            configurações a ela.
 	 */
+
 	public void tableInfo(JTable table) {
+
 		// table.setAutoCreateRowSorter(true);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		table.getColumnModel().getColumn(0).setPreferredWidth(350);
@@ -149,5 +151,8 @@ public class ListFiles {
 		table.setModel(myTableModel);
 		tableInfo(table);
 		updateTable(table, usrName, genero);
+	}
+	public JTable Tabela(JTable tablee) {
+		return tablee;
 	}
 }

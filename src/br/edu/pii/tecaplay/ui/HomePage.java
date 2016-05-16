@@ -71,14 +71,14 @@ public class HomePage {
 		int height = (screen.height) - 208;
 		int x = (screen.width - width) / 2;
 		int y = (screen.height - height) / 2;
-		home.setBounds(x, y, width, height);// seta o tamanho da janeala e sua
-											// posi–∑–≥o na tela.
+		home.setBounds(x, y, width, height);// seta o tamanho da janela e sua
+											// posiÁ„o na tela.
 		home.setResizable(false); // impossibilidade de altarar tamanho da
 									// janela
 		home.setIconImage(Toolkit.getDefaultToolkit().getImage("resources\\images\\newLogo.png")); // icone
 																									// da
 																									// barra
-		// cria–∑–≥o do menu superior
+		// cri do menu superior
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBackground(Color.LIGHT_GRAY);// background do menu
 		home.setJMenuBar(menuBar);
@@ -131,7 +131,7 @@ public class HomePage {
 		home.getContentPane().add(panelTopo, BorderLayout.NORTH);
 
 		/**
-		 * cria–∑–≥o de botoes video/musica/imagem
+		 * cri de botoes video/musica/imagem
 		 */
 
 		JButton btnVideo = new JButton("V\u00EDdeo");
@@ -148,7 +148,7 @@ public class HomePage {
 		panelTopo.add(btnVideo);
 		home.isCursorSet();
 
-		JButton btnMusica = new JButton("M—äsica");
+		JButton btnMusica = new JButton("M˙sica");
 		btnMusica.setToolTipText("Op\u00E7\u00E3o de acesso a aba M\u00FAsica!");
 		btnMusica.setIcon(new ImageIcon("resources\\images\\imgBtnMusica.png"));// icone
 																				// do
@@ -197,13 +197,13 @@ public class HomePage {
 		panelLateralImagem.setPreferredSize(new Dimension(180, 400));
 		panelLateralImagem.setBackground(new Color(128, 128, 128));
 
-		JButton btnVoltar = new JButton("");
-		btnVoltar.setToolTipText("Voltar");
-		btnVoltar.setPreferredSize(new Dimension(86, 34));
-		panelLateralImagem.add(btnVoltar);
-		btnVoltar.setBackground(Color.LIGHT_GRAY);
-		btnVoltar.setIcon(new ImageIcon("resources\\images\\imgVoltar.png"));
-		btnVoltar.addActionListener(new ActionListener() {
+		JButton btnVoltarImagem = new JButton("");
+		btnVoltarImagem.setToolTipText("Voltar");
+		btnVoltarImagem.setPreferredSize(new Dimension(86, 34));
+		panelLateralImagem.add(btnVoltarImagem);
+		btnVoltarImagem.setBackground(Color.LIGHT_GRAY);
+		btnVoltarImagem.setIcon(new ImageIcon("resources\\images\\imgVoltar.png"));
+		btnVoltarImagem.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -259,7 +259,7 @@ public class HomePage {
 		panelLateralImagem.add(btnColecaoImagem);
 		btnColecaoImagem.setBackground(Color.LIGHT_GRAY);
 
-		// A–∑–≥o que ser–± realizada ao apertar o botao de Imagem do jpanelTopo
+		//  que ser–± realizada ao apertar o botao de Imagem do jpanelTopo
 		btnImagem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				home.getContentPane().add(panelLateralImagem, BorderLayout.WEST);
@@ -340,7 +340,7 @@ public class HomePage {
 		panelLateralMusica.add(btnSorteioMusica);
 		btnSorteioMusica.setBackground(Color.LIGHT_GRAY);
 
-		// A–∑–≥o que ser–± realizada ao apertar o botao de Musica do jpanelTopo
+		//  que ser–± realizada ao apertar o botao de Musica do jpanelTopo
 		btnMusica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				home.getContentPane().add(panelLateralMusica, BorderLayout.WEST);
@@ -484,7 +484,7 @@ public class HomePage {
 		btnCatComedia.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasFilmes.add(btnCatComedia);
 
-		JButton btnCatComediaRomantica = new JButton("<html><CENTER>Com\u00E9dia</br>Rom\u00E2ntica</CENTER></html>");
+		JButton btnCatComediaRomantica = new JButton("<html><CENTER>Com\u00E9dia<br>Rom\u00E2ntica</CENTER></html>");
 		btnCatComediaRomantica.setToolTipText("Categoria Com\u00E9dia Rom\u00E2ntica.");
 		btnCatComediaRomantica.setPreferredSize(new Dimension(127, 135));
 		// btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
@@ -500,8 +500,8 @@ public class HomePage {
 		btnCatCrime.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasFilmes.add(btnCatCrime);
 
-		JButton btnCatDocumentario = new JButton("<html><p>Document√°-<br>rio</html>");
-		btnCatDocumentario.setToolTipText("Categoria Document–±rio.");
+		JButton btnCatDocumentario = new JButton("<html><CENTER><p>Document\u00E1<br>rio</CENTER></html>");
+		btnCatDocumentario.setToolTipText("Categoria Document\u00E1rio.");
 		btnCatDocumentario.setPreferredSize(new Dimension(127, 135));
 		// btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
 		btnCatDocumentario.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -525,7 +525,7 @@ public class HomePage {
 		panelCategoriasFilmes.add(btnCatFaroeste);
 
 		JButton btnCatFicaoCient = new JButton("<html><center>Fic\u00E7\u00E3o</br> Cientifica</center></html>");
-		btnCatFicaoCient.setToolTipText("Categoria Fic–∑–≥o Cient–Ωfica.");
+		btnCatFicaoCient.setToolTipText("Categoria Fic\u00E7\u00E3o CientÌfica.");
 		btnCatFicaoCient.setPreferredSize(new Dimension(127, 135));
 		// btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
 		btnCatFicaoCient.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -694,16 +694,16 @@ public class HomePage {
 		panelCategoriasSerie.setPreferredSize(new Dimension(500, 300));
 		panelCategoriasSerie.setBackground(new Color(120, 120, 120));
 
-		JButton btnCatAcaoSerie = new JButton("A√ß√£o");
-		btnCatAcaoSerie.setToolTipText("Categoria A√ß√£o.");
+		JButton btnCatAcaoSerie = new JButton("AÁ„o");
+		btnCatAcaoSerie.setToolTipText("Categoria aÁ„o.");
 		btnCatAcaoSerie.setPreferredSize(new Dimension(127, 135));
 		// btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
 		btnCatAcaoSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnCatAcaoSerie.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasSerie.add(btnCatAcaoSerie);
 
-		JButton btnCatAnimacaoSerie = new JButton("Anima√ß√£o");
-		btnCatAnimacaoSerie.setToolTipText("Categoria Anima√ß√£o.");
+		JButton btnCatAnimacaoSerie = new JButton("AnimaÁ„o");
+		btnCatAnimacaoSerie.setToolTipText("Categoria AnimaÁ„o.");
 		btnCatAnimacaoSerie.setPreferredSize(new Dimension(127, 135));
 		// btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
 		btnCatAnimacaoSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -719,14 +719,14 @@ public class HomePage {
 		panelCategoriasSerie.add(btnCatAnimeSerie);
 
 		JButton btnCatAventuraSerie = new JButton("Aventura");
-		btnCatAventuraSerie.setToolTipText("Categoria A–∑–≥o.");
+		btnCatAventuraSerie.setToolTipText("Categoria .");
 		btnCatAventuraSerie.setPreferredSize(new Dimension(127, 135));
 		// btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
 		btnCatAventuraSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnCatAventuraSerie.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasSerie.add(btnCatAventuraSerie);
 
-		JButton btnCatClassicoSerie = new JButton("Cl√°ssico");
+		JButton btnCatClassicoSerie = new JButton("Cl·ssico");
 		btnCatClassicoSerie.setToolTipText("Categoria Classico.");
 		btnCatClassicoSerie.setPreferredSize(new Dimension(127, 135));
 		// btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
@@ -734,16 +734,16 @@ public class HomePage {
 		btnCatClassicoSerie.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasSerie.add(btnCatClassicoSerie);
 
-		JButton btnCatComediaSerie = new JButton("Com√©dia");
-		btnCatComediaSerie.setToolTipText("Categoria Com√©dia.");
+		JButton btnCatComediaSerie = new JButton("ComÈdia");
+		btnCatComediaSerie.setToolTipText("Categoria ComÈdia.");
 		btnCatComediaSerie.setPreferredSize(new Dimension(127, 135));
 		// btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
 		btnCatComediaSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnCatComediaSerie.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasSerie.add(btnCatComediaSerie);
 
-		JButton btnCatComediaRomanticaSerie = new JButton("<html><CENTER>Com√©dia</br> Romantica</CENTER></html>");
-		btnCatComediaRomanticaSerie.setToolTipText("Categoria Com√©dia Romantica.");
+		JButton btnCatComediaRomanticaSerie = new JButton("<html><CENTER>ComÈdia</br> Rom‚ntica</CENTER></html>");
+		btnCatComediaRomanticaSerie.setToolTipText("Categoria ComÈdia Rom‚ntica.");
 		btnCatComediaRomanticaSerie.setPreferredSize(new Dimension(127, 135));
 		// btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
 		btnCatComediaRomanticaSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -758,8 +758,8 @@ public class HomePage {
 		btnCatCrimeSerie.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasSerie.add(btnCatCrimeSerie);
 
-		JButton btnCatDocumentarioSerie = new JButton("<html><p>Document√°<br>rio</html>");
-		btnCatDocumentarioSerie.setToolTipText("Categoria Document–±rio.");
+		JButton btnCatDocumentarioSerie = new JButton("<html><p>Document·<br>rio</html>");
+		btnCatDocumentarioSerie.setToolTipText("Categoria Document·rio.");
 		btnCatDocumentarioSerie.setPreferredSize(new Dimension(127, 135));
 		// btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
 		btnCatDocumentarioSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -774,7 +774,7 @@ public class HomePage {
 		btnCatDramaSerie.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasSerie.add(btnCatDramaSerie);
 
-		JButton btnCatFicaoCientSerie = new JButton("<html><center>Fic√ß√£o</br> Cientifica</center></html>");
+		JButton btnCatFicaoCientSerie = new JButton("<html><center>FicÁ„o</br> CientÌfica</center></html>");
 		btnCatFicaoCientSerie.setToolTipText("Categoria Fic–∑–≥o Cient–Ωfica.");
 		btnCatFicaoCientSerie.setPreferredSize(new Dimension(127, 135));
 		// btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
@@ -790,7 +790,7 @@ public class HomePage {
 		btnCatGuerraSerie.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasSerie.add(btnCatGuerraSerie);
 
-		JButton btnCatMedicoSerie = new JButton("Medico");
+		JButton btnCatMedicoSerie = new JButton("MÈdico");
 		btnCatMedicoSerie.setToolTipText("Categoria Thriller.");
 		btnCatMedicoSerie.setPreferredSize(new Dimension(127, 135));
 		// btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
@@ -932,6 +932,7 @@ public class HomePage {
 
 		/**
 		 * TODO
+		 * Categoria Musicais
 		 */
 		// jpanel categorias musicais
 		JPanel panelCategoriasMusica = new JPanel();
@@ -1107,7 +1108,7 @@ public class HomePage {
 		 * BUTTONS TODO
 		 */
 
-		// A–∑–≥o que ser–± realizada ao apertar o botao de VIDEOS do jpanelTopo
+		//  aÁ„o que serie realizada ao apertar o botao de VIDEOS do jpanelTopo
 
 		btnVoltarMusica.addActionListener(new ActionListener() {
 
@@ -1181,7 +1182,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o ao clicar no button lateral Filmes
+		// aÁ„o ao clicar no button lateral Filmes
 		btnFilmes.addActionListener(new ActionListener() {
 
 			@Override
@@ -1223,7 +1224,7 @@ public class HomePage {
 				timer.clse();
 			}
 		});
-		// A–∑–≥o do bot–≥o voltar
+		// aÁ„o do bot„o voltar
 		btnVoltarVideo.addActionListener(new ActionListener() {
 
 			@Override
@@ -1270,12 +1271,12 @@ public class HomePage {
 		 */
 
 		//
-		// A–∑–≥o do bot–≥o filmes categoria A–∑–≥o
+		// aÁ„o do bot„o filmes categoria aÁ„o
 		btnCatAcao.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String genero = "AÁ„o";
+				String genero = "aÁ„o";
 				currentGenre = genero;
 				FRarquivos retorno = new FRarquivos();
 				Boolean ler = false;
@@ -1298,7 +1299,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Anima–∑–≥o
+		// aÁ„o do bot„o filmes categoria AnimaÁ„o
 		btnCatAnimacao.addActionListener(new ActionListener() {
 
 			@Override
@@ -1328,7 +1329,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Aventura
+		// aÁ„o do bot„o filmes categoria Aventura
 		btnCatAventura.addActionListener(new ActionListener() {
 
 			@Override
@@ -1355,7 +1356,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Classico
+		// aÁ„o do bot„o filmes categoria Classico
 		btnCatClassico.addActionListener(new ActionListener() {
 
 			@Override
@@ -1382,7 +1383,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Comedia
+		// aÁ„o do bot„o filmes categoria Comedia
 		btnCatComedia.addActionListener(new ActionListener() {
 
 			@Override
@@ -1409,7 +1410,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria ComediaRomantica
+		// aÁ„o do bot„o filmes categoria ComediaRomantica
 		btnCatComediaRomantica.addActionListener(new ActionListener() {
 
 			@Override
@@ -1436,7 +1437,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Crime
+		// aÁ„o do bot„o filmes categoria Crime
 		btnCatCrime.addActionListener(new ActionListener() {
 
 			@Override
@@ -1462,7 +1463,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Documentario
+		// aÁ„o do bot„o filmes categoria Documentario
 		btnCatDocumentario.addActionListener(new ActionListener() {
 
 			@Override
@@ -1489,7 +1490,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Drama
+		// aÁ„o do bot„o filmes categoria Drama
 		btnCatDrama.addActionListener(new ActionListener() {
 
 			@Override
@@ -1516,7 +1517,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Faroeste
+		// aÁ„o do bot„o filmes categoria Faroeste
 		btnCatFaroeste.addActionListener(new ActionListener() {
 
 			@Override
@@ -1543,7 +1544,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria FiccaoCientifica
+		// aÁ„o do bot„o filmes categoria FiccaoCientifica
 		btnCatFicaoCient.addActionListener(new ActionListener() {
 
 			@Override
@@ -1571,7 +1572,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Guerra
+		// aÁ„o do bot„o filmes categoria Guerra
 		btnCatGuerra.addActionListener(new ActionListener() {
 
 			@Override
@@ -1599,7 +1600,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Musical
+		// aÁ„o do bot„o filmes categoria Musical
 		btnCatMusical.addActionListener(new ActionListener() {
 
 			@Override
@@ -1626,7 +1627,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Policial
+		// aÁ„o do bot„o filmes categoria Policial
 		btnCatPolicial.addActionListener(new ActionListener() {
 
 			@Override
@@ -1654,7 +1655,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Romance
+		// aÁ„o do bot„o filmes categoria Romance
 		btnCatRomance.addActionListener(new ActionListener() {
 
 			@Override
@@ -1682,7 +1683,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Suspense
+		// aÁ„o do bot„o filmes categoria Suspense
 		btnCatSuspense.addActionListener(new ActionListener() {
 
 			@Override
@@ -1710,7 +1711,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Terror
+		// aÁ„o do bot„o filmes categoria Terror
 		btnCatTerror.addActionListener(new ActionListener() {
 
 			@Override
@@ -1737,7 +1738,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Thriller
+		// aÁ„o do bot„o filmes categoria Thriller
 		btnCatThriller.addActionListener(new ActionListener() {
 
 			@Override
@@ -1767,12 +1768,12 @@ public class HomePage {
 		 * TODO Acao de botoes da categoria series
 		 */
 
-		// A–∑–≥o do bot–≥o filmes categoria A–∑–≥o
+		// aÁ„o do bot„o filmes categoria 
 		btnCatAcaoSerie.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String genero = "ac–≥o";
+				String genero = "aÁ„o";
 				FRarquivos retorno = new FRarquivos();
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistenteSerie(userName, genero);
@@ -1790,12 +1791,12 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Anima–∑–≥o
+		// aÁ„o do bot„o filmes categoria Anim
 		btnCatAnimacaoSerie.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String genero = "Anima–∑–≥o";
+				String genero = "AnimaÁ„o";
 				FRarquivos retorno = new FRarquivos();
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistenteSerie(userName, genero);
@@ -1813,7 +1814,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Aventura
+		// aÁ„o do bot„o filmes categoria Aventura
 		btnCatAventuraSerie.addActionListener(new ActionListener() {
 
 			@Override
@@ -1837,7 +1838,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Classico
+		// aÁ„o do bot„o filmes categoria Classico
 		btnCatClassicoSerie.addActionListener(new ActionListener() {
 
 			@Override
@@ -1860,7 +1861,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Comedia
+		// aÁ„o do bot„o filmes categoria Comedia
 		btnCatComediaSerie.addActionListener(new ActionListener() {
 
 			@Override
@@ -1883,7 +1884,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria ComediaRomantica
+		// aÁ„o do bot„o filmes categoria ComediaRomantica
 		btnCatComediaRomanticaSerie.addActionListener(new ActionListener() {
 
 			@Override
@@ -1906,7 +1907,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Crime
+		// aÁ„o do bot„o filmes categoria Crime
 		btnCatCrimeSerie.addActionListener(new ActionListener() {
 
 			@Override
@@ -1929,7 +1930,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Documentario
+		// aÁ„o do bot„o filmes categoria Documentario
 		btnCatDocumentarioSerie.addActionListener(new ActionListener() {
 
 			@Override
@@ -1952,7 +1953,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Drama
+		// aÁ„o do bot„o filmes categoria Drama
 		btnCatDramaSerie.addActionListener(new ActionListener() {
 
 			@Override
@@ -1975,7 +1976,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Anime
+		//  aÁ„o do bot„o filmes categoria Anime
 		btnCatAnimeSerie.addActionListener(new ActionListener() {
 
 			@Override
@@ -1998,7 +1999,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria FiccaoCientifica
+		//aÁ„o  do bot„o filmes categoria FiccaoCientifica
 		btnCatFicaoCientSerie.addActionListener(new ActionListener() {
 
 			@Override
@@ -2022,7 +2023,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Guerra
+		// aÁ„o do bot„o filmes categoria Guerra
 		btnCatGuerraSerie.addActionListener(new ActionListener() {
 
 			@Override
@@ -2046,7 +2047,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Musical
+		// aÁ„o do bot„o filmes categoria Musical
 		btnCatMusicalSerie.addActionListener(new ActionListener() {
 
 			@Override
@@ -2069,7 +2070,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Policial
+		// aÁ„o do bot„o filmes categoria Policial
 		btnCatPolicialSerie.addActionListener(new ActionListener() {
 
 			@Override
@@ -2093,7 +2094,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Romance
+		// aÁ„o do bot„o filmes categoria Romance
 		btnCatRomanceSerie.addActionListener(new ActionListener() {
 
 			@Override
@@ -2117,7 +2118,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Suspense
+		// aÁ„o do bot„o filmes categoria Suspense
 		btnCatSuspenseSerie.addActionListener(new ActionListener() {
 
 			@Override
@@ -2141,7 +2142,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Terror
+		//  aÁ„o do bot„o filmes categoria Terror
 		btnCatTerrorSerie.addActionListener(new ActionListener() {
 
 			@Override
@@ -2164,7 +2165,7 @@ public class HomePage {
 			}
 		});
 
-		// A–∑–≥o do bot–≥o filmes categoria Thriller
+		// aÁ„o do bot„o filmes categoria Thriller
 		btnCatMedicoSerie.addActionListener(new ActionListener() {
 
 			@Override

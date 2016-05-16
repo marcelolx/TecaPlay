@@ -8,6 +8,7 @@ import java.util.List;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  * @since 08/05/2016
@@ -103,7 +104,7 @@ public class ListFiles {
 				VlcjPlayer player = new VlcjPlayer();
 				player.play(caminho);
 				try {
-					Thread.currentThread().join();
+				Thread.currentThread().join();
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -131,6 +132,7 @@ public class ListFiles {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				JTable table = (JTable)e.getSource();
 				int modelRow = Integer.valueOf(e.getActionCommand());
 				String caminho = null;
 				for (int i = 0; i < lines.size(); i++) {
@@ -139,6 +141,7 @@ public class ListFiles {
 						caminho = data[4];
 					}
 				}
+				((DefaultTableModel)table.getModel()).removeRow(modelRow);
 			}
 			//saushau
 		};

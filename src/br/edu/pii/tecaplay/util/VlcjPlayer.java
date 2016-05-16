@@ -59,13 +59,7 @@ public class VlcjPlayer {
 	private JFrame buildFrame(final Canvas videoSurface){
 		final JFrame f = new JFrame("TecaPlay Player");
 		f.setDefaultCloseOperation(f.DISPOSE_ON_CLOSE);
-		f.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e){
-				Thread.currentThread().interrupt();
-				f.setVisible(false);
-				f.dispose();
-			}
-		});
+		
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		//f.setPreferredSize(new Dimension(screen.width, screen.height));
 		f.setSize(screen.width, screen.height-48);
@@ -75,6 +69,14 @@ public class VlcjPlayer {
 		f.setIconImage(Toolkit.getDefaultToolkit().getImage("resources\\images\\newLogo.png"));
 		f.add(videoSurface, BorderLayout.CENTER);
 		f.setVisible(true);
+		f.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e){
+				Thread.currentThread().interrupt();
+				System.out.println("fewfwefwefwefwe");
+				f.setVisible(false);
+				f.dispose();
+			}
+		});
 		return f;
 	}
 	

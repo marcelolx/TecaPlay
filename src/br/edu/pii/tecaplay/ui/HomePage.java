@@ -27,11 +27,17 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
+import com.sun.jna.Native;
+import com.sun.jna.NativeLibrary;
+
 import br.edu.pii.tecaplay.util.FRarquivos;
 import br.edu.pii.tecaplay.util.FileUtil;
 import br.edu.pii.tecaplay.util.ButtonColumn;
 import br.edu.pii.tecaplay.util.ListFiles;
 import br.edu.pii.tecaplay.util.TimerToLabel;
+import uk.co.caprica.vlcj.binding.LibVlc;
+import uk.co.caprica.vlcj.runtime.RuntimeUtil;
+import uk.co.caprica.vlcj.runtime.x.LibXUtil;
 
 public class HomePage {
 
@@ -40,7 +46,8 @@ public class HomePage {
 	private ListFiles listFiles = new ListFiles();
 	private JScrollPane tableContainer = new JScrollPane(table);
 	private String currentGenre = null;
-	private String userName ;
+	private String userName;
+
 	/**
 	* 
 	*/
@@ -55,7 +62,6 @@ public class HomePage {
 				FileUtil.sair();
 			}
 		});
-
 		home.setVisible(true);// Deixar visivel
 		home.setBackground(new Color(25, 25, 25));// cor de Background
 		home.setTitle("Home - TecaPlay"); // titulo na barra do windows
@@ -281,7 +287,6 @@ public class HomePage {
 		panelLateralMusica.add(btnVoltarMusica);
 		btnVoltarMusica.setBackground(Color.LIGHT_GRAY);
 		btnVoltarMusica.setIcon(new ImageIcon("resources\\images\\imgVoltar.png"));
-		
 
 		// jButton Adicionar
 		JButton btnAdicionarMusica = new JButton("Adicionar");
@@ -933,20 +938,22 @@ public class HomePage {
 		panelCategoriasMusica.setLayout(new FlowLayout(FlowLayout.CENTER));
 		panelCategoriasMusica.setPreferredSize(new Dimension(500, 300));
 		panelCategoriasMusica.setBackground(new Color(120, 120, 120));
-		
-		//Jbutoons do Estilos musicais
+
+		// Jbutoons do Estilos musicais
 		JButton btnMusicAntigas = new JButton("Antigas");
 		btnMusicAntigas.setToolTipText("Categoria Antigas.");
 		btnMusicAntigas.setPreferredSize(new Dimension(127, 135));
-		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		// btnMusicFunk.setIcon(new
+		// ImageIcon("resources\\images\\acaoIcon.jpg"));
 		btnMusicAntigas.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnMusicAntigas.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasMusica.add(btnMusicAntigas);
-		
+
 		JButton btnMusicAxe = new JButton("Axé");
 		btnMusicAxe.setToolTipText("Categoria Axé.");
 		btnMusicAxe.setPreferredSize(new Dimension(127, 135));
-		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		// btnMusicFunk.setIcon(new
+		// ImageIcon("resources\\images\\acaoIcon.jpg"));
 		btnMusicAxe.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnMusicAxe.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasMusica.add(btnMusicAxe);
@@ -954,55 +961,62 @@ public class HomePage {
 		JButton btnMusicBlack = new JButton("Black");
 		btnMusicBlack.setToolTipText("Categoria Black.");
 		btnMusicBlack.setPreferredSize(new Dimension(127, 135));
-		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		// btnMusicFunk.setIcon(new
+		// ImageIcon("resources\\images\\acaoIcon.jpg"));
 		btnMusicBlack.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnMusicBlack.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasMusica.add(btnMusicBlack);
-		
+
 		JButton btnMusicBrega = new JButton("Brega");
 		btnMusicBrega.setToolTipText("Categoria Brega.");
 		btnMusicBrega.setPreferredSize(new Dimension(127, 135));
-		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		// btnMusicFunk.setIcon(new
+		// ImageIcon("resources\\images\\acaoIcon.jpg"));
 		btnMusicBrega.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnMusicBrega.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasMusica.add(btnMusicBrega);
-		
+
 		JButton btnMusicDance = new JButton("Dance");
 		btnMusicDance.setToolTipText("Categoria Dance.");
 		btnMusicDance.setPreferredSize(new Dimension(127, 135));
-		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		// btnMusicFunk.setIcon(new
+		// ImageIcon("resources\\images\\acaoIcon.jpg"));
 		btnMusicDance.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnMusicDance.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasMusica.add(btnMusicDance);
-		
+
 		JButton btnMusicEletronica = new JButton("Eletrônica");
 		btnMusicEletronica.setToolTipText("Categoria Com\u00E9dia Eletrônica.");
 		btnMusicEletronica.setPreferredSize(new Dimension(127, 135));
-		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		// btnMusicFunk.setIcon(new
+		// ImageIcon("resources\\images\\acaoIcon.jpg"));
 		btnMusicEletronica.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnMusicEletronica.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasMusica.add(btnMusicEletronica);
-		
+
 		JButton btnMusicFunk = new JButton("Funk");
 		btnMusicFunk.setToolTipText("Categoria Funk.");
 		btnMusicFunk.setPreferredSize(new Dimension(127, 135));
-		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		// btnMusicFunk.setIcon(new
+		// ImageIcon("resources\\images\\acaoIcon.jpg"));
 		btnMusicFunk.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnMusicFunk.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasMusica.add(btnMusicFunk);
-		
+
 		JButton btnMusicForro = new JButton("Forró");
 		btnMusicForro.setToolTipText("Categoria Forró.");
 		btnMusicForro.setPreferredSize(new Dimension(127, 135));
-		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		// btnMusicFunk.setIcon(new
+		// ImageIcon("resources\\images\\acaoIcon.jpg"));
 		btnMusicForro.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnMusicForro.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasMusica.add(btnMusicForro);
-		
+
 		JButton btnMusicFolcloricas = new JButton("Folclóricas");
 		btnMusicFolcloricas.setToolTipText("Categoria Folclóricas.");
 		btnMusicFolcloricas.setPreferredSize(new Dimension(127, 135));
-		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		// btnMusicFunk.setIcon(new
+		// ImageIcon("resources\\images\\acaoIcon.jpg"));
 		btnMusicFolcloricas.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnMusicFolcloricas.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasMusica.add(btnMusicFolcloricas);
@@ -1010,15 +1024,17 @@ public class HomePage {
 		JButton btnMusicGospel = new JButton("Gospel");
 		btnMusicGospel.setToolTipText("Categoria Gospel.");
 		btnMusicGospel.setPreferredSize(new Dimension(127, 135));
-		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		// btnMusicFunk.setIcon(new
+		// ImageIcon("resources\\images\\acaoIcon.jpg"));
 		btnMusicGospel.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnMusicGospel.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasMusica.add(btnMusicGospel);
-		
+
 		JButton btnMusicInternacional = new JButton("<html><center>Internacio-</br> nais</center></html>");
 		btnMusicInternacional.setToolTipText("Categoria Internacionais.");
 		btnMusicInternacional.setPreferredSize(new Dimension(127, 135));
-		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		// btnMusicFunk.setIcon(new
+		// ImageIcon("resources\\images\\acaoIcon.jpg"));
 		btnMusicInternacional.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnMusicInternacional.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasMusica.add(btnMusicInternacional);
@@ -1026,15 +1042,17 @@ public class HomePage {
 		JButton btnMusicModaViola = new JButton("<html><center>Moda de</br> Viola</center></html>");
 		btnMusicModaViola.setToolTipText("Categoria Moda de Viola.");
 		btnMusicModaViola.setPreferredSize(new Dimension(127, 135));
-		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		// btnMusicFunk.setIcon(new
+		// ImageIcon("resources\\images\\acaoIcon.jpg"));
 		btnMusicModaViola.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnMusicModaViola.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasMusica.add(btnMusicModaViola);
-		
+
 		JButton btnMusicNovas = new JButton("Novas");
 		btnMusicNovas.setToolTipText("Categoria Musicas Novas.");
 		btnMusicNovas.setPreferredSize(new Dimension(127, 135));
-		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		// btnMusicFunk.setIcon(new
+		// ImageIcon("resources\\images\\acaoIcon.jpg"));
 		btnMusicNovas.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnMusicNovas.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasMusica.add(btnMusicNovas);
@@ -1042,23 +1060,26 @@ public class HomePage {
 		JButton btnMusicPagode = new JButton("Pagode");
 		btnMusicPagode.setToolTipText("Categoria Pagode.");
 		btnMusicPagode.setPreferredSize(new Dimension(127, 135));
-		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		// btnMusicFunk.setIcon(new
+		// ImageIcon("resources\\images\\acaoIcon.jpg"));
 		btnMusicPagode.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnMusicPagode.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasMusica.add(btnMusicPagode);
-		
+
 		JButton btnMusicRomantica = new JButton("Romântica");
 		btnMusicRomantica.setToolTipText("Categoria Romântica.");
 		btnMusicRomantica.setPreferredSize(new Dimension(127, 135));
-		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		// btnMusicFunk.setIcon(new
+		// ImageIcon("resources\\images\\acaoIcon.jpg"));
 		btnMusicRomantica.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnMusicRomantica.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasMusica.add(btnMusicRomantica);
-		
+
 		JButton btnMusicReagge = new JButton("Reagge");
 		btnMusicReagge.setToolTipText("Categoria Reagge.");
 		btnMusicReagge.setPreferredSize(new Dimension(127, 135));
-		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		// btnMusicFunk.setIcon(new
+		// ImageIcon("resources\\images\\acaoIcon.jpg"));
 		btnMusicReagge.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnMusicReagge.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasMusica.add(btnMusicReagge);
@@ -1066,20 +1087,20 @@ public class HomePage {
 		JButton btnMusicSamba = new JButton("Samba");
 		btnMusicSamba.setToolTipText("Categoria Samba.");
 		btnMusicSamba.setPreferredSize(new Dimension(127, 135));
-		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		// btnMusicFunk.setIcon(new
+		// ImageIcon("resources\\images\\acaoIcon.jpg"));
 		btnMusicSamba.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnMusicSamba.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasMusica.add(btnMusicSamba);
 
-
 		JButton btnMusicSertaneja = new JButton("Sertaneja");
 		btnMusicSertaneja.setToolTipText("Categoria Sertaneja.");
 		btnMusicSertaneja.setPreferredSize(new Dimension(127, 135));
-		// btnMusicFunk.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
+		// btnMusicFunk.setIcon(new
+		// ImageIcon("resources\\images\\acaoIcon.jpg"));
 		btnMusicSertaneja.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnMusicSertaneja.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasMusica.add(btnMusicSertaneja);
-		
 
 		/*
 		 * AÐ—Ð“O DE BUTTONS AÐ—Ð“O DE BUTTONS AÐ—Ð“O DE BUTTONS AÐ—Ð“O DE
@@ -1087,7 +1108,7 @@ public class HomePage {
 		 */
 
 		// AÐ·Ð³o que serÐ± realizada ao apertar o botao de VIDEOS do jpanelTopo
-		
+
 		btnVoltarMusica.addActionListener(new ActionListener() {
 
 			@Override
@@ -1128,8 +1149,7 @@ public class HomePage {
 				}
 			}
 		});
-		
-		
+
 		btnEstilosMusica.addActionListener(new ActionListener() {
 
 			@Override
@@ -1143,9 +1163,9 @@ public class HomePage {
 				home.getContentPane().remove(labelFundo);
 				home.getContentPane().add(panelCategoriasMusica, BorderLayout.CENTER);
 				panelTopo.setVisible(false); // visibilidade do painel falsa
-				home.getContentPane().remove(panelTopo); //remove o painel
-				panelCategoriasMusica.setVisible(true); //ativa o panel lateral
-				panelCategoriasMusica.revalidate();//revalida o layout
+				home.getContentPane().remove(panelTopo); // remove o painel
+				panelCategoriasMusica.setVisible(true); // ativa o panel lateral
+				panelCategoriasMusica.revalidate();// revalida o layout
 			}
 		});
 

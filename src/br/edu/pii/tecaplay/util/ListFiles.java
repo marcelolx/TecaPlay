@@ -1,11 +1,8 @@
 package br.edu.pii.tecaplay.util;
 
 import java.awt.Color;
-import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import javax.swing.AbstractAction;
@@ -88,6 +85,11 @@ public class ListFiles {
 
 		Action open = new AbstractAction() {
 			
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int modelRow = Integer.valueOf(e.getActionCommand());
@@ -98,15 +100,35 @@ public class ListFiles {
 						caminho = data[4];
 					}
 				}
+				VlcjPlayer player = new VlcjPlayer();
+				player.play(caminho);
+				try {
+					Thread.currentThread().join();
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				/*
+				 * Método que abre arquivos de vídeo/musica com player default do windows
 				try {
 					Desktop.getDesktop().open( new File(caminho) );
+					
+					System.out.println(" Version: {}" + LibVlc.INSTANCE.libvlc_get_version());
+					System.out.println(" Compiler: {}" + LibVlc.INSTANCE.libvlc_get_compiler());
+					System.out.println(" ChangeSet: {}" + LibVlc.INSTANCE.libvlc_get_changeset());
 				} catch (IOException e1) {
 				}
+				*/
 			}
 		};
 		
 	Action remove = new AbstractAction() {
 			
+			/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int modelRow = Integer.valueOf(e.getActionCommand());

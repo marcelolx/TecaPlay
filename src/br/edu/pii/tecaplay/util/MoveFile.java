@@ -118,7 +118,7 @@ public class MoveFile {
 		try{
 			FileWriter buffer = null;
 			buffer = new FileWriter(criarTxt, true);
-			String text = nome+"#"+genero+"#"+pais+"#"+ano+"#"+file+"#Assistir";
+			String text = nome+"#"+genero+"#"+pais+"#"+ano+"#"+file;
 			buffer.write(text+"\r\n");
 			buffer.close();
 		}catch(IOException e21){
@@ -144,7 +144,7 @@ public class MoveFile {
 		try {
 			FileWriter buffer = null;  
 			buffer = new FileWriter(criarTxt, true); 
-			String texto = temporada+"#"+episodio+"#"+nomeEp+"#"+duracao+"#"+file+"#Assistir";
+			String texto = temporada+"#"+episodio+"#"+nomeEp+"#"+duracao+"#"+file;
 			buffer.write(texto+"\r\n");  
 			buffer.close();
 		} catch (IOException e) {

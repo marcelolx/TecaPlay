@@ -2,10 +2,11 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="resources"/>
+	<classpathentry including="jna-4.2.2.jar|jna-platform-4.2.2.jar|slf4j-api-1.7.5.jar|vlcj-3.10.1.jar" kind="src" path="APIs"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Marcelo/Documents/tecaplay/jna-4.2.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Marcelo/Documents/tecaplay/jna-platform-4.2.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Marcelo/Documents/tecaplay/vlcj-3.10.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Marcelo/Documents/tecaplay/slf4j-api-1.7.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="APIs/jna-4.2.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="APIs/jna-platform-4.2.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="APIs/slf4j-api-1.7.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="APIs/vlcj-3.10.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

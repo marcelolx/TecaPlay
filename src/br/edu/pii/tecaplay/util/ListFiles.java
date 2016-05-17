@@ -101,14 +101,14 @@ public class ListFiles {
 						caminho = data[4];
 					}
 				}
-				VlcjPlayer player = new VlcjPlayer();
-				player.play(caminho);
-				try {
+				Tutorial player = new Tutorial(caminho);
+				player.Teste(caminho);
+				/**try {
 				Thread.currentThread().join();
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
-				}
+				}*/
 				/*
 				 * Método que abre arquivos de vídeo/musica com player default do windows
 				try {

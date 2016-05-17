@@ -178,9 +178,9 @@ public class ColumnButtonRemove extends AbstractCellEditor
 		if(op == JOptionPane.YES_OPTION){
 			RemoveFile removeFile = new RemoveFile();
 			removeFile.Remove(usrName, table.getSelectedRow(), genero, totalLines);
+			ActionEvent event = new ActionEvent(table, ActionEvent.ACTION_PERFORMED, "" + row);
+			action.actionPerformed(event);
 		}
-		ActionEvent event = new ActionEvent(table, ActionEvent.ACTION_PERFORMED, "" + row);
-		action.actionPerformed(event);
 	}
 
 	//

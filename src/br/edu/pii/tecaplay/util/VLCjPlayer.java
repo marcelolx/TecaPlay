@@ -23,7 +23,7 @@ import uk.co.caprica.vlcj.discovery.NativeDiscovery;
 import uk.co.caprica.vlcj.runtime.RuntimeUtil;
 import uk.co.caprica.vlcj.runtime.x.LibXUtil;
 
-public class Tutorial {
+public class VLCjPlayer{
 
     private final JFrame frame;
 
@@ -41,21 +41,21 @@ public class Tutorial {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Tutorial(caminho);
+                new VLCjPlayer(caminho);
             }
         });
     }
 
-    public Tutorial(String caminho) {
+    public VLCjPlayer(String caminho) {
     	registerLibrary();
         frame = new JFrame("My First Media Player");
         frame.setBounds(100, 100, 600, 400);
-        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 mediaPlayerComponent.release();
-                System.exit(0);
+                frame.dispose();
             }
         });
 

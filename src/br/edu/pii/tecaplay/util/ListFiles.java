@@ -101,8 +101,8 @@ public class ListFiles {
 						caminho = data[4];
 					}
 				}
-				Tutorial player = new Tutorial(caminho);
-				player.Teste(caminho);
+				VLCjPlayer player = new VLCjPlayer(caminho);
+
 				/**try {
 				Thread.currentThread().join();
 				} catch (InterruptedException e1) {

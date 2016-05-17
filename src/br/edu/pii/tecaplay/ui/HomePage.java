@@ -12,7 +12,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
-import javax.lang.model.element.Element;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -27,17 +26,10 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
-import com.sun.jna.Native;
-import com.sun.jna.NativeLibrary;
-
 import br.edu.pii.tecaplay.util.FRarquivos;
 import br.edu.pii.tecaplay.util.FileUtil;
-import br.edu.pii.tecaplay.util.ButtonColumn;
 import br.edu.pii.tecaplay.util.ListFiles;
 import br.edu.pii.tecaplay.util.TimerToLabel;
-import uk.co.caprica.vlcj.binding.LibVlc;
-import uk.co.caprica.vlcj.runtime.RuntimeUtil;
-import uk.co.caprica.vlcj.runtime.x.LibXUtil;
 
 public class HomePage {
 
@@ -293,7 +285,7 @@ public class HomePage {
 		btnAdicionarMusica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				@SuppressWarnings("unused")
-				MusicAdd addFilme = new MusicAdd();
+				MusicAdd addFilme = new MusicAdd(usrName);
 			}
 		});
 		btnAdicionarMusica.setToolTipText("Op\u00E7\u00E3o de acesso a aba Adicionar!");
@@ -2170,7 +2162,7 @@ public class HomePage {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String genero = "m–πdico";
+				String genero = "MÈdico";
 				FRarquivos retorno = new FRarquivos();
 				Boolean ler = false;
 				ler = retorno.VerificaGeneroExistenteSerie(userName, genero);

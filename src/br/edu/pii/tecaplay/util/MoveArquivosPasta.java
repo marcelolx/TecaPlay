@@ -3,6 +3,7 @@ package br.edu.pii.tecaplay.util;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -33,17 +34,32 @@ public class MoveArquivosPasta {
 	 * 	usuario logado
 	 * 
 	 */
+	private String caminho = null;
+	
 	public boolean MovePasta(String origem, String temporada, String nome, String nomeEp, String genero, String duracao, String episodio, String usrName){
 		File raiz = new File(origem);
 		File[] files = raiz.listFiles();
 		boolean contemPastas = false;
+		// copia os sub-diretórios para uma classe File de vetor
 		for (int i = 0; i < files.length; i++) {
 			contemPastas = files[i].isDirectory();
 			if (contemPastas){
 				return false;
-			}
-				
+			}	
 		}
+		//testa as extenções dos arquivos se são compativeis com a categoria filmes
+		boolean formatArquivo = false;
+		for (int i = 0; i < files.length; i++) {
+			caminho = files[i].getAbsolutePath();
+			formatArquivo = ValidationFormat();
+			if (!formatArquivo){
+				return false;
+			}	
+		}
+		/**
+		 * caso passe pelas validações anteriores, executará as 
+		 * ações de mover os arquivos e gravar no txt
+		 */
 		int epis = Integer.parseInt(episodio);
 		for (int i = 0; i < files.length; i++) {
 			boolean retorno = AddSerie(files[i].getAbsolutePath(), temporada, nome, nomeEp, genero, duracao, epis++, usrName);
@@ -77,6 +93,7 @@ public class MoveArquivosPasta {
 	public boolean AddSerie(String origem, String temporada, String nome, String nomeEp, String genero, String duracao, int episodio, String usrName) {
 		nome = nome.toLowerCase();
 		origem = origem.toLowerCase();
+	
 		String nomeEptoFile = episodio + " - "+ nomeEp;
 		nomeEp = nomeEp.toLowerCase();
 		genero = genero.toLowerCase();
@@ -126,5 +143,27 @@ public class MoveArquivosPasta {
 		} catch (IOException e) {
 		}
 		
+	}
+	public boolean ValidationFormat() {
+		File destino = new File(caminho);
+		ArrayList<String> array = new ArrayList<String>();
+		array.add(".MKV");
+		array.add(".flv");
+		array.add(".avi");
+		array.add(".mov");
+		array.add(".wmv");
+		array.add(".rmvb");
+		array.add(".vob");
+		array.add(".cam");
+		array.add(".mp4");
+		array.add(".mp3");
+		String extensao = destino.getName().substring(destino.getName().lastIndexOf('.', destino.getName().length()));
+		for (int i = 0; i < array.size(); i++) {
+			if (extensao.equals(array.get(i))) {
+				return true;
+			}	
+		}
+	
+		return false;
 	}
 }

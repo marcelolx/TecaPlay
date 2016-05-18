@@ -65,11 +65,17 @@ public class ListFiles {
 	 *            Necessário para saber em qual gênero o usuário está para
 	 *            listar os filmes.
 	 */
-	public void updateTable(final JTable table, String usrName, String genero) {
+	public void updateTable(final JTable table, String usrName, String genero, String musica) {
+		String directorie;
+		if (!musica.equals("")){
+			directorie = "c:\\TecaPlay\\" + usrName + "\\Musicas\\" + genero +"\\"+genero+".txt";
+		}else{
+			directorie = "c:\\TecaPlay\\" + usrName + "\\Videos\\filme\\" + genero + ".txt";
+		}
 		final MyTableModel tableModel = (MyTableModel) table.getModel();
 		FileTextProvider fileTextProvider = new FileTextProvider();
 		final List<String> lines = FileTextProvider
-				.loadLines("c:\\TecaPlay\\" + usrName + "\\Videos\\filme\\" + genero + ".txt");
+				.loadLines(directorie);
 		final Object[][] dados = new Object[fileTextProvider.numOfLines()][7];
 
 		for (int i = 0; i < lines.size(); i++) {
@@ -167,7 +173,7 @@ public class ListFiles {
 	 *            Método chamado toda vez que o usuário voltar para um JPanel
 	 *            anterior, ele atualiza o JTable.
 	 */
-	public void reUpdateTable(final JTable table, String usrName, String genero) {
+	public void reUpdateTable(final JTable table, String usrName, String genero, String musica) {
 		// criando um objeto para nossos dados
 		final Object[][] dados = null;
 		// chamando o método MyTableModel para adicionar a tabela ao
@@ -175,7 +181,7 @@ public class ListFiles {
 		final MyTableModel myTableModel = new MyTableModel(dados);
 		table.setModel(myTableModel);
 		tableInfo(table);
-		updateTable(table, usrName, genero);
+		updateTable(table, usrName, genero, musica);
 	}
 	public JTable Tabela(JTable tablee) {
 		return tablee;

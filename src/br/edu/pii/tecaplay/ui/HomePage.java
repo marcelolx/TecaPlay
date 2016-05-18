@@ -39,6 +39,7 @@ public class HomePage {
 	private JScrollPane tableContainer = new JScrollPane(table);
 	private String currentGenre = null;
 	private String userName;
+	private String music  = "";
 
 	/**
 	* 
@@ -1095,6 +1096,100 @@ public class HomePage {
 		btnMusicSertaneja.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasMusica.add(btnMusicSertaneja);
 
+		/**
+		 * Panels para categoria Butons Estilos Musicais
+		 */
+		
+		JPanel musicaCatAntigas = new JPanel();
+		musicaCatAntigas.setLayout(new FlowLayout(FlowLayout.CENTER));
+		musicaCatAntigas.setPreferredSize(new Dimension(500, 300));
+		musicaCatAntigas.setBackground(new Color(120, 120, 120));
+		
+		JPanel musicaCatAxe = new JPanel();
+		musicaCatAxe.setLayout(new FlowLayout(FlowLayout.CENTER));
+		musicaCatAxe.setPreferredSize(new Dimension(500, 300));
+		musicaCatAxe.setBackground(new Color(120, 120, 120));
+		
+		JPanel musicaCatBlack = new JPanel();
+		musicaCatBlack.setLayout(new FlowLayout(FlowLayout.CENTER));
+		musicaCatBlack.setPreferredSize(new Dimension(500, 300));
+		musicaCatBlack.setBackground(new Color(120, 120, 120));
+		
+		JPanel musicaCatBrega = new JPanel();
+		musicaCatBrega.setLayout(new FlowLayout(FlowLayout.CENTER));
+		musicaCatBrega.setPreferredSize(new Dimension(500, 300));
+		musicaCatBrega.setBackground(new Color(120, 120, 120));
+		
+		JPanel musicaCatDance = new JPanel();
+		musicaCatDance.setLayout(new FlowLayout(FlowLayout.CENTER));
+		musicaCatDance.setPreferredSize(new Dimension(500, 300));
+		musicaCatDance.setBackground(new Color(120, 120, 120));
+		
+		JPanel musicaCatEletronica = new JPanel();
+		musicaCatEletronica.setLayout(new FlowLayout(FlowLayout.CENTER));
+		musicaCatEletronica.setPreferredSize(new Dimension(500, 300));
+		musicaCatEletronica.setBackground(new Color(120, 120, 120));
+		
+		JPanel musicaCatFunk = new JPanel();
+		musicaCatFunk.setLayout(new FlowLayout(FlowLayout.CENTER));
+		musicaCatFunk.setPreferredSize(new Dimension(500, 300));
+		musicaCatFunk.setBackground(new Color(120, 120, 120));
+		
+		JPanel musicaCatForro = new JPanel();
+		musicaCatForro.setLayout(new FlowLayout(FlowLayout.CENTER));
+		musicaCatForro.setPreferredSize(new Dimension(500, 300));
+		musicaCatForro.setBackground(new Color(120, 120, 120));
+		
+		JPanel musicaCatFolcloricas = new JPanel();
+		musicaCatFolcloricas.setLayout(new FlowLayout(FlowLayout.CENTER));
+		musicaCatFolcloricas.setPreferredSize(new Dimension(500, 300));
+		musicaCatFolcloricas.setBackground(new Color(120, 120, 120));
+		
+		JPanel musicaCatGospel = new JPanel();
+		musicaCatGospel.setLayout(new FlowLayout(FlowLayout.CENTER));
+		musicaCatGospel.setPreferredSize(new Dimension(500, 300));
+		musicaCatGospel.setBackground(new Color(120, 120, 120));
+		
+		JPanel musicaCatInternacionais = new JPanel();
+		musicaCatInternacionais.setLayout(new FlowLayout(FlowLayout.CENTER));
+		musicaCatInternacionais.setPreferredSize(new Dimension(500, 300));
+		musicaCatInternacionais.setBackground(new Color(120, 120, 120));
+		
+		JPanel musicaCatModaDeViola = new JPanel();
+		musicaCatModaDeViola.setLayout(new FlowLayout(FlowLayout.CENTER));
+		musicaCatModaDeViola.setPreferredSize(new Dimension(500, 300));
+		musicaCatModaDeViola.setBackground(new Color(120, 120, 120));
+		
+		JPanel musicaCatNovas = new JPanel();
+		musicaCatNovas.setLayout(new FlowLayout(FlowLayout.CENTER));
+		musicaCatNovas.setPreferredSize(new Dimension(500, 300));
+		musicaCatNovas.setBackground(new Color(120, 120, 120));
+		
+		JPanel musicaCatPagode = new JPanel();
+		musicaCatPagode.setLayout(new FlowLayout(FlowLayout.CENTER));
+		musicaCatPagode.setPreferredSize(new Dimension(500, 300));
+		musicaCatPagode.setBackground(new Color(120, 120, 120));
+		
+		JPanel musicaCatRomantica = new JPanel();
+		musicaCatRomantica.setLayout(new FlowLayout(FlowLayout.CENTER));
+		musicaCatRomantica.setPreferredSize(new Dimension(500, 300));
+		musicaCatRomantica.setBackground(new Color(120, 120, 120));
+		
+		JPanel musicaCatReagge = new JPanel();
+		musicaCatReagge.setLayout(new FlowLayout(FlowLayout.CENTER));
+		musicaCatReagge.setPreferredSize(new Dimension(500, 300));
+		musicaCatReagge.setBackground(new Color(120, 120, 120));
+		
+		JPanel musicaCatSamba = new JPanel();
+		musicaCatSamba.setLayout(new FlowLayout(FlowLayout.CENTER));
+		musicaCatSamba.setPreferredSize(new Dimension(500, 300));
+		musicaCatSamba.setBackground(new Color(120, 120, 120));
+		
+		JPanel musicaCatSertaneja = new JPanel();
+		musicaCatSertaneja.setLayout(new FlowLayout(FlowLayout.CENTER));
+		musicaCatSertaneja.setPreferredSize(new Dimension(500, 300));
+		musicaCatSertaneja.setBackground(new Color(120, 120, 120));
+		
 		/*
 		 * AÐ—Ð“O DE BUTTONS AÐ—Ð“O DE BUTTONS AÐ—Ð“O DE BUTTONS AÐ—Ð“O DE
 		 * BUTTONS TODO
@@ -1136,7 +1231,7 @@ public class HomePage {
 					voltarPaineis.remove(voltarPaineis.size() - 1);
 				}
 				try {
-					listFiles.reUpdateTable(table, userName, currentGenre);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
 				} catch (NullPointerException ne) {
 					ne.getStackTrace();
 				}
@@ -1251,7 +1346,7 @@ public class HomePage {
 					voltarPaineis.remove(voltarPaineis.size() - 1);
 				}
 				try {
-					listFiles.reUpdateTable(table, userName, currentGenre);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
 				} catch (NullPointerException ne) {
 					ne.getStackTrace();
 				}
@@ -1277,7 +1372,7 @@ public class HomePage {
 					voltarPaineis.add(filmesCatAcao);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					// adiciona jtable
-					listFiles.reUpdateTable(table, userName, currentGenre);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
 					tableContainer.setPreferredSize(new Dimension(790, 500));
 					filmesCatAcao.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
@@ -1306,7 +1401,7 @@ public class HomePage {
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 					// adiciona o JTable e chama os métodos para listar os
 					// filmes.
-					listFiles.reUpdateTable(table, userName, currentGenre);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
 					tableContainer.setPreferredSize(new Dimension(790, 500));
 					filmesCatAnimacao.add(tableContainer, BorderLayout.CENTER);
 					//
@@ -1334,7 +1429,7 @@ public class HomePage {
 				if (ler) {
 					voltarPaineis.add(filmesCatAventura);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
 					tableContainer.setPreferredSize(new Dimension(790, 500));
 					filmesCatAventura.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
@@ -1361,7 +1456,7 @@ public class HomePage {
 				if (ler) {
 					voltarPaineis.add(filmesCatClassico);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
 					tableContainer.setPreferredSize(new Dimension(790, 500));
 					filmesCatClassico.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
@@ -1388,7 +1483,7 @@ public class HomePage {
 				if (ler) {
 					voltarPaineis.add(filmesCatComedia);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
 					tableContainer.setPreferredSize(new Dimension(790, 500));
 					filmesCatComedia.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
@@ -1415,7 +1510,7 @@ public class HomePage {
 				if (ler) {
 					voltarPaineis.add(filmesCatComediaRomantico);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
 					tableContainer.setPreferredSize(new Dimension(790, 500));
 					filmesCatComediaRomantico.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
@@ -1442,7 +1537,7 @@ public class HomePage {
 				if (ler) {
 					voltarPaineis.add(filmesCatCrime);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
 					tableContainer.setPreferredSize(new Dimension(790, 500));
 					filmesCatCrime.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
@@ -1468,7 +1563,7 @@ public class HomePage {
 				if (ler) {
 					voltarPaineis.add(filmesCatDocumentario);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
 					tableContainer.setPreferredSize(new Dimension(790, 500));
 					filmesCatDocumentario.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
@@ -1495,7 +1590,7 @@ public class HomePage {
 				if (ler) {
 					voltarPaineis.add(filmesCatDrama);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
 					tableContainer.setPreferredSize(new Dimension(790, 500));
 					filmesCatDrama.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
@@ -1522,7 +1617,7 @@ public class HomePage {
 				if (ler) {
 					voltarPaineis.add(filmesCatFaroeste);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
 					tableContainer.setPreferredSize(new Dimension(790, 500));
 					filmesCatFaroeste.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
@@ -1549,7 +1644,7 @@ public class HomePage {
 				if (ler) {
 					voltarPaineis.add(filmesCatFiccaoCient);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
 					tableContainer.setPreferredSize(new Dimension(790, 500));
 					filmesCatFiccaoCient.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
@@ -1577,7 +1672,7 @@ public class HomePage {
 				if (ler) {
 					voltarPaineis.add(filmesCatGuerra);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
 					tableContainer.setPreferredSize(new Dimension(790, 500));
 					filmesCatGuerra.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
@@ -1605,7 +1700,7 @@ public class HomePage {
 				if (ler) {
 					voltarPaineis.add(filmesCatMusical);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
 					tableContainer.setPreferredSize(new Dimension(790, 500));
 					filmesCatMusical.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
@@ -1632,7 +1727,7 @@ public class HomePage {
 				if (ler) {
 					voltarPaineis.add(filmesCatPolicial);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
 					tableContainer.setPreferredSize(new Dimension(790, 500));
 					filmesCatPolicial.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
@@ -1660,7 +1755,7 @@ public class HomePage {
 				if (ler) {
 					voltarPaineis.add(filmesCatRomance);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
 					tableContainer.setPreferredSize(new Dimension(790, 500));
 					filmesCatRomance.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
@@ -1688,7 +1783,7 @@ public class HomePage {
 				if (ler) {
 					voltarPaineis.add(filmesCatSuspense);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
 					tableContainer.setPreferredSize(new Dimension(790, 500));
 					filmesCatSuspense.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
@@ -1716,7 +1811,7 @@ public class HomePage {
 				if (ler) {
 					voltarPaineis.add(filmesCatTerror);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
 					tableContainer.setPreferredSize(new Dimension(790, 500));
 					filmesCatTerror.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
@@ -1743,7 +1838,7 @@ public class HomePage {
 				if (ler) {
 					voltarPaineis.add(filmesCatThriller);
 					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
 					tableContainer.setPreferredSize(new Dimension(790, 500));
 					filmesCatThriller.add(tableContainer, BorderLayout.CENTER);
 					panelCategoriasFilmes.setVisible(false);
@@ -2173,6 +2268,478 @@ public class HomePage {
 					home.getContentPane().remove(panelCategoriasSerie);
 					serieCatMedico.setVisible(true);
 					serieCatMedico.revalidate();
+				} else {
+					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
+				}
+			}
+		});
+		
+		/**
+		 * Ação dos butons Estilos musicais
+		 */
+		
+		btnMusicAntigas.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String genero = "Antigas";
+				currentGenre = genero;
+				music  = "Musicas";
+				FRarquivos retorno = new FRarquivos();
+				Boolean ler = false;
+				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
+				if (ler) {
+					voltarPaineis.add(musicaCatAntigas);
+					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					musicaCatAntigas.add(tableContainer, BorderLayout.CENTER);
+					panelCategoriasMusica.setVisible(false);
+					home.getContentPane().remove(panelCategoriasMusica);
+					musicaCatAntigas.setVisible(true);
+					musicaCatAntigas.revalidate();
+				} else {
+					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
+				}
+			}
+		});
+		
+		btnMusicAxe.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String genero = "Axé";
+				currentGenre = genero;
+				music  = "Musicas";
+				FRarquivos retorno = new FRarquivos();
+				Boolean ler = false;
+				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
+				if (ler) {
+					voltarPaineis.add(musicaCatAxe);
+					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					musicaCatAxe.add(tableContainer, BorderLayout.CENTER);
+					panelCategoriasMusica.setVisible(false);
+					home.getContentPane().remove(panelCategoriasMusica);
+					musicaCatAxe.setVisible(true);
+					musicaCatAxe.revalidate();
+				} else {
+					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
+				}
+			}
+		});
+		
+		btnMusicBlack.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String genero = "Black";
+				currentGenre = genero;
+				music  = "Musicas";
+				FRarquivos retorno = new FRarquivos();
+				Boolean ler = false;
+				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
+				if (ler) {
+					voltarPaineis.add(musicaCatBlack);
+					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					musicaCatBlack.add(tableContainer, BorderLayout.CENTER);
+					panelCategoriasMusica.setVisible(false);
+					home.getContentPane().remove(panelCategoriasMusica);
+					musicaCatBlack.setVisible(true);
+					musicaCatBlack.revalidate();
+				} else {
+					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
+				}
+			}
+		});
+		
+		btnMusicBrega.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String genero = "Brega";
+				currentGenre = genero;
+				music  = "Musicas";
+				FRarquivos retorno = new FRarquivos();
+				Boolean ler = false;
+				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
+				if (ler) {
+					voltarPaineis.add(musicaCatBrega);
+					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					musicaCatBrega.add(tableContainer, BorderLayout.CENTER);
+					panelCategoriasMusica.setVisible(false);
+					home.getContentPane().remove(panelCategoriasMusica);
+					musicaCatBrega.setVisible(true);
+					musicaCatBrega.revalidate();
+				} else {
+					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
+				}
+			}
+		});
+		
+		btnMusicDance.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String genero = "Dance";
+				currentGenre = genero;
+				music  = "Musicas";
+				FRarquivos retorno = new FRarquivos();
+				Boolean ler = false;
+				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
+				if (ler) {
+					voltarPaineis.add(musicaCatDance);
+					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					musicaCatDance.add(tableContainer, BorderLayout.CENTER);
+					panelCategoriasMusica.setVisible(false);
+					home.getContentPane().remove(panelCategoriasMusica);
+					musicaCatDance.setVisible(true);
+					musicaCatDance.revalidate();
+				} else {
+					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
+				}
+			}
+		});
+		
+		btnMusicEletronica.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String genero = "Eletrônica";
+				currentGenre = genero;
+				music  = "Musicas";
+				FRarquivos retorno = new FRarquivos();
+				Boolean ler = false;
+				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
+				if (ler) {
+					voltarPaineis.add(musicaCatEletronica);
+					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					musicaCatEletronica.add(tableContainer, BorderLayout.CENTER);
+					panelCategoriasMusica.setVisible(false);
+					home.getContentPane().remove(panelCategoriasMusica);
+					musicaCatEletronica.setVisible(true);
+					musicaCatEletronica.revalidate();
+				} else {
+					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
+				}
+			}
+		});
+		
+		btnMusicFunk.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String genero = "Funk";
+				currentGenre = genero;
+				music  = "Musicas";
+				FRarquivos retorno = new FRarquivos();
+				Boolean ler = false;
+				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
+				if (ler) {
+					voltarPaineis.add(musicaCatFunk);
+					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					musicaCatFunk.add(tableContainer, BorderLayout.CENTER);
+					panelCategoriasMusica.setVisible(false);
+					home.getContentPane().remove(panelCategoriasMusica);
+					musicaCatFunk.setVisible(true);
+					musicaCatFunk.revalidate();
+				} else {
+					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
+				}
+			}
+		});
+		
+		btnMusicForro.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String genero = "Forró";
+				currentGenre = genero;
+				music  = "Musicas";
+				FRarquivos retorno = new FRarquivos();
+				Boolean ler = false;
+				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
+				if (ler) {
+					voltarPaineis.add(musicaCatForro);
+					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					musicaCatForro.add(tableContainer, BorderLayout.CENTER);
+					panelCategoriasMusica.setVisible(false);
+					home.getContentPane().remove(panelCategoriasMusica);
+					musicaCatForro.setVisible(true);
+					musicaCatForro.revalidate();
+				} else {
+					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
+				}
+			}
+		});
+		
+		btnMusicFolcloricas.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String genero = "Folclóricas";
+				currentGenre = genero;
+				music  = "Musicas";
+				FRarquivos retorno = new FRarquivos();
+				Boolean ler = false;
+				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
+				if (ler) {
+					voltarPaineis.add(musicaCatFolcloricas);
+					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					musicaCatFolcloricas.add(tableContainer, BorderLayout.CENTER);
+					panelCategoriasMusica.setVisible(false);
+					home.getContentPane().remove(panelCategoriasMusica);
+					musicaCatFolcloricas.setVisible(true);
+					musicaCatFolcloricas.revalidate();
+				} else {
+					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
+				}
+			}
+		});
+		
+		btnMusicGospel.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String genero = "Gospel";
+				currentGenre = genero;
+				music  = "Musicas";
+				FRarquivos retorno = new FRarquivos();
+				Boolean ler = false;
+				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
+				if (ler) {
+					voltarPaineis.add(musicaCatGospel);
+					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					musicaCatGospel.add(tableContainer, BorderLayout.CENTER);
+					panelCategoriasMusica.setVisible(false);
+					home.getContentPane().remove(panelCategoriasMusica);
+					musicaCatGospel.setVisible(true);
+					musicaCatGospel.revalidate();
+				} else {
+					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
+				}
+			}
+		});
+		
+		btnMusicInternacional.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String genero = "Internacionais";
+				currentGenre = genero;
+				music  = "Musicas";
+				FRarquivos retorno = new FRarquivos();
+				Boolean ler = false;
+				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
+				if (ler) {
+					voltarPaineis.add(musicaCatInternacionais);
+					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					musicaCatInternacionais.add(tableContainer, BorderLayout.CENTER);
+					panelCategoriasMusica.setVisible(false);
+					home.getContentPane().remove(panelCategoriasMusica);
+					musicaCatInternacionais.setVisible(true);
+					musicaCatInternacionais.revalidate();
+				} else {
+					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
+				}
+			}
+		});
+		
+		btnMusicModaViola.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String genero = "ModaDeViola";
+				currentGenre = genero;
+				music  = "Musicas";
+				FRarquivos retorno = new FRarquivos();
+				Boolean ler = false;
+				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
+				if (ler) {
+					voltarPaineis.add(musicaCatModaDeViola);
+					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					musicaCatModaDeViola.add(tableContainer, BorderLayout.CENTER);
+					panelCategoriasMusica.setVisible(false);
+					home.getContentPane().remove(panelCategoriasMusica);
+					musicaCatModaDeViola.setVisible(true);
+					musicaCatModaDeViola.revalidate();
+				} else {
+					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
+				}
+			}
+		});
+		
+		btnMusicNovas.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String genero = "Novas";
+				currentGenre = genero;
+				music  = "Musicas";
+				FRarquivos retorno = new FRarquivos();
+				Boolean ler = false;
+				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
+				if (ler) {
+					voltarPaineis.add(musicaCatNovas);
+					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					musicaCatNovas.add(tableContainer, BorderLayout.CENTER);
+					panelCategoriasMusica.setVisible(false);
+					home.getContentPane().remove(panelCategoriasMusica);
+					musicaCatNovas.setVisible(true);
+					musicaCatNovas.revalidate();
+				} else {
+					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
+				}
+			}
+		});
+		
+		btnMusicPagode.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String genero = "Pagode";
+				currentGenre = genero;
+				music  = "Musicas";
+				FRarquivos retorno = new FRarquivos();
+				Boolean ler = false;
+				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
+				if (ler) {
+					voltarPaineis.add(musicaCatPagode);
+					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					musicaCatPagode.add(tableContainer, BorderLayout.CENTER);
+					panelCategoriasMusica.setVisible(false);
+					home.getContentPane().remove(panelCategoriasMusica);
+					musicaCatPagode.setVisible(true);
+					musicaCatPagode.revalidate();
+				} else {
+					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
+				}
+			}
+		});
+		
+		btnMusicRomantica.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String genero = "Romântica";
+				currentGenre = genero;
+				music  = "Musicas";
+				FRarquivos retorno = new FRarquivos();
+				Boolean ler = false;
+				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
+				if (ler) {
+					voltarPaineis.add(musicaCatRomantica);
+					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					musicaCatRomantica.add(tableContainer, BorderLayout.CENTER);
+					panelCategoriasMusica.setVisible(false);
+					home.getContentPane().remove(panelCategoriasMusica);
+					musicaCatRomantica.setVisible(true);
+					musicaCatRomantica.revalidate();
+				} else {
+					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
+				}
+			}
+		});
+		
+		btnMusicReagge.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String genero = "Reagge";
+				currentGenre = genero;
+				music  = "Musicas";
+				FRarquivos retorno = new FRarquivos();
+				Boolean ler = false;
+				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
+				if (ler) {
+					voltarPaineis.add(musicaCatReagge);
+					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					musicaCatReagge.add(tableContainer, BorderLayout.CENTER);
+					panelCategoriasMusica.setVisible(false);
+					home.getContentPane().remove(panelCategoriasMusica);
+					musicaCatReagge.setVisible(true);
+					musicaCatReagge.revalidate();
+				} else {
+					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
+				}
+			}
+		});
+		
+		btnMusicSamba.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String genero = "Samba";
+				currentGenre = genero;
+				music  = "Musicas";
+				FRarquivos retorno = new FRarquivos();
+				Boolean ler = false;
+				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
+				if (ler) {
+					voltarPaineis.add(musicaCatSamba);
+					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					musicaCatSamba.add(tableContainer, BorderLayout.CENTER);
+					panelCategoriasMusica.setVisible(false);
+					home.getContentPane().remove(panelCategoriasMusica);
+					musicaCatSamba.setVisible(true);
+					musicaCatSamba.revalidate();
+				} else {
+					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
+				}
+			}
+		});
+		
+		btnMusicSertaneja.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String genero = "Sertaneja";
+				currentGenre = genero;
+				music  = "Musicas";
+				FRarquivos retorno = new FRarquivos();
+				Boolean ler = false;
+				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
+				if (ler) {
+					voltarPaineis.add(musicaCatSertaneja);
+					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+					listFiles.reUpdateTable(table, userName, currentGenre, music);
+					tableContainer.setPreferredSize(new Dimension(790, 500));
+					musicaCatSertaneja.add(tableContainer, BorderLayout.CENTER);
+					panelCategoriasMusica.setVisible(false);
+					home.getContentPane().remove(panelCategoriasMusica);
+					musicaCatSertaneja.setVisible(true);
+					musicaCatSertaneja.revalidate();
 				} else {
 					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
 				}

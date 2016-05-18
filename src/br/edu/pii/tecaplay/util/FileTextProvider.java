@@ -24,6 +24,7 @@ public class FileTextProvider {
 	 */
     public static ArrayList<String> loadLines(String path){
         File arq = new File(path);
+        System.out.println(arq.getAbsolutePath());
         try {
             FileReader fr = new FileReader(arq);
             BufferedReader br = new BufferedReader(fr);

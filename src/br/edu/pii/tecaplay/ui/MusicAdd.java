@@ -204,6 +204,11 @@ public class MusicAdd {
 							MoveMusic moveMusic = new MoveMusic();
 							boolean sucess = moveMusic.AddMusica(caminho, ano, nome, genero, usrName, artista);
 							if (sucess) {
+								fieldArtista.setText("");
+								fieldNameMusic.setText("");
+								panelListGenero.setSelectedIndex(0);
+								panelListAno.setSelectedIndex(0);
+								textFieldProcurar.setText("");
 								JOptionPane.showMessageDialog(frame,"Arquivo Movido com sucesso para sua biblioteca","Sucesso",1);
 							}else{
 								JOptionPane.showMessageDialog(frame, "Arquivo não foi movido com sucesso para sua biblioteca \n"
@@ -236,6 +241,11 @@ public class MusicAdd {
 
 	public boolean ValidationFormat() {
 		File destino = new File(caminho);
+		
+		File[] files = null;
+		if(destino.isDirectory()){
+			files = destino.listFiles()
+		}
 		ArrayList<String> array = new ArrayList<String>();
 		array.add(".mp3");
 		array.add(".wav");

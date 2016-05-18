@@ -306,14 +306,21 @@ public class HomePage {
 		panelLateralMusica.add(btnRemoverMusica);
 		btnRemoverMusica.setBackground(Color.LIGHT_GRAY);
 
-		// jButton Favoritos
-		JButton btnFavoritosMusica = new JButton("Favoritos");
-		btnFavoritosMusica.setToolTipText("Op\u00E7\u00E3o de acesso a aba dos Favoritos!");
-		btnFavoritosMusica.setIcon(new ImageIcon("resources\\images\\imgBtnFavorito.png"));
-		btnFavoritosMusica.setPreferredSize(new Dimension(172, 34));
-		btnFavoritosMusica.setFont(new Font("Tahoma", Font.BOLD, 14));
-		panelLateralMusica.add(btnFavoritosMusica);
-		btnFavoritosMusica.setBackground(Color.LIGHT_GRAY);
+		// jButton Playlists
+		JButton btnPlaylistMusica = new JButton("PlayList's");
+		btnPlaylistMusica.setToolTipText("Op\u00E7\u00E3o de acesso a aba dos playList!");
+		btnPlaylistMusica.setIcon(new ImageIcon("resources\\images\\playlist.png"));
+		btnPlaylistMusica.setPreferredSize(new Dimension(172, 34));
+		btnPlaylistMusica.setFont(new Font("Tahoma", Font.BOLD, 14));
+		panelLateralMusica.add(btnPlaylistMusica);
+		btnPlaylistMusica.setBackground(Color.LIGHT_GRAY);
+		
+		//JPanel para playlist
+		JPanel panelPlaylist = new JPanel();
+		panelPlaylist.setLayout(new FlowLayout(FlowLayout.LEFT, 4, 4));
+		panelPlaylist.setPreferredSize(new Dimension(180, 400));
+		panelPlaylist.setBackground(new Color(128, 128, 128));
+
 
 		// jButton Estilos Musicais
 		JButton btnEstilosMusica = new JButton("Estilos Musicais");
@@ -2746,6 +2753,32 @@ public class HomePage {
 			}
 		});
 
+		// Botão PlayList
+		btnPlaylistMusica.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				music  = "Musicas";
+				FRarquivos retorno = new FRarquivos();
+				Boolean ler = true;
+				//ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
+				if (ler) {
+					voltarPaineis.add(panelPlaylist);
+					home.getContentPane().remove(labelFundo);
+					home.getContentPane().remove(panelCategoriasMusica);
+					home.getContentPane().add(panelPlaylist, BorderLayout.CENTER);
+					panelPlaylist.setVisible(true);
+					panelPlaylist.revalidate();
+					panelPlaylist.repaint();
+					timer.clse();
+					///listFiles.reUpdateTable(table, userName, currentGenre, music);
+					///tableContainer.setPreferredSize(new Dimension(790, 500));
+					///musicaCatSertaneja.add(tableContainer, BorderLayout.CENTER);
+				} else {
+					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
+				}
+			}
+		});
 	}
 
 }

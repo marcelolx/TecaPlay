@@ -4,12 +4,15 @@ package br.edu.pii.tecaplay.util;
 
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -36,9 +39,10 @@ public class VLCjPlayer{
     private final JButton pauseButton;
 
     private final JButton rewindButton;
-    private final JButton  playButton;
 
     private final JButton skipButton;
+    
+    private int logoPlay = 0;
 
 
     public void Teste(String caminho) {
@@ -71,20 +75,35 @@ public class VLCjPlayer{
         contentPane.add(mediaPlayerComponent, BorderLayout.CENTER);
 
         JPanel controlsPane = new JPanel();
-        playButton = new JButton("Pausar");
-        controlsPane.add(playButton);
-        pauseButton = new JButton("Pausar");
-        controlsPane.add(pauseButton); 
-        rewindButton = new JButton("Retroceder");
+        controlsPane.setBackground(new Color(192, 192, 192));
+        rewindButton = new JButton();
+        rewindButton.setIcon(new ImageIcon("resources\\images\\rewindButton.png"));
+        rewindButton.setBackground(Color.LIGHT_GRAY);
+        rewindButton.setPreferredSize(new Dimension(32, 32));
         controlsPane.add(rewindButton);
-        skipButton = new JButton("Avançar");
+        pauseButton = new JButton();
+        pauseButton.setIcon(new ImageIcon("resources\\images\\pauseButton.png"));
+        pauseButton.setBackground(Color.LIGHT_GRAY);
+        pauseButton.setPreferredSize(new Dimension(32, 32));
+        controlsPane.add(pauseButton); 
+        skipButton = new JButton();
+        skipButton.setIcon(new ImageIcon("resources\\images\\skipButton.png"));
+        skipButton.setBackground(Color.LIGHT_GRAY);
+        skipButton.setPreferredSize(new Dimension(32, 32));
         controlsPane.add(skipButton);
         contentPane.add(controlsPane, BorderLayout.SOUTH);
-
+        
         pauseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mediaPlayerComponent.getMediaPlayer().pause();
+                if(logoPlay==0){
+                	pauseButton.setIcon(new ImageIcon("resources\\images\\playButton.png"));
+                	logoPlay = 1;
+                }else{
+                	pauseButton.setIcon(new ImageIcon("resources\\images\\pauseButton.png"));
+                	logoPlay = 0;
+                }
             }
         });
 
@@ -94,16 +113,6 @@ public class VLCjPlayer{
                 mediaPlayerComponent.getMediaPlayer().skip(-5000);
             }
         });
-        
-        playButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               mediaPlayerComponent.getMediaPlayer().setTime(10000);
-               System.out.println(mediaPlayerComponent.getMediaPlayer().getLength());
-               System.out.println(mediaPlayerComponent.getMediaPlayer().getTime());
-            }
-        });
-        
         
 
         skipButton.addActionListener(new ActionListener() {
@@ -154,6 +163,9 @@ public class VLCjPlayer{
                 });
             }
         });
+
+        		
+        
         frame.setContentPane(contentPane);
         frame.setVisible(true);
 

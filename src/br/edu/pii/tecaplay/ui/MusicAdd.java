@@ -244,7 +244,7 @@ public class MusicAdd {
 		
 		File[] files = null;
 		if(destino.isDirectory()){
-			files = destino.listFiles()
+			files = destino.listFiles();
 		}
 		ArrayList<String> array = new ArrayList<String>();
 		array.add(".mp3");

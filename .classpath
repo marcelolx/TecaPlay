@@ -8,7 +8,7 @@
 	<classpathentry exported="true" kind="lib" path="APIs/jna-platform-4.2.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="APIs/vlcj-3.10.1.jar"/>
 	<classpathentry kind="lib" path="APIs/slf4j-api-1.7.5.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/jonas/git/tecaplays/APIs/slf4j-api-1.7.21.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/jonas/git/tecaplays/APIs/slf4j-nop-1.7.21.jar"/>
+	<classpathentry exported="true" kind="lib" path="APIs/slf4j-api-1.7.21.jar"/>
+	<classpathentry exported="true" kind="lib" path="APIs/slf4j-nop-1.7.21.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

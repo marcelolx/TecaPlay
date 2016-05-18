@@ -3,13 +3,6 @@ package br.edu.pii.tecaplay.ui;
 import java.awt.*;
 import javax.swing.*;
 
-import com.sun.jna.Native;
-import com.sun.jna.NativeLibrary;
-
-import uk.co.caprica.vlcj.binding.LibVlc;
-import uk.co.caprica.vlcj.runtime.RuntimeUtil;
-import uk.co.caprica.vlcj.runtime.x.LibXUtil;
-
 public class SplashScreen extends JWindow {
     
     /**

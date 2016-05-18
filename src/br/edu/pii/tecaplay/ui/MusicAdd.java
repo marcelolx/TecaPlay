@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import br.edu.pii.tecaplay.util.MoveMusic;
+import javax.swing.JSlider;
 
 /**
  * 

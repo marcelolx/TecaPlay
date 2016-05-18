@@ -21,6 +21,8 @@ import javax.swing.WindowConstants;
 import br.edu.pii.tecaplay.util.FileUtil;
 
 public class LoginGUI extends JFrame {
+	public LoginGUI() {
+	}
 	
 	private static final long serialVersionUID = 1L;
 

@@ -32,7 +32,6 @@ import br.edu.pii.tecaplay.util.ValidaPasta;
  * @version 0.0.55
  */
 
-
 public class FilmesAdd {
 	/**
 	 * janela para verificacao de serie ou filme
@@ -41,6 +40,7 @@ public class FilmesAdd {
 	 *            nome do usuário atualmente logado
 	 */
 	private String caminho = null;
+
 	public FilmesAdd(String usrName) {
 		/** Janela principal para Filmes, definido cor, tamanho, posição... */
 		JFrame JFrameSelecao = new JFrame();
@@ -253,7 +253,7 @@ public class FilmesAdd {
 		JButton btnProcurarFilme = new JButton("Procurar*");
 		btnProcurarFilme.setToolTipText("Clique sobre para procurar o filme em seu sistema.");
 		btnProcurarFilme.setBackground(new Color(107, 107, 107));
-		
+
 		btnProcurarFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnProcurarFilme.setBounds(310, 140, 112, 23);
 		JFrameAddFilme.getContentPane().add(btnProcurarFilme);
@@ -285,7 +285,7 @@ public class FilmesAdd {
 		JLabel lblDuracaoFilme = new JLabel("Dura\u00E7\u00E3o*:");
 		lblDuracaoFilme.setToolTipText("");
 		lblDuracaoFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
-		
+
 		lblDuracaoFilme.setBounds(227, 110, 72, 14);
 		JFrameAddFilme.getContentPane().add(lblDuracaoFilme);
 
@@ -342,11 +342,11 @@ public class FilmesAdd {
 		btnAdicionarFilme.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnAdicionarFilme.setBounds(215, 170, 207, 23);
 		JFrameAddFilme.getContentPane().add(btnAdicionarFilme);
-		
-		JFrameAddFilme.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[] {textFieldTituloFilme , panelListGenero,
-				textFieldPaisFilme, panelListAno, textFieldDuracaoFilme,btnProcurarFilme, btnCancelarFilme, btnAdicionarFilme }));
-		
-		
+
+		JFrameAddFilme.setFocusTraversalPolicy(
+				new FocusTraversalOnArray(new Component[] { textFieldTituloFilme, panelListGenero, textFieldPaisFilme,
+						panelListAno, textFieldDuracaoFilme, btnProcurarFilme, btnCancelarFilme, btnAdicionarFilme }));
+
 		btnAdicionarFilme.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MoveFile MoveFile = new MoveFile();
@@ -360,7 +360,7 @@ public class FilmesAdd {
 					String pais = textFieldPaisFilme.getText();
 					String duracao = textFieldDuracaoFilme.getText();
 					// testa se existem fildtexts em branco
-					if (new File(origem).exists()&& ValidationFormat()) {
+					if (new File(origem).exists() && ValidationFormat()) {
 						if (!(origem.equals("") || (ano.equals("")) || (duracao.equals("")) || (nome.equals(""))
 								|| (pais.equals("")))) {
 							JFrameAddFilme.setAlwaysOnTop(false);
@@ -374,19 +374,22 @@ public class FilmesAdd {
 								textFieldProcurarFilme.setText("");
 								textFieldTituloFilme.setText("");
 								textFieldDuracaoFilme.setText("");
-								JOptionPane.showMessageDialog(JFrameAddFilme, "Arquivos Movidos com sucesso!", "Sucesso", 1);
+								JOptionPane.showMessageDialog(JFrameAddFilme, "Arquivos Movidos com sucesso!",
+										"Sucesso", 1);
 							} else {
 								JOptionPane.showMessageDialog(JFrameAddFilme,
 										"Não foi possivel executar essa operação, tente novamente", "Erro", 0);
 							}
 						} // ELSE DO TERCEIRO IF
 						else {
-							JOptionPane.showMessageDialog(JFrameAddFilme, "Por favor, preenche todos os campos com o Asterisco *",
-									"Preencha todos os campos", 0);
+							JOptionPane.showMessageDialog(JFrameAddFilme,
+									"Por favor, preenche todos os campos com o Asterisco *", "Preencha todos os campos",
+									0);
 						}
 
 					} else { // ELSE DO SEGUNDO IF
-						JOptionPane.showMessageDialog(JFrameAddFilme, "Informe algum arquivo de vídeo válido", "Informe diretório Correto", 0);
+						JOptionPane.showMessageDialog(JFrameAddFilme, "Informe algum arquivo de vídeo válido",
+								"Informe diretório Correto", 0);
 						textFieldProcurarFilme.setText("");
 					}
 				}
@@ -666,6 +669,14 @@ public class FilmesAdd {
 					String nome = textFieldTituloSerie.getText();
 					String numEpisodio = (String) panelListEpisodio.getSelectedItem();
 					String duracao = textFieldDuracaoFilme.getText();
+					int duracaoInt;
+					boolean ehNumero;
+					try {
+						duracaoInt = (Integer.parseInt(textFieldDuracaoFilme.getText()));
+						ehNumero = true;
+					} catch (NumberFormatException e1) {
+						ehNumero = false;
+					}
 					// if pra fazer o teste se é um diretorio valido
 					if (new File(origem).exists()) {
 						boolean verificaPasta = false;
@@ -673,10 +684,10 @@ public class FilmesAdd {
 						verificaPasta = pasta.validaPasta(origem);
 						// Se for true, significa que é pasta, se não é apenas
 						// um arquivo
-						if (verificaPasta) {
-						
-							if (!(origem.equals("") || (numTemp.equals("")) || (nomeEp.equals("")) || (nome.equals(""))
-									|| (duracao.equals("")) || (numEpisodio.equals("")))) {
+						if (ehNumero) {
+						if (!( (numTemp.equals("")) || (nomeEp.equals("")) || (nome.equals(""))
+								|| (duracao.equals("")) || (numEpisodio.equals("")))) {
+							if (verificaPasta) {
 								JFrameAddSerie.setAlwaysOnTop(false);
 								// Executa o comando de mover o arquivo e
 								// renomealo.
@@ -693,23 +704,16 @@ public class FilmesAdd {
 									textFieldTituloSerie.setText("");
 									txtFieldNomeEp.setText("");
 									textFieldDuracaoFilme.setText("");
-									JOptionPane.showMessageDialog(JFrameAddSerie, "Os arquivos foram movidos com Sucesso",
-											"Sucesso", 1);
+									JOptionPane.showMessageDialog(JFrameAddSerie,
+											"Os arquivos foram movidos com Sucesso", "Sucesso", 1);
 								} else {
-									JOptionPane.showMessageDialog(JFrameAddSerie, "Os arquivos não foram movidos com Sucesso",
-											"Erro", 0);
+									JOptionPane.showMessageDialog(JFrameAddSerie,
+											"Os arquivos não foram movidos com Sucesso\n"
+											+ "É possivel que existem pastas dentro\n"
+											+ "Por favor, selecione uma pasta contendo somente arquivos de vídeo.", "Erro na cópia dos Arquivos", 0);
 								}
-
 							} else {
-								JFrameAddSerie.setAlwaysOnTop(false);
-								JOptionPane.showMessageDialog(JFrameAddSerie,
-										"Por favor, preenche todos os campos com o Asterisco *",
-										"Preencha todos os campos", 0);
-							}
-							// testa se existem fildtexts em branco
-						} else {
-							if (!(origem.equals("") || (numTemp.equals("")) || (nomeEp.equals("")) || (nome.equals(""))
-									|| (duracao.equals("")) || (numEpisodio.equals("")))) {
+								if (ValidationFormat()){
 								JFrameAddSerie.setAlwaysOnTop(false);
 								MoveFile MoveFile = new MoveFile();
 								// Executa o comando de mover o arquivo e
@@ -725,23 +729,34 @@ public class FilmesAdd {
 									textFieldTituloSerie.setText("");
 									txtFieldNomeEp.setText("");
 									textFieldDuracaoFilme.setText("");
-									JOptionPane.showMessageDialog(JFrameAddSerie, "Arquivos Movidos com sucesso!", "Sucesso", 1);
+									JOptionPane.showMessageDialog(JFrameAddSerie, "Arquivos Movidos com sucesso!",
+											"Sucesso", 1);
 								} else {
 									JOptionPane.showMessageDialog(JFrameAddSerie,
-											"Não foi possivel executar essa operação, tente novamente", "Erro", 0);
+											"Não foi possivel executar essa operação, tente novamente\n"
+											+ "Verefique se é realmente um filme", "Erro", 0);
 								}
-							} else {
-								JOptionPane.showMessageDialog(JFrameAddSerie,
-										"Por favor, preenche todos os campos com o Asterisco *",
-										"Preencha todos os campos", 0);
-							} // ELSE DO TERCEIRO IF
+							}else{
+								JOptionPane.showMessageDialog(JFrameAddSerie, "Arquivo não compativel com o formato de vídeo","Erro de Formato",0);
+							}
+								}
+							
+						} else {
+							JFrameAddSerie.setAlwaysOnTop(false);
+							JOptionPane.showMessageDialog(JFrameAddSerie,
+									"Por favor, preenche todos os campos com o Asterisco *", "Preencha todos os campos",
+									0);
 						}
-					} else { // ELSE DO SEGUNDO IF
-						JOptionPane.showMessageDialog(JFrameAddSerie, "Informe algum diretório válido", "Informe diretório", 0);
-						textFieldProcurarFilme.setText("");
+					}else {
+						JOptionPane.showMessageDialog(JFrameAddSerie, "Por favor, Informe um horario aproximado do\n"
+								+ "filme ou das série, em Minutos arredondado");
+					}
+					} else {
+						JFrameAddSerie.setAlwaysOnTop(false);
+						JOptionPane.showMessageDialog(JFrameAddSerie, "Selecione a pasta certa",
+								"Pasta ou arquivo inválido", 0);
 					}
 				}
-				// ELSE DO primeiro IF
 				else {
 					JOptionPane.showMessageDialog(JFrameAddSerie, "Por favor, selecione o componente gênero",
 							"Selecione o Genero", 0);
@@ -752,6 +767,7 @@ public class FilmesAdd {
 		});
 
 	}
+
 	public boolean ValidationFormat() {
 		File destino = new File(caminho);
 		ArrayList<String> array = new ArrayList<String>();
@@ -768,10 +784,10 @@ public class FilmesAdd {
 		for (int i = 0; i < array.size(); i++) {
 			if (extensao.equals(array.get(i))) {
 				return true;
-			}	
+			}
 		}
-	
+
 		return false;
 	}
-	
+
 }

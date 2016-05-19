@@ -33,7 +33,7 @@ public class ListFiles {
 		table.getColumnModel().getColumn(4).setPreferredWidth(75);
 		table.getColumnModel().getColumn(5).setPreferredWidth(60);
 		table.getColumnModel().getColumn(6).setPreferredWidth(90);
-		
+
 		table.getColumnModel().getColumn(0).setMaxWidth(350);
 		table.getColumnModel().getColumn(1).setMaxWidth(100);
 		table.getColumnModel().getColumn(2).setMaxWidth(79);
@@ -41,7 +41,7 @@ public class ListFiles {
 		table.getColumnModel().getColumn(4).setMaxWidth(75);
 		table.getColumnModel().getColumn(5).setMaxWidth(60);
 		table.getColumnModel().getColumn(6).setMaxWidth(90);
-		
+
 		table.getColumnModel().getColumn(0).setMinWidth(350);
 		table.getColumnModel().getColumn(1).setMinWidth(100);
 		table.getColumnModel().getColumn(2).setMinWidth(79);
@@ -49,7 +49,7 @@ public class ListFiles {
 		table.getColumnModel().getColumn(4).setMinWidth(75);
 		table.getColumnModel().getColumn(5).setMinWidth(60);
 		table.getColumnModel().getColumn(6).setMinWidth(90);
-		
+
 		table.setBackground(new Color(192, 192, 192));
 		table.getTableHeader().setBackground(new Color(192, 192, 192));
 	}
@@ -67,15 +67,14 @@ public class ListFiles {
 	 */
 	public void updateTable(final JTable table, String usrName, String genero, String musica) {
 		String directorie;
-		if (!musica.equals("")){
-			directorie = "c:\\TecaPlay\\" + usrName + "\\Musicas\\" + genero +"\\"+genero+".txt";
-		}else{
+		if (!musica.equals("")) {
+			directorie = "c:\\TecaPlay\\" + usrName + "\\Musicas\\" + genero + "\\" + genero + ".txt";
+		} else {
 			directorie = "c:\\TecaPlay\\" + usrName + "\\Videos\\filme\\" + genero + ".txt";
 		}
 		final MyTableModel tableModel = (MyTableModel) table.getModel();
 		FileTextProvider fileTextProvider = new FileTextProvider();
-		final List<String> lines = FileTextProvider
-				.loadLines(directorie);
+		final List<String> lines = FileTextProvider.loadLines(directorie);
 		final Object[][] dados = new Object[fileTextProvider.numOfLines()][7];
 
 		for (int i = 0; i < lines.size(); i++) {
@@ -91,7 +90,7 @@ public class ListFiles {
 		// Ação dos botões assistir
 
 		Action open = new AbstractAction() {
-			
+
 			/**
 			 * 
 			 */
@@ -108,37 +107,36 @@ public class ListFiles {
 					}
 				}
 				VLCjPlayer player = new VLCjPlayer(caminho);
-
-				/**try {
-				Thread.currentThread().join();
-				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}*/
+				/**
+				 * try { Thread.currentThread().join(); } catch
+				 * (InterruptedException e1) { // TODO Auto-generated catch
+				 * block e1.printStackTrace(); }
+				 */
 				/*
-				 * Método que abre arquivos de vídeo/musica com player default do windows
-				try {
-					Desktop.getDesktop().open( new File(caminho) );
-					
-					System.out.println(" Version: {}" + LibVlc.INSTANCE.libvlc_get_version());
-					System.out.println(" Compiler: {}" + LibVlc.INSTANCE.libvlc_get_compiler());
-					System.out.println(" ChangeSet: {}" + LibVlc.INSTANCE.libvlc_get_changeset());
-				} catch (IOException e1) {
-				}
-				*/
+				 * Método que abre arquivos de vídeo/musica com player default
+				 * do windows try { Desktop.getDesktop().open( new File(caminho)
+				 * );
+				 * 
+				 * System.out.println(" Version: {}" +
+				 * LibVlc.INSTANCE.libvlc_get_version()); System.out.println(
+				 * " Compiler: {}" + LibVlc.INSTANCE.libvlc_get_compiler());
+				 * System.out.println(" ChangeSet: {}" +
+				 * LibVlc.INSTANCE.libvlc_get_changeset()); } catch (IOException
+				 * e1) { }
+				 */
 			}
 		};
-		
-	Action remove = new AbstractAction() {
-			
+
+		Action remove = new AbstractAction() {
+
 			/**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
+			* 
+			*/
+			private static final long serialVersionUID = 1L;
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JTable table = (JTable)e.getSource();
+				JTable table = (JTable) e.getSource();
 				int modelRow = Integer.valueOf(e.getActionCommand());
 				String caminho = null;
 				for (int i = 0; i < lines.size(); i++) {
@@ -147,13 +145,14 @@ public class ListFiles {
 						caminho = data[4];
 					}
 				}
-				((DefaultTableModel)table.getModel()).removeRow(modelRow);
+				((DefaultTableModel) table.getModel()).removeRow(modelRow);
 			}
-			//saushau
+			// saushau
 		};
-		ColumnButtonRemove remover = new ColumnButtonRemove(table, remove, 5, genero, usrName, lines.size());
+		ColumnButtonRemove remover = new ColumnButtonRemove(table, remove, 5, genero, lines.size(),
+				directorie);
 		remover.setMnemonic(KeyEvent.VK_D);
-			
+
 		ButtonColumn buttonColumn = new ButtonColumn(table, open, 6);
 		buttonColumn.setMnemonic(KeyEvent.VK_D);
 
@@ -183,6 +182,7 @@ public class ListFiles {
 		tableInfo(table);
 		updateTable(table, usrName, genero, musica);
 	}
+
 	public JTable Tabela(JTable tablee) {
 		return tablee;
 	}

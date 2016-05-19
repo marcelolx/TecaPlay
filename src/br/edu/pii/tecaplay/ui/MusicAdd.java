@@ -209,10 +209,12 @@ public class MusicAdd {
 								panelListGenero.setSelectedIndex(0);
 								panelListAno.setSelectedIndex(0);
 								textFieldProcurar.setText("");
-								JOptionPane.showMessageDialog(frame,"Arquivo Movido com sucesso para sua biblioteca","Sucesso",1);
-							}else{
-								JOptionPane.showMessageDialog(frame, "Arquivo não foi movido com sucesso para sua biblioteca \n"
-										+ "Tente Novamente", "Erro", 0);
+								JOptionPane.showMessageDialog(frame, "Arquivo Movido com sucesso para sua biblioteca",
+										"Sucesso", 1);
+							} else {
+								JOptionPane.showMessageDialog(frame,
+										"Arquivo não foi movido com sucesso para sua biblioteca \n" + "Tente Novamente",
+										"Erro", 0);
 							}
 						} else {
 							JOptionPane.showMessageDialog(frame, "Arquivo não compativel com Música", "Erro", 0);
@@ -241,24 +243,48 @@ public class MusicAdd {
 
 	public boolean ValidationFormat() {
 		File destino = new File(caminho);
-		
-		File[] files = null;
-		if(destino.isDirectory()){
-			files = destino.listFiles();
+
+		if (destino.isDirectory()) {
+			File[] files = destino.listFiles();
+			boolean contemPastas = false;
+			// copia os sub-diretórios para uma classe File de vetor
+			for (int i = 0; i < files.length; i++) {
+				contemPastas = files[i].isDirectory();
+				if (contemPastas){
+					return false;
+				}	
+			}
+			for (int i = 0; i < files.length; i++) {
+				String extensao = files[i].getName()
+						.substring(files[i].getName().lastIndexOf('.', files[i].getName().length()));
+				if (!ValidationExtension(extensao)){
+					return false;
+				}
+			}
+			return true;
+		} else {
+			String extensao = destino.getName()
+					.substring(destino.getName().lastIndexOf('.', destino.getName().length()));
+			if (ValidationExtension(extensao)) {
+				return true;
+			}
+
+			return false;
 		}
+	}
+
+	public boolean ValidationExtension(String extencao) {
 		ArrayList<String> array = new ArrayList<String>();
 		array.add(".mp3");
 		array.add(".wav");
 		array.add(".aac");
 		array.add(".m4a");
 		array.add(".wma");
-		String extensao = destino.getName().substring(destino.getName().lastIndexOf('.', destino.getName().length()));
 		for (int i = 0; i < array.size(); i++) {
-			if (extensao.equals(array.get(i))) {
+			if (extencao.equals(array.get(i))) {
 				return true;
 			}
 		}
-
 		return false;
 	}
 }

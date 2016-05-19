@@ -40,6 +40,9 @@ public class HomePage {
 	private String currentGenre = null;
 	private String userName;
 	private String music  = "";
+	private JFrame home;
+	private JPanel labelGeral;
+	
 
 	/**
 	* 
@@ -47,7 +50,7 @@ public class HomePage {
 	public HomePage(String usrName) {
 		userName = usrName;
 		// formatcao do JFrame
-		JFrame home = new JFrame();
+		home = new JFrame();
 		home.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent args) {
@@ -589,96 +592,11 @@ public class HomePage {
 		panelCategoriasFilmes.add(btnCatThriller);
 		btnCatThriller.setBackground(Color.LIGHT_GRAY);
 
-		// Jpanels para cada Categoria de Filmes
-		JPanel filmesCatAcao = new JPanel();
-		filmesCatAcao.setLayout(new FlowLayout(FlowLayout.CENTER));
-		filmesCatAcao.setPreferredSize(new Dimension(500, 300));
-		filmesCatAcao.setBackground(new Color(120, 120, 120));
-
-		JPanel filmesCatAnimacao = new JPanel();
-		filmesCatAnimacao.setLayout(new FlowLayout(FlowLayout.CENTER));
-		filmesCatAnimacao.setPreferredSize(new Dimension(500, 300));
-		filmesCatAnimacao.setBackground(new Color(120, 120, 120));
-
-		JPanel filmesCatAventura = new JPanel();
-		filmesCatAventura.setLayout(new FlowLayout(FlowLayout.CENTER));
-		filmesCatAventura.setPreferredSize(new Dimension(500, 300));
-		filmesCatAventura.setBackground(new Color(120, 120, 120));
-
-		JPanel filmesCatClassico = new JPanel();
-		filmesCatClassico.setLayout(new FlowLayout(FlowLayout.CENTER));
-		filmesCatClassico.setPreferredSize(new Dimension(500, 300));
-		filmesCatClassico.setBackground(new Color(120, 120, 120));
-
-		JPanel filmesCatComedia = new JPanel();
-		filmesCatComedia.setLayout(new FlowLayout(FlowLayout.CENTER));
-		filmesCatComedia.setPreferredSize(new Dimension(500, 300));
-		filmesCatComedia.setBackground(new Color(120, 120, 120));
-
-		JPanel filmesCatComediaRomantico = new JPanel();
-		filmesCatComediaRomantico.setLayout(new FlowLayout(FlowLayout.CENTER));
-		filmesCatComediaRomantico.setPreferredSize(new Dimension(500, 300));
-		filmesCatComediaRomantico.setBackground(new Color(120, 120, 120));
-
-		JPanel filmesCatCrime = new JPanel();
-		filmesCatCrime.setLayout(new FlowLayout(FlowLayout.CENTER));
-		filmesCatCrime.setPreferredSize(new Dimension(500, 300));
-		filmesCatCrime.setBackground(new Color(120, 120, 120));
-
-		JPanel filmesCatDocumentario = new JPanel();
-		filmesCatDocumentario.setLayout(new FlowLayout(FlowLayout.CENTER));
-		filmesCatDocumentario.setPreferredSize(new Dimension(500, 300));
-		filmesCatDocumentario.setBackground(new Color(120, 120, 120));
-
-		JPanel filmesCatDrama = new JPanel();
-		filmesCatDrama.setLayout(new FlowLayout(FlowLayout.CENTER));
-		filmesCatDrama.setPreferredSize(new Dimension(500, 300));
-		filmesCatDrama.setBackground(new Color(120, 120, 120));
-
-		JPanel filmesCatFaroeste = new JPanel();
-		filmesCatFaroeste.setLayout(new FlowLayout(FlowLayout.CENTER));
-		filmesCatFaroeste.setPreferredSize(new Dimension(500, 300));
-		filmesCatFaroeste.setBackground(new Color(120, 120, 120));
-
-		JPanel filmesCatFiccaoCient = new JPanel();
-		filmesCatFiccaoCient.setLayout(new FlowLayout(FlowLayout.CENTER));
-		filmesCatFiccaoCient.setPreferredSize(new Dimension(500, 300));
-		filmesCatFiccaoCient.setBackground(new Color(120, 120, 120));
-
-		JPanel filmesCatGuerra = new JPanel();
-		filmesCatGuerra.setLayout(new FlowLayout(FlowLayout.CENTER));
-		filmesCatGuerra.setPreferredSize(new Dimension(500, 300));
-		filmesCatGuerra.setBackground(new Color(120, 120, 120));
-
-		JPanel filmesCatMusical = new JPanel();
-		filmesCatMusical.setLayout(new FlowLayout(FlowLayout.CENTER));
-		filmesCatMusical.setPreferredSize(new Dimension(500, 300));
-		filmesCatMusical.setBackground(new Color(120, 120, 120));
-
-		JPanel filmesCatPolicial = new JPanel();
-		filmesCatPolicial.setLayout(new FlowLayout(FlowLayout.CENTER));
-		filmesCatPolicial.setPreferredSize(new Dimension(500, 300));
-		filmesCatPolicial.setBackground(new Color(120, 120, 120));
-
-		JPanel filmesCatRomance = new JPanel();
-		filmesCatRomance.setLayout(new FlowLayout(FlowLayout.CENTER));
-		filmesCatRomance.setPreferredSize(new Dimension(500, 300));
-		filmesCatRomance.setBackground(new Color(120, 120, 120));
-
-		JPanel filmesCatSuspense = new JPanel();
-		filmesCatSuspense.setLayout(new FlowLayout(FlowLayout.CENTER));
-		filmesCatSuspense.setPreferredSize(new Dimension(500, 300));
-		filmesCatSuspense.setBackground(new Color(120, 120, 120));
-
-		JPanel filmesCatTerror = new JPanel();
-		filmesCatTerror.setLayout(new FlowLayout(FlowLayout.CENTER));
-		filmesCatTerror.setPreferredSize(new Dimension(500, 300));
-		filmesCatTerror.setBackground(new Color(120, 120, 120));
-
-		JPanel filmesCatThriller = new JPanel();
-		filmesCatThriller.setLayout(new FlowLayout(FlowLayout.CENTER));
-		filmesCatThriller.setPreferredSize(new Dimension(500, 300));
-		filmesCatThriller.setBackground(new Color(120, 120, 120));
+		// Jpanel para cada Categoria necessaria
+		labelGeral = new JPanel();
+		labelGeral.setLayout(new FlowLayout(FlowLayout.CENTER));
+		labelGeral.setPreferredSize(new Dimension(500, 300));
+		labelGeral.setBackground(new Color(120, 120, 120));
 
 		/*
 		 * 
@@ -838,97 +756,6 @@ public class HomePage {
 		btnCatTerrorSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnCatTerrorSerie.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasSerie.add(btnCatTerrorSerie);
-
-		// Jpanels para cada Categoria de Series
-		JPanel serieCatAcao = new JPanel();
-		serieCatAcao.setLayout(new FlowLayout(FlowLayout.CENTER));
-		serieCatAcao.setPreferredSize(new Dimension(500, 300));
-		serieCatAcao.setBackground(new Color(120, 120, 120));
-
-		JPanel serieCatAnimacao = new JPanel();
-		serieCatAnimacao.setLayout(new FlowLayout(FlowLayout.CENTER));
-		serieCatAnimacao.setPreferredSize(new Dimension(500, 300));
-		serieCatAnimacao.setBackground(new Color(120, 120, 120));
-
-		JPanel serieCatAnime = new JPanel();
-		serieCatAnime.setLayout(new FlowLayout(FlowLayout.CENTER));
-		serieCatAnime.setPreferredSize(new Dimension(500, 300));
-		serieCatAnime.setBackground(new Color(120, 120, 120));
-
-		JPanel serieCatAventura = new JPanel();
-		serieCatAventura.setLayout(new FlowLayout(FlowLayout.CENTER));
-		serieCatAventura.setPreferredSize(new Dimension(500, 300));
-		serieCatAventura.setBackground(new Color(120, 120, 120));
-
-		JPanel serieCatClassico = new JPanel();
-		serieCatClassico.setLayout(new FlowLayout(FlowLayout.CENTER));
-		serieCatClassico.setPreferredSize(new Dimension(500, 300));
-		serieCatClassico.setBackground(new Color(120, 120, 120));
-
-		JPanel serieCatComedia = new JPanel();
-		serieCatComedia.setLayout(new FlowLayout(FlowLayout.CENTER));
-		serieCatComedia.setPreferredSize(new Dimension(500, 300));
-		serieCatComedia.setBackground(new Color(120, 120, 120));
-
-		JPanel serieCatComediaRomantico = new JPanel();
-		serieCatComediaRomantico.setLayout(new FlowLayout(FlowLayout.CENTER));
-		serieCatComediaRomantico.setPreferredSize(new Dimension(500, 300));
-		serieCatComediaRomantico.setBackground(new Color(120, 120, 120));
-
-		JPanel serieCatCrime = new JPanel();
-		serieCatCrime.setLayout(new FlowLayout(FlowLayout.CENTER));
-		serieCatCrime.setPreferredSize(new Dimension(500, 300));
-		serieCatCrime.setBackground(new Color(120, 120, 120));
-
-		JPanel serieCatDocumentario = new JPanel();
-		serieCatDocumentario.setLayout(new FlowLayout(FlowLayout.CENTER));
-		serieCatDocumentario.setPreferredSize(new Dimension(500, 300));
-		serieCatDocumentario.setBackground(new Color(120, 120, 120));
-
-		JPanel serieCatDrama = new JPanel();
-		serieCatDrama.setLayout(new FlowLayout(FlowLayout.CENTER));
-		serieCatDrama.setPreferredSize(new Dimension(500, 300));
-		serieCatDrama.setBackground(new Color(120, 120, 120));
-
-		JPanel serieCatFiccaoCient = new JPanel();
-		serieCatFiccaoCient.setLayout(new FlowLayout(FlowLayout.CENTER));
-		serieCatFiccaoCient.setPreferredSize(new Dimension(500, 300));
-		serieCatFiccaoCient.setBackground(new Color(120, 120, 120));
-
-		JPanel serieCatGuerra = new JPanel();
-		serieCatGuerra.setLayout(new FlowLayout(FlowLayout.CENTER));
-		serieCatGuerra.setPreferredSize(new Dimension(500, 300));
-		serieCatGuerra.setBackground(new Color(120, 120, 120));
-
-		JPanel serieCatMusical = new JPanel();
-		serieCatMusical.setLayout(new FlowLayout(FlowLayout.CENTER));
-		serieCatMusical.setPreferredSize(new Dimension(500, 300));
-		serieCatMusical.setBackground(new Color(120, 120, 120));
-
-		JPanel serieCatPolicial = new JPanel();
-		serieCatPolicial.setLayout(new FlowLayout(FlowLayout.CENTER));
-		serieCatPolicial.setPreferredSize(new Dimension(500, 300));
-		serieCatPolicial.setBackground(new Color(120, 120, 120));
-
-		JPanel serieCatRomance = new JPanel();
-		serieCatRomance.setLayout(new FlowLayout(FlowLayout.CENTER));
-		serieCatRomance.setPreferredSize(new Dimension(500, 300));
-		serieCatRomance.setBackground(new Color(120, 120, 120));
-
-		JPanel serieCatSuspense = new JPanel();
-		serieCatSuspense.setLayout(new FlowLayout(FlowLayout.CENTER));
-		serieCatSuspense.setPreferredSize(new Dimension(500, 300));
-		serieCatSuspense.setBackground(new Color(120, 120, 120));
-
-		JPanel serieCatTerror = new JPanel();
-		serieCatTerror.setLayout(new FlowLayout(FlowLayout.CENTER));
-		serieCatTerror.setPreferredSize(new Dimension(500, 300));
-		serieCatTerror.setBackground(new Color(120, 120, 120));
-
-		JPanel serieCatMedico = new JPanel();
-		serieCatMedico.setLayout(new FlowLayout(FlowLayout.CENTER));
-		serieCatMedico.setPreferredSize(new Dimension(500, 300));
-		serieCatMedico.setBackground(new Color(120, 120, 120));
 
 		/**
 		 * TODO
@@ -1102,100 +929,7 @@ public class HomePage {
 		btnMusicSertaneja.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnMusicSertaneja.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasMusica.add(btnMusicSertaneja);
-
-		/**
-		 * Panels para categoria Butons Estilos Musicais
-		 */
-		
-		JPanel musicaCatAntigas = new JPanel();
-		musicaCatAntigas.setLayout(new FlowLayout(FlowLayout.CENTER));
-		musicaCatAntigas.setPreferredSize(new Dimension(500, 300));
-		musicaCatAntigas.setBackground(new Color(120, 120, 120));
-		
-		JPanel musicaCatAxe = new JPanel();
-		musicaCatAxe.setLayout(new FlowLayout(FlowLayout.CENTER));
-		musicaCatAxe.setPreferredSize(new Dimension(500, 300));
-		musicaCatAxe.setBackground(new Color(120, 120, 120));
-		
-		JPanel musicaCatBlack = new JPanel();
-		musicaCatBlack.setLayout(new FlowLayout(FlowLayout.CENTER));
-		musicaCatBlack.setPreferredSize(new Dimension(500, 300));
-		musicaCatBlack.setBackground(new Color(120, 120, 120));
-		
-		JPanel musicaCatBrega = new JPanel();
-		musicaCatBrega.setLayout(new FlowLayout(FlowLayout.CENTER));
-		musicaCatBrega.setPreferredSize(new Dimension(500, 300));
-		musicaCatBrega.setBackground(new Color(120, 120, 120));
-		
-		JPanel musicaCatDance = new JPanel();
-		musicaCatDance.setLayout(new FlowLayout(FlowLayout.CENTER));
-		musicaCatDance.setPreferredSize(new Dimension(500, 300));
-		musicaCatDance.setBackground(new Color(120, 120, 120));
-		
-		JPanel musicaCatEletronica = new JPanel();
-		musicaCatEletronica.setLayout(new FlowLayout(FlowLayout.CENTER));
-		musicaCatEletronica.setPreferredSize(new Dimension(500, 300));
-		musicaCatEletronica.setBackground(new Color(120, 120, 120));
-		
-		JPanel musicaCatFunk = new JPanel();
-		musicaCatFunk.setLayout(new FlowLayout(FlowLayout.CENTER));
-		musicaCatFunk.setPreferredSize(new Dimension(500, 300));
-		musicaCatFunk.setBackground(new Color(120, 120, 120));
-		
-		JPanel musicaCatForro = new JPanel();
-		musicaCatForro.setLayout(new FlowLayout(FlowLayout.CENTER));
-		musicaCatForro.setPreferredSize(new Dimension(500, 300));
-		musicaCatForro.setBackground(new Color(120, 120, 120));
-		
-		JPanel musicaCatFolcloricas = new JPanel();
-		musicaCatFolcloricas.setLayout(new FlowLayout(FlowLayout.CENTER));
-		musicaCatFolcloricas.setPreferredSize(new Dimension(500, 300));
-		musicaCatFolcloricas.setBackground(new Color(120, 120, 120));
-		
-		JPanel musicaCatGospel = new JPanel();
-		musicaCatGospel.setLayout(new FlowLayout(FlowLayout.CENTER));
-		musicaCatGospel.setPreferredSize(new Dimension(500, 300));
-		musicaCatGospel.setBackground(new Color(120, 120, 120));
-		
-		JPanel musicaCatInternacionais = new JPanel();
-		musicaCatInternacionais.setLayout(new FlowLayout(FlowLayout.CENTER));
-		musicaCatInternacionais.setPreferredSize(new Dimension(500, 300));
-		musicaCatInternacionais.setBackground(new Color(120, 120, 120));
-		
-		JPanel musicaCatModaDeViola = new JPanel();
-		musicaCatModaDeViola.setLayout(new FlowLayout(FlowLayout.CENTER));
-		musicaCatModaDeViola.setPreferredSize(new Dimension(500, 300));
-		musicaCatModaDeViola.setBackground(new Color(120, 120, 120));
-		
-		JPanel musicaCatNovas = new JPanel();
-		musicaCatNovas.setLayout(new FlowLayout(FlowLayout.CENTER));
-		musicaCatNovas.setPreferredSize(new Dimension(500, 300));
-		musicaCatNovas.setBackground(new Color(120, 120, 120));
-		
-		JPanel musicaCatPagode = new JPanel();
-		musicaCatPagode.setLayout(new FlowLayout(FlowLayout.CENTER));
-		musicaCatPagode.setPreferredSize(new Dimension(500, 300));
-		musicaCatPagode.setBackground(new Color(120, 120, 120));
-		
-		JPanel musicaCatRomantica = new JPanel();
-		musicaCatRomantica.setLayout(new FlowLayout(FlowLayout.CENTER));
-		musicaCatRomantica.setPreferredSize(new Dimension(500, 300));
-		musicaCatRomantica.setBackground(new Color(120, 120, 120));
-		
-		JPanel musicaCatReagge = new JPanel();
-		musicaCatReagge.setLayout(new FlowLayout(FlowLayout.CENTER));
-		musicaCatReagge.setPreferredSize(new Dimension(500, 300));
-		musicaCatReagge.setBackground(new Color(120, 120, 120));
-		
-		JPanel musicaCatSamba = new JPanel();
-		musicaCatSamba.setLayout(new FlowLayout(FlowLayout.CENTER));
-		musicaCatSamba.setPreferredSize(new Dimension(500, 300));
-		musicaCatSamba.setBackground(new Color(120, 120, 120));
-		
-		JPanel musicaCatSertaneja = new JPanel();
-		musicaCatSertaneja.setLayout(new FlowLayout(FlowLayout.CENTER));
-		musicaCatSertaneja.setPreferredSize(new Dimension(500, 300));
-		musicaCatSertaneja.setBackground(new Color(120, 120, 120));
+	
 		
 		/*
 		 * AÐ—Ð“O DE BUTTONS AÐ—Ð“O DE BUTTONS AÐ—Ð“O DE BUTTONS AÐ—Ð“O DE
@@ -1372,24 +1106,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "ação";
 				currentGenre = genero;
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistente(userName, genero);
-				if (ler) {
-					voltarPaineis.add(filmesCatAcao);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					// adiciona jtable
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					filmesCatAcao.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasFilmes.setVisible(false);
-					home.getContentPane().remove(panelCategoriasFilmes);
-					filmesCatAcao.setVisible(true);
-					filmesCatAcao.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não há nada a ser listado", "Inválido", 0);
-				}
-
+				acaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1400,26 +1117,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Anima\u00E7\u00E3o";
 				currentGenre = genero;
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistente(userName, genero);
-				if (ler) {
-					voltarPaineis.add(filmesCatAnimacao);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					// adiciona o JTable e chama os métodos para listar os
-					// filmes.
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					filmesCatAnimacao.add(tableContainer, BorderLayout.CENTER);
-					//
-					panelCategoriasFilmes.setVisible(false);
-					home.getContentPane().remove(panelCategoriasFilmes);
-					filmesCatAnimacao.setVisible(true);
-					filmesCatAnimacao.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Invalido", 0);
-				}
-
+				acaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1430,23 +1128,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "aventura";
 				currentGenre = genero;
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistente(userName, genero);
-				if (ler) {
-					voltarPaineis.add(filmesCatAventura);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					filmesCatAventura.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasFilmes.setVisible(false);
-					home.getContentPane().remove(panelCategoriasFilmes);
-					filmesCatAventura.setVisible(true);
-					filmesCatAventura.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "NÃ£o Ð° nada a ser listado", "Inválido", 0);
-				}
-
+				acaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1457,23 +1139,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Cl\u00E1ssico";
 				currentGenre = genero;
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistente(userName, genero);
-				if (ler) {
-					voltarPaineis.add(filmesCatClassico);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					filmesCatClassico.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasFilmes.setVisible(false);
-					home.getContentPane().remove(panelCategoriasFilmes);
-					filmesCatClassico.setVisible(true);
-					filmesCatClassico.revalidate();
-
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				acaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1484,23 +1150,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Com\u00E9dia";
 				currentGenre = genero;
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistente(userName, genero);
-				if (ler) {
-					voltarPaineis.add(filmesCatComedia);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					filmesCatComedia.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasFilmes.setVisible(false);
-					home.getContentPane().remove(panelCategoriasFilmes);
-					filmesCatComedia.setVisible(true);
-					filmesCatComedia.revalidate();
-
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				acaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1511,23 +1161,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Com\u00E9dia Rom\u00E2ntica";
 				currentGenre = genero;
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistente(userName, genero);
-				if (ler) {
-					voltarPaineis.add(filmesCatComediaRomantico);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					filmesCatComediaRomantico.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasFilmes.setVisible(false);
-					home.getContentPane().remove(panelCategoriasFilmes);
-					filmesCatComediaRomantico.setVisible(true);
-					filmesCatComediaRomantico.revalidate();
-
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				acaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1538,22 +1172,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Crime";
 				currentGenre = genero;
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistente(userName, genero);
-				if (ler) {
-					voltarPaineis.add(filmesCatCrime);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					filmesCatCrime.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasFilmes.setVisible(false);
-					home.getContentPane().remove(panelCategoriasFilmes);
-					filmesCatCrime.setVisible(true);
-					filmesCatCrime.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				acaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1564,23 +1183,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Document\u00E1rio";
 				currentGenre = genero;
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistente(userName, genero);
-				if (ler) {
-					voltarPaineis.add(filmesCatDocumentario);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					filmesCatDocumentario.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasFilmes.setVisible(false);
-					home.getContentPane().remove(panelCategoriasFilmes);
-					filmesCatDocumentario.setVisible(true);
-					filmesCatDocumentario.revalidate();
-
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				acaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1591,23 +1194,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Drama";
 				currentGenre = genero;
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistente(userName, genero);
-				if (ler) {
-					voltarPaineis.add(filmesCatDrama);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					filmesCatDrama.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasFilmes.setVisible(false);
-					home.getContentPane().remove(panelCategoriasFilmes);
-					filmesCatDrama.setVisible(true);
-					filmesCatDrama.revalidate();
-
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				acaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1618,23 +1205,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Faroeste";
 				currentGenre = genero;
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistente(userName, genero);
-				if (ler) {
-					voltarPaineis.add(filmesCatFaroeste);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					filmesCatFaroeste.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasFilmes.setVisible(false);
-					home.getContentPane().remove(panelCategoriasFilmes);
-					filmesCatFaroeste.setVisible(true);
-					filmesCatFaroeste.revalidate();
-
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				acaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1645,24 +1216,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Fic\u00E7\u00E3o Cientifica";
 				currentGenre = genero;
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistente(userName, genero);
-				if (ler) {
-					voltarPaineis.add(filmesCatFiccaoCient);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					filmesCatFiccaoCient.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasFilmes.setVisible(false);
-					home.getContentPane().remove(panelCategoriasFilmes);
-					filmesCatFiccaoCient.setVisible(true);
-					filmesCatFiccaoCient.revalidate();
-
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
-
+				acaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1673,24 +1227,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "guerra";
 				currentGenre = genero;
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistente(userName, genero);
-				if (ler) {
-					voltarPaineis.add(filmesCatGuerra);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					filmesCatGuerra.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasFilmes.setVisible(false);
-					home.getContentPane().remove(panelCategoriasFilmes);
-					filmesCatGuerra.setVisible(true);
-					filmesCatGuerra.revalidate();
-
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
-
+				acaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1701,23 +1238,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "musical";
 				currentGenre = genero;
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistente(userName, genero);
-				if (ler) {
-					voltarPaineis.add(filmesCatMusical);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					filmesCatMusical.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasFilmes.setVisible(false);
-					home.getContentPane().remove(panelCategoriasFilmes);
-					filmesCatMusical.setVisible(true);
-					filmesCatMusical.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
-
+				acaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1728,24 +1249,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "policial";
 				currentGenre = genero;
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistente(userName, genero);
-				if (ler) {
-					voltarPaineis.add(filmesCatPolicial);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					filmesCatPolicial.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasFilmes.setVisible(false);
-					home.getContentPane().remove(panelCategoriasFilmes);
-					filmesCatPolicial.setVisible(true);
-					filmesCatPolicial.revalidate();
-
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
-
+				acaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1756,24 +1260,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "romance";
 				currentGenre = genero;
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistente(userName, genero);
-				if (ler) {
-					voltarPaineis.add(filmesCatRomance);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					filmesCatRomance.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasFilmes.setVisible(false);
-					home.getContentPane().remove(panelCategoriasFilmes);
-					filmesCatRomance.setVisible(true);
-					filmesCatRomance.revalidate();
-
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
-
+				acaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1784,25 +1271,8 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "suspense";
 				currentGenre = genero;
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistente(userName, genero);
-				if (ler) {
-					voltarPaineis.add(filmesCatSuspense);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					filmesCatSuspense.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasFilmes.setVisible(false);
-					home.getContentPane().remove(panelCategoriasFilmes);
-					filmesCatSuspense.setVisible(true);
-					filmesCatSuspense.revalidate();
-
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
+				acaoButtons(panelCategoriasFilmes);
 				}
-
-			}
 		});
 
 		// ação do botão filmes categoria Terror
@@ -1812,23 +1282,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "terror";
 				currentGenre = genero;
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistente(userName, genero);
-				if (ler) {
-					voltarPaineis.add(filmesCatTerror);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					filmesCatTerror.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasFilmes.setVisible(false);
-					home.getContentPane().remove(panelCategoriasFilmes);
-					filmesCatTerror.setVisible(true);
-					filmesCatTerror.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
-
+				acaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1839,22 +1293,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "thriller";
 				currentGenre = genero;
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistente(userName, genero);
-				if (ler) {
-					voltarPaineis.add(filmesCatThriller);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					filmesCatThriller.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasFilmes.setVisible(false);
-					home.getContentPane().remove(panelCategoriasFilmes);
-					filmesCatThriller.setVisible(true);
-					filmesCatThriller.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à  nada a ser listado", "Inválido", 0);
-				}
+				acaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1868,20 +1307,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "ação";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteSerie(userName, genero);
-				if (ler) {
-					voltarPaineis.add(serieCatAcao);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					panelCategoriasSerie.setVisible(false);
-					home.getContentPane().remove(panelCategoriasSerie);
-					serieCatAcao.setVisible(true);
-					serieCatAcao.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
-
+				currentGenre = genero;
+				acaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 
@@ -1891,19 +1318,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Animação";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteSerie(userName, genero);
-				if (ler) {
-					voltarPaineis.add(serieCatAnimacao);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					panelCategoriasSerie.setVisible(false);
-					home.getContentPane().remove(panelCategoriasSerie);
-					serieCatAnimacao.setVisible(true);
-					serieCatAnimacao.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Invalido", 0);
-				}
+				currentGenre = genero;
+				acaoButtonsSerie(panelCategoriasSerie);
 
 			}
 		});
@@ -1915,20 +1331,8 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 
 				String genero = "aventura";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteSerie(userName, genero);
-				if (ler) {
-					voltarPaineis.add(serieCatAventura);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					panelCategoriasSerie.setVisible(false);
-					home.getContentPane().remove(panelCategoriasSerie);
-					serieCatAventura.setVisible(true);
-					serieCatAventura.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
-
+				currentGenre = genero;
+				acaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 
@@ -1938,20 +1342,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Cl\u00E1ssico";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteSerie(userName, genero);
-				if (ler) {
-					voltarPaineis.add(serieCatClassico);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					panelCategoriasSerie.setVisible(false);
-					home.getContentPane().remove(panelCategoriasSerie);
-					serieCatClassico.setVisible(true);
-					serieCatClassico.revalidate();
-
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				currentGenre = genero;
+				acaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 
@@ -1961,20 +1353,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Com\u00E9dia";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteSerie(userName, genero);
-				if (ler) {
-					voltarPaineis.add(serieCatComedia);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					panelCategoriasSerie.setVisible(false);
-					home.getContentPane().remove(panelCategoriasSerie);
-					serieCatComedia.setVisible(true);
-					serieCatComedia.revalidate();
-
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				currentGenre = genero;
+				acaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 
@@ -1984,20 +1364,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Com\u00E9dia Rom\u00E2ntica";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteSerie(userName, genero);
-				if (ler) {
-					voltarPaineis.add(serieCatComediaRomantico);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					panelCategoriasSerie.setVisible(false);
-					home.getContentPane().remove(panelCategoriasSerie);
-					serieCatComediaRomantico.setVisible(true);
-					serieCatComediaRomantico.revalidate();
-
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				currentGenre = genero;
+				acaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 
@@ -2007,20 +1375,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Crime";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteSerie(userName, genero);
-				if (ler) {
-					voltarPaineis.add(serieCatCrime);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					panelCategoriasSerie.setVisible(false);
-					home.getContentPane().remove(panelCategoriasSerie);
-					serieCatCrime.setVisible(true);
-					serieCatCrime.revalidate();
-
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				currentGenre = genero;
+				acaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 
@@ -2030,20 +1386,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Document\u00E1rio";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteSerie(userName, genero);
-				if (ler) {
-					voltarPaineis.add(serieCatDocumentario);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					panelCategoriasSerie.setVisible(false);
-					home.getContentPane().remove(panelCategoriasSerie);
-					serieCatDocumentario.setVisible(true);
-					serieCatDocumentario.revalidate();
-
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				currentGenre = genero;
+				acaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 
@@ -2053,20 +1397,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Drama";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteSerie(userName, genero);
-				if (ler) {
-					voltarPaineis.add(serieCatDrama);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					panelCategoriasSerie.setVisible(false);
-					home.getContentPane().remove(panelCategoriasSerie);
-					serieCatDrama.setVisible(true);
-					serieCatDrama.revalidate();
-
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				currentGenre = genero;
+				acaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 
@@ -2076,20 +1408,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Anime";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteSerie(userName, genero);
-				if (ler) {
-					voltarPaineis.add(serieCatAnime);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					panelCategoriasSerie.setVisible(false);
-					home.getContentPane().remove(panelCategoriasSerie);
-					serieCatAnime.setVisible(true);
-					serieCatAnime.revalidate();
-
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				currentGenre = genero;
+				acaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 
@@ -2099,20 +1419,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Fic\u00E7\u00E3o Cientifica";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteSerie(userName, genero);
-				if (ler) {
-					voltarPaineis.add(serieCatFiccaoCient);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					panelCategoriasSerie.setVisible(false);
-					home.getContentPane().remove(panelCategoriasSerie);
-					serieCatFiccaoCient.setVisible(true);
-					serieCatFiccaoCient.revalidate();
-
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				currentGenre = genero;
+				acaoButtonsSerie(panelCategoriasSerie);
 
 			}
 		});
@@ -2123,20 +1431,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "guerra";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteSerie(userName, genero);
-				if (ler) {
-					voltarPaineis.add(serieCatGuerra);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					home.getContentPane().remove(panelCategoriasSerie);
-					panelCategoriasSerie.setVisible(false);
-					serieCatGuerra.setVisible(true);
-					serieCatGuerra.revalidate();
-
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				currentGenre = genero;
+				acaoButtonsSerie(panelCategoriasSerie);
 
 			}
 		});
@@ -2147,20 +1443,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "musical";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteSerie(userName, genero);
-				if (ler) {
-					voltarPaineis.add(serieCatMusical);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					panelCategoriasSerie.setVisible(false);
-					home.getContentPane().remove(panelCategoriasSerie);
-					serieCatMusical.setVisible(true);
-					serieCatMusical.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
-
+				currentGenre = genero;
+				acaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 
@@ -2170,21 +1454,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "policial";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteSerie(userName, genero);
-				if (ler) {
-					voltarPaineis.add(serieCatPolicial);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					panelCategoriasSerie.setVisible(false);
-					home.getContentPane().remove(panelCategoriasSerie);
-					serieCatPolicial.setVisible(true);
-					serieCatPolicial.revalidate();
-
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
-
+				currentGenre = genero;
+				acaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 
@@ -2194,21 +1465,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "romance";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteSerie(userName, genero);
-				if (ler) {
-					voltarPaineis.add(serieCatRomance);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					panelCategoriasSerie.setVisible(false);
-					home.getContentPane().remove(panelCategoriasSerie);
-					serieCatRomance.setVisible(true);
-					serieCatRomance.revalidate();
-
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
-
+				currentGenre = genero;
+				acaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 
@@ -2218,20 +1476,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "suspense";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteSerie(userName, genero);
-				if (ler) {
-					voltarPaineis.add(serieCatSuspense);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					panelCategoriasSerie.setVisible(false);
-					home.getContentPane().remove(panelCategoriasSerie);
-					serieCatSuspense.setVisible(true);
-					serieCatSuspense.revalidate();
-
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				currentGenre = genero;
+				acaoButtonsSerie(panelCategoriasSerie);
 
 			}
 		});
@@ -2242,20 +1488,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "terror";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteSerie(userName, genero);
-				if (ler) {
-					voltarPaineis.add(serieCatTerror);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					panelCategoriasSerie.setVisible(false);
-					home.getContentPane().remove(panelCategoriasSerie);
-					serieCatTerror.setVisible(true);
-					serieCatTerror.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
-
+				currentGenre = genero;
+				acaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 
@@ -2265,19 +1499,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Médico";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteSerie(userName, genero);
-				if (ler) {
-					voltarPaineis.add(serieCatMedico);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					panelCategoriasSerie.setVisible(false);
-					home.getContentPane().remove(panelCategoriasSerie);
-					serieCatMedico.setVisible(true);
-					serieCatMedico.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				currentGenre = genero;
+				acaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 		
@@ -2291,23 +1514,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Antigas";
 				currentGenre = genero;
-				music  = "Musicas";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
-				if (ler) {
-					voltarPaineis.add(musicaCatAntigas);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					musicaCatAntigas.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasMusica.setVisible(false);
-					home.getContentPane().remove(panelCategoriasMusica);
-					musicaCatAntigas.setVisible(true);
-					musicaCatAntigas.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				acaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -2317,23 +1524,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Axé";
 				currentGenre = genero;
-				music  = "Musicas";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
-				if (ler) {
-					voltarPaineis.add(musicaCatAxe);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					musicaCatAxe.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasMusica.setVisible(false);
-					home.getContentPane().remove(panelCategoriasMusica);
-					musicaCatAxe.setVisible(true);
-					musicaCatAxe.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				acaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -2343,23 +1534,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Black";
 				currentGenre = genero;
-				music  = "Musicas";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
-				if (ler) {
-					voltarPaineis.add(musicaCatBlack);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					musicaCatBlack.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasMusica.setVisible(false);
-					home.getContentPane().remove(panelCategoriasMusica);
-					musicaCatBlack.setVisible(true);
-					musicaCatBlack.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				acaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -2369,23 +1544,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Brega";
 				currentGenre = genero;
-				music  = "Musicas";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
-				if (ler) {
-					voltarPaineis.add(musicaCatBrega);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					musicaCatBrega.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasMusica.setVisible(false);
-					home.getContentPane().remove(panelCategoriasMusica);
-					musicaCatBrega.setVisible(true);
-					musicaCatBrega.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				acaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -2395,23 +1554,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Dance";
 				currentGenre = genero;
-				music  = "Musicas";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
-				if (ler) {
-					voltarPaineis.add(musicaCatDance);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					musicaCatDance.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasMusica.setVisible(false);
-					home.getContentPane().remove(panelCategoriasMusica);
-					musicaCatDance.setVisible(true);
-					musicaCatDance.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				acaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -2421,23 +1564,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Eletrônica";
 				currentGenre = genero;
-				music  = "Musicas";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
-				if (ler) {
-					voltarPaineis.add(musicaCatEletronica);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					musicaCatEletronica.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasMusica.setVisible(false);
-					home.getContentPane().remove(panelCategoriasMusica);
-					musicaCatEletronica.setVisible(true);
-					musicaCatEletronica.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				acaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -2447,23 +1574,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Funk";
 				currentGenre = genero;
-				music  = "Musicas";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
-				if (ler) {
-					voltarPaineis.add(musicaCatFunk);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					musicaCatFunk.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasMusica.setVisible(false);
-					home.getContentPane().remove(panelCategoriasMusica);
-					musicaCatFunk.setVisible(true);
-					musicaCatFunk.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				acaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -2473,23 +1584,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Forró";
 				currentGenre = genero;
-				music  = "Musicas";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
-				if (ler) {
-					voltarPaineis.add(musicaCatForro);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					musicaCatForro.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasMusica.setVisible(false);
-					home.getContentPane().remove(panelCategoriasMusica);
-					musicaCatForro.setVisible(true);
-					musicaCatForro.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				acaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -2499,23 +1594,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Folclóricas";
 				currentGenre = genero;
-				music  = "Musicas";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
-				if (ler) {
-					voltarPaineis.add(musicaCatFolcloricas);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					musicaCatFolcloricas.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasMusica.setVisible(false);
-					home.getContentPane().remove(panelCategoriasMusica);
-					musicaCatFolcloricas.setVisible(true);
-					musicaCatFolcloricas.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				acaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -2525,23 +1604,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Gospel";
 				currentGenre = genero;
-				music  = "Musicas";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
-				if (ler) {
-					voltarPaineis.add(musicaCatGospel);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					musicaCatGospel.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasMusica.setVisible(false);
-					home.getContentPane().remove(panelCategoriasMusica);
-					musicaCatGospel.setVisible(true);
-					musicaCatGospel.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				acaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -2551,23 +1614,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Internacionais";
 				currentGenre = genero;
-				music  = "Musicas";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
-				if (ler) {
-					voltarPaineis.add(musicaCatInternacionais);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					musicaCatInternacionais.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasMusica.setVisible(false);
-					home.getContentPane().remove(panelCategoriasMusica);
-					musicaCatInternacionais.setVisible(true);
-					musicaCatInternacionais.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				acaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -2577,23 +1624,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "ModaDeViola";
 				currentGenre = genero;
-				music  = "Musicas";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
-				if (ler) {
-					voltarPaineis.add(musicaCatModaDeViola);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					musicaCatModaDeViola.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasMusica.setVisible(false);
-					home.getContentPane().remove(panelCategoriasMusica);
-					musicaCatModaDeViola.setVisible(true);
-					musicaCatModaDeViola.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				acaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -2603,23 +1634,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Novas";
 				currentGenre = genero;
-				music  = "Musicas";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
-				if (ler) {
-					voltarPaineis.add(musicaCatNovas);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					musicaCatNovas.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasMusica.setVisible(false);
-					home.getContentPane().remove(panelCategoriasMusica);
-					musicaCatNovas.setVisible(true);
-					musicaCatNovas.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				acaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -2629,23 +1644,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Pagode";
 				currentGenre = genero;
-				music  = "Musicas";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
-				if (ler) {
-					voltarPaineis.add(musicaCatPagode);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					musicaCatPagode.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasMusica.setVisible(false);
-					home.getContentPane().remove(panelCategoriasMusica);
-					musicaCatPagode.setVisible(true);
-					musicaCatPagode.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				acaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -2655,23 +1654,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Romântica";
 				currentGenre = genero;
-				music  = "Musicas";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
-				if (ler) {
-					voltarPaineis.add(musicaCatRomantica);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					musicaCatRomantica.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasMusica.setVisible(false);
-					home.getContentPane().remove(panelCategoriasMusica);
-					musicaCatRomantica.setVisible(true);
-					musicaCatRomantica.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				acaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -2681,23 +1664,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Reagge";
 				currentGenre = genero;
-				music  = "Musicas";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
-				if (ler) {
-					voltarPaineis.add(musicaCatReagge);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					musicaCatReagge.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasMusica.setVisible(false);
-					home.getContentPane().remove(panelCategoriasMusica);
-					musicaCatReagge.setVisible(true);
-					musicaCatReagge.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				acaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -2707,23 +1674,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Samba";
 				currentGenre = genero;
-				music  = "Musicas";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
-				if (ler) {
-					voltarPaineis.add(musicaCatSamba);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					musicaCatSamba.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasMusica.setVisible(false);
-					home.getContentPane().remove(panelCategoriasMusica);
-					musicaCatSamba.setVisible(true);
-					musicaCatSamba.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				acaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -2733,23 +1684,7 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Sertaneja";
 				currentGenre = genero;
-				music  = "Musicas";
-				FRarquivos retorno = new FRarquivos();
-				Boolean ler = false;
-				ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
-				if (ler) {
-					voltarPaineis.add(musicaCatSertaneja);
-					home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
-					tableContainer.setPreferredSize(new Dimension(790, 500));
-					musicaCatSertaneja.add(tableContainer, BorderLayout.CENTER);
-					panelCategoriasMusica.setVisible(false);
-					home.getContentPane().remove(panelCategoriasMusica);
-					musicaCatSertaneja.setVisible(true);
-					musicaCatSertaneja.revalidate();
-				} else {
-					JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-				}
+				acaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 
@@ -2759,7 +1694,7 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				music  = "Musicas";
-				FRarquivos retorno = new FRarquivos();
+				//FRarquivos retorno = new FRarquivos();
 				Boolean ler = true;
 				//ler = retorno.VerificaGeneroExistenteMusica(userName, genero);
 				if (ler) {
@@ -2780,5 +1715,64 @@ public class HomePage {
 			}
 		});
 	}
+	public ActionListener acaoButtons(JPanel panelCategorias) {
+		music = "";
+		FRarquivos retorno = new FRarquivos();
+		Boolean ler = false;
+		ler = retorno.VerificaGeneroExistente(userName, currentGenre);
+		if (ler) {
+			voltarPaineis.add(labelGeral);
+			home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+			listFiles.reUpdateTable(table, userName, currentGenre, music);
+			tableContainer.setPreferredSize(new Dimension(790, 500));
+			labelGeral.add(tableContainer, BorderLayout.CENTER);
+			panelCategorias.setVisible(false);
+			home.getContentPane().remove(panelCategorias);
+			labelGeral.setVisible(true);
+			labelGeral.revalidate();
 
+		} else {
+			JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
+		}
+		return null;
+		
+	}
+	public ActionListener acaoButtonsMusic(JPanel panelCategorias) {
+		music  = "Musicas";
+		FRarquivos retorno = new FRarquivos();
+		Boolean ler = false;
+		ler = retorno.VerificaGeneroExistenteMusica(userName, currentGenre);
+		if (ler) {
+			voltarPaineis.add(labelGeral);
+			home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+			listFiles.reUpdateTable(table, userName, currentGenre, music);
+			tableContainer.setPreferredSize(new Dimension(790, 500));
+			labelGeral.add(tableContainer, BorderLayout.CENTER);
+			panelCategorias.setVisible(false);
+			home.getContentPane().remove(panelCategorias);
+			labelGeral.setVisible(true);
+			labelGeral.revalidate();
+		} else {
+			JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
+		}
+		return null;
+		
+	}
+	public ActionListener acaoButtonsSerie(JPanel panelCategorias) {
+	FRarquivos retorno = new FRarquivos();
+	Boolean ler = false;
+	ler = retorno.VerificaGeneroExistenteSerie(userName, currentGenre);
+	if (ler) {
+		voltarPaineis.add(labelGeral);
+		home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+		panelCategorias.setVisible(false);
+		home.getContentPane().remove(panelCategorias);
+		labelGeral.setVisible(true);
+		labelGeral.revalidate();
+	} else {
+		JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
+	}
+		return null;
+		
+	}
 }

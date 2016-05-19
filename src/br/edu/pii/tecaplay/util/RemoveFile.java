@@ -13,15 +13,13 @@ import java.util.ArrayList;
 public class RemoveFile {
 	private String locationFile;
 	private String genero;
-	private String usrName;
 	private File file;
 	private File arquivo;
 	
 	
-	public void Remove(String userName, int line, String generos, int lines) {
+	public void Remove(int line, String generos, int lines, String patch) {
 		genero = generos.toLowerCase();
-		usrName = userName;
-		locationFile = "c:\\TecaPlay\\" + usrName + "\\Videos\\filme\\" + genero + ".txt";
+		locationFile = patch ;
 		arquivo = new File(locationFile);
 		try {
 			file = new File(locationFile);

@@ -30,13 +30,13 @@ public class ColumnButtonRemove extends AbstractCellEditor
 	private int mnemonic;
 	private Border originalBorder;
 	private Border focusBorder;
-	private String usrName;
 	private String genero;
 	private JButton renderButton;
 	private JButton editButton;
 	private Object editorValue;
 	private int totalLines;
 	private boolean isButtonColumnEditor;
+	private String patch;
 
 	/**
 	 * Create the ButtonColumn to be used as a renderer and editor. The renderer
@@ -50,11 +50,11 @@ public class ColumnButtonRemove extends AbstractCellEditor
 	 * @param column
 	 *            the column to which the button renderer/editor is added
 	 */
-	public ColumnButtonRemove(JTable table, Action action, int column, String gen, String userName, int line) {
+	public ColumnButtonRemove(JTable table, Action action, int column, String gen,int line, String patch2) {
 		this.table = table;
 		this.action = action;
 		totalLines = line;
-		usrName = userName;
+		patch = patch2;
 		genero = gen;
 		renderButton = new JButton();
 		editButton = new JButton();
@@ -177,7 +177,7 @@ public class ColumnButtonRemove extends AbstractCellEditor
 		int op = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir esse filme?", "Excluir", JOptionPane.YES_NO_OPTION);
 		if(op == JOptionPane.YES_OPTION){
 			RemoveFile removeFile = new RemoveFile();
-			removeFile.Remove(usrName, table.getSelectedRow(), genero, totalLines);
+			removeFile.Remove(table.getSelectedRow(), genero, totalLines,patch);
 			ActionEvent event = new ActionEvent(table, ActionEvent.ACTION_PERFORMED, "" + row);
 			action.actionPerformed(event);
 		}

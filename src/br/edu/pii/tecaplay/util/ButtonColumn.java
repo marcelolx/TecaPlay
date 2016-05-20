@@ -125,6 +125,8 @@ public class ButtonColumn extends AbstractCellEditor
 	//
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
 			int row, int column) {
+
+		renderButton.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 12));
 		if (isSelected) {
 			renderButton.setForeground(table.getSelectionForeground());
 			renderButton.setBackground(table.getSelectionBackground());
@@ -164,7 +166,6 @@ public class ButtonColumn extends AbstractCellEditor
 	 */
 	public void actionPerformed(ActionEvent e) {
 		int row = table.convertRowIndexToModel(table.getEditingRow());
-		String path=null;
 		fireEditingStopped();
 
 		// Invoke the Action

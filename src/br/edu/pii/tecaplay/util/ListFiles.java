@@ -1,14 +1,18 @@
 package br.edu.pii.tecaplay.util;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.List;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import br.edu.pii.tecaplay.ui.ListPlaylists;
 
 /**
  * @since 08/05/2016
@@ -26,30 +30,31 @@ public class ListFiles {
 
 		// table.setAutoCreateRowSorter(true);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		table.getColumnModel().getColumn(0).setPreferredWidth(350);
+		table.getColumnModel().getColumn(0).setPreferredWidth(300);
 		table.getColumnModel().getColumn(1).setPreferredWidth(100);
-		table.getColumnModel().getColumn(2).setPreferredWidth(79);
-		table.getColumnModel().getColumn(3).setPreferredWidth(33);
-		table.getColumnModel().getColumn(4).setPreferredWidth(75);
+		table.getColumnModel().getColumn(2).setPreferredWidth(99);
+		table.getColumnModel().getColumn(3).setPreferredWidth(43);
+		table.getColumnModel().getColumn(4).setPreferredWidth(95);
 		table.getColumnModel().getColumn(5).setPreferredWidth(60);
 		table.getColumnModel().getColumn(6).setPreferredWidth(90);
 
-		table.getColumnModel().getColumn(0).setMaxWidth(350);
+		table.getColumnModel().getColumn(0).setMaxWidth(300);
 		table.getColumnModel().getColumn(1).setMaxWidth(100);
-		table.getColumnModel().getColumn(2).setMaxWidth(79);
-		table.getColumnModel().getColumn(3).setMaxWidth(33);
-		table.getColumnModel().getColumn(4).setMaxWidth(75);
+		table.getColumnModel().getColumn(2).setMaxWidth(99);
+		table.getColumnModel().getColumn(3).setMaxWidth(43);
+		table.getColumnModel().getColumn(4).setMaxWidth(95);
 		table.getColumnModel().getColumn(5).setMaxWidth(60);
 		table.getColumnModel().getColumn(6).setMaxWidth(90);
 
-		table.getColumnModel().getColumn(0).setMinWidth(350);
+		table.getColumnModel().getColumn(0).setMinWidth(300);
 		table.getColumnModel().getColumn(1).setMinWidth(100);
-		table.getColumnModel().getColumn(2).setMinWidth(79);
-		table.getColumnModel().getColumn(3).setMinWidth(33);
-		table.getColumnModel().getColumn(4).setMinWidth(75);
+		table.getColumnModel().getColumn(2).setMinWidth(99);
+		table.getColumnModel().getColumn(3).setMinWidth(43);
+		table.getColumnModel().getColumn(4).setMinWidth(95);
 		table.getColumnModel().getColumn(5).setMinWidth(60);
 		table.getColumnModel().getColumn(6).setMinWidth(90);
-
+		table.setRowHeight(25);
+		table.setFont(new Font("Microsoft YaHei UI", Font.PLAIN, 14));
 		table.setBackground(new Color(192, 192, 192));
 		table.getTableHeader().setBackground(new Color(192, 192, 192));
 	}
@@ -83,8 +88,13 @@ public class ListFiles {
 			dados[i][1] = data[1];
 			dados[i][2] = data[2];
 			dados[i][3] = data[3];
+			dados[i][4] = "Adicionar";
 			dados[i][5] = "-X-";
-			dados[i][6] = "Assistir";
+			if (!musica.equals("")) {
+				dados[i][6] = "Ouvir";
+			} else {
+				dados[i][6] = "Assistir";
+			}
 		}
 		//
 		// Ação dos botões assistir
@@ -145,14 +155,44 @@ public class ListFiles {
 						caminho = data[4];
 					}
 				}
-				((DefaultTableModel) table.getModel()).removeRow(modelRow);
+				int op = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir esse filme?", "Excluir", JOptionPane.YES_NO_OPTION);
+				if(op == JOptionPane.YES_OPTION){
+					RemoveFile removeFile = new RemoveFile();
+					removeFile.Remove(table.getSelectedRow(), genero, lines.size(),directorie);
+					((DefaultTableModel) table.getModel()).removeRow(modelRow);
+				}
+		
+			
 			}
-			// saushau
 		};
-		ColumnButtonRemove remover = new ColumnButtonRemove(table, remove, 5, genero, lines.size(),
-				directorie);
+		Action addFavorite = new AbstractAction() {
+
+			/**
+			* 
+			*/
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JTable table = (JTable) e.getSource();
+				int modelRow = Integer.valueOf(e.getActionCommand());
+				String caminho = null;
+				for (int i = 0; i < lines.size(); i++) {
+					final String[] data = FileTextProvider.readData("#", lines.get(i));
+					if (i == table.getSelectedRow()) {
+						caminho = data[0]+"#"+data[1]+"#"+data[2]+"#"+data[3]+"#"+data[4];
+					}
+				}
+				ListPlaylists list = new ListPlaylists(usrName,caminho);
+			}
+		};
+		
+		ButtonColumn remover = new ButtonColumn(table, remove, 5);
 		remover.setMnemonic(KeyEvent.VK_D);
 
+		ButtonColumn addPlaylist = new ButtonColumn(table, addFavorite, 4);
+		addPlaylist.setMnemonic(KeyEvent.VK_D);
+		
 		ButtonColumn buttonColumn = new ButtonColumn(table, open, 6);
 		buttonColumn.setMnemonic(KeyEvent.VK_D);
 

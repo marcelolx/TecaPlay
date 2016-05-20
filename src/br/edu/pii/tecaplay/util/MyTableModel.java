@@ -10,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
 public class MyTableModel extends DefaultTableModel{
 	
 	public MyTableModel(final Object[][] dados){
-		super(dados, new String[] {"Nome", "Gênero", "País", "Ano", "Favoritos","Excluir","Assistir"});
+		super(dados, new String[] {"Nome", "Gênero/Autor", "País", "Ano", "Favoritos","Excluir","Assistir"});
 	}
 	
 	public void setDados(final Object[][] dados){

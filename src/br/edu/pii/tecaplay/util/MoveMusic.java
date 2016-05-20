@@ -68,7 +68,7 @@ public class MoveMusic {
 		try{
 			FileWriter buffer = null;
 			buffer = new FileWriter(criarTxt, true);
-			String text = nome+"#"+artista+"#"+genero+"#"+ano+"#"+file;
+			String text = nome+"#"+genero+"#"+artista+"#"+ano+"#"+file;
 			buffer.write(text+"\r\n");
 			buffer.close();
 		}catch(IOException e21){

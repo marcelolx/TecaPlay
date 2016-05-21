@@ -929,7 +929,8 @@ public class HomePage {
 				home.getContentPane().add(panelCategoriasMusica, BorderLayout.CENTER);
 				panelCategoriasMusica.setVisible(true); // ativa o panel lateral
 				panelCategoriasMusica.revalidate();// revalida o layout
-				home.revalidate();
+				panelCategoriasMusica.repaint();
+				timer.clse();
 			}
 		});
 		
@@ -949,8 +950,10 @@ public class HomePage {
 					home.getContentPane().remove(panelCategoriasMusica);
 					home.getContentPane().add(panelPlaylist, BorderLayout.CENTER);
 					panelPlaylist.setVisible(true);
-					home.revalidate();
+					//home.revalidate();
 					panelPlaylist.revalidate();
+					panelPlaylist.repaint();
+					timer.clse();
 			}
 		});
 

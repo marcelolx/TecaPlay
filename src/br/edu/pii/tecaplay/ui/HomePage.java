@@ -63,7 +63,7 @@ public class HomePage {
 		home.setVisible(true);// Deixar visivel
 		home.setBackground(new Color(25, 25, 25));// cor de Background
 		home.setTitle("Home - TecaPlay"); // titulo na barra do windows
-
+ 
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		int width = (screen.width) - 386;
 		int height = (screen.height) - 208;

@@ -30,6 +30,10 @@ import uk.co.caprica.vlcj.component.EmbeddedMediaPlayerComponent;
 import uk.co.caprica.vlcj.discovery.NativeDiscovery;
 import uk.co.caprica.vlcj.player.MediaPlayer;
 import uk.co.caprica.vlcj.player.MediaPlayerEventAdapter;
+import uk.co.caprica.vlcj.player.MediaPlayerFactory;
+import uk.co.caprica.vlcj.player.embedded.DefaultFullScreenStrategy;
+import uk.co.caprica.vlcj.player.embedded.EmbeddedMediaPlayer;
+import uk.co.caprica.vlcj.player.embedded.FullScreenStrategy;
 import uk.co.caprica.vlcj.runtime.RuntimeUtil;
 import uk.co.caprica.vlcj.runtime.x.LibXUtil;
 
@@ -51,6 +55,9 @@ public class VLCjPlayer{
     
     private final JSlider timeSlider;
 
+    private final JButton muteButton;
+    
+    private final JButton fullscreenButton;
 
     public void Teste(String caminho) {
         new NativeDiscovery().discover();
@@ -80,6 +87,11 @@ public class VLCjPlayer{
 
         mediaPlayerComponent = new EmbeddedMediaPlayerComponent();
         contentPane.add(mediaPlayerComponent, BorderLayout.CENTER);
+        MediaPlayerFactory mediaPlayerFactory = new MediaPlayerFactory();
+        // Create a full-screen strategy
+        FullScreenStrategy fullScreenStrategy = new DefaultFullScreenStrategy(frame);
+        // Create a media player instance (in this example an embedded media player)
+        EmbeddedMediaPlayer mediaPlayer = mediaPlayerFactory.newEmbeddedMediaPlayer(fullScreenStrategy);
 
         JPanel controlsPane = new JPanel();
         controlsPane.setBackground(new Color(192, 192, 192));
@@ -98,6 +110,11 @@ public class VLCjPlayer{
         skipButton.setBackground(Color.LIGHT_GRAY);
         skipButton.setPreferredSize(new Dimension(32, 32));
         controlsPane.add(skipButton, BorderLayout.CENTER);
+        muteButton = new JButton();
+        muteButton.setIcon(new ImageIcon("resources\\images\\noMute.png"));
+        muteButton.setPreferredSize(new Dimension(32, 32));
+        muteButton.setBackground(Color.LIGHT_GRAY);
+        controlsPane.add(muteButton, BorderLayout.CENTER);
         volumeSlider = new JSlider();
         volumeSlider.setPreferredSize(new Dimension(60, 32));
         volumeSlider.setBackground(Color.LIGHT_GRAY);
@@ -107,6 +124,11 @@ public class VLCjPlayer{
         timeSlider.setBackground(Color.LIGHT_GRAY);
         timeSlider.setValue(0);
         controlsPane.add(timeSlider, BorderLayout.NORTH);
+        fullscreenButton = new JButton();
+        fullscreenButton.setIcon(new ImageIcon("resources\\images\\togleFull.png"));
+        fullscreenButton.setPreferredSize(new Dimension(32, 32));
+        fullscreenButton.setBackground(Color.LIGHT_GRAY);
+        controlsPane.add(fullscreenButton, BorderLayout.CENTER);
         contentPane.add(controlsPane, BorderLayout.SOUTH);
         
         pauseButton.addActionListener(new ActionListener() {
@@ -137,7 +159,20 @@ public class VLCjPlayer{
                 mediaPlayerComponent.getMediaPlayer().skip(5000);
             }
         });
-
+        
+        muteButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				boolean mute = mediaPlayerComponent.getMediaPlayer().mute();
+				if(mute){
+					muteButton.setIcon(new ImageIcon("resources\\images\\mute.png"));
+				}else{
+					muteButton.setIcon(new ImageIcon("resources\\images\\noMute.png"));
+				}
+			}
+		});
+        
         volumeSlider.addChangeListener(new ChangeListener() {
 			
 			@Override
@@ -154,6 +189,20 @@ public class VLCjPlayer{
 				//timeSlider.setMaximum(mediaPlayerComponent.getMediaPlayer().getLength());
 				//timeSlider.setValue(mediaPlayerComponent.getMediaPlayer().get);
 				
+			}
+		});
+        
+        fullscreenButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mediaPlayer.toggleFullScreen();
+				boolean realy = mediaPlayer.isFullScreen();
+				if(realy){
+					fullscreenButton.setIcon(new ImageIcon("resources\\images\\exitFull.png"));
+				}else{
+					fullscreenButton.setIcon(new ImageIcon("resources\\images\\togleFull.png"));
+				}
 			}
 		});
         

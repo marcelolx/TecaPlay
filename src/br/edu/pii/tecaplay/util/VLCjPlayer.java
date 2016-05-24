@@ -38,7 +38,11 @@ import uk.co.caprica.vlcj.runtime.RuntimeUtil;
 import uk.co.caprica.vlcj.runtime.x.LibXUtil;
 
 public class VLCjPlayer{
-
+	/**
+	 * @author Marcelo
+	 */
+	
+	
     private final JFrame frame;
 
     private final EmbeddedMediaPlayerComponent mediaPlayerComponent;

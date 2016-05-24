@@ -5,8 +5,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
+
 /**
- * Classe que remove os arquivos quando o usuario aperta o botao remover da lista
+ * Classe que remove os arquivos quando o usuario aperta o botao remover da
+ * lista
+ * 
  * @author jonas
  *
  */
@@ -15,11 +18,10 @@ public class RemoveFile {
 	private String genero;
 	private File file;
 	private File arquivo;
-	
-	
-	public void Remove(int line, String generos, int lines, String patch) {
+
+	public void RemoveTxtLine(int line, String generos, int lines, String patch) {
 		genero = generos.toLowerCase();
-		locationFile = patch ;
+		locationFile = patch;
 		arquivo = new File(locationFile);
 		try {
 			file = new File(locationFile);
@@ -31,28 +33,26 @@ public class RemoveFile {
 			while ((linha = br.readLine()) != null) {
 				lista.add(linha);
 			}
-			
-	
+
 			// lê as linhas antes do arquivo a ser excluido
 			for (int i = 0; i < line; i++) {
 				final String[] data = FileTextProvider.readData("#", lista.get(i));
 				// grava as informaões no txt
-					String text = data[0] + "#" + genero + "#" + data[2] + "#" + data[3] + "#" + data[4] + "#Assistir";
-					listaFinal.add(text);
-					
+				String text = data[0] + "#" + genero + "#" + data[2] + "#" + data[3] + "#" + data[4] + "#Assistir";
+				listaFinal.add(text);
+
 			}
 			// lê as linhas depois do arquivo a ser excluido
 			for (int i = line + 1; i < lines; i++) {
 				// pega o que tem na linha e divide
 				final String[] data = FileTextProvider.readData("#", lista.get(i));
 				// grava as informaões no txt
-					String text = data[0] + "#" + genero + "#" + data[2] + "#" + data[3] + "#" + data[4];
-					listaFinal.add(text);
+				String text = data[0] + "#" + genero + "#" + data[2] + "#" + data[3] + "#" + data[4];
+				listaFinal.add(text);
 
-				
 			}
 			FileWriter buffer = null;
-			buffer = new FileWriter(locationFile,false);
+			buffer = new FileWriter(locationFile, false);
 			for (int i = 0; i < listaFinal.size(); i++) {
 				buffer.write(listaFinal.get(i) + "\r\n");
 			}
@@ -64,5 +64,10 @@ public class RemoveFile {
 			System.out.println("Erro no RemoveFile");
 		}
 
-}
+	}
+	
+	public void FileRemove(String src){
+		File file = new File(src);
+		file.delete();
+	}
 }

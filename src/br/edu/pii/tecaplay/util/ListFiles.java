@@ -158,7 +158,8 @@ public class ListFiles {
 				int op = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir esse filme?", "Excluir", JOptionPane.YES_NO_OPTION);
 				if(op == JOptionPane.YES_OPTION){
 					RemoveFile removeFile = new RemoveFile();
-					removeFile.Remove(table.getSelectedRow(), genero, lines.size(),directorie);
+					removeFile.RemoveTxtLine(table.getSelectedRow(), genero, lines.size(),directorie);
+					removeFile.FileRemove(caminho);
 					((DefaultTableModel) table.getModel()).removeRow(modelRow);
 				}
 		

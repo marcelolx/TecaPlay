@@ -26,6 +26,7 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
+import br.edu.pii.tecaplay.util.AtualizeSeries;
 import br.edu.pii.tecaplay.util.FRarquivos;
 import br.edu.pii.tecaplay.util.FileUtil;
 import br.edu.pii.tecaplay.util.ListFiles;
@@ -37,11 +38,12 @@ public class HomePage {
 	private JTable table = new JTable();
 	private ListFiles listFiles = new ListFiles();
 	private JScrollPane tableContainer = new JScrollPane(table);
-	private String currentGenre = null;
+	private String currentGenero = null;
 	private String userName;
 	private String music  = "";
 	private JFrame home;
 	private JPanel labelGeral;
+	private JPanel panelSerie;
 	
 
 	/**
@@ -187,7 +189,7 @@ public class HomePage {
 		 * Imagem LATERAL
 		 * 
 		 */
-
+		
 		JPanel panelLateralImagem = new JPanel();
 		panelLateralImagem.setLayout(new FlowLayout(FlowLayout.LEFT, 4, 4));
 		panelLateralImagem.setPreferredSize(new Dimension(180, 400));
@@ -412,6 +414,12 @@ public class HomePage {
 		btnSorteioVideo.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelLateralVideo.add(btnSorteioVideo);
 		btnSorteioVideo.setBackground(Color.LIGHT_GRAY);
+		
+		
+		panelSerie = new JPanel();
+		panelSerie.setLayout(new FlowLayout(FlowLayout.CENTER));
+		panelSerie.setPreferredSize(new Dimension(500, 300));
+		panelSerie.setBackground(new Color(120, 252, 120));
 		/*
 		 * 
 		 * 
@@ -906,7 +914,7 @@ public class HomePage {
 					voltarPaineis.remove(voltarPaineis.size() - 1);
 				}
 				try {
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
+					listFiles.reUpdateTable(table, userName, currentGenero, music);
 				} catch (NullPointerException ne) {
 					ne.getStackTrace();
 				}
@@ -966,6 +974,8 @@ public class HomePage {
 				if (voltarPaineis.size() == 2) {
 					home.getContentPane().remove(voltarPaineis.get(1));
 				}
+				labelGeral = new JPanel();
+				AtualizaPanelGeral();
 				voltarPaineis = new ArrayList<JPanel>();
 				voltarPaineis.removeAll(voltarPaineis);
 				voltarPaineis.add(panelCategoriasFilmes);
@@ -987,6 +997,8 @@ public class HomePage {
 				if (voltarPaineis.size() == 2) {
 					home.getContentPane().remove(voltarPaineis.get(1));
 				}
+				labelGeral = new JPanel();
+				AtualizaPanelGeral();
 				voltarPaineis = new ArrayList<JPanel>();
 				voltarPaineis.removeAll(voltarPaineis);
 				voltarPaineis.add(panelCategoriasSerie);
@@ -1023,6 +1035,7 @@ public class HomePage {
 					labelFundo.revalidate();
 					labelFundo.repaint();
 					voltarPaineis.remove(voltarPaineis.size() - 1);
+					AtualizaPanelGeral();
 				} else if (voltarPaineis.size() == 2) {
 					home.getContentPane().remove(voltarPaineis.get(1));
 					voltarPaineis.get(1).revalidate();
@@ -1035,7 +1048,7 @@ public class HomePage {
 					voltarPaineis.remove(voltarPaineis.size() - 1);
 				}
 				try {
-					listFiles.reUpdateTable(table, userName, currentGenre, music);
+					listFiles.reUpdateTable(table, userName, currentGenero, music);
 				} catch (NullPointerException ne) {
 					ne.getStackTrace();
 				}
@@ -1053,8 +1066,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "ação";
-				currentGenre = genero;
-				acaoButtons(panelCategoriasFilmes);
+				currentGenero = genero;
+				AcaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1064,8 +1077,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Anima\u00E7\u00E3o";
-				currentGenre = genero;
-				acaoButtons(panelCategoriasFilmes);
+				currentGenero = genero;
+				AcaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1075,8 +1088,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "aventura";
-				currentGenre = genero;
-				acaoButtons(panelCategoriasFilmes);
+				currentGenero = genero;
+				AcaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1086,8 +1099,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Cl\u00E1ssico";
-				currentGenre = genero;
-				acaoButtons(panelCategoriasFilmes);
+				currentGenero = genero;
+				AcaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1097,8 +1110,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Com\u00E9dia";
-				currentGenre = genero;
-				acaoButtons(panelCategoriasFilmes);
+				currentGenero = genero;
+				AcaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1108,8 +1121,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Com\u00E9dia Rom\u00E2ntica";
-				currentGenre = genero;
-				acaoButtons(panelCategoriasFilmes);
+				currentGenero = genero;
+				AcaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1119,8 +1132,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Crime";
-				currentGenre = genero;
-				acaoButtons(panelCategoriasFilmes);
+				currentGenero = genero;
+				AcaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1130,8 +1143,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Document\u00E1rio";
-				currentGenre = genero;
-				acaoButtons(panelCategoriasFilmes);
+				currentGenero = genero;
+				AcaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1141,8 +1154,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Drama";
-				currentGenre = genero;
-				acaoButtons(panelCategoriasFilmes);
+				currentGenero = genero;
+				AcaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1152,8 +1165,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Faroeste";
-				currentGenre = genero;
-				acaoButtons(panelCategoriasFilmes);
+				currentGenero = genero;
+				AcaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1163,8 +1176,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Fic\u00E7\u00E3o Cientifica";
-				currentGenre = genero;
-				acaoButtons(panelCategoriasFilmes);
+				currentGenero = genero;
+				AcaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1174,8 +1187,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "guerra";
-				currentGenre = genero;
-				acaoButtons(panelCategoriasFilmes);
+				currentGenero = genero;
+				AcaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1185,8 +1198,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "musical";
-				currentGenre = genero;
-				acaoButtons(panelCategoriasFilmes);
+				currentGenero = genero;
+				AcaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1196,8 +1209,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "policial";
-				currentGenre = genero;
-				acaoButtons(panelCategoriasFilmes);
+				currentGenero = genero;
+				AcaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1207,8 +1220,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "romance";
-				currentGenre = genero;
-				acaoButtons(panelCategoriasFilmes);
+				currentGenero = genero;
+				AcaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1218,8 +1231,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "suspense";
-				currentGenre = genero;
-				acaoButtons(panelCategoriasFilmes);
+				currentGenero = genero;
+				AcaoButtons(panelCategoriasFilmes);
 				}
 		});
 
@@ -1229,8 +1242,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "terror";
-				currentGenre = genero;
-				acaoButtons(panelCategoriasFilmes);
+				currentGenero = genero;
+				AcaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1240,8 +1253,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "thriller";
-				currentGenre = genero;
-				acaoButtons(panelCategoriasFilmes);
+				currentGenero = genero;
+				AcaoButtons(panelCategoriasFilmes);
 			}
 		});
 
@@ -1255,8 +1268,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "ação";
-				currentGenre = genero;
-				acaoButtonsSerie(panelCategoriasSerie);
+				currentGenero = genero;
+				AcaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 
@@ -1266,8 +1279,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Animação";
-				currentGenre = genero;
-				acaoButtonsSerie(panelCategoriasSerie);
+				currentGenero = genero;
+				AcaoButtonsSerie(panelCategoriasSerie);
 
 			}
 		});
@@ -1279,8 +1292,8 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 
 				String genero = "aventura";
-				currentGenre = genero;
-				acaoButtonsSerie(panelCategoriasSerie);
+				currentGenero = genero;
+				AcaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 
@@ -1290,8 +1303,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Cl\u00E1ssico";
-				currentGenre = genero;
-				acaoButtonsSerie(panelCategoriasSerie);
+				currentGenero = genero;
+				AcaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 
@@ -1301,8 +1314,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Com\u00E9dia";
-				currentGenre = genero;
-				acaoButtonsSerie(panelCategoriasSerie);
+				currentGenero = genero;
+				AcaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 
@@ -1312,8 +1325,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Com\u00E9dia Rom\u00E2ntica";
-				currentGenre = genero;
-				acaoButtonsSerie(panelCategoriasSerie);
+				currentGenero = genero;
+				AcaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 
@@ -1323,8 +1336,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Crime";
-				currentGenre = genero;
-				acaoButtonsSerie(panelCategoriasSerie);
+				currentGenero = genero;
+				AcaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 
@@ -1334,8 +1347,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Document\u00E1rio";
-				currentGenre = genero;
-				acaoButtonsSerie(panelCategoriasSerie);
+				currentGenero = genero;
+				AcaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 
@@ -1345,8 +1358,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Drama";
-				currentGenre = genero;
-				acaoButtonsSerie(panelCategoriasSerie);
+				currentGenero = genero;
+				AcaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 
@@ -1356,8 +1369,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Anime";
-				currentGenre = genero;
-				acaoButtonsSerie(panelCategoriasSerie);
+				currentGenero = genero;
+				AcaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 
@@ -1367,8 +1380,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Fic\u00E7\u00E3o Cientifica";
-				currentGenre = genero;
-				acaoButtonsSerie(panelCategoriasSerie);
+				currentGenero = genero;
+				AcaoButtonsSerie(panelCategoriasSerie);
 
 			}
 		});
@@ -1379,8 +1392,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "guerra";
-				currentGenre = genero;
-				acaoButtonsSerie(panelCategoriasSerie);
+				currentGenero = genero;
+				AcaoButtonsSerie(panelCategoriasSerie);
 
 			}
 		});
@@ -1391,8 +1404,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "musical";
-				currentGenre = genero;
-				acaoButtonsSerie(panelCategoriasSerie);
+				currentGenero = genero;
+				AcaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 
@@ -1402,8 +1415,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "policial";
-				currentGenre = genero;
-				acaoButtonsSerie(panelCategoriasSerie);
+				currentGenero = genero;
+				AcaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 
@@ -1413,8 +1426,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "romance";
-				currentGenre = genero;
-				acaoButtonsSerie(panelCategoriasSerie);
+				currentGenero = genero;
+				AcaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 
@@ -1424,8 +1437,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "suspense";
-				currentGenre = genero;
-				acaoButtonsSerie(panelCategoriasSerie);
+				currentGenero = genero;
+				AcaoButtonsSerie(panelCategoriasSerie);
 
 			}
 		});
@@ -1436,8 +1449,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "terror";
-				currentGenre = genero;
-				acaoButtonsSerie(panelCategoriasSerie);
+				currentGenero = genero;
+				AcaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 
@@ -1447,8 +1460,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Médico";
-				currentGenre = genero;
-				acaoButtonsSerie(panelCategoriasSerie);
+				currentGenero = genero;
+				AcaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
 		
@@ -1461,8 +1474,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Antigas";
-				currentGenre = genero;
-				acaoButtonsMusic(panelCategoriasMusica);
+				currentGenero = genero;
+				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -1471,8 +1484,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Axé";
-				currentGenre = genero;
-				acaoButtonsMusic(panelCategoriasMusica);
+				currentGenero = genero;
+				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -1481,8 +1494,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Black";
-				currentGenre = genero;
-				acaoButtonsMusic(panelCategoriasMusica);
+				currentGenero = genero;
+				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -1491,8 +1504,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Brega";
-				currentGenre = genero;
-				acaoButtonsMusic(panelCategoriasMusica);
+				currentGenero = genero;
+				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -1501,8 +1514,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Dance";
-				currentGenre = genero;
-				acaoButtonsMusic(panelCategoriasMusica);
+				currentGenero = genero;
+				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -1511,8 +1524,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Eletrônica";
-				currentGenre = genero;
-				acaoButtonsMusic(panelCategoriasMusica);
+				currentGenero = genero;
+				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -1521,8 +1534,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Funk";
-				currentGenre = genero;
-				acaoButtonsMusic(panelCategoriasMusica);
+				currentGenero = genero;
+				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -1531,8 +1544,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Forró";
-				currentGenre = genero;
-				acaoButtonsMusic(panelCategoriasMusica);
+				currentGenero = genero;
+				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -1541,8 +1554,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Folclóricas";
-				currentGenre = genero;
-				acaoButtonsMusic(panelCategoriasMusica);
+				currentGenero = genero;
+				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -1551,8 +1564,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Gospel";
-				currentGenre = genero;
-				acaoButtonsMusic(panelCategoriasMusica);
+				currentGenero = genero;
+				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -1561,8 +1574,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Internacionais";
-				currentGenre = genero;
-				acaoButtonsMusic(panelCategoriasMusica);
+				currentGenero = genero;
+				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -1571,8 +1584,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "ModaDeViola";
-				currentGenre = genero;
-				acaoButtonsMusic(panelCategoriasMusica);
+				currentGenero = genero;
+				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -1581,8 +1594,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Novas";
-				currentGenre = genero;
-				acaoButtonsMusic(panelCategoriasMusica);
+				currentGenero = genero;
+				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -1591,8 +1604,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Pagode";
-				currentGenre = genero;
-				acaoButtonsMusic(panelCategoriasMusica);
+				currentGenero = genero;
+				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -1601,8 +1614,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Romântica";
-				currentGenre = genero;
-				acaoButtonsMusic(panelCategoriasMusica);
+				currentGenero = genero;
+				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -1611,8 +1624,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Reagge";
-				currentGenre = genero;
-				acaoButtonsMusic(panelCategoriasMusica);
+				currentGenero = genero;
+				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -1621,8 +1634,8 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Samba";
-				currentGenre = genero;
-				acaoButtonsMusic(panelCategoriasMusica);
+				currentGenero = genero;
+				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 		
@@ -1631,23 +1644,28 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String genero = "Sertaneja";
-				currentGenre = genero;
-				acaoButtonsMusic(panelCategoriasMusica);
+				currentGenero = genero;
+				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
 
 		// Botão PlayList
 		
 	}
-	public ActionListener acaoButtons(JPanel panelCategorias) {
+	/**
+	 * Acão que será executada quando aperta alguma opção de genero na categoria Filmes
+	 * @param panelCategorias Recebe o panel para serem feitas as ações
+	 * @return null
+	 */
+	public ActionListener AcaoButtons(JPanel panelCategorias) {
 		music = "";
 		FRarquivos retorno = new FRarquivos();
 		Boolean ler = false;
-		ler = retorno.VerificaGeneroExistente(userName, currentGenre);
+		ler = retorno.VerificaGeneroExistente(userName, currentGenero);
 		if (ler) {
 			voltarPaineis.add(labelGeral);
 			home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-			listFiles.reUpdateTable(table, userName, currentGenre, music);
+			listFiles.reUpdateTable(table, userName, currentGenero, music);
 			tableContainer.setPreferredSize(new Dimension(790, 500));
 			labelGeral.add(tableContainer, BorderLayout.CENTER);
 			panelCategorias.setVisible(false);
@@ -1661,15 +1679,20 @@ public class HomePage {
 		return null;
 		
 	}
-	public ActionListener acaoButtonsMusic(JPanel panelCategorias) {
+	/**
+	 * Acão que será executada quando aperta alguma opção de genero na categoria Musica
+	 * @param panelCategorias Recebe o panel para serem feitas as ações
+	 * @return null
+	 */
+	public ActionListener AcaoButtonsMusic(JPanel panelCategorias) {
 		music  = "Musicas";
 		FRarquivos retorno = new FRarquivos();
 		Boolean ler = false;
-		ler = retorno.VerificaGeneroExistenteMusica(userName, currentGenre);
+		ler = retorno.VerificaGeneroExistenteMusica(userName, currentGenero);
 		if (ler) {
 			voltarPaineis.add(labelGeral);
 			home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-			listFiles.reUpdateTable(table, userName, currentGenre, music);
+			listFiles.reUpdateTable(table, userName, currentGenero, music);
 			tableContainer.setPreferredSize(new Dimension(790, 500));
 			labelGeral.add(tableContainer, BorderLayout.CENTER);
 			panelCategorias.setVisible(false);
@@ -1682,10 +1705,15 @@ public class HomePage {
 		return null;
 		
 	}
-	public ActionListener acaoButtonsSerie(JPanel panelCategorias) {
+	/**
+	 * Acão que será executada quando aperta alguma opção de genero na categoria Serie
+	 * @param panelCategorias Recebe o panel para serem feitas as ações
+	 * @return null
+	 */
+	public ActionListener AcaoButtonsSerie(JPanel panelCategorias) {
 	FRarquivos retorno = new FRarquivos();
 	Boolean ler = false;
-	ler = retorno.VerificaGeneroExistenteSerie(userName, currentGenre);
+	ler = retorno.VerificaGeneroExistenteSerie(userName, currentGenero);
 	if (ler) {
 		voltarPaineis.add(labelGeral);
 		home.add(voltarPaineis.get(1), BorderLayout.CENTER);
@@ -1693,10 +1721,46 @@ public class HomePage {
 		home.getContentPane().remove(panelCategorias);
 		labelGeral.setVisible(true);
 		labelGeral.revalidate();
+		AddButtonSerieNoLabel();
 	} else {
 		JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
 	}
 		return null;
 		
+	}
+	/**
+	 * Atualiza o Label que será usado como label principal
+	 */
+	public void AtualizaPanelGeral() {
+		labelGeral = new JPanel();
+		labelGeral.setLayout(new FlowLayout(FlowLayout.CENTER));
+		labelGeral.setPreferredSize(new Dimension(500, 300));
+		labelGeral.setBackground(new Color(120, 254, 120));
+	}
+	/**
+	 * Função que será usada para atualizar os botões das séries
+	 * Cada genero que será enviado para cá, é resposavel por verifica e fazer a 
+	 * adição automatica dos buttons série,
+	 * e consequentemente atualiza o label.
+	 */
+	public void AddButtonSerieNoLabel(){
+
+		AtualizeSeries atualize = new AtualizeSeries();
+		String nameSerie = atualize.NameSeries();
+		int size = atualize.Size();
+		JButton[] teste = new JButton[10];
+		for (int i = 1; i < 10; i++) {
+			teste[i] = new JButton("Rest" + i);
+			teste[i].setPreferredSize(new Dimension(127, 135));
+			teste[i].setFont(new Font("Tahoma", Font.BOLD, 14));
+			labelGeral.add(teste[i]);
+		}
+		/**
+		System.out.println(teste.getName());
+		teste.setName("Teste");
+		
+		
+		teste.setBackground(Color.LIGHT_GRAY);
+		labelGeral.add(teste);*/
 	}
 }

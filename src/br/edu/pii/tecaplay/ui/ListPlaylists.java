@@ -1,8 +1,10 @@
 package br.edu.pii.tecaplay.ui;
 
-import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,15 +15,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.ListSelectionModel;
 
 import br.edu.pii.tecaplay.util.AddPlaylist;
-
-import javax.swing.AbstractListModel;
-import java.awt.Font;
 
 public class ListPlaylists {
 	private ArrayList<String> dados ;
@@ -51,6 +47,7 @@ public class ListPlaylists {
 		public void actionPerformed(ActionEvent arg0) {
 			panel.dispose();
 			String nome = JOptionPane.showInputDialog("Informe o nome da Playlist a ser Criada");
+			@SuppressWarnings("unused")
 			AddPlaylist add = new AddPlaylist(usrName, nome, caminho);
 		}
 	});
@@ -68,8 +65,8 @@ public class ListPlaylists {
 	listPlaylist();
 
 	
-	DefaultListModel model = new DefaultListModel();
-	JList list = new JList(model);
+	DefaultListModel<String> model = new DefaultListModel<String>();
+	JList<String> list = new JList<String>(model);
 	for (int i = 0; i < dados.size(); i++) {
 		model.add(i, dados.get(i));
 	}

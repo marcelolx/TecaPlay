@@ -17,7 +17,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSlider;
 import javax.swing.SwingUtilities;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import com.sun.jna.Native;
 import com.sun.jna.NativeLibrary;
@@ -43,6 +46,10 @@ public class VLCjPlayer{
     private final JButton skipButton;
     
     private int logoPlay = 0;
+    
+    private final JSlider volumeSlider;
+    
+    private final JSlider timeSlider;
 
 
     public void Teste(String caminho) {
@@ -80,17 +87,26 @@ public class VLCjPlayer{
         rewindButton.setIcon(new ImageIcon("resources\\images\\rewindButton.png"));
         rewindButton.setBackground(Color.LIGHT_GRAY);
         rewindButton.setPreferredSize(new Dimension(32, 32));
-        controlsPane.add(rewindButton);
+        controlsPane.add(rewindButton, BorderLayout.CENTER);
         pauseButton = new JButton();
         pauseButton.setIcon(new ImageIcon("resources\\images\\pauseButton.png"));
         pauseButton.setBackground(Color.LIGHT_GRAY);
         pauseButton.setPreferredSize(new Dimension(32, 32));
-        controlsPane.add(pauseButton); 
+        controlsPane.add(pauseButton, BorderLayout.CENTER); 
         skipButton = new JButton();
         skipButton.setIcon(new ImageIcon("resources\\images\\skipButton.png"));
         skipButton.setBackground(Color.LIGHT_GRAY);
         skipButton.setPreferredSize(new Dimension(32, 32));
-        controlsPane.add(skipButton);
+        controlsPane.add(skipButton, BorderLayout.CENTER);
+        volumeSlider = new JSlider();
+        volumeSlider.setPreferredSize(new Dimension(60, 32));
+        volumeSlider.setBackground(Color.LIGHT_GRAY);
+        controlsPane.add(volumeSlider, BorderLayout.CENTER);
+        timeSlider = new JSlider();
+        timeSlider.setPreferredSize(new Dimension(400, 10));
+        timeSlider.setBackground(Color.LIGHT_GRAY);
+        timeSlider.setValue(0);
+        controlsPane.add(timeSlider, BorderLayout.NORTH);
         contentPane.add(controlsPane, BorderLayout.SOUTH);
         
         pauseButton.addActionListener(new ActionListener() {
@@ -122,6 +138,25 @@ public class VLCjPlayer{
             }
         });
 
+        volumeSlider.addChangeListener(new ChangeListener() {
+			
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				mediaPlayerComponent.getMediaPlayer().setVolume(volumeSlider.getValue());
+				
+			}
+		});
+        
+        timeSlider.addChangeListener(new ChangeListener() {
+			
+			@Override
+			public void stateChanged(ChangeEvent arg0) {
+				//timeSlider.setMaximum(mediaPlayerComponent.getMediaPlayer().getLength());
+				//timeSlider.setValue(mediaPlayerComponent.getMediaPlayer().get);
+				
+			}
+		});
+        
         mediaPlayerComponent.getMediaPlayer().addMediaPlayerEventListener(new MediaPlayerEventAdapter() {
             @Override
             public void playing(MediaPlayer mediaPlayer) {

@@ -193,8 +193,8 @@ public class ListFiles {
 		ButtonColumn addPlaylist = new ButtonColumn(table, addFavorite, 4);
 		addPlaylist.setMnemonic(KeyEvent.VK_D);
 		
-		ButtonColumn buttonColumn = new ButtonColumn(table, open, 6);
-		buttonColumn.setMnemonic(KeyEvent.VK_D);
+		ButtonColumn openPlayer = new ButtonColumn(table, open, 6);
+		openPlayer.setMnemonic(KeyEvent.VK_D);
 
 		//
 		tableModel.setDados(dados);

@@ -129,7 +129,7 @@ public class MusicAdd {
 		listaGenero.add("Folclóricas");
 		listaGenero.add("Gospel");
 		listaGenero.add("Internacionais");
-		listaGenero.add("Modas de Viola");
+		listaGenero.add("Moda de Viola");
 		listaGenero.add("Novas");
 		listaGenero.add("Pagode");
 		listaGenero.add("Romantica");

@@ -76,7 +76,7 @@ public class VLCjPlayer{
     public VLCjPlayer(String caminho) {
     	registerLibrary();
         frame = new JFrame("TecaPlay Player");
-        frame.setBounds(100, 100, 600, 400);
+        frame.setBounds(100, 100, 700, 440);
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.addWindowListener(new WindowAdapter() {
             @Override
@@ -122,6 +122,7 @@ public class VLCjPlayer{
         volumeSlider = new JSlider();
         volumeSlider.setPreferredSize(new Dimension(60, 32));
         volumeSlider.setBackground(Color.LIGHT_GRAY);
+        volumeSlider.setValue(100);
         controlsPane.add(volumeSlider, BorderLayout.CENTER);
         timeSlider = new JSlider();
         timeSlider.setPreferredSize(new Dimension(400, 10));
@@ -185,17 +186,18 @@ public class VLCjPlayer{
 				
 			}
 		});
-        
+       
         timeSlider.addChangeListener(new ChangeListener() {
 			
 			@Override
 			public void stateChanged(ChangeEvent arg0) {
-				//timeSlider.setMaximum(mediaPlayerComponent.getMediaPlayer().getLength());
-				//timeSlider.setValue(mediaPlayerComponent.getMediaPlayer().get);
+				timeSlider.setMaximum((int)mediaPlayerComponent.getMediaPlayer().getLength());
+				mediaPlayerComponent.getMediaPlayer().setTime(timeSlider.getValue());
+			
 				
 			}
 		});
-        
+       
         fullscreenButton.addActionListener(new ActionListener() {
 			
 			@Override

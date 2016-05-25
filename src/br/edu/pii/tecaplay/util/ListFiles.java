@@ -20,6 +20,7 @@ import br.edu.pii.tecaplay.ui.ListPlaylists;
  *
  */
 public class ListFiles {
+	private String  paisCanBan;
 	/**
 	 * @param table
 	 *            passa a tabela por parâmetro e a partir da mesma seta algumas
@@ -73,8 +74,10 @@ public class ListFiles {
 	public void updateTable(final JTable table, String usrName, String genero, String musica) {
 		String directorie;
 		if (!musica.equals("")) {
+			//paisCanBan = "Cantor/Banda";
 			directorie = "c:\\TecaPlay\\" + usrName + "\\Musicas\\" + genero + "\\" + genero + ".txt";
 		} else {
+			//paisCanBan = "País";
 			directorie = "c:\\TecaPlay\\" + usrName + "\\Videos\\filme\\" + genero + ".txt";
 		}
 		final MyTableModel tableModel = (MyTableModel) table.getModel();
@@ -216,9 +219,14 @@ public class ListFiles {
 	public void reUpdateTable(final JTable table, String usrName, String genero, String musica) {
 		// criando um objeto para nossos dados
 		final Object[][] dados = null;
+		if (!musica.equals("")) {
+			paisCanBan = "Cantor/Banda";
+		} else {
+			paisCanBan = "País";
+		}
 		// chamando o método MyTableModel para adicionar a tabela ao
 		// jpanel
-		final MyTableModel myTableModel = new MyTableModel(dados);
+		final MyTableModel myTableModel = new MyTableModel(dados, paisCanBan);
 		table.setModel(myTableModel);
 		tableInfo(table);
 		updateTable(table, usrName, genero, musica);
@@ -227,4 +235,5 @@ public class ListFiles {
 	public JTable Tabela(JTable tablee) {
 		return tablee;
 	}
+	
 }

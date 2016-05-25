@@ -1583,7 +1583,7 @@ public class HomePage {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String genero = "ModaDeViola";
+				String genero = "Moda de Viola";
 				currentGenero = genero;
 				AcaoButtonsMusic(panelCategoriasMusica);
 			}

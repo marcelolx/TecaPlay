@@ -21,6 +21,7 @@ import javax.swing.JTextField;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
+import br.edu.pii.tecaplay.util.GetNameSeries;
 import br.edu.pii.tecaplay.util.MoveArquivosPasta;
 import br.edu.pii.tecaplay.util.MoveFile;
 import br.edu.pii.tecaplay.util.ValidaPasta;
@@ -90,7 +91,12 @@ public class FilmesAdd {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource() == btnSeries) {
 					JFrameSelecao.dispose();
-					AddSerie(usrName);
+					try {
+						AddSerie(usrName);
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 
 				}
 			}
@@ -409,8 +415,9 @@ public class FilmesAdd {
 	 * 
 	 * @param usrName
 	 *            Nome do usuario que está logado
+	 * @throws InterruptedException 
 	 */
-	public void AddSerie(String usrName) {
+	public void AddSerie(String usrName) throws InterruptedException {
 
 		JFrame JFrameAddSerie = new JFrame();
 		JFrameAddSerie.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
@@ -427,7 +434,7 @@ public class FilmesAdd {
 		JFrameAddSerie.setLocationRelativeTo(null);
 
 		/** Título da Série, definido cor, tamanho, posição, imagem... */
-		JLabel lblTituloSerie = new JLabel("T\u00EDtulo*:");
+		JLabel lblTituloSerie = new JLabel("Seriado*:");
 		lblTituloSerie.setToolTipText("Informe qual \u00E9 o t\u00EDtulo da Série!");
 		lblTituloSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblTituloSerie.setBounds(10, 22, 59, 17);
@@ -437,12 +444,27 @@ public class FilmesAdd {
 		 * Local para mostrar título da série, definido cor, tamanho, posição,
 		 * imagem...
 		 */
-		JTextField textFieldTituloSerie = new JTextField();
+		/**JTextField textFieldTituloSerie = new JTextField();
 		textFieldTituloSerie.setToolTipText("Informe qual \u00E9 o t\u00EDtulo da Série!");
 		textFieldTituloSerie.setBackground(new Color(192, 192, 192));
 		textFieldTituloSerie.setBounds(87, 19, 337, 20);
 		JFrameAddSerie.getContentPane().add(textFieldTituloSerie);
-		textFieldTituloSerie.setColumns(10);
+		textFieldTituloSerie.setColumns(10);*/
+		
+		JComboBox<String> panelListTitulo= new JComboBox<String>();
+		ArrayList<String> listaTitulo = new ArrayList<String>();
+		GetNameSeries getNameSeries = new GetNameSeries(usrName);
+		listaTitulo = getNameSeries.RetornoArray();
+		panelListTitulo.setBackground(Color.LIGHT_GRAY);
+		panelListTitulo.setFont(new Font("Tahoma", Font.BOLD, 13));
+		panelListTitulo.setForeground(Color.BLACK);
+		for (int i = 0; i < listaTitulo.size(); i++) {
+			panelListTitulo.addItem(listaTitulo.get(i));
+		}
+		panelListTitulo.setMaximumRowCount(15);
+		panelListTitulo.setEditable(true);
+		panelListTitulo.setBounds(87, 19, 337, 20);
+		JFrameAddSerie.getContentPane().add(panelListTitulo);
 
 		/**
 		 * Local para informar título da série, definido cor, tamanho, posição,
@@ -488,7 +510,8 @@ public class FilmesAdd {
 		panelListGenero.setEditable(false);
 		panelListGenero.setBounds(87, 50, 337, 20);
 		JFrameAddSerie.getContentPane().add(panelListGenero);
-
+	
+		
 		/** Nome do episódio, definido cor, tamanho, posição, imagem... */
 		JLabel lblNomeEpisodio = new JLabel("Nome do Episódio*:");
 		lblNomeEpisodio.setToolTipText("Informe o nome do episódio.");
@@ -666,7 +689,7 @@ public class FilmesAdd {
 					caminho = textFieldProcurarFilme.getText();
 					String numTemp = (String) panelListTemporada.getSelectedItem();
 					String nomeEp = txtFieldNomeEp.getText();
-					String nome = textFieldTituloSerie.getText();
+					String nome = (String)panelListTitulo.getSelectedItem();
 					String numEpisodio = (String) panelListEpisodio.getSelectedItem();
 					String duracao = textFieldDuracaoFilme.getText();
 					int duracaoInt;
@@ -699,9 +722,9 @@ public class FilmesAdd {
 									// Limpa os campos de escrita
 									panelListTemporada.setSelectedIndex(0);
 									panelListGenero.setSelectedIndex(0);
-									panelListEpisodio.setSelectedIndex(0);
+									panelListTitulo.setSelectedIndex(0);
 									textFieldProcurarFilme.setText("");
-									textFieldTituloSerie.setText("");
+									panelListEpisodio.setSelectedIndex(0);
 									txtFieldNomeEp.setText("");
 									textFieldDuracaoFilme.setText("");
 									JOptionPane.showMessageDialog(JFrameAddSerie,
@@ -709,7 +732,7 @@ public class FilmesAdd {
 								} else {
 									JOptionPane.showMessageDialog(JFrameAddSerie,
 											"Os arquivos não foram movidos com Sucesso\n"
-											+ "É possivel que existem pastas dentro\n"
+											+ "É possivel que existem pastas ou outros arquivos dentro\n"
 											+ "Por favor, selecione uma pasta contendo somente arquivos de vídeo.", "Erro na cópia dos Arquivos", 0);
 								}
 							} else {
@@ -724,9 +747,9 @@ public class FilmesAdd {
 								if (sucesso) {
 									panelListTemporada.setSelectedIndex(0);
 									panelListGenero.setSelectedIndex(0);
-									panelListEpisodio.setSelectedIndex(0);
+									panelListTitulo.setSelectedIndex(0);
 									textFieldProcurarFilme.setText("");
-									textFieldTituloSerie.setText("");
+									panelListEpisodio.setSelectedIndex(0);
 									txtFieldNomeEp.setText("");
 									textFieldDuracaoFilme.setText("");
 									JOptionPane.showMessageDialog(JFrameAddSerie, "Arquivos Movidos com sucesso!",

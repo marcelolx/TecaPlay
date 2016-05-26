@@ -1026,6 +1026,7 @@ public class HomePage {
 					panelTopo.revalidate();
 					home.revalidate();
 					timer.init();
+					AtualizaPanelGeral();
 				} else if (voltarPaineis.size() == 1) {
 					home.getContentPane().remove(voltarPaineis.get(0));
 					home.getContentPane().add(labelFundo, BorderLayout.CENTER);
@@ -1046,6 +1047,7 @@ public class HomePage {
 					voltarPaineis.get(0).revalidate();
 					voltarPaineis.get(0).repaint();
 					voltarPaineis.remove(voltarPaineis.size() - 1);
+					AtualizaPanelGeral();
 				}
 				try {
 					listFiles.reUpdateTable(table, userName, currentGenero, music);
@@ -1745,15 +1747,18 @@ public class HomePage {
 	 */
 	public void AddButtonSerieNoLabel(){
 
-		AtualizeSeries atualize = new AtualizeSeries();
-		String nameSerie = atualize.NameSeries();
+		AtualizeSeries atualize = new AtualizeSeries(userName, currentGenero);
 		int size = atualize.Size();
-		JButton[] teste = new JButton[10];
-		for (int i = 1; i < 10; i++) {
-			teste[i] = new JButton("Rest" + i);
-			teste[i].setPreferredSize(new Dimension(127, 135));
-			teste[i].setFont(new Font("Tahoma", Font.BOLD, 14));
-			labelGeral.add(teste[i]);
+		JButton[] teste = new JButton[size];
+		System.out.println(size);
+		for (int i = 0; i < size; i++) {
+			String nameSerie = atualize.NameSeries(i);
+			if (!nameSerie.equals("nomeSerie")) {
+				teste[i] = new JButton(nameSerie);
+				teste[i].setPreferredSize(new Dimension(127, 135));
+				teste[i].setFont(new Font("Tahoma", Font.BOLD, 14));
+				labelGeral.add(teste[i]);
+			}
 		}
 		/**
 		System.out.println(teste.getName());

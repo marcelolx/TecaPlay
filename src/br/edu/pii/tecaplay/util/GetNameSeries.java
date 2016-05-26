@@ -4,6 +4,8 @@
 package br.edu.pii.tecaplay.util;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -12,21 +14,26 @@ import java.util.ArrayList;
  * 
  */
 public class GetNameSeries {
-	private ArrayList<String> listArray= new ArrayList<String>();
-	public GetNameSeries(String userName){
-		String location = "C:\\TecaPlay\\"+ userName + "\\Videos\\serie\\Todas as Series";
-		File file = new File(location);
-		if (!file.exists()) {
-			file.mkdir();
+	private ArrayList<String> listArrayRetorno= new ArrayList<String>();
+	public GetNameSeries(String userName, int numOfPart){
+		String location = "C:\\TecaPlay\\"+ userName + "\\Videos\\serie\\Todas as Series.txt";
+		FileTextProvider file = new FileTextProvider();
+		try {
+			FileWriter buffer = null;
+			buffer = new FileWriter(location, true);
+			buffer.close();
+		
+		} catch (IOException e) {
+		
 		}
-		File[] list = file.listFiles();
-		listArray.add("Selecione ou Crie Nova");
-		for (int i = 0; i < list.length; i++) {
-			String name = list[i].getName();
-			listArray.add(name);
+		ArrayList<String>listArray = file.loadLines(location);
+		listArrayRetorno.add("Selecione ou Crie Nova");
+		for (int i = 0; i < listArray.size(); i++) {
+			final String[] data = FileTextProvider.readData("#", listArray.get(i));
+			listArrayRetorno.add(data[numOfPart]);
 		}
 	}
 	public ArrayList<String> RetornoArray() {
-		return listArray;
+		return listArrayRetorno;
 	}
 }

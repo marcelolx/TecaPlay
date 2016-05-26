@@ -37,6 +37,7 @@ public class HomePage {
 	private ArrayList<JPanel> voltarPaineis = new ArrayList<>();
 	private JTable table = new JTable();
 	private ListFiles listFiles = new ListFiles();
+	private JButton[] arrayBtnSeries;
 	private JScrollPane tableContainer = new JScrollPane(table);
 	private String currentGenero = null;
 	private String userName;
@@ -1749,15 +1750,15 @@ public class HomePage {
 
 		AtualizeSeries atualize = new AtualizeSeries(userName, currentGenero);
 		int size = atualize.Size();
-		JButton[] teste = new JButton[size];
+		arrayBtnSeries = new JButton[size];
 		System.out.println(size);
 		for (int i = 0; i < size; i++) {
 			String nameSerie = atualize.NameSeries(i);
 			if (!nameSerie.equals("nomeSerie")) {
-				teste[i] = new JButton(nameSerie);
-				teste[i].setPreferredSize(new Dimension(127, 135));
-				teste[i].setFont(new Font("Tahoma", Font.BOLD, 14));
-				labelGeral.add(teste[i]);
+				arrayBtnSeries[i] = new JButton(nameSerie);
+				arrayBtnSeries[i].setPreferredSize(new Dimension(127, 135));
+				arrayBtnSeries[i].setFont(new Font("Tahoma", Font.BOLD, 14));
+				labelGeral.add(arrayBtnSeries[i]);
 			}
 		}
 		/**

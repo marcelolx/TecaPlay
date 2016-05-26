@@ -3,6 +3,9 @@ package br.edu.pii.tecaplay.util;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+
+import br.edu.pii.tecaplay.ui.FilmesAdd;
 
 /**
  * 
@@ -81,14 +84,14 @@ public class MoveFile {
 
 	public boolean AddSerie(String origem, String temporada, String nomeSerie, String nomeEp, String genero,
 			String duracao, String episodio, String userName) {
-		nomeSerie = nomeSerie.toLowerCase();
+		
 		origem = origem.toLowerCase();
 		usrName = userName;
 		String nomeEptoFile = episodio + " - " + nomeEp;
 		nomeEp = nomeEp.toLowerCase();
 		genero = genero.toLowerCase();
 		File destinoPasta = new File(
-				"c:\\TecaPlay\\" + usrName + "\\Videos\\serie\\" + genero + "\\" + nomeSerie + "\\" + temporada);
+				"c:\\TecaPlay\\" + usrName + "\\Videos\\serie\\" + genero + "\\" + nomeSerie.toLowerCase() + "\\" + temporada);
 		if (!(destinoPasta).exists()) {
 			destinoPasta.mkdirs();
 		}
@@ -181,35 +184,63 @@ public class MoveFile {
 	public void gravarTxt(String pasta, String nomeSerie, String temporada, String episodio, String duracao,
 			String genero, String file) {
 		// String do diretorio do TXT
-		String criarTemp = pasta + "\\" + genero + "\\nomeSerie\\" + nomeSerie + ".txt";
+		String criarTemp = pasta + "\\" + genero + "\\nomeSerie\\" + nomeSerie.toLowerCase() + ".txt";
 		File pastaCriar = new File(pasta + "\\" + genero + "\\nomeSerie");
 		if (!pastaCriar.exists()) {
 			pastaCriar.mkdirs();
 		}
-		String criargenero = pasta + "\\" + genero +".txt";
-		try {
-			FileWriter buffer = null;
-			buffer = new FileWriter(criargenero, true);
-			buffer.write(nomeSerie +criarTemp + "\r\n");
-			buffer.close();
-		} catch (IOException e) {
-
-		}
 		try {
 			FileWriter buffer = null;
 			buffer = new FileWriter(criarTemp, true);
-			String texto = temporada + "#" + episodio + "#" + nomeSerie + "#" + duracao + "#" + file;
+			String texto = temporada + "#" + episodio + "#" + nomeSerie.toLowerCase() + "#" + duracao + "#" + file;
 			buffer.write(texto + "\r\n");
 			buffer.close();
 		} catch (IOException e) {
 
 		}
-
-		String location = "C:\\TecaPlay\\" + usrName + "\\Videos\\serie\\Todas as Series\\" + nomeSerie;
-		File fl = new File(location);
-		if (!fl.exists()) {
-			fl.mkdirs();
+		boolean sucesso = SerieExiste(nomeSerie, nomeSerie, genero);
+		if (sucesso) {
+			FilmesAdd newAdd = new FilmesAdd(usrName);
+		}else{
+			System.err.println("Errou");
 		}
+		// Gravar os dados de uma nova série
 
 	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean SerieExiste(String serie, String nomeSerie, String genero) {
+		String location = "C:\\TecaPlay\\" + usrName + "\\Videos\\serie\\Todas as Series.txt";
+
+		FileTextProvider file = new FileTextProvider();
+		ArrayList<String> fileProvider = FileTextProvider.loadLines(location);
+		boolean existe = false;
+		for (int i = 0; i < fileProvider.size(); i++) {
+			final String[] data = FileTextProvider.readData("#", fileProvider.get(i));
+			if (data[0].equals(serie)) {
+				existe = true;
+			}
+
+		}
+		if (!existe) {
+			System.out.println("Entrou");
+			try {
+				FileWriter buffer = null;
+				buffer = new FileWriter(location, true);
+				String texto = nomeSerie + "#" + genero;
+				buffer.write(texto + "\r\n");
+				buffer.close();
+				return true;
+			} catch (IOException e) {
+				System.out.println("eRROU");
+				return false;
+			}
+			
+		}
+		return false;
+	}
+
 }

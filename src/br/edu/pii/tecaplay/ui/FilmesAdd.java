@@ -57,6 +57,7 @@ public class FilmesAdd {
 		JFrameSelecao.setVisible(true);
 		JFrameSelecao.setSize(205, 140);
 		JFrameSelecao.setLocationRelativeTo(null);
+		JFrameSelecao.setAlwaysOnTop(false);
 
 		/** Botão Séries, definido cor, tamanho, posição... */
 		Button btnSeries = new Button("Séries");
@@ -94,7 +95,6 @@ public class FilmesAdd {
 					try {
 						AddSerie(usrName);
 					} catch (InterruptedException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 
@@ -415,7 +415,7 @@ public class FilmesAdd {
 	 * 
 	 * @param usrName
 	 *            Nome do usuario que está logado
-	 * @throws InterruptedException 
+	 * @throws InterruptedException
 	 */
 	public void AddSerie(String usrName) throws InterruptedException {
 
@@ -444,16 +444,20 @@ public class FilmesAdd {
 		 * Local para mostrar título da série, definido cor, tamanho, posição,
 		 * imagem...
 		 */
-		/**JTextField textFieldTituloSerie = new JTextField();
-		textFieldTituloSerie.setToolTipText("Informe qual \u00E9 o t\u00EDtulo da Série!");
-		textFieldTituloSerie.setBackground(new Color(192, 192, 192));
-		textFieldTituloSerie.setBounds(87, 19, 337, 20);
-		JFrameAddSerie.getContentPane().add(textFieldTituloSerie);
-		textFieldTituloSerie.setColumns(10);*/
-		
-		JComboBox<String> panelListTitulo= new JComboBox<String>();
+		/**
+		 * JTextField textFieldTituloSerie = new JTextField();
+		 * textFieldTituloSerie.setToolTipText(
+		 * "Informe qual \u00E9 o t\u00EDtulo da Série!");
+		 * textFieldTituloSerie.setBackground(new Color(192, 192, 192));
+		 * textFieldTituloSerie.setBounds(87, 19, 337, 20);
+		 * JFrameAddSerie.getContentPane().add(textFieldTituloSerie);
+		 * textFieldTituloSerie.setColumns(10);
+		 */
+
+		JComboBox<String> panelListTitulo = new JComboBox<String>();
 		ArrayList<String> listaTitulo = new ArrayList<String>();
-		GetNameSeries getNameSeries = new GetNameSeries(usrName);
+		int numOfPart0 = 0;
+		GetNameSeries getNameSeries = new GetNameSeries(usrName, numOfPart0);
 		listaTitulo = getNameSeries.RetornoArray();
 		panelListTitulo.setBackground(Color.LIGHT_GRAY);
 		panelListTitulo.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -510,8 +514,25 @@ public class FilmesAdd {
 		panelListGenero.setEditable(false);
 		panelListGenero.setBounds(87, 50, 337, 20);
 		JFrameAddSerie.getContentPane().add(panelListGenero);
-	
-		
+
+		panelListTitulo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ArrayList<String> listaTitulo2 = new ArrayList<String>();
+				int numOfPart1 = 1;
+				GetNameSeries getNameSeries = new GetNameSeries(usrName, numOfPart1);
+				listaTitulo2 = getNameSeries.RetornoArray();
+				int acao = panelListTitulo.getSelectedIndex();
+				for (int j = 0; j < listaGenero.size(); j++) {
+					String teste = listaGenero.get(j);
+					teste = teste.toLowerCase();
+					if (teste.equals(listaTitulo2.get(acao))) {
+						panelListGenero.setSelectedIndex(j);
+						break;
+					}
+				}
+			}
+		});
+
 		/** Nome do episódio, definido cor, tamanho, posição, imagem... */
 		JLabel lblNomeEpisodio = new JLabel("Nome do Episódio*:");
 		lblNomeEpisodio.setToolTipText("Informe o nome do episódio.");
@@ -689,13 +710,12 @@ public class FilmesAdd {
 					caminho = textFieldProcurarFilme.getText();
 					String numTemp = (String) panelListTemporada.getSelectedItem();
 					String nomeEp = txtFieldNomeEp.getText();
-					String nome = (String)panelListTitulo.getSelectedItem();
+					String nome = (String) panelListTitulo.getSelectedItem();
 					String numEpisodio = (String) panelListEpisodio.getSelectedItem();
 					String duracao = textFieldDuracaoFilme.getText();
-					int duracaoInt;
 					boolean ehNumero;
 					try {
-						duracaoInt = (Integer.parseInt(textFieldDuracaoFilme.getText()));
+						int duracaoInt = (Integer.parseInt(textFieldDuracaoFilme.getText()));
 						ehNumero = true;
 					} catch (NumberFormatException e1) {
 						ehNumero = false;
@@ -708,79 +728,77 @@ public class FilmesAdd {
 						// Se for true, significa que é pasta, se não é apenas
 						// um arquivo
 						if (ehNumero) {
-						if (!( (numTemp.equals("")) || (nomeEp.equals("")) || (nome.equals(""))
-								|| (duracao.equals("")) || (numEpisodio.equals("")))) {
-							if (verificaPasta) {
-								JFrameAddSerie.setAlwaysOnTop(false);
-								// Executa o comando de mover o arquivo e
-								// renomealo.
-								MoveArquivosPasta MoveFile = new MoveArquivosPasta();
-								boolean sucesso = MoveFile.MovePasta(origem, numTemp, nome, nomeEp, genero, duracao,
-										numEpisodio, usrName);
+							if (!((numTemp.equals("")) || (nomeEp.equals("")) || (nome.equals(""))
+									|| (duracao.equals("")) || (numEpisodio.equals("")))) {
+								if (verificaPasta) {
+									JFrameAddSerie.setAlwaysOnTop(false);
+									// Executa o comando de mover o arquivo e
+									// renomealo.
+									MoveArquivosPasta MoveFile = new MoveArquivosPasta();
+									boolean sucesso = MoveFile.MovePasta(origem, numTemp, nome, nomeEp, genero, duracao,
+											numEpisodio, usrName);
 
-								if (sucesso) {
-									// Limpa os campos de escrita
-									panelListTemporada.setSelectedIndex(0);
-									panelListGenero.setSelectedIndex(0);
-									panelListTitulo.setSelectedIndex(0);
-									textFieldProcurarFilme.setText("");
-									panelListEpisodio.setSelectedIndex(0);
-									txtFieldNomeEp.setText("");
-									textFieldDuracaoFilme.setText("");
-									JOptionPane.showMessageDialog(JFrameAddSerie,
-											"Os arquivos foram movidos com Sucesso", "Sucesso", 1);
+									if (sucesso) {
+										// Limpa os campos de escrita
+										panelListTemporada.setSelectedIndex(0);
+										panelListGenero.setSelectedIndex(0);
+										panelListTitulo.setSelectedIndex(0);
+										textFieldProcurarFilme.setText("");
+										panelListEpisodio.setSelectedIndex(0);
+										txtFieldNomeEp.setText("");
+										textFieldDuracaoFilme.setText("");
+										JOptionPane.showMessageDialog(JFrameAddSerie,
+												"Os arquivos foram movidos com Sucesso", "Sucesso", 1);
+									} else {
+										JOptionPane.showMessageDialog(JFrameAddSerie,
+												"Os arquivos não foram movidos com Sucesso\n"
+														+ "É possivel que existem pastas ou outros arquivos dentro\n"
+														+ "Por favor, selecione uma pasta contendo somente arquivos de vídeo.",
+												"Erro na cópia dos Arquivos", 0);
+									}
 								} else {
-									JOptionPane.showMessageDialog(JFrameAddSerie,
-											"Os arquivos não foram movidos com Sucesso\n"
-											+ "É possivel que existem pastas ou outros arquivos dentro\n"
-											+ "Por favor, selecione uma pasta contendo somente arquivos de vídeo.", "Erro na cópia dos Arquivos", 0);
+									if (ValidationFormat()) {
+										JFrameAddSerie.setAlwaysOnTop(false);
+										MoveFile MoveFile = new MoveFile();
+										// Executa o comando de mover o arquivo
+										// e
+										// renomealo.
+										boolean sucesso = MoveFile.AddSerie(origem, numTemp, nome, nomeEp, genero,
+												duracao, numEpisodio, usrName);
+										// Limpa os campos de escrita
+										if (sucesso) {
+											JOptionPane.showMessageDialog(JFrameAddSerie,
+													"Arquivos Movidos com sucesso!", "Sucesso", 1);
+											JFrameAddSerie.dispose();
+										} else {
+											JOptionPane.showMessageDialog(JFrameAddSerie,
+													"Não foi possivel executar essa operação, tente novamente\n"
+															+ "Verefique se é realmente um filme",
+													"Erro", 0);
+										}
+									} else {
+										JOptionPane.showMessageDialog(JFrameAddSerie,
+												"Arquivo não compativel com o formato de vídeo", "Erro de Formato", 0);
+									}
 								}
+
 							} else {
-								if (ValidationFormat()){
 								JFrameAddSerie.setAlwaysOnTop(false);
-								MoveFile MoveFile = new MoveFile();
-								// Executa o comando de mover o arquivo e
-								// renomealo.
-								boolean sucesso = MoveFile.AddSerie(origem, numTemp, nome, nomeEp, genero, duracao,
-										numEpisodio, usrName);
-								// Limpa os campos de escrita
-								if (sucesso) {
-									panelListTemporada.setSelectedIndex(0);
-									panelListGenero.setSelectedIndex(0);
-									panelListTitulo.setSelectedIndex(0);
-									textFieldProcurarFilme.setText("");
-									panelListEpisodio.setSelectedIndex(0);
-									txtFieldNomeEp.setText("");
-									textFieldDuracaoFilme.setText("");
-									JOptionPane.showMessageDialog(JFrameAddSerie, "Arquivos Movidos com sucesso!",
-											"Sucesso", 1);
-								} else {
-									JOptionPane.showMessageDialog(JFrameAddSerie,
-											"Não foi possivel executar essa operação, tente novamente\n"
-											+ "Verefique se é realmente um filme", "Erro", 0);
-								}
-							}else{
-								JOptionPane.showMessageDialog(JFrameAddSerie, "Arquivo não compativel com o formato de vídeo","Erro de Formato",0);
+								JOptionPane.showMessageDialog(JFrameAddSerie,
+										"Por favor, preenche todos os campos com o Asterisco *",
+										"Preencha todos os campos", 0);
 							}
-								}
-							
 						} else {
-							JFrameAddSerie.setAlwaysOnTop(false);
 							JOptionPane.showMessageDialog(JFrameAddSerie,
-									"Por favor, preenche todos os campos com o Asterisco *", "Preencha todos os campos",
-									0);
+									"Por favor, Informe um horario aproximado do\n"
+											+ "filme ou das série, em Minutos arredondado");
 						}
-					}else {
-						JOptionPane.showMessageDialog(JFrameAddSerie, "Por favor, Informe um horario aproximado do\n"
-								+ "filme ou das série, em Minutos arredondado");
-					}
 					} else {
 						JFrameAddSerie.setAlwaysOnTop(false);
 						JOptionPane.showMessageDialog(JFrameAddSerie, "Selecione a pasta certa",
 								"Pasta ou arquivo inválido", 0);
 					}
-				}
-				else {
+				} else {
 					JOptionPane.showMessageDialog(JFrameAddSerie, "Por favor, selecione o componente gênero",
 							"Selecione o Genero", 0);
 

@@ -428,7 +428,7 @@ public class HomePage {
 		 * no jbutton btnFilmes
 		 * 
 		 * 
-		 * TODO
+		 * 
 		 */
 
 		JPanel panelCategoriasFilmes = new JPanel();
@@ -573,7 +573,7 @@ public class HomePage {
 		 * 
 		 * 
 		 * SERIES/CAREGORIAS SERIES/CAREGORIAS SERIES/CAREGORIAS
-		 * SERIES/CAREGORIAS SERIES/CAREGORIAS TODO
+		 * SERIES/CAREGORIAS SERIES/CAREGORIAS 
 		 * 
 		 * 
 		 */
@@ -719,7 +719,7 @@ public class HomePage {
 		panelCategoriasSerie.add(btnCatTerrorSerie);
 
 		/**
-		 * TODO
+		 *
 		 * Categoria Musicais
 		 */
 		// jpanel categorias musicais
@@ -1059,7 +1059,7 @@ public class HomePage {
 		});
 		//
 		/**
-		 * TODO Acao dos botoes de categorias de Filmes
+		 * Acao dos botoes de categorias de Filmes
 		 */
 
 		//
@@ -1262,7 +1262,7 @@ public class HomePage {
 		});
 
 		/**
-		 * TODO Acao de botoes da categoria series
+		 *  Acao de botoes da categoria series
 		 */
 
 		// ação do botão filmes categoria 
@@ -1747,11 +1747,9 @@ public class HomePage {
 	 * e consequentemente atualiza o label.
 	 */
 	public void AddButtonSerieNoLabel(){
-
 		AtualizeSeries atualize = new AtualizeSeries(userName, currentGenero);
 		int size = atualize.Size();
 		arrayBtnSeries = new JButton[size];
-		System.out.println(size);
 		for (int i = 0; i < size; i++) {
 			String nameSerie = atualize.NameSeries(i);
 			if (!nameSerie.equals("nomeSerie")) {
@@ -1759,14 +1757,26 @@ public class HomePage {
 				arrayBtnSeries[i].setPreferredSize(new Dimension(127, 135));
 				arrayBtnSeries[i].setFont(new Font("Tahoma", Font.BOLD, 14));
 				labelGeral.add(arrayBtnSeries[i]);
+				arrayBtnSeries[i].addActionListener(new ActionListener() {
+		                public void actionPerformed(ActionEvent evt){
+		                	addTempSerie(evt);
+		                }
+		            });
 			}
 		}
-		/**
-		System.out.println(teste.getName());
-		teste.setName("Teste");
+	
+	}
+	/**
+	 * Começa a listagem da ação do JTable da série requerida
+	 * @param evt, botão que foi realizado o evento
+	 * @return null
+	 */
+	public ActionListener addTempSerie(ActionEvent evt) {
+        JButton botao = (JButton)evt.getSource();
+		String name = botao.getText();
+		System.out.println(botao + "\n\n"+name);
+		//TODO
+		return null;
 		
-		
-		teste.setBackground(Color.LIGHT_GRAY);
-		labelGeral.add(teste);*/
 	}
 }

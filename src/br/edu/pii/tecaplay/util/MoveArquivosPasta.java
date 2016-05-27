@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import br.edu.pii.tecaplay.ui.FilmesAdd;
+
 /**
  * @version 0.0.57
  * @author jonas
@@ -14,6 +16,7 @@ import javax.swing.JOptionPane;
  *
  */
 public class MoveArquivosPasta {
+	private String userName= null;
 	/**
 	 * 
 	 * @param origem
@@ -37,6 +40,7 @@ public class MoveArquivosPasta {
 	private String caminho = null;
 	
 	public boolean MovePasta(String origem, String temporada, String nome, String nomeEp, String genero, String duracao, String episodio, String usrName){
+		userName = usrName;
 		File raiz = new File(origem);
 		File[] files = raiz.listFiles();
 		boolean contemPastas = false;
@@ -55,6 +59,11 @@ public class MoveArquivosPasta {
 			if (!formatArquivo){
 				return false;
 			}	
+		}
+
+		boolean sucesso = SerieExiste(nome, genero);
+		if (sucesso) {
+			FilmesAdd newAdd = new FilmesAdd(userName);
 		}
 		/**
 		 * caso passe pelas validações anteriores, executará as 
@@ -90,14 +99,14 @@ public class MoveArquivosPasta {
 	 * @return 
 	 * 				retorna se foi possivel mover o arquivo, se não o programa terminara a copia dos arquivos
 	 */
-	public boolean AddSerie(String origem, String temporada, String nome, String nomeEp, String genero, String duracao, int episodio, String usrName) {
-		nome = nome.toLowerCase();
+	public boolean AddSerie(String origem, String temporada, String nomeSerie, String nomeEp, String genero, String duracao, int episodio, String usrName) {
+		userName = usrName;
 		origem = origem.toLowerCase();
 	
 		String nomeEptoFile = episodio + " - "+ nomeEp;
 		nomeEp = nomeEp.toLowerCase();
 		genero = genero.toLowerCase();
-		File destinoPasta = new File("c:\\TecaPlay\\" + usrName + "\\Videos\\serie\\" + genero+ "\\" + nome + "\\" + temporada);
+		File destinoPasta = new File("c:\\TecaPlay\\" + usrName + "\\Videos\\serie\\" + genero+ "\\" + nomeSerie.toLowerCase() + "\\" + temporada);
 		if (!(destinoPasta).exists()) {
 			destinoPasta.mkdirs();
 		}
@@ -111,7 +120,7 @@ public class MoveArquivosPasta {
 		if (ok) {
 			String pasta ="c:\\TecaPlay\\" + usrName + "\\Videos\\serie" ;
 			String fileFinal = destinoPasta.getAbsolutePath()+"\\"+newFileName;//pega o caminho final do arquivo e acrescenta																//o nome final do arquivo a ser copiado 
-			gravarTxt(pasta,nomeEptoFile,temporada,episodio,duracao,genero,fileFinal); // envia os dados para o gravartxt
+			gravarTxt(pasta,nomeEptoFile,temporada,episodio,duracao,genero,fileFinal,nomeSerie); // envia os dados para o gravartxt
 			return true;
 		} else {
 			JOptionPane.showMessageDialog(null, "Nao foi possivel mover o arquivo", "Erro", 0);
@@ -130,7 +139,7 @@ public class MoveArquivosPasta {
 	 * @param genero	genero para a criacao do nome do txt
 	 * @param file		file localização final do arquivo movido
 	 */
-	public void gravarTxt(String pasta, String nomeEp, String temporada, int episodio,String duracao,String genero,String file){
+	public void gravarTxt(String pasta, String nomeEp, String temporada, int episodio,String duracao,String genero,String file, String nomeSerie){
 		//String do diretorio do TXT
 		String criarTxt = pasta + "\\"+genero+".txt";
 
@@ -143,6 +152,20 @@ public class MoveArquivosPasta {
 		} catch (IOException e) {
 		}
 		
+		String criarTemp = pasta + "\\" + genero + "\\nomeSerie\\" + nomeSerie.toLowerCase() + ".txt";
+		File pastaCriar = new File(pasta + "\\" + genero + "\\nomeSerie");
+		if (!pastaCriar.exists()) {
+			pastaCriar.mkdirs();
+		}
+		try {
+			FileWriter buffer = null;
+			buffer = new FileWriter(criarTemp, true);
+			String texto = temporada + "#" + episodio + "#" + nomeSerie.toLowerCase() + "#" + duracao + "#" + file;
+			buffer.write(texto + "\r\n");
+			buffer.close();
+		} catch (IOException e) {
+
+		}
 	}
 	public boolean ValidationFormat() {
 		File destino = new File(caminho);
@@ -166,4 +189,34 @@ public class MoveArquivosPasta {
 	
 		return false;
 	}
+	public boolean SerieExiste(String nomeSerie, String genero) {
+		String location = "C:\\TecaPlay\\" + userName + "\\Videos\\serie\\Todas as Series.txt";
+		FileTextProvider file = new FileTextProvider();
+		ArrayList<String> fileProvider = FileTextProvider.loadLines(location);
+		boolean existe = false;
+		for (int i = 0; i < fileProvider.size(); i++) {
+			final String[] data = FileTextProvider.readData("#", fileProvider.get(i));
+			if (data[0].equals(nomeSerie)) {
+				existe = true;
+				break;
+			}
+
+		}
+		if (!existe) {
+			System.out.println("Entrou");
+			try {
+				FileWriter buffer = null;
+				buffer = new FileWriter(location, true);
+				String texto = nomeSerie + "#" + genero;
+				buffer.write(texto + "\r\n");
+				buffer.close();
+				return true;
+			} catch (IOException e) {
+				return false;
+			}
+			
+		}
+		return false;
+	}
+
 }

@@ -15,6 +15,7 @@ import br.edu.pii.tecaplay.ui.FilmesAdd;
 public class MoveFile {
 	@SuppressWarnings("unused")
 	private FileWriter escrita;
+	private String usrName = "";
 
 	// Aqui jaz o codigo para mover os arquivos do adicionar.
 	/**
@@ -36,7 +37,8 @@ public class MoveFile {
 	 *            Armazena o nome do usuário atual logado no TecaPlay.
 	 */
 	public boolean AddFilme(String origem, String ano, String nome, String genero, String duracao, String pais,
-			String usrName) {
+			String userName) {
+		usrName = userName;
 		origem = origem.toLowerCase();
 		genero = genero.toLowerCase();
 		File destinoPasta = new File("c:\\TecaPlay\\" + usrName + "\\Videos\\filme\\" + genero);
@@ -80,7 +82,6 @@ public class MoveFile {
 	 *            usuario logado
 	 * 
 	 */
-	private String usrName = "";
 
 	public boolean AddSerie(String origem, String temporada, String nomeSerie, String nomeEp, String genero,
 			String duracao, String episodio, String userName) {
@@ -165,21 +166,25 @@ public class MoveFile {
 	// o mesmo pode ser utilizado para animes também.
 
 	/**
+	 * Função realizada após adicionar nova série.
+	 * ele irá acionar tambem a classe SerieExiste, para verificar se a série é nova ou não
+	 * sendo nova, ele irá adicionar o nome da nova série no campo "Seriado" do JcomboBox
 	 * 
 	 * @param pasta
-	 *            pasta pasta onde sera criado o arquivo txt
+	 *            pasta do usuario na categoria séries
 	 * @param nomeSerie
-	 *            nome que sera adicionado ao arquivo txt
+	 *            nome do seriado para servir de base de verificação de existencia de série 
+	 *            e listagem das séries
 	 * @param temporada
-	 *            temporada da serie
+	 *            numero da temporada da serie
 	 * @param episodio
-	 *            numro do episodio da serie
+	 *            numero do episodio da serie
 	 * @param duracao
-	 *            duração
+	 *            duração médio do episódio
 	 * @param genero
-	 *            genero para a criacao do nome do txt
+	 *            genero para a criacao do nome do txt(Ex: Ação)
 	 * @param file
-	 *            file localização final do arquivo movido
+	 *            file localização final da série do arquivo movido
 	 */
 	public void gravarTxt(String pasta, String nomeSerie, String temporada, String episodio, String duracao,
 			String genero, String file) {
@@ -198,21 +203,22 @@ public class MoveFile {
 		} catch (IOException e) {
 
 		}
-		boolean sucesso = SerieExiste(nomeSerie, nomeSerie, genero);
+		boolean sucesso = SerieExiste(nomeSerie, genero);
 		if (sucesso) {
 			FilmesAdd newAdd = new FilmesAdd(usrName);
-		}else{
-			System.err.println("Errou");
 		}
-		// Gravar os dados de uma nova série
 
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Verifica se a série existe. caso o teste resulta que nao existe tal série,
+	 * será adicionada no arquivo txt.
+	 * @param nomeSerie Nome da série adicionado
+	 * @param genero seu respectivo genero
+	 * @return se a série for nova, retorna verdadeiro e recarrega a pagina para a nova listagem
+	 * das séries existentes
 	 */
-	public boolean SerieExiste(String serie, String nomeSerie, String genero) {
+	public boolean SerieExiste(String nomeSerie, String genero) {
 		String location = "C:\\TecaPlay\\" + usrName + "\\Videos\\serie\\Todas as Series.txt";
 
 		FileTextProvider file = new FileTextProvider();
@@ -220,8 +226,9 @@ public class MoveFile {
 		boolean existe = false;
 		for (int i = 0; i < fileProvider.size(); i++) {
 			final String[] data = FileTextProvider.readData("#", fileProvider.get(i));
-			if (data[0].equals(serie)) {
+			if (data[0].equals(nomeSerie)) {
 				existe = true;
+				break;
 			}
 
 		}
@@ -235,7 +242,6 @@ public class MoveFile {
 				buffer.close();
 				return true;
 			} catch (IOException e) {
-				System.out.println("eRROU");
 				return false;
 			}
 			

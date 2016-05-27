@@ -48,7 +48,7 @@ public class FRarquivos {
 	public boolean VerificaGeneroExistenteSerie(String usrName, String genero) {
 		// string para o caminho do genero
 		genero.toLowerCase();
-		String caminho = "C:\\TecaPlay\\" + usrName + "\\Videos\\serie\\" + genero + ".txt";
+		String caminho = "C:\\TecaPlay\\" + usrName + "\\Videos\\serie\\" + genero;
 		File file = new File(caminho);
 
 		// verefica se o arquivo existe

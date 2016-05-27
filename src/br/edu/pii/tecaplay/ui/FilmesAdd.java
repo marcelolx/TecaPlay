@@ -740,15 +740,10 @@ public class FilmesAdd {
 
 									if (sucesso) {
 										// Limpa os campos de escrita
-										panelListTemporada.setSelectedIndex(0);
-										panelListGenero.setSelectedIndex(0);
-										panelListTitulo.setSelectedIndex(0);
-										textFieldProcurarFilme.setText("");
-										panelListEpisodio.setSelectedIndex(0);
-										txtFieldNomeEp.setText("");
-										textFieldDuracaoFilme.setText("");
+									
 										JOptionPane.showMessageDialog(JFrameAddSerie,
 												"Os arquivos foram movidos com Sucesso", "Sucesso", 1);
+										JFrameAddSerie.dispose();
 									} else {
 										JOptionPane.showMessageDialog(JFrameAddSerie,
 												"Os arquivos não foram movidos com Sucesso\n"

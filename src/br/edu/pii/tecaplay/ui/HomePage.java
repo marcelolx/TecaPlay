@@ -30,15 +30,19 @@ import br.edu.pii.tecaplay.util.AtualizeSeries;
 import br.edu.pii.tecaplay.util.FRarquivos;
 import br.edu.pii.tecaplay.util.FileUtil;
 import br.edu.pii.tecaplay.util.ListFiles;
+import br.edu.pii.tecaplay.util.ListFilesSeries;
 import br.edu.pii.tecaplay.util.TimerToLabel;
 
 public class HomePage {
 
 	private ArrayList<JPanel> voltarPaineis = new ArrayList<>();
 	private JTable table = new JTable();
+	private JTable tableSeries = new JTable();
 	private ListFiles listFiles = new ListFiles();
+	private ListFilesSeries listFilesSeries= new ListFilesSeries();
 	private JButton[] arrayBtnSeries;
 	private JScrollPane tableContainer = new JScrollPane(table);
+	private JScrollPane tableContainerSeries = new JScrollPane(tableSeries);
 	private String currentGenero = null;
 	private String userName;
 	private String music  = "";
@@ -1772,9 +1776,16 @@ public class HomePage {
 	 * @return null
 	 */
 	public ActionListener addTempSerie(ActionEvent evt) {
+		labelGeral.removeAll();
         JButton botao = (JButton)evt.getSource();
 		String name = botao.getText();
-		System.out.println(botao + "\n\n"+name);
+		home.remove(voltarPaineis.get(1));
+		home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+		listFilesSeries.reUpdateTable(tableSeries, userName, currentGenero, name);
+		tableContainerSeries.setPreferredSize(new Dimension(790, 500));
+		labelGeral.add(tableContainerSeries, BorderLayout.CENTER);
+		labelGeral.setVisible(true);
+		labelGeral.revalidate();
 		//TODO
 		return null;
 		

@@ -121,7 +121,7 @@ public class MoveFile {
 																					// a
 																					// ser
 																					// copiado
-			gravarTxt(pasta, nomeSerie, temporada, episodio, duracao, genero, fileFinal); // envia
+			gravarTxt(pasta, nomeSerie, temporada, episodio, duracao, genero, fileFinal,nomeEp); // envia
 																							// os
 																							// dados
 																							// para
@@ -187,7 +187,7 @@ public class MoveFile {
 	 *            file localização final da série do arquivo movido
 	 */
 	public void gravarTxt(String pasta, String nomeSerie, String temporada, String episodio, String duracao,
-			String genero, String file) {
+			String genero, String file,String nomeEp) {
 		// String do diretorio do TXT
 		String criarTemp = pasta + "\\" + genero + "\\nomeSerie\\" + nomeSerie.toLowerCase() + ".txt";
 		File pastaCriar = new File(pasta + "\\" + genero + "\\nomeSerie");
@@ -197,7 +197,7 @@ public class MoveFile {
 		try {
 			FileWriter buffer = null;
 			buffer = new FileWriter(criarTemp, true);
-			String texto = temporada + "#" + episodio + "#" + nomeSerie.toLowerCase() + "#" + duracao + "#" + file;
+			String texto = temporada + "#" + episodio + "#" + nomeSerie.toLowerCase() + "#"  + nomeEp.toLowerCase() + "#" + duracao + "#" + file;
 			buffer.write(texto + "\r\n");
 			buffer.close();
 		} catch (IOException e) {

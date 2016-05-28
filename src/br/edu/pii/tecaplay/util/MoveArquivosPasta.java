@@ -160,7 +160,7 @@ public class MoveArquivosPasta {
 		try {
 			FileWriter buffer = null;
 			buffer = new FileWriter(criarTemp, true);
-			String texto = temporada + "#" + episodio + "#" + nomeSerie.toLowerCase() + "#" + duracao + "#" + file;
+			String texto = temporada + "#" + episodio + "#" + nomeSerie.toLowerCase() + "#" + nomeEp.toLowerCase() + "#" + duracao + "#" + file;
 			buffer.write(texto + "\r\n");
 			buffer.close();
 		} catch (IOException e) {

@@ -21,6 +21,7 @@ import br.edu.pii.tecaplay.ui.ListPlaylists;
  */
 public class ListFiles {
 	private String  paisCanBan;
+	private String musicORvideo;
 	/**
 	 * @param table
 	 *            passa a tabela por parâmetro e a partir da mesma seta algumas
@@ -74,10 +75,10 @@ public class ListFiles {
 	public void updateTable(final JTable table, String usrName, String genero, String musica) {
 		String directorie;
 		if (!musica.equals("")) {
-			//paisCanBan = "Cantor/Banda";
+			musicORvideo = "Musicas";
 			directorie = "c:\\TecaPlay\\" + usrName + "\\Musicas\\" + genero + "\\" + genero + ".txt";
 		} else {
-			//paisCanBan = "País";
+			musicORvideo = "Videos";
 			directorie = "c:\\TecaPlay\\" + usrName + "\\Videos\\filme\\" + genero + ".txt";
 		}
 		final MyTableModel tableModel = (MyTableModel) table.getModel();
@@ -187,7 +188,7 @@ public class ListFiles {
 						caminho = data[0]+"#"+data[1]+"#"+data[2]+"#"+data[3]+"#"+data[4];
 					}
 				}
-				ListPlaylists list = new ListPlaylists(usrName,caminho);
+				ListPlaylists list = new ListPlaylists(usrName,caminho, musicORvideo);
 			}
 		};
 		

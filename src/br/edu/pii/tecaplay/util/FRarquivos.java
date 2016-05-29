@@ -59,6 +59,20 @@ public class FRarquivos {
 
 	}
 
+	public boolean VerificaGeneroExistentePlaylist(String usrName, String genero) {
+		// string para o caminho do genero
+		genero.toLowerCase();
+		String caminho = "C:\\TecaPlay\\" + usrName + "\\Musicas\\" + genero;
+		File file = new File(caminho);
+
+		// verefica se o arquivo existe
+		if (!file.exists()) {
+			return false;
+		} else
+			return true;
+
+	}
+	
 	public boolean VerificaGeneroExistenteMusica(String usrName, String genero) {
 		// string para o caminho do genero
 		genero.toLowerCase();

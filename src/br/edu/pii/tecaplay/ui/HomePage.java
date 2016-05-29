@@ -26,10 +26,12 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
+import br.edu.pii.tecaplay.util.AtualizePlaylists;
 import br.edu.pii.tecaplay.util.AtualizeSeries;
 import br.edu.pii.tecaplay.util.FRarquivos;
 import br.edu.pii.tecaplay.util.FileUtil;
 import br.edu.pii.tecaplay.util.ListFiles;
+import br.edu.pii.tecaplay.util.ListFilesPlaylist;
 import br.edu.pii.tecaplay.util.ListFilesSeries;
 import br.edu.pii.tecaplay.util.TimerToLabel;
 
@@ -38,18 +40,24 @@ public class HomePage {
 	private ArrayList<JPanel> voltarPaineis = new ArrayList<>();
 	private JTable table = new JTable();
 	private JTable tableSeries = new JTable();
+	private JTable tablePlaylist = new JTable();
 	private ListFiles listFiles = new ListFiles();
-	private ListFilesSeries listFilesSeries= new ListFilesSeries();
-	private JButton[] arrayBtnSeries;
+	private ListFilesSeries listFilesSeries = new ListFilesSeries();
+	private ListFilesPlaylist listFilePlayList = new ListFilesPlaylist();
+	private JButton[] arrayBtns;
 	private JScrollPane tableContainer = new JScrollPane(table);
 	private JScrollPane tableContainerSeries = new JScrollPane(tableSeries);
+	private JScrollPane tableContainerPlaylist = new JScrollPane(tablePlaylist);
 	private String currentGenero = null;
 	private String userName;
-	private String music  = "";
+	private String music = "";
 	private JFrame home;
-	private JPanel labelGeral;
+	private JPanel panelGeral;
 	private JPanel panelSerie;
-	
+	private JLabel labelFundo;
+	private JPanel panelCategoriasMusica;
+	private final TimerToLabel timer;
+	private JPanel playlistPanel;
 
 	/**
 	* 
@@ -68,7 +76,7 @@ public class HomePage {
 		home.setVisible(true);// Deixar visivel
 		home.setBackground(new Color(25, 25, 25));// cor de Background
 		home.setTitle("Home - TecaPlay"); // titulo na barra do windows
- 
+
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		int width = (screen.width) - 386;
 		int height = (screen.height) - 208;
@@ -155,7 +163,7 @@ public class HomePage {
 		btnMusica.setToolTipText("Op\u00E7\u00E3o de acesso a aba M\u00FAsica!");
 		btnMusica.setIcon(new ImageIcon("resources\\images\\imgBtnMusica.png"));// icone
 																				// do
-																			// botao
+		// botao
 		btnMusica.setFont(new Font("Tahoma", Font.BOLD, 14)); // tipo de fonte
 																// do botao
 		btnMusica.setPreferredSize(new Dimension(173, 42));
@@ -175,13 +183,13 @@ public class HomePage {
 		panelTopo.add(btnImagem);
 
 		// BANNER PRINCIPAL
-		JLabel labelFundo = new JLabel("");
+		labelFundo = new JLabel("");
 		labelFundo.setSize(400, 400);
 		labelFundo.setIcon(new ImageIcon("resources\\images\\bannerPrincipal.jpg"));
 		/**
 		 * @TimerToLabel Classe que faz o trabalho de mudar a imagem de fundo.
 		 */
-		final TimerToLabel timer = new TimerToLabel(30000, labelFundo);
+		timer = new TimerToLabel(30000, labelFundo);
 		timer.init();
 		home.getContentPane().add(labelFundo, BorderLayout.CENTER);
 
@@ -194,7 +202,7 @@ public class HomePage {
 		 * Imagem LATERAL
 		 * 
 		 */
-		
+
 		JPanel panelLateralImagem = new JPanel();
 		panelLateralImagem.setLayout(new FlowLayout(FlowLayout.LEFT, 4, 4));
 		panelLateralImagem.setPreferredSize(new Dimension(180, 400));
@@ -217,7 +225,12 @@ public class HomePage {
 				panelTopo.revalidate();
 			}
 		});
-
+		JButton btnHomePageImagem = new JButton();
+		btnHomePageImagem.setToolTipText("Home Page");
+		btnHomePageImagem.setPreferredSize(new Dimension(82, 34));
+		btnHomePageImagem.setBackground(Color.LIGHT_GRAY);
+		btnHomePageImagem.setIcon(new ImageIcon("resources\\images\\btnHomePage.png"));
+		panelLateralImagem.add(btnHomePageImagem);
 		// jButton Adicionar
 		JButton btnAdicionarImagem = new JButton("Adicionar");
 		btnAdicionarImagem.addActionListener(new ActionListener() {
@@ -234,15 +247,6 @@ public class HomePage {
 		panelLateralImagem.add(btnAdicionarImagem);
 		btnAdicionarImagem.setBackground(Color.LIGHT_GRAY);
 		home.isCursorSet();
-
-		// jButton Remover
-		JButton btnRemoveImagem = new JButton("Remover");
-		btnRemoveImagem.setToolTipText("Op\u00E7\u00E3o de acesso a aba Remover!");
-		btnRemoveImagem.setIcon(new ImageIcon("resources\\images\\imgBtnRemover.png"));
-		btnRemoveImagem.setPreferredSize(new Dimension(172, 34));
-		btnRemoveImagem.setFont(new Font("Tahoma", Font.BOLD, 14));
-		panelLateralImagem.add(btnRemoveImagem);
-		btnRemoveImagem.setBackground(Color.LIGHT_GRAY);
 
 		// jButton Favoritos
 		JButton btnFavoritosImagem = new JButton("Favoritos");
@@ -262,7 +266,7 @@ public class HomePage {
 		panelLateralImagem.add(btnColecaoImagem);
 		btnColecaoImagem.setBackground(Color.LIGHT_GRAY);
 
-		//  que serÐ± realizada ao apertar o botao de Imagem do jpanelTopo
+		// que serÐ± realizada ao apertar o botao de Imagem do jpanelTopo
 		btnImagem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				home.getContentPane().add(panelLateralImagem, BorderLayout.WEST);
@@ -291,6 +295,13 @@ public class HomePage {
 		btnVoltarMusica.setBackground(Color.LIGHT_GRAY);
 		btnVoltarMusica.setIcon(new ImageIcon("resources\\images\\imgVoltar.png"));
 
+		JButton btnHomePageMusica = new JButton();
+		btnHomePageMusica.setToolTipText("Home Page");
+		btnHomePageMusica.setPreferredSize(new Dimension(82, 34));
+		btnHomePageMusica.setBackground(Color.LIGHT_GRAY);
+		btnHomePageMusica.setIcon(new ImageIcon("resources\\images\\btnHomePage.png"));
+		panelLateralMusica.add(btnHomePageMusica);
+
 		// jButton Adicionar
 		JButton btnAdicionarMusica = new JButton("Adicionar");
 		btnAdicionarMusica.addActionListener(new ActionListener() {
@@ -307,15 +318,6 @@ public class HomePage {
 		btnAdicionarMusica.setBackground(Color.LIGHT_GRAY);
 		home.isCursorSet();
 
-		// jButton Remover
-		JButton btnRemoverMusica = new JButton("Remover");
-		btnRemoverMusica.setToolTipText("Op\u00E7\u00E3o de acesso a aba Remover!");
-		btnRemoverMusica.setIcon(new ImageIcon("resources\\images\\imgBtnRemover.png"));
-		btnRemoverMusica.setPreferredSize(new Dimension(172, 34));
-		btnRemoverMusica.setFont(new Font("Tahoma", Font.BOLD, 14));
-		panelLateralMusica.add(btnRemoverMusica);
-		btnRemoverMusica.setBackground(Color.LIGHT_GRAY);
-
 		// jButton Playlists
 		JButton btnPlaylistMusica = new JButton("PlayList's");
 		btnPlaylistMusica.setToolTipText("Op\u00E7\u00E3o de acesso a aba dos playList!");
@@ -324,13 +326,6 @@ public class HomePage {
 		btnPlaylistMusica.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelLateralMusica.add(btnPlaylistMusica);
 		btnPlaylistMusica.setBackground(Color.LIGHT_GRAY);
-		
-		//JPanel para playlist
-		JPanel panelPlaylist = new JPanel();
-		panelPlaylist.setLayout(new FlowLayout(FlowLayout.LEFT, 4, 4));
-		panelPlaylist.setPreferredSize(new Dimension(180, 400));
-		panelPlaylist.setBackground(new Color(128, 128, 128));
-
 
 		// jButton Estilos Musicais
 		JButton btnEstilosMusica = new JButton("Estilos Musicais");
@@ -350,7 +345,6 @@ public class HomePage {
 		panelLateralMusica.add(btnSorteioMusica);
 		btnSorteioMusica.setBackground(Color.LIGHT_GRAY);
 
-
 		/**
 		 * Jpanel Lateral para a chamada do panel de Videos
 		 */
@@ -367,6 +361,13 @@ public class HomePage {
 		btnVoltarVideo.setBackground(Color.LIGHT_GRAY);
 		btnVoltarVideo.setIcon(new ImageIcon("resources\\images\\imgVoltar.png"));
 
+		JButton btnHomePageVideo = new JButton();
+		btnHomePageVideo.setToolTipText("Home Page");
+		btnHomePageVideo.setPreferredSize(new Dimension(82, 34));
+		btnHomePageVideo.setBackground(Color.LIGHT_GRAY);
+		btnHomePageVideo.setIcon(new ImageIcon("resources\\images\\btnHomePage.png"));
+		panelLateralVideo.add(btnHomePageVideo);
+
 		// jButton Adicionar
 		JButton btnAdicionarVideo = new JButton("Adicionar");
 		btnAdicionarVideo.addActionListener(new ActionListener() {
@@ -381,7 +382,6 @@ public class HomePage {
 		btnAdicionarVideo.setPreferredSize(new Dimension(173, 34));
 		panelLateralVideo.add(btnAdicionarVideo);
 		btnAdicionarVideo.setBackground(Color.LIGHT_GRAY);
-
 
 		// jButton Favoritos
 		JButton btnFavoritosVideo = new JButton("Favoritos");
@@ -419,8 +419,7 @@ public class HomePage {
 		btnSorteioVideo.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelLateralVideo.add(btnSorteioVideo);
 		btnSorteioVideo.setBackground(Color.LIGHT_GRAY);
-		
-		
+
 		panelSerie = new JPanel();
 		panelSerie.setLayout(new FlowLayout(FlowLayout.CENTER));
 		panelSerie.setPreferredSize(new Dimension(500, 300));
@@ -568,16 +567,16 @@ public class HomePage {
 		btnCatThriller.setBackground(Color.LIGHT_GRAY);
 
 		// Jpanel para cada Categoria necessaria
-		labelGeral = new JPanel();
-		labelGeral.setLayout(new FlowLayout(FlowLayout.CENTER));
-		labelGeral.setPreferredSize(new Dimension(500, 300));
-		labelGeral.setBackground(new Color(120, 120, 120));
+		panelGeral = new JPanel();
+		panelGeral.setLayout(new FlowLayout(FlowLayout.CENTER));
+		panelGeral.setPreferredSize(new Dimension(500, 300));
+		panelGeral.setBackground(new Color(120, 120, 120));
 
 		/*
 		 * 
 		 * 
 		 * SERIES/CAREGORIAS SERIES/CAREGORIAS SERIES/CAREGORIAS
-		 * SERIES/CAREGORIAS SERIES/CAREGORIAS 
+		 * SERIES/CAREGORIAS SERIES/CAREGORIAS
 		 * 
 		 * 
 		 */
@@ -727,7 +726,7 @@ public class HomePage {
 		 * Categoria Musicais
 		 */
 		// jpanel categorias musicais
-		JPanel panelCategoriasMusica = new JPanel();
+		panelCategoriasMusica = new JPanel();
 		panelCategoriasMusica.setLayout(new FlowLayout(FlowLayout.CENTER));
 		panelCategoriasMusica.setPreferredSize(new Dimension(500, 300));
 		panelCategoriasMusica.setBackground(new Color(120, 120, 120));
@@ -858,9 +857,8 @@ public class HomePage {
 		btnMusicSertaneja.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnMusicSertaneja.setBackground(Color.LIGHT_GRAY);
 		panelCategoriasMusica.add(btnMusicSertaneja);
-	
-		
-		//  que será realizada ao apertar o botao de Musica do jpanelTopo
+
+		// que será realizada ao apertar o botao de Musica do jpanelTopo
 		btnMusica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				home.getContentPane().add(panelLateralMusica, BorderLayout.WEST);
@@ -872,7 +870,7 @@ public class HomePage {
 				panelLateralMusica.revalidate();// revalida o loyout
 			}
 		});
-		//  que será realizada ao apertar o botao de Video do jpanelTopo
+		// que será realizada ao apertar o botao de Video do jpanelTopo
 		btnVideo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				home.getContentPane().add(panelLateralVideo, BorderLayout.WEST);
@@ -882,6 +880,53 @@ public class HomePage {
 				panelLateralVideo.setVisible(true); // Ativa o painel lateral
 													// referente ao video
 				panelLateralVideo.revalidate();// revalida o loyout
+			}
+		});
+
+		btnHomePageVideo.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				home.getContentPane().removeAll();
+				voltarPaineis.removeAll(voltarPaineis);
+				home.getContentPane().add(panelTopo, BorderLayout.NORTH);
+				home.getContentPane().add(labelFundo, BorderLayout.CENTER);
+				labelFundo.setVisible(true);
+				labelFundo.revalidate();
+				timer.init();
+				panelTopo.setVisible(true);
+				panelTopo.revalidate();
+			}
+		});
+		btnHomePageMusica.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				home.getContentPane().removeAll();
+				voltarPaineis.removeAll(voltarPaineis);
+				home.getContentPane().add(panelTopo, BorderLayout.NORTH);
+				home.getContentPane().add(labelFundo, BorderLayout.CENTER);
+				labelFundo.setVisible(true);
+				labelFundo.revalidate();
+				timer.init();
+				panelTopo.setVisible(true);
+				panelTopo.revalidate();
+			}
+		});
+
+		btnHomePageImagem.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				home.getContentPane().removeAll();
+				voltarPaineis.removeAll(voltarPaineis);
+				home.getContentPane().add(panelTopo, BorderLayout.NORTH);
+				home.getContentPane().add(labelFundo, BorderLayout.CENTER);
+				labelFundo.setVisible(true);
+				labelFundo.revalidate();
+				timer.init();
+				panelTopo.setVisible(true);
+				panelTopo.revalidate();
 			}
 		});
 
@@ -936,7 +981,6 @@ public class HomePage {
 				voltarPaineis = new ArrayList<JPanel>();
 				voltarPaineis.removeAll(voltarPaineis);
 				voltarPaineis.add(panelCategoriasMusica);
-				home.getContentPane().remove(panelPlaylist);
 				home.getContentPane().remove(labelFundo);
 				home.getContentPane().remove(panelCategoriasMusica);
 				home.getContentPane().add(panelCategoriasMusica, BorderLayout.CENTER);
@@ -946,31 +990,7 @@ public class HomePage {
 				timer.clse();
 			}
 		});
-		
-		btnPlaylistMusica.addActionListener(new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-		
-					if (voltarPaineis.size() == 2) {
-						home.getContentPane().remove(voltarPaineis.get(1));
-					}
-					voltarPaineis = new ArrayList<JPanel>();
-					voltarPaineis.removeAll(voltarPaineis);
-					voltarPaineis.add(panelPlaylist);
-					home.getContentPane().remove(panelPlaylist);
-					home.getContentPane().remove(labelFundo);
-					home.getContentPane().remove(panelCategoriasMusica);
-					home.getContentPane().add(panelPlaylist, BorderLayout.CENTER);
-					panelPlaylist.setVisible(true);
-					//home.revalidate();
-					panelPlaylist.revalidate();
-					panelPlaylist.repaint();
-					timer.clse();
-			}
-		});
-
-		
 		// ação ao clicar no button lateral Filmes
 		btnFilmes.addActionListener(new ActionListener() {
 
@@ -979,7 +999,7 @@ public class HomePage {
 				if (voltarPaineis.size() == 2) {
 					home.getContentPane().remove(voltarPaineis.get(1));
 				}
-				labelGeral = new JPanel();
+				panelGeral = new JPanel();
 				AtualizaPanelGeral();
 				voltarPaineis = new ArrayList<JPanel>();
 				voltarPaineis.removeAll(voltarPaineis);
@@ -1002,7 +1022,7 @@ public class HomePage {
 				if (voltarPaineis.size() == 2) {
 					home.getContentPane().remove(voltarPaineis.get(1));
 				}
-				labelGeral = new JPanel();
+				panelGeral = new JPanel();
 				AtualizaPanelGeral();
 				voltarPaineis = new ArrayList<JPanel>();
 				voltarPaineis.removeAll(voltarPaineis);
@@ -1061,6 +1081,7 @@ public class HomePage {
 				}
 			}
 		});
+
 		//
 		/**
 		 * Acao dos botoes de categorias de Filmes
@@ -1240,7 +1261,7 @@ public class HomePage {
 				String genero = "suspense";
 				currentGenero = genero;
 				AcaoButtons(panelCategoriasFilmes);
-				}
+			}
 		});
 
 		// ação do botão filmes categoria Terror
@@ -1266,10 +1287,10 @@ public class HomePage {
 		});
 
 		/**
-		 *  Acao de botoes da categoria series
+		 * Acao de botoes da categoria series
 		 */
 
-		// ação do botão filmes categoria 
+		// ação do botão filmes categoria
 		btnCatAcaoSerie.addActionListener(new ActionListener() {
 
 			@Override
@@ -1370,7 +1391,7 @@ public class HomePage {
 			}
 		});
 
-		//  ação do botão filmes categoria Anime
+		// ação do botão filmes categoria Anime
 		btnCatAnimeSerie.addActionListener(new ActionListener() {
 
 			@Override
@@ -1381,7 +1402,7 @@ public class HomePage {
 			}
 		});
 
-		//ação  do botão filmes categoria FiccaoCientifica
+		// ação do botão filmes categoria FiccaoCientifica
 		btnCatFicaoCientSerie.addActionListener(new ActionListener() {
 
 			@Override
@@ -1450,7 +1471,7 @@ public class HomePage {
 			}
 		});
 
-		//  ação do botão filmes categoria Terror
+		// ação do botão filmes categoria Terror
 		btnCatTerrorSerie.addActionListener(new ActionListener() {
 
 			@Override
@@ -1471,11 +1492,11 @@ public class HomePage {
 				AcaoButtonsSerie(panelCategoriasSerie);
 			}
 		});
-		
+
 		/**
 		 * Ação dos butons Estilos musicais
 		 */
-		
+
 		btnMusicAntigas.addActionListener(new ActionListener() {
 
 			@Override
@@ -1485,7 +1506,7 @@ public class HomePage {
 				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
-		
+
 		btnMusicAxe.addActionListener(new ActionListener() {
 
 			@Override
@@ -1495,7 +1516,7 @@ public class HomePage {
 				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
-		
+
 		btnMusicBlack.addActionListener(new ActionListener() {
 
 			@Override
@@ -1505,7 +1526,7 @@ public class HomePage {
 				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
-		
+
 		btnMusicBrega.addActionListener(new ActionListener() {
 
 			@Override
@@ -1515,7 +1536,7 @@ public class HomePage {
 				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
-		
+
 		btnMusicDance.addActionListener(new ActionListener() {
 
 			@Override
@@ -1525,7 +1546,7 @@ public class HomePage {
 				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
-		
+
 		btnMusicEletronica.addActionListener(new ActionListener() {
 
 			@Override
@@ -1535,7 +1556,7 @@ public class HomePage {
 				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
-		
+
 		btnMusicFunk.addActionListener(new ActionListener() {
 
 			@Override
@@ -1545,7 +1566,7 @@ public class HomePage {
 				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
-		
+
 		btnMusicForro.addActionListener(new ActionListener() {
 
 			@Override
@@ -1555,7 +1576,7 @@ public class HomePage {
 				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
-		
+
 		btnMusicFolcloricas.addActionListener(new ActionListener() {
 
 			@Override
@@ -1565,7 +1586,7 @@ public class HomePage {
 				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
-		
+
 		btnMusicGospel.addActionListener(new ActionListener() {
 
 			@Override
@@ -1575,7 +1596,7 @@ public class HomePage {
 				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
-		
+
 		btnMusicInternacional.addActionListener(new ActionListener() {
 
 			@Override
@@ -1585,7 +1606,7 @@ public class HomePage {
 				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
-		
+
 		btnMusicModaViola.addActionListener(new ActionListener() {
 
 			@Override
@@ -1595,7 +1616,7 @@ public class HomePage {
 				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
-		
+
 		btnMusicNovas.addActionListener(new ActionListener() {
 
 			@Override
@@ -1605,7 +1626,7 @@ public class HomePage {
 				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
-		
+
 		btnMusicPagode.addActionListener(new ActionListener() {
 
 			@Override
@@ -1615,7 +1636,7 @@ public class HomePage {
 				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
-		
+
 		btnMusicRomantica.addActionListener(new ActionListener() {
 
 			@Override
@@ -1625,7 +1646,7 @@ public class HomePage {
 				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
-		
+
 		btnMusicReagge.addActionListener(new ActionListener() {
 
 			@Override
@@ -1635,7 +1656,7 @@ public class HomePage {
 				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
-		
+
 		btnMusicSamba.addActionListener(new ActionListener() {
 
 			@Override
@@ -1645,7 +1666,7 @@ public class HomePage {
 				AcaoButtonsMusic(panelCategoriasMusica);
 			}
 		});
-		
+
 		btnMusicSertaneja.addActionListener(new ActionListener() {
 
 			@Override
@@ -1657,11 +1678,24 @@ public class HomePage {
 		});
 
 		// Botão PlayList
-		
+		btnPlaylistMusica.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String genero = "Playlist";
+				currentGenero = genero;
+				acaoButtonPlayList();
+
+			}
+		});
 	}
+
 	/**
-	 * Acão que será executada quando aperta alguma opção de genero na categoria Filmes
-	 * @param panelCategorias Recebe o panel para serem feitas as ações
+	 * Acão que será executada quando aperta alguma opção de genero na categoria
+	 * Filmes
+	 * 
+	 * @param panelCategorias
+	 *            Recebe o panel para serem feitas as ações
 	 * @return null
 	 */
 	public ActionListener AcaoButtons(JPanel panelCategorias) {
@@ -1670,124 +1704,195 @@ public class HomePage {
 		Boolean ler = false;
 		ler = retorno.VerificaGeneroExistente(userName, currentGenero);
 		if (ler) {
-			voltarPaineis.add(labelGeral);
+			voltarPaineis.add(panelGeral);
 			home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 			listFiles.reUpdateTable(table, userName, currentGenero, music);
 			tableContainer.setPreferredSize(new Dimension(790, 500));
-			labelGeral.add(tableContainer, BorderLayout.CENTER);
+			panelGeral.add(tableContainer, BorderLayout.CENTER);
 			panelCategorias.setVisible(false);
 			home.getContentPane().remove(panelCategorias);
-			labelGeral.setVisible(true);
-			labelGeral.revalidate();
+			panelGeral.setVisible(true);
+			panelGeral.revalidate();
 
 		} else {
 			JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
 		}
 		return null;
-		
+
 	}
+
 	/**
-	 * Acão que será executada quando aperta alguma opção de genero na categoria Musica
-	 * @param panelCategorias Recebe o panel para serem feitas as ações
+	 * Acão que será executada quando aperta alguma opção de genero na categoria
+	 * Musica
+	 * 
+	 * @param panelCategorias
+	 *            Recebe o panel para serem feitas as ações
 	 * @return null
 	 */
 	public ActionListener AcaoButtonsMusic(JPanel panelCategorias) {
-		music  = "Musicas";
+		music = "Musicas";
 		FRarquivos retorno = new FRarquivos();
 		Boolean ler = false;
 		ler = retorno.VerificaGeneroExistenteMusica(userName, currentGenero);
 		if (ler) {
-			voltarPaineis.add(labelGeral);
+			voltarPaineis.add(panelGeral);
 			home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 			listFiles.reUpdateTable(table, userName, currentGenero, music);
 			tableContainer.setPreferredSize(new Dimension(790, 500));
-			labelGeral.add(tableContainer, BorderLayout.CENTER);
+			panelGeral.add(tableContainer, BorderLayout.CENTER);
 			panelCategorias.setVisible(false);
 			home.getContentPane().remove(panelCategorias);
-			labelGeral.setVisible(true);
-			labelGeral.revalidate();
+			panelGeral.setVisible(true);
+			panelGeral.revalidate();
 		} else {
 			JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
 		}
 		return null;
-		
+
 	}
+
 	/**
-	 * Acão que será executada quando aperta alguma opção de genero na categoria Serie
-	 * @param panelCategorias Recebe o panel para serem feitas as ações
+	 * Acão que será executada quando aperta alguma opção de genero na categoria
+	 * Serie
+	 * 
+	 * @param panelCategorias
+	 *            Recebe o panel para serem feitas as ações
 	 * @return null
 	 */
 	public ActionListener AcaoButtonsSerie(JPanel panelCategorias) {
-	FRarquivos retorno = new FRarquivos();
-	Boolean ler = false;
-	ler = retorno.VerificaGeneroExistenteSerie(userName, currentGenero);
-	if (ler) {
-		voltarPaineis.add(labelGeral);
-		home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-		panelCategorias.setVisible(false);
-		home.getContentPane().remove(panelCategorias);
-		labelGeral.setVisible(true);
-		labelGeral.revalidate();
-		AddButtonSerieNoLabel();
-	} else {
-		JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
-	}
+		FRarquivos retorno = new FRarquivos();
+		Boolean ler = false;
+		ler = retorno.VerificaGeneroExistenteSerie(userName, currentGenero);
+		if (ler) {
+			voltarPaineis.add(panelGeral);
+			home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+			panelCategorias.setVisible(false);
+			home.getContentPane().remove(panelCategorias);
+			panelGeral.setVisible(true);
+			panelGeral.revalidate();
+			AddButtonSerieNoLabel();
+		} else {
+			JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
+		}
 		return null;
-		
+
 	}
+
+	public ActionListener acaoButtonPlayList() {
+		FRarquivos retorno = new FRarquivos();
+		Boolean ler = false;
+		ler = retorno.VerificaGeneroExistentePlaylist(userName, currentGenero);
+		if (ler) {
+			if(voltarPaineis.size() == 2){
+				home.getContentPane().remove(voltarPaineis.get(1));
+			}
+			voltarPaineis = new ArrayList<JPanel>();
+			voltarPaineis.removeAll(voltarPaineis);
+			voltarPaineis.add(panelGeral);
+			home.getContentPane().remove(labelFundo);
+			home.getContentPane().remove(panelCategoriasMusica);
+			home.getContentPane().add(panelGeral, BorderLayout.CENTER);
+			panelGeral.setVisible(true);
+			panelGeral.revalidate();
+			timer.clse();
+			addButtonsPlaylist();
+		} else {
+			JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
+		}
+		return null;
+	}
+
 	/**
 	 * Atualiza o Label que será usado como label principal
 	 */
 	public void AtualizaPanelGeral() {
-		labelGeral = new JPanel();
-		labelGeral.setLayout(new FlowLayout(FlowLayout.CENTER));
-		labelGeral.setPreferredSize(new Dimension(500, 300));
-		labelGeral.setBackground(new Color(120, 254, 120));
+		panelGeral = new JPanel();
+		panelGeral.setLayout(new FlowLayout(FlowLayout.CENTER));
+		panelGeral.setPreferredSize(new Dimension(500, 300));
+		panelGeral.setBackground(new Color(120, 254, 120));
 	}
+
 	/**
-	 * Função que será usada para atualizar os botões das séries
-	 * Cada genero que será enviado para cá, é resposavel por verifica e fazer a 
-	 * adição automatica dos buttons série,
-	 * e consequentemente atualiza o label.
+	 * Função que será usada para atualizar os botões das séries Cada genero que
+	 * será enviado para cá, é resposavel por verifica e fazer a adição
+	 * automatica dos buttons série, e consequentemente atualiza o label.
 	 */
-	public void AddButtonSerieNoLabel(){
+	public void AddButtonSerieNoLabel() {
 		AtualizeSeries atualize = new AtualizeSeries(userName, currentGenero);
 		int size = atualize.Size();
-		arrayBtnSeries = new JButton[size];
+		arrayBtns = new JButton[size];
 		for (int i = 0; i < size; i++) {
 			String nameSerie = atualize.NameSeries(i);
 			if (!nameSerie.equals("nomeSerie")) {
-				arrayBtnSeries[i] = new JButton(nameSerie);
-				arrayBtnSeries[i].setPreferredSize(new Dimension(127, 135));
-				arrayBtnSeries[i].setFont(new Font("Tahoma", Font.BOLD, 14));
-				labelGeral.add(arrayBtnSeries[i]);
-				arrayBtnSeries[i].addActionListener(new ActionListener() {
-		                public void actionPerformed(ActionEvent evt){
-		                	addTempSerie(evt);
-		                }
-		            });
+				arrayBtns[i] = new JButton(nameSerie);
+				arrayBtns[i].setPreferredSize(new Dimension(127, 135));
+				arrayBtns[i].setFont(new Font("Tahoma", Font.BOLD, 14));
+				panelGeral.add(arrayBtns[i]);
+				arrayBtns[i].addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						addTempSerie(evt);
+					}
+				});
 			}
 		}
-	
+
 	}
+
 	/**
 	 * Começa a listagem da ação do JTable da série requerida
-	 * @param evt, botão que foi realizado o evento
+	 * 
+	 * @param evt,
+	 *            botão que foi realizado o evento
 	 * @return null
 	 */
 	public ActionListener addTempSerie(ActionEvent evt) {
-		labelGeral.removeAll();
-        JButton botao = (JButton)evt.getSource();
+		panelGeral.removeAll();
+		JButton botao = (JButton) evt.getSource();
 		String name = botao.getText();
-		home.remove(voltarPaineis.get(1));
-		home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+		home.getContentPane().remove(voltarPaineis.get(1));
+		home.getContentPane().add(voltarPaineis.get(1), BorderLayout.CENTER);
 		listFilesSeries.reUpdateTable(tableSeries, userName, currentGenero, name);
 		tableContainerSeries.setPreferredSize(new Dimension(790, 500));
-		labelGeral.add(tableContainerSeries, BorderLayout.CENTER);
-		labelGeral.setVisible(true);
-		labelGeral.revalidate();
-		//TODO
+		panelGeral.add(tableContainerSeries, BorderLayout.CENTER);
+		panelGeral.setVisible(true);
+		panelGeral.revalidate();
 		return null;
+
+	}
+
+	public void addButtonsPlaylist() {
+		AtualizePlaylists atualize = new AtualizePlaylists(userName);
+		int size = atualize.Size();
+		arrayBtns = new JButton[size];
+		for (int i = 0; i < size; i++) {
+			String PlaylistName = atualize.PlaylistNames(i);
+			arrayBtns[i] = new JButton(PlaylistName);
+			arrayBtns[i].setPreferredSize(new Dimension(127, 135));
+			arrayBtns[i].setFont(new Font("Tahoma", Font.BOLD, 14));
+			System.out.println("1");
+			panelGeral.add(arrayBtns[i]);
+			arrayBtns[i].addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent evt) {
+					listPlaylistMusics(evt);
+				}
+			});
+
+		}
+	}
+
+	public ActionListener listPlaylistMusics(ActionEvent evt) {
+		panelGeral.removeAll();
+		JButton botao = (JButton) evt.getSource();
+		String name = botao.getText();
 		
+		//home.remove(voltarPaineis.get(1));
+		//home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+		listFilePlayList.reUpdateTable(tablePlaylist, userName, name);
+		tableContainerPlaylist.setPreferredSize(new Dimension(790, 500));
+		panelGeral.add(tableContainerPlaylist, BorderLayout.CENTER);
+		panelGeral.setVisible(true);
+		panelGeral.revalidate();
+		panelGeral.repaint();
+		return null;
 	}
 }

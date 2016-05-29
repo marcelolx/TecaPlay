@@ -9,6 +9,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class TableModelSeries extends DefaultTableModel{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public TableModelSeries(final Object[][] dados){
 		super(dados, new String[] {"Temporada", "Episódio", "Série",   "Nome do Episódio",   "Tempo", "Favoritos","Excluir","Assistir"});
 	}

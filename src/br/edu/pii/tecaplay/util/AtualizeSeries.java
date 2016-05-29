@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 public class AtualizeSeries {
 	private ArrayList<String> namesSeries = new ArrayList<>();
-	private String nameSerie = null;
 	private int size = 0;
 	
 	public AtualizeSeries(String userName, String currentGenero) {
@@ -23,7 +22,7 @@ public class AtualizeSeries {
 
 	}
 	public String NameSeries(int i) {
-		nameSerie = namesSeries.get(i);
+		String nameSerie = namesSeries.get(i);
 		return nameSerie;
 	}
 	public int Size() {

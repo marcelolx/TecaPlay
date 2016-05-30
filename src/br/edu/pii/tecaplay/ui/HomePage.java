@@ -921,7 +921,7 @@ public class HomePage {
 				home.getContentPane().removeAll();
 				voltarPaineis.removeAll(voltarPaineis);
 				home.getContentPane().add(panelTopo, BorderLayout.NORTH);
-				home.getContentPane().add(labelFundo, BorderLayout.CENTER);
+			//	home.getContentPane().add(labelFundo, BorderLayout.CENTER);
 				labelFundo.setVisible(true);
 				labelFundo.revalidate();
 				timer.init();
@@ -982,12 +982,26 @@ public class HomePage {
 				voltarPaineis.removeAll(voltarPaineis);
 				voltarPaineis.add(panelCategoriasMusica);
 				home.getContentPane().remove(labelFundo);
+				home.getContentPane().remove(panelGeral);
 				home.getContentPane().remove(panelCategoriasMusica);
 				home.getContentPane().add(panelCategoriasMusica, BorderLayout.CENTER);
 				panelCategoriasMusica.setVisible(true); // ativa o panel lateral
 				panelCategoriasMusica.revalidate();// revalida o layout
 				panelCategoriasMusica.repaint();
 				timer.clse();
+			}
+		});
+		// Botão PlayList
+		btnPlaylistMusica.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				String genero = "Playlist";
+				currentGenero = genero;
+				panelGeral.removeAll();
+				AtualizaPanelGeral();
+				acaoButtonPlayList();
+
 			}
 		});
 
@@ -1677,17 +1691,7 @@ public class HomePage {
 			}
 		});
 
-		// Botão PlayList
-		btnPlaylistMusica.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				String genero = "Playlist";
-				currentGenero = genero;
-				acaoButtonPlayList();
-
-			}
-		});
+	
 	}
 
 	/**
@@ -1806,6 +1810,7 @@ public class HomePage {
 	 * Atualiza o Label que será usado como label principal
 	 */
 	public void AtualizaPanelGeral() {
+		panelGeral.removeAll();
 		panelGeral = new JPanel();
 		panelGeral.setLayout(new FlowLayout(FlowLayout.CENTER));
 		panelGeral.setPreferredSize(new Dimension(500, 300));

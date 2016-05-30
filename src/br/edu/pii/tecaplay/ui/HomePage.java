@@ -938,6 +938,7 @@ public class HomePage {
 					home.getContentPane().add(panelTopo, BorderLayout.NORTH);
 					panelLateralVideo.setVisible(false);
 					home.getContentPane().remove(panelLateralMusica);
+					home.getContentPane().remove(panelGeral);
 					panelTopo.setVisible(true);
 					home.getContentPane().add(labelFundo, BorderLayout.CENTER);
 					panelTopo.revalidate();
@@ -953,10 +954,11 @@ public class HomePage {
 					labelFundo.repaint();
 					voltarPaineis.remove(voltarPaineis.size() - 1);
 				} else if (voltarPaineis.size() == 2) {
+					System.out.println(voltarPaineis);
 					home.getContentPane().remove(voltarPaineis.get(1));
 					voltarPaineis.get(1).revalidate();
 					voltarPaineis.get(1).repaint();
-					// home.getContentPane().add(panelCategoria);
+					voltarPaineis.get(1).setVisible(false);
 					home.getContentPane().add(voltarPaineis.get(0), BorderLayout.CENTER);
 					voltarPaineis.get(0).setVisible(true);
 					voltarPaineis.get(0).revalidate();
@@ -981,6 +983,7 @@ public class HomePage {
 				voltarPaineis = new ArrayList<JPanel>();
 				voltarPaineis.removeAll(voltarPaineis);
 				voltarPaineis.add(panelCategoriasMusica);
+				panelGeral.removeAll();
 				home.getContentPane().remove(labelFundo);
 				home.getContentPane().remove(panelGeral);
 				home.getContentPane().remove(panelCategoriasMusica);
@@ -1793,6 +1796,7 @@ public class HomePage {
 			voltarPaineis = new ArrayList<JPanel>();
 			voltarPaineis.removeAll(voltarPaineis);
 			voltarPaineis.add(panelGeral);
+			home.getContentPane().remove(panelGeral);
 			home.getContentPane().remove(labelFundo);
 			home.getContentPane().remove(panelCategoriasMusica);
 			home.getContentPane().add(panelGeral, BorderLayout.CENTER);
@@ -1886,7 +1890,6 @@ public class HomePage {
 	}
 
 	public ActionListener listPlaylistMusics(ActionEvent evt) {
-		panelGeral.removeAll();
 		JButton botao = (JButton) evt.getSource();
 		String name = botao.getText();
 		
@@ -1894,10 +1897,18 @@ public class HomePage {
 		//home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 		listFilePlayList.reUpdateTable(tablePlaylist, userName, name);
 		tableContainerPlaylist.setPreferredSize(new Dimension(790, 500));
-		panelGeral.add(tableContainerPlaylist, BorderLayout.CENTER);
-		panelGeral.setVisible(true);
-		panelGeral.revalidate();
-		panelGeral.repaint();
+		playlistPanel = new JPanel();
+		playlistPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+		playlistPanel.setPreferredSize(new Dimension(500, 300));
+		playlistPanel.setBackground(new Color(250, 254, 120));
+		playlistPanel.add(tableContainerPlaylist, BorderLayout.CENTER);
+		playlistPanel.setVisible(true);
+		playlistPanel.revalidate();
+		playlistPanel.repaint();
+		voltarPaineis.add(playlistPanel);
+		panelGeral.setVisible(false);
+		home.getContentPane().remove(voltarPaineis.get(1));
+		home.getContentPane().add(voltarPaineis.get(1), BorderLayout.CENTER);
 		return null;
 	}
 }

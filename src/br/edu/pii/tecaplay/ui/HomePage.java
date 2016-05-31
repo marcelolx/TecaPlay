@@ -2,9 +2,12 @@ package br.edu.pii.tecaplay.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,9 +25,11 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSlider;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
+import javax.swing.border.Border;
 
 import br.edu.pii.tecaplay.util.AtualizePlaylists;
 import br.edu.pii.tecaplay.util.AtualizeSeries;
@@ -34,7 +39,12 @@ import br.edu.pii.tecaplay.util.ListFiles;
 import br.edu.pii.tecaplay.util.ListFilesPlaylist;
 import br.edu.pii.tecaplay.util.ListFilesSeries;
 import br.edu.pii.tecaplay.util.TimerToLabel;
-
+import br.edu.pii.tecaplay.util.VLCjPlayer;
+/**
+ * 
+ * @author Marcelo, Jonas
+ *
+ */
 public class HomePage {
 
 	private ArrayList<JPanel> voltarPaineis = new ArrayList<>();
@@ -58,6 +68,13 @@ public class HomePage {
 	private JPanel panelCategoriasMusica;
 	private final TimerToLabel timer;
 	private JPanel playlistPanel;
+	private JPanel panelPlayer;
+    private final JButton pauseButton;
+    private final JButton rewindButton;
+    private final JButton skipButton;
+    private final JSlider volumeSlider;
+    private final JButton muteButton;
+    private final JButton playAllButton;
 
 	/**
 	* 
@@ -78,8 +95,9 @@ public class HomePage {
 		home.setTitle("Home - TecaPlay"); // titulo na barra do windows
 
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-		int width = (screen.width) - 386;
-		int height = (screen.height) - 208;
+		System.out.println(screen);
+		int width = 1366 - 386;
+		int height = 798 - 208;
 		int x = (screen.width - width) / 2;
 		int y = (screen.height - height) / 2;
 		home.setBounds(x, y, width, height);// seta o tamanho da janela e sua
@@ -141,6 +159,50 @@ public class HomePage {
 		panelTopo.setBackground(new Color(127, 127, 127));
 		home.getContentPane().add(panelTopo, BorderLayout.NORTH);
 
+		/**
+		 * @panelPlayer É um painel que contem os botões do player de música, que geralmente serve para tocar as músicas da playlist
+		 */
+		panelPlayer = new JPanel();
+		panelPlayer.setAutoscrolls(true);
+		panelPlayer.setFocusTraversalPolicyProvider(true);
+		panelPlayer.setFocusCycleRoot(true);
+		panelPlayer.setIgnoreRepaint(true);
+		panelPlayer.setBackground(new Color(122, 122, 122));
+		//panelPlayer.setPreferredSize(new Dimension(width, 30));
+
+        rewindButton = new JButton();
+        rewindButton.setIcon(new ImageIcon("resources\\images\\rewindButton.png"));
+        rewindButton.setBackground(Color.GRAY);
+        rewindButton.setPreferredSize(new Dimension(32, 32));
+        panelPlayer.add(rewindButton, BorderLayout.CENTER);
+        pauseButton = new JButton();
+        pauseButton.setIcon(new ImageIcon("resources\\images\\pauseButton.png"));
+        pauseButton.setBackground(Color.GRAY);
+        pauseButton.setPreferredSize(new Dimension(32, 32));
+        panelPlayer.add(pauseButton, BorderLayout.CENTER); 
+        skipButton = new JButton();
+        skipButton.setIcon(new ImageIcon("resources\\images\\skipButton.png"));
+        skipButton.setBackground(Color.GRAY);
+        skipButton.setPreferredSize(new Dimension(32, 32));
+        panelPlayer.add(skipButton, BorderLayout.CENTER);
+        muteButton = new JButton();
+        muteButton.setIcon(new ImageIcon("resources\\images\\noMute.png"));
+        muteButton.setPreferredSize(new Dimension(32, 32));
+        muteButton.setBackground(Color.GRAY);
+        panelPlayer.add(muteButton, BorderLayout.CENTER);
+        volumeSlider = new JSlider();
+        volumeSlider.setPreferredSize(new Dimension(60, 32));
+        volumeSlider.setBackground(Color.GRAY);
+        volumeSlider.setValue(100);
+        panelPlayer.add(volumeSlider, BorderLayout.CENTER);
+        playAllButton = new JButton("Reproduzir Tudo");
+        //playAllButton.setIcon(new ImageIcon("resources\\images\\pauseButton.png"));
+        playAllButton.setPreferredSize(new Dimension(160, 32));
+        playAllButton.setBackground(Color.GRAY);
+        panelPlayer.add(playAllButton, BorderLayout.EAST);
+		
+		
+		home.getContentPane().add(panelPlayer, BorderLayout.SOUTH);
 		/**
 		 * cri de botoes video/musica/imagem
 		 */
@@ -891,6 +953,7 @@ public class HomePage {
 				voltarPaineis.removeAll(voltarPaineis);
 				home.getContentPane().add(panelTopo, BorderLayout.NORTH);
 				home.getContentPane().add(labelFundo, BorderLayout.CENTER);
+				home.getContentPane().add(panelPlayer, BorderLayout.SOUTH);
 				labelFundo.setVisible(true);
 				labelFundo.revalidate();
 				timer.init();
@@ -906,6 +969,7 @@ public class HomePage {
 				voltarPaineis.removeAll(voltarPaineis);
 				home.getContentPane().add(panelTopo, BorderLayout.NORTH);
 				home.getContentPane().add(labelFundo, BorderLayout.CENTER);
+				home.getContentPane().add(panelPlayer, BorderLayout.SOUTH);
 				labelFundo.setVisible(true);
 				labelFundo.revalidate();
 				timer.init();
@@ -921,7 +985,8 @@ public class HomePage {
 				home.getContentPane().removeAll();
 				voltarPaineis.removeAll(voltarPaineis);
 				home.getContentPane().add(panelTopo, BorderLayout.NORTH);
-			//	home.getContentPane().add(labelFundo, BorderLayout.CENTER);
+				home.getContentPane().add(labelFundo, BorderLayout.CENTER);
+				home.getContentPane().add(panelPlayer, BorderLayout.SOUTH);
 				labelFundo.setVisible(true);
 				labelFundo.revalidate();
 				timer.init();
@@ -954,7 +1019,6 @@ public class HomePage {
 					labelFundo.repaint();
 					voltarPaineis.remove(voltarPaineis.size() - 1);
 				} else if (voltarPaineis.size() == 2) {
-					System.out.println(voltarPaineis);
 					home.getContentPane().remove(voltarPaineis.get(1));
 					voltarPaineis.get(1).revalidate();
 					voltarPaineis.get(1).repaint();
@@ -1878,7 +1942,6 @@ public class HomePage {
 			arrayBtns[i] = new JButton(PlaylistName);
 			arrayBtns[i].setPreferredSize(new Dimension(127, 135));
 			arrayBtns[i].setFont(new Font("Tahoma", Font.BOLD, 14));
-			System.out.println("1");
 			panelGeral.add(arrayBtns[i]);
 			arrayBtns[i].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evt) {

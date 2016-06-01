@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
+import br.edu.pii.tecaplay.util.ArrayCategorias;
 import br.edu.pii.tecaplay.util.MoveMusic;
 import javax.swing.JSlider;
 
@@ -38,6 +39,7 @@ public class MusicAdd {
 	private JTextField textFieldAno;
 	private JTextField textFieldProcurar;
 	private String caminho;
+	ArrayCategorias array = new ArrayCategorias();
 
 	public MusicAdd(String usrName) {
 		JFrame frame = new JFrame();
@@ -116,26 +118,8 @@ public class MusicAdd {
 		frame.getContentPane().add(panelListAno);
 
 		JComboBox<String> panelListGenero = new JComboBox<String>();
-		ArrayList<String> listaGenero = new ArrayList<>();
-		listaGenero.add("Selecione");
-		listaGenero.add("Antigas");
-		listaGenero.add("Axé");
-		listaGenero.add("Black");
-		listaGenero.add("Brega");
-		listaGenero.add("Dance");
-		listaGenero.add("Eletrônica");
-		listaGenero.add("Funk");
-		listaGenero.add("Forró");
-		listaGenero.add("Folclóricas");
-		listaGenero.add("Gospel");
-		listaGenero.add("Internacionais");
-		listaGenero.add("Moda de Viola");
-		listaGenero.add("Novas");
-		listaGenero.add("Pagode");
-		listaGenero.add("Romantica");
-		listaGenero.add("Reagge");
-		listaGenero.add("Samba");
-		listaGenero.add("Sertaneja");
+		ArrayList<String> listaGenero = array.addMusicas();
+		panelListGenero.addItem("Selecione");
 		panelListGenero.setBackground(Color.LIGHT_GRAY);
 		panelListGenero.setFont(new Font("Tahoma", Font.BOLD, 13));
 		panelListGenero.setForeground(Color.BLACK);

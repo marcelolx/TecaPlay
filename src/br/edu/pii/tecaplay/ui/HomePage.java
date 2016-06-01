@@ -33,6 +33,7 @@ import javax.swing.border.Border;
 
 import br.edu.pii.tecaplay.player.MusicPlayer;
 import br.edu.pii.tecaplay.player.VLCjPlayer;
+import br.edu.pii.tecaplay.util.ArrayCategorias;
 import br.edu.pii.tecaplay.util.AtualizePlaylists;
 import br.edu.pii.tecaplay.util.AtualizeSeries;
 import br.edu.pii.tecaplay.util.FRarquivos;
@@ -67,13 +68,18 @@ public class HomePage {
 	private JPanel panelGeral;
 	private JPanel panelSerie;
 	private JLabel labelFundo;
-	private JPanel panelCategoriasMusica;
 	private final TimerToLabel timer;
 	private JPanel playlistPanel;
 	private JPanel panelPlayer;
 	private JButton playAllButton;
 	private boolean flag = false;
-	
+	private JButton[] buttonCatFilmes;
+	private JButton[] buttonCatSeries;
+	private JButton[] buttonCatMusica;
+	ArrayCategorias arrayCat = new ArrayCategorias();
+	private JPanel panelCategoriasFilmes;
+	private JPanel panelCategoriasSerie;
+	private JPanel panelCategoriasMusica;
 	/**
 	* 
 	*/
@@ -471,137 +477,12 @@ public class HomePage {
 		 * 
 		 */
 
-		JPanel panelCategoriasFilmes = new JPanel();
+		panelCategoriasFilmes = new JPanel();
 		panelCategoriasFilmes.setLayout(new FlowLayout(FlowLayout.CENTER));
 		panelCategoriasFilmes.setPreferredSize(new Dimension(500, 300));
 		panelCategoriasFilmes.setBackground(new Color(120, 120, 120));
 
-		JButton btnCatAcao = new JButton("A\u00E7\u00E3o");
-		btnCatAcao.setToolTipText("Categoria A\u00E7\u00E3o.");
-		btnCatAcao.setPreferredSize(new Dimension(127, 135));
-		btnCatAcao.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatAcao.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasFilmes.add(btnCatAcao);
 
-		JButton btnCatAnimacao = new JButton("Anima\u00E7\u00E3o");
-		btnCatAnimacao.setToolTipText("Categoria Anima\u00E7\u00E3o.");
-		btnCatAnimacao.setPreferredSize(new Dimension(127, 135));
-		btnCatAnimacao.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatAnimacao.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasFilmes.add(btnCatAnimacao);
-
-		JButton btnCatAventura = new JButton("Aventura");
-		btnCatAventura.setToolTipText("Categoria Aventura.");
-		btnCatAventura.setPreferredSize(new Dimension(127, 135));
-		btnCatAventura.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatAventura.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasFilmes.add(btnCatAventura);
-
-		JButton btnCatClassico = new JButton("Cl\u00E1ssico");
-		btnCatClassico.setToolTipText("Categoria Classico.");
-		btnCatClassico.setPreferredSize(new Dimension(127, 135));
-		btnCatClassico.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatClassico.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasFilmes.add(btnCatClassico);
-
-		JButton btnCatComedia = new JButton("Com\u00E9dia");
-		btnCatComedia.setToolTipText("Categoria ComÐ¹dia.");
-		btnCatComedia.setPreferredSize(new Dimension(127, 135));
-		btnCatComedia.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatComedia.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasFilmes.add(btnCatComedia);
-
-		JButton btnCatComediaRomantica = new JButton("<html><CENTER>Com\u00E9dia<br>Rom\u00E2ntica</CENTER></html>");
-		btnCatComediaRomantica.setToolTipText("Categoria Com\u00E9dia Rom\u00E2ntica.");
-		btnCatComediaRomantica.setPreferredSize(new Dimension(127, 135));
-		btnCatComediaRomantica.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatComediaRomantica.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasFilmes.add(btnCatComediaRomantica);
-
-		JButton btnCatCrime = new JButton("Crime");
-		btnCatCrime.setToolTipText("Categoria Crime.");
-		btnCatCrime.setPreferredSize(new Dimension(127, 135));
-		btnCatCrime.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatCrime.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasFilmes.add(btnCatCrime);
-
-		JButton btnCatDocumentario = new JButton("<html><CENTER><p>Document\u00E1<br>rio</CENTER></html>");
-		btnCatDocumentario.setToolTipText("Categoria Document\u00E1rio.");
-		btnCatDocumentario.setPreferredSize(new Dimension(127, 135));
-		btnCatDocumentario.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatDocumentario.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasFilmes.add(btnCatDocumentario);
-
-		JButton btnCatDrama = new JButton("Drama");
-		btnCatDrama.setToolTipText("Categoria Drama.");
-		btnCatDrama.setPreferredSize(new Dimension(127, 135));
-		btnCatDrama.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatDrama.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasFilmes.add(btnCatDrama);
-
-		JButton btnCatFaroeste = new JButton("Faroeste");
-		btnCatFaroeste.setToolTipText("Categoria Faroeste.");
-		btnCatFaroeste.setPreferredSize(new Dimension(127, 135));
-		btnCatFaroeste.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatFaroeste.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasFilmes.add(btnCatFaroeste);
-
-		JButton btnCatFicaoCient = new JButton("<html><center>Fic\u00E7\u00E3o</br> Cientifica</center></html>");
-		btnCatFicaoCient.setToolTipText("Categoria Fic\u00E7\u00E3o Científica.");
-		btnCatFicaoCient.setPreferredSize(new Dimension(127, 135));
-		btnCatFicaoCient.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatFicaoCient.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasFilmes.add(btnCatFicaoCient);
-
-		JButton btnCatGuerra = new JButton("Guerra");
-		btnCatGuerra.setToolTipText("Categoria Guerra.");
-		btnCatGuerra.setPreferredSize(new Dimension(127, 135));
-		btnCatGuerra.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatGuerra.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasFilmes.add(btnCatGuerra);
-
-		JButton btnCatMusical = new JButton("Musical");
-		btnCatMusical.setToolTipText("Categoria Musical.");
-		btnCatMusical.setPreferredSize(new Dimension(127, 135));
-		btnCatMusical.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatMusical.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasFilmes.add(btnCatMusical);
-
-		JButton btnCatPolicial = new JButton("Policial");
-		btnCatPolicial.setToolTipText("Categoria Policial.");
-		btnCatPolicial.setPreferredSize(new Dimension(127, 135));
-		btnCatPolicial.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatPolicial.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasFilmes.add(btnCatPolicial);
-
-		JButton btnCatRomance = new JButton("Romance");
-		btnCatRomance.setToolTipText("Categoria Romance.");
-		btnCatRomance.setPreferredSize(new Dimension(127, 135));
-		btnCatRomance.setFont(new Font("Tahoma", Font.BOLD, 14));
-
-		btnCatRomance.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasFilmes.add(btnCatRomance);
-
-		JButton btnCatSuspense = new JButton("Suspense");
-		btnCatSuspense.setToolTipText("Categoria Suspense.");
-		btnCatSuspense.setPreferredSize(new Dimension(127, 135));
-		btnCatSuspense.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatSuspense.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasFilmes.add(btnCatSuspense);
-
-		JButton btnCatTerror = new JButton("Terror");
-		btnCatTerror.setToolTipText("Categoria Terror.");
-		btnCatTerror.setPreferredSize(new Dimension(127, 135));
-		btnCatTerror.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatTerror.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasFilmes.add(btnCatTerror);
-
-		JButton btnCatThriller = new JButton("Thriller");
-		btnCatThriller.setToolTipText("Categoria Thriller.");
-		btnCatThriller.setPreferredSize(new Dimension(127, 135));
-		btnCatThriller.setFont(new Font("Tahoma", Font.BOLD, 14));
-		panelCategoriasFilmes.add(btnCatThriller);
-		btnCatThriller.setBackground(Color.LIGHT_GRAY);
 
 		// Jpanel para cada Categoria necessaria
 		panelGeral = new JPanel();
@@ -618,145 +499,10 @@ public class HomePage {
 		 * 
 		 */
 
-		JPanel panelCategoriasSerie = new JPanel();
+	    panelCategoriasSerie = new JPanel();
 		panelCategoriasSerie.setLayout(new FlowLayout(FlowLayout.CENTER));
 		panelCategoriasSerie.setPreferredSize(new Dimension(500, 300));
 		panelCategoriasSerie.setBackground(new Color(120, 120, 120));
-
-		JButton btnCatAcaoSerie = new JButton("Ação");
-		btnCatAcaoSerie.setToolTipText("Categoria ação.");
-		btnCatAcaoSerie.setPreferredSize(new Dimension(127, 135));
-		btnCatAcaoSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatAcaoSerie.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasSerie.add(btnCatAcaoSerie);
-
-		JButton btnCatAnimacaoSerie = new JButton("Animação");
-		btnCatAnimacaoSerie.setToolTipText("Categoria Animação.");
-		btnCatAnimacaoSerie.setPreferredSize(new Dimension(127, 135));
-		btnCatAnimacaoSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatAnimacaoSerie.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasSerie.add(btnCatAnimacaoSerie);
-
-		JButton btnCatAnimeSerie = new JButton("Anime");
-		btnCatAnimeSerie.setToolTipText("Categoria Faroeste.");
-		btnCatAnimeSerie.setPreferredSize(new Dimension(127, 135));
-		btnCatAnimeSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatAnimeSerie.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasSerie.add(btnCatAnimeSerie);
-
-		JButton btnCatAventuraSerie = new JButton("Aventura");
-		btnCatAventuraSerie.setToolTipText("Categoria .");
-		btnCatAventuraSerie.setPreferredSize(new Dimension(127, 135));
-		btnCatAventuraSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatAventuraSerie.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasSerie.add(btnCatAventuraSerie);
-
-		JButton btnCatClassicoSerie = new JButton("Clássico");
-		btnCatClassicoSerie.setToolTipText("Categoria Classico.");
-		btnCatClassicoSerie.setPreferredSize(new Dimension(127, 135));
-		btnCatClassicoSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatClassicoSerie.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasSerie.add(btnCatClassicoSerie);
-
-		JButton btnCatComediaSerie = new JButton("Comédia");
-		btnCatComediaSerie.setToolTipText("Categoria Comédia.");
-		btnCatComediaSerie.setPreferredSize(new Dimension(127, 135));
-		btnCatComediaSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatComediaSerie.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasSerie.add(btnCatComediaSerie);
-
-		JButton btnCatComediaRomanticaSerie = new JButton("<html><CENTER>Comédia</br> Romântica</CENTER></html>");
-		btnCatComediaRomanticaSerie.setToolTipText("Categoria Comédia Romântica.");
-		btnCatComediaRomanticaSerie.setPreferredSize(new Dimension(127, 135));
-		btnCatComediaRomanticaSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatComediaRomanticaSerie.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasSerie.add(btnCatComediaRomanticaSerie);
-
-		JButton btnCatCrimeSerie = new JButton("Crime");
-		btnCatCrimeSerie.setToolTipText("Categoria Crime.");
-		btnCatCrimeSerie.setPreferredSize(new Dimension(127, 135));
-		btnCatCrimeSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatCrimeSerie.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasSerie.add(btnCatCrimeSerie);
-
-		JButton btnCatDocumentarioSerie = new JButton("<html><p>Documentá<br>rio</html>");
-		btnCatDocumentarioSerie.setToolTipText("Categoria Documentário.");
-		btnCatDocumentarioSerie.setPreferredSize(new Dimension(127, 135));
-		btnCatDocumentarioSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatDocumentarioSerie.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasSerie.add(btnCatDocumentarioSerie);
-
-		JButton btnCatDramaSerie = new JButton("Drama");
-		btnCatDramaSerie.setToolTipText("Categoria Drama.");
-		btnCatDramaSerie.setPreferredSize(new Dimension(127, 135));
-		btnCatDramaSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatDramaSerie.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasSerie.add(btnCatDramaSerie);
-
-		JButton btnCatFicaoCientSerie = new JButton("<html><center>Ficção</br> Científica</center></html>");
-		btnCatFicaoCientSerie.setToolTipText("Categoria FicÐ·Ð³o CientÐ½fica.");
-		btnCatFicaoCientSerie.setPreferredSize(new Dimension(127, 135));
-		// btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
-		btnCatFicaoCientSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatFicaoCientSerie.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasSerie.add(btnCatFicaoCientSerie);
-
-		JButton btnCatGuerraSerie = new JButton("Guerra");
-		btnCatGuerraSerie.setToolTipText("Categoria Guerra.");
-		btnCatGuerraSerie.setPreferredSize(new Dimension(127, 135));
-		// btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
-		btnCatGuerraSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatGuerraSerie.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasSerie.add(btnCatGuerraSerie);
-
-		JButton btnCatMedicoSerie = new JButton("Médico");
-		btnCatMedicoSerie.setToolTipText("Categoria Thriller.");
-		btnCatMedicoSerie.setPreferredSize(new Dimension(127, 135));
-		// btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
-		btnCatMedicoSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatMedicoSerie.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasSerie.add(btnCatMedicoSerie);
-
-		JButton btnCatMusicalSerie = new JButton("Musical");
-		btnCatMusicalSerie.setToolTipText("Categoria Musical.");
-		btnCatMusicalSerie.setPreferredSize(new Dimension(127, 135));
-		// btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
-		btnCatMusicalSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatMusicalSerie.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasSerie.add(btnCatMusicalSerie);
-
-		JButton btnCatPolicialSerie = new JButton("Policial");
-		btnCatPolicialSerie.setToolTipText("Categoria Policial.");
-		btnCatPolicialSerie.setPreferredSize(new Dimension(127, 135));
-		// btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
-		btnCatPolicialSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatPolicialSerie.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasSerie.add(btnCatPolicialSerie);
-
-		JButton btnCatRomanceSerie = new JButton("Romance");
-		btnCatRomanceSerie.setToolTipText("Categoria Romance.");
-		btnCatRomanceSerie.setPreferredSize(new Dimension(127, 135));
-		// btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
-		btnCatRomanceSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
-
-		btnCatRomanceSerie.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasSerie.add(btnCatRomanceSerie);
-
-		JButton btnCatSuspenseSerie = new JButton("Suspense");
-		btnCatSuspenseSerie.setToolTipText("Categoria Suspense.");
-		btnCatSuspenseSerie.setPreferredSize(new Dimension(127, 135));
-		// btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
-		btnCatSuspenseSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatSuspenseSerie.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasSerie.add(btnCatSuspenseSerie);
-
-		JButton btnCatTerrorSerie = new JButton("Terror");
-		btnCatTerrorSerie.setToolTipText("Categoria Terror.");
-		btnCatTerrorSerie.setPreferredSize(new Dimension(127, 135));
-		// btnCatAcao.setIcon(new ImageIcon("resources\\images\\acaoIcon.jpg"));
-		btnCatTerrorSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnCatTerrorSerie.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasSerie.add(btnCatTerrorSerie);
 
 		/**
 		 *
@@ -767,133 +513,6 @@ public class HomePage {
 		panelCategoriasMusica.setLayout(new FlowLayout(FlowLayout.CENTER));
 		panelCategoriasMusica.setPreferredSize(new Dimension(500, 300));
 		panelCategoriasMusica.setBackground(new Color(120, 120, 120));
-
-		// Jbutoons do Estilos musicais
-		JButton btnMusicAntigas = new JButton("Antigas");
-		btnMusicAntigas.setToolTipText("Categoria Antigas.");
-		btnMusicAntigas.setPreferredSize(new Dimension(127, 135));
-		btnMusicAntigas.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnMusicAntigas.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasMusica.add(btnMusicAntigas);
-
-		JButton btnMusicAxe = new JButton("Axé");
-		btnMusicAxe.setToolTipText("Categoria Axé.");
-		btnMusicAxe.setPreferredSize(new Dimension(127, 135));
-		btnMusicAxe.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnMusicAxe.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasMusica.add(btnMusicAxe);
-
-		JButton btnMusicBlack = new JButton("Black");
-		btnMusicBlack.setToolTipText("Categoria Black.");
-		btnMusicBlack.setPreferredSize(new Dimension(127, 135));
-		btnMusicBlack.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnMusicBlack.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasMusica.add(btnMusicBlack);
-
-		JButton btnMusicBrega = new JButton("Brega");
-		btnMusicBrega.setToolTipText("Categoria Brega.");
-		btnMusicBrega.setPreferredSize(new Dimension(127, 135));
-		btnMusicBrega.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnMusicBrega.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasMusica.add(btnMusicBrega);
-
-		JButton btnMusicDance = new JButton("Dance");
-		btnMusicDance.setToolTipText("Categoria Dance.");
-		btnMusicDance.setPreferredSize(new Dimension(127, 135));
-		btnMusicDance.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnMusicDance.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasMusica.add(btnMusicDance);
-
-		JButton btnMusicEletronica = new JButton("Eletrônica");
-		btnMusicEletronica.setToolTipText("Categoria Com\u00E9dia Eletrônica.");
-		btnMusicEletronica.setPreferredSize(new Dimension(127, 135));
-		btnMusicEletronica.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnMusicEletronica.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasMusica.add(btnMusicEletronica);
-
-		JButton btnMusicFunk = new JButton("Funk");
-		btnMusicFunk.setToolTipText("Categoria Funk.");
-		btnMusicFunk.setPreferredSize(new Dimension(127, 135));
-		btnMusicFunk.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnMusicFunk.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasMusica.add(btnMusicFunk);
-
-		JButton btnMusicForro = new JButton("Forró");
-		btnMusicForro.setToolTipText("Categoria Forró.");
-		btnMusicForro.setPreferredSize(new Dimension(127, 135));
-		btnMusicForro.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnMusicForro.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasMusica.add(btnMusicForro);
-
-		JButton btnMusicFolcloricas = new JButton("Folclóricas");
-		btnMusicFolcloricas.setToolTipText("Categoria Folclóricas.");
-		btnMusicFolcloricas.setPreferredSize(new Dimension(127, 135));
-		btnMusicFolcloricas.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnMusicFolcloricas.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasMusica.add(btnMusicFolcloricas);
-
-		JButton btnMusicGospel = new JButton("Gospel");
-		btnMusicGospel.setToolTipText("Categoria Gospel.");
-		btnMusicGospel.setPreferredSize(new Dimension(127, 135));
-		btnMusicGospel.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnMusicGospel.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasMusica.add(btnMusicGospel);
-
-		JButton btnMusicInternacional = new JButton("<html><center>Internacio-</br> nais</center></html>");
-		btnMusicInternacional.setToolTipText("Categoria Internacionais.");
-		btnMusicInternacional.setPreferredSize(new Dimension(127, 135));
-		btnMusicInternacional.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnMusicInternacional.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasMusica.add(btnMusicInternacional);
-
-		JButton btnMusicModaViola = new JButton("<html><center>Moda de</br> Viola</center></html>");
-		btnMusicModaViola.setToolTipText("Categoria Moda de Viola.");
-		btnMusicModaViola.setPreferredSize(new Dimension(127, 135));
-		btnMusicModaViola.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnMusicModaViola.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasMusica.add(btnMusicModaViola);
-
-		JButton btnMusicNovas = new JButton("Novas");
-		btnMusicNovas.setToolTipText("Categoria Musicas Novas.");
-		btnMusicNovas.setPreferredSize(new Dimension(127, 135));
-		btnMusicNovas.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnMusicNovas.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasMusica.add(btnMusicNovas);
-
-		JButton btnMusicPagode = new JButton("Pagode");
-		btnMusicPagode.setToolTipText("Categoria Pagode.");
-		btnMusicPagode.setPreferredSize(new Dimension(127, 135));
-		btnMusicPagode.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnMusicPagode.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasMusica.add(btnMusicPagode);
-
-		JButton btnMusicRomantica = new JButton("Romântica");
-		btnMusicRomantica.setToolTipText("Categoria Romântica.");
-		btnMusicRomantica.setPreferredSize(new Dimension(127, 135));
-		btnMusicRomantica.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnMusicRomantica.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasMusica.add(btnMusicRomantica);
-
-		JButton btnMusicReagge = new JButton("Reagge");
-		btnMusicReagge.setToolTipText("Categoria Reagge.");
-		btnMusicReagge.setPreferredSize(new Dimension(127, 135));
-		btnMusicReagge.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnMusicReagge.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasMusica.add(btnMusicReagge);
-
-		JButton btnMusicSamba = new JButton("Samba");
-		btnMusicSamba.setToolTipText("Categoria Samba.");
-		btnMusicSamba.setPreferredSize(new Dimension(127, 135));
-		btnMusicSamba.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnMusicSamba.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasMusica.add(btnMusicSamba);
-
-		JButton btnMusicSertaneja = new JButton("Sertaneja");
-		btnMusicSertaneja.setToolTipText("Categoria Sertaneja.");
-		btnMusicSertaneja.setPreferredSize(new Dimension(127, 135));
-		btnMusicSertaneja.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnMusicSertaneja.setBackground(Color.LIGHT_GRAY);
-		panelCategoriasMusica.add(btnMusicSertaneja);
 
 		// que será realizada ao apertar o botao de Musica do jpanelTopo
 		btnMusica.addActionListener(new ActionListener() {
@@ -1034,6 +653,7 @@ public class HomePage {
 				panelCategoriasMusica.revalidate();// revalida o layout
 				panelCategoriasMusica.repaint();
 				timer.clse();
+				addButtonsMusica();
 			}
 		});
 		// Botão PlayList
@@ -1064,6 +684,8 @@ public class HomePage {
 				voltarPaineis = new ArrayList<JPanel>();
 				voltarPaineis.removeAll(voltarPaineis);
 				voltarPaineis.add(panelCategoriasFilmes);
+				panelCategoriasSerie.removeAll();
+				panelCategoriasFilmes.removeAll();
 				home.getContentPane().remove(labelFundo);
 				home.getContentPane().remove(panelCategoriasFilmes);
 				home.getContentPane().remove(panelCategoriasSerie);
@@ -1072,6 +694,7 @@ public class HomePage {
 				panelCategoriasFilmes.revalidate();
 				panelCategoriasFilmes.repaint();
 				timer.clse();
+				addButtonsFilmes();
 			}
 		});
 
@@ -1088,6 +711,8 @@ public class HomePage {
 				voltarPaineis.removeAll(voltarPaineis);
 				voltarPaineis.add(panelCategoriasSerie);
 				home.getContentPane().remove(labelFundo);
+				panelCategoriasSerie.removeAll();
+				panelCategoriasFilmes.removeAll();
 				home.getContentPane().remove(panelCategoriasFilmes);
 				home.getContentPane().remove(panelCategoriasSerie);
 				home.getContentPane().add(panelCategoriasSerie, BorderLayout.CENTER);
@@ -1095,6 +720,7 @@ public class HomePage {
 				panelCategoriasSerie.revalidate();
 				panelCategoriasSerie.repaint();
 				timer.clse();
+				addButtonsSeries();
 			}
 		});
 		// ação do botão voltar
@@ -1141,602 +767,7 @@ public class HomePage {
 				}
 			}
 		});
-
-		//
-		/**
-		 * Acao dos botoes de categorias de Filmes
-		 */
-
-		//
-		// ação do botão filmes categoria ação
-		btnCatAcao.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "ação";
-				currentGenero = genero;
-				AcaoButtons(panelCategoriasFilmes);
-			}
-		});
-
-		// ação do botão filmes categoria Animação
-		btnCatAnimacao.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Anima\u00E7\u00E3o";
-				currentGenero = genero;
-				AcaoButtons(panelCategoriasFilmes);
-			}
-		});
-
-		// ação do botão filmes categoria Aventura
-		btnCatAventura.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "aventura";
-				currentGenero = genero;
-				AcaoButtons(panelCategoriasFilmes);
-			}
-		});
-
-		// ação do botão filmes categoria Classico
-		btnCatClassico.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Cl\u00E1ssico";
-				currentGenero = genero;
-				AcaoButtons(panelCategoriasFilmes);
-			}
-		});
-
-		// ação do botão filmes categoria Comedia
-		btnCatComedia.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Com\u00E9dia";
-				currentGenero = genero;
-				AcaoButtons(panelCategoriasFilmes);
-			}
-		});
-
-		// ação do botão filmes categoria ComediaRomantica
-		btnCatComediaRomantica.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Com\u00E9dia Rom\u00E2ntica";
-				currentGenero = genero;
-				AcaoButtons(panelCategoriasFilmes);
-			}
-		});
-
-		// ação do botão filmes categoria Crime
-		btnCatCrime.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Crime";
-				currentGenero = genero;
-				AcaoButtons(panelCategoriasFilmes);
-			}
-		});
-
-		// ação do botão filmes categoria Documentario
-		btnCatDocumentario.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Document\u00E1rio";
-				currentGenero = genero;
-				AcaoButtons(panelCategoriasFilmes);
-			}
-		});
-
-		// ação do botão filmes categoria Drama
-		btnCatDrama.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Drama";
-				currentGenero = genero;
-				AcaoButtons(panelCategoriasFilmes);
-			}
-		});
-
-		// ação do botão filmes categoria Faroeste
-		btnCatFaroeste.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Faroeste";
-				currentGenero = genero;
-				AcaoButtons(panelCategoriasFilmes);
-			}
-		});
-
-		// ação do botão filmes categoria FiccaoCientifica
-		btnCatFicaoCient.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Fic\u00E7\u00E3o Cientifica";
-				currentGenero = genero;
-				AcaoButtons(panelCategoriasFilmes);
-			}
-		});
-
-		// ação do botão filmes categoria Guerra
-		btnCatGuerra.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "guerra";
-				currentGenero = genero;
-				AcaoButtons(panelCategoriasFilmes);
-			}
-		});
-
-		// ação do botão filmes categoria Musical
-		btnCatMusical.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "musical";
-				currentGenero = genero;
-				AcaoButtons(panelCategoriasFilmes);
-			}
-		});
-
-		// ação do botão filmes categoria Policial
-		btnCatPolicial.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "policial";
-				currentGenero = genero;
-				AcaoButtons(panelCategoriasFilmes);
-			}
-		});
-
-		// ação do botão filmes categoria Romance
-		btnCatRomance.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "romance";
-				currentGenero = genero;
-				AcaoButtons(panelCategoriasFilmes);
-			}
-		});
-
-		// ação do botão filmes categoria Suspense
-		btnCatSuspense.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "suspense";
-				currentGenero = genero;
-				AcaoButtons(panelCategoriasFilmes);
-			}
-		});
-
-		// ação do botão filmes categoria Terror
-		btnCatTerror.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "terror";
-				currentGenero = genero;
-				AcaoButtons(panelCategoriasFilmes);
-			}
-		});
-
-		// ação do botão filmes categoria Thriller
-		btnCatThriller.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "thriller";
-				currentGenero = genero;
-				AcaoButtons(panelCategoriasFilmes);
-			}
-		});
-
-		/**
-		 * Acao de botoes da categoria series
-		 */
-
-		// ação do botão filmes categoria
-		btnCatAcaoSerie.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "ação";
-				currentGenero = genero;
-				AcaoButtonsSerie(panelCategoriasSerie);
-			}
-		});
-
-		// ação do botão filmes categoria Anim
-		btnCatAnimacaoSerie.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Animação";
-				currentGenero = genero;
-				AcaoButtonsSerie(panelCategoriasSerie);
-
-			}
-		});
-
-		// ação do botão filmes categoria Aventura
-		btnCatAventuraSerie.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				String genero = "aventura";
-				currentGenero = genero;
-				AcaoButtonsSerie(panelCategoriasSerie);
-			}
-		});
-
-		// ação do botão filmes categoria Classico
-		btnCatClassicoSerie.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Cl\u00E1ssico";
-				currentGenero = genero;
-				AcaoButtonsSerie(panelCategoriasSerie);
-			}
-		});
-
-		// ação do botão filmes categoria Comedia
-		btnCatComediaSerie.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Com\u00E9dia";
-				currentGenero = genero;
-				AcaoButtonsSerie(panelCategoriasSerie);
-			}
-		});
-
-		// ação do botão filmes categoria ComediaRomantica
-		btnCatComediaRomanticaSerie.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Com\u00E9dia Rom\u00E2ntica";
-				currentGenero = genero;
-				AcaoButtonsSerie(panelCategoriasSerie);
-			}
-		});
-
-		// ação do botão filmes categoria Crime
-		btnCatCrimeSerie.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Crime";
-				currentGenero = genero;
-				AcaoButtonsSerie(panelCategoriasSerie);
-			}
-		});
-
-		// ação do botão filmes categoria Documentario
-		btnCatDocumentarioSerie.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Document\u00E1rio";
-				currentGenero = genero;
-				AcaoButtonsSerie(panelCategoriasSerie);
-			}
-		});
-
-		// ação do botão filmes categoria Drama
-		btnCatDramaSerie.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Drama";
-				currentGenero = genero;
-				AcaoButtonsSerie(panelCategoriasSerie);
-			}
-		});
-
-		// ação do botão filmes categoria Anime
-		btnCatAnimeSerie.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Anime";
-				currentGenero = genero;
-				AcaoButtonsSerie(panelCategoriasSerie);
-			}
-		});
-
-		// ação do botão filmes categoria FiccaoCientifica
-		btnCatFicaoCientSerie.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Fic\u00E7\u00E3o Cientifica";
-				currentGenero = genero;
-				AcaoButtonsSerie(panelCategoriasSerie);
-
-			}
-		});
-
-		// ação do botão filmes categoria Guerra
-		btnCatGuerraSerie.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "guerra";
-				currentGenero = genero;
-				AcaoButtonsSerie(panelCategoriasSerie);
-
-			}
-		});
-
-		// ação do botão filmes categoria Musical
-		btnCatMusicalSerie.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "musical";
-				currentGenero = genero;
-				AcaoButtonsSerie(panelCategoriasSerie);
-			}
-		});
-
-		// ação do botão filmes categoria Policial
-		btnCatPolicialSerie.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "policial";
-				currentGenero = genero;
-				AcaoButtonsSerie(panelCategoriasSerie);
-			}
-		});
-
-		// ação do botão filmes categoria Romance
-		btnCatRomanceSerie.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "romance";
-				currentGenero = genero;
-				AcaoButtonsSerie(panelCategoriasSerie);
-			}
-		});
-
-		// ação do botão filmes categoria Suspense
-		btnCatSuspenseSerie.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "suspense";
-				currentGenero = genero;
-				AcaoButtonsSerie(panelCategoriasSerie);
-
-			}
-		});
-
-		// ação do botão filmes categoria Terror
-		btnCatTerrorSerie.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "terror";
-				currentGenero = genero;
-				AcaoButtonsSerie(panelCategoriasSerie);
-			}
-		});
-
-		// ação do botão filmes categoria Thriller
-		btnCatMedicoSerie.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Médico";
-				currentGenero = genero;
-				AcaoButtonsSerie(panelCategoriasSerie);
-			}
-		});
-
-		/**
-		 * Ação dos butons Estilos musicais
-		 */
-
-		btnMusicAntigas.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Antigas";
-				currentGenero = genero;
-				AcaoButtonsMusic(panelCategoriasMusica);
-			}
-		});
-
-		btnMusicAxe.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Axé";
-				currentGenero = genero;
-				AcaoButtonsMusic(panelCategoriasMusica);
-			}
-		});
-
-		btnMusicBlack.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Black";
-				currentGenero = genero;
-				AcaoButtonsMusic(panelCategoriasMusica);
-			}
-		});
-
-		btnMusicBrega.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Brega";
-				currentGenero = genero;
-				AcaoButtonsMusic(panelCategoriasMusica);
-			}
-		});
-
-		btnMusicDance.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Dance";
-				currentGenero = genero;
-				AcaoButtonsMusic(panelCategoriasMusica);
-			}
-		});
-
-		btnMusicEletronica.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Eletrônica";
-				currentGenero = genero;
-				AcaoButtonsMusic(panelCategoriasMusica);
-			}
-		});
-
-		btnMusicFunk.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Funk";
-				currentGenero = genero;
-				AcaoButtonsMusic(panelCategoriasMusica);
-			}
-		});
-
-		btnMusicForro.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Forró";
-				currentGenero = genero;
-				AcaoButtonsMusic(panelCategoriasMusica);
-			}
-		});
-
-		btnMusicFolcloricas.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Folclóricas";
-				currentGenero = genero;
-				AcaoButtonsMusic(panelCategoriasMusica);
-			}
-		});
-
-		btnMusicGospel.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Gospel";
-				currentGenero = genero;
-				AcaoButtonsMusic(panelCategoriasMusica);
-			}
-		});
-
-		btnMusicInternacional.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Internacionais";
-				currentGenero = genero;
-				AcaoButtonsMusic(panelCategoriasMusica);
-			}
-		});
-
-		btnMusicModaViola.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Moda de Viola";
-				currentGenero = genero;
-				AcaoButtonsMusic(panelCategoriasMusica);
-			}
-		});
-
-		btnMusicNovas.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Novas";
-				currentGenero = genero;
-				AcaoButtonsMusic(panelCategoriasMusica);
-			}
-		});
-
-		btnMusicPagode.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Pagode";
-				currentGenero = genero;
-				AcaoButtonsMusic(panelCategoriasMusica);
-			}
-		});
-
-		btnMusicRomantica.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Romântica";
-				currentGenero = genero;
-				AcaoButtonsMusic(panelCategoriasMusica);
-			}
-		});
-
-		btnMusicReagge.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Reagge";
-				currentGenero = genero;
-				AcaoButtonsMusic(panelCategoriasMusica);
-			}
-		});
-
-		btnMusicSamba.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Samba";
-				currentGenero = genero;
-				AcaoButtonsMusic(panelCategoriasMusica);
-			}
-		});
-
-		btnMusicSertaneja.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String genero = "Sertaneja";
-				currentGenero = genero;
-				AcaoButtonsMusic(panelCategoriasMusica);
-			}
-		});
-
+		
 		playAllButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -1754,20 +785,20 @@ public class HomePage {
 	 *            Recebe o panel para serem feitas as ações
 	 * @return null
 	 */
-	public ActionListener AcaoButtons(JPanel panelCategorias) {
+	public ActionListener AcaoButtons(String genero) {
 		playAllButton.setVisible(false);
 		music = "";
 		FRarquivos retorno = new FRarquivos();
 		Boolean ler = false;
-		ler = retorno.VerificaGeneroExistente(userName, currentGenero);
+		ler = retorno.VerificaGeneroExistente(userName, genero);
 		if (ler) {
 			voltarPaineis.add(panelGeral);
 			home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-			listFiles.reUpdateTable(table, userName, currentGenero, music);
+			listFiles.reUpdateTable(table, userName, genero, music);
 			tableContainer.setPreferredSize(new Dimension(790, 500));
 			panelGeral.add(tableContainer, BorderLayout.CENTER);
-			panelCategorias.setVisible(false);
-			home.getContentPane().remove(panelCategorias);
+			panelCategoriasFilmes.setVisible(false);
+			home.getContentPane().remove(panelCategoriasFilmes);
 			panelGeral.setVisible(true);
 			panelGeral.revalidate();
 
@@ -1786,7 +817,8 @@ public class HomePage {
 	 *            Recebe o panel para serem feitas as ações
 	 * @return null
 	 */
-	public ActionListener AcaoButtonsMusic(JPanel panelCategorias) {
+	public ActionListener AcaoButtonsMusic(String genero) {
+		currentGenero = genero;
 		playAllButton.setVisible(false);
 		music = "Musicas";
 		FRarquivos retorno = new FRarquivos();
@@ -1799,8 +831,8 @@ public class HomePage {
 			listFiles.reUpdateTable(table, userName, currentGenero, music);
 			tableContainer.setPreferredSize(new Dimension(790, 500));
 			panelGeral.add(tableContainer, BorderLayout.CENTER);
-			panelCategorias.setVisible(false);
-			home.getContentPane().remove(panelCategorias);
+			panelCategoriasMusica.setVisible(false);
+			home.getContentPane().remove(panelCategoriasMusica);
 			panelGeral.setVisible(true);
 			panelGeral.revalidate();
 		} else {
@@ -1818,15 +850,16 @@ public class HomePage {
 	 *            Recebe o panel para serem feitas as ações
 	 * @return null
 	 */
-	public ActionListener AcaoButtonsSerie(JPanel panelCategorias) {
+	public ActionListener AcaoButtonsSerie(String genero) {
 		FRarquivos retorno = new FRarquivos();
 		Boolean ler = false;
+		currentGenero = genero;
 		ler = retorno.VerificaGeneroExistenteSerie(userName, currentGenero);
 		if (ler) {
 			voltarPaineis.add(panelGeral);
 			home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-			panelCategorias.setVisible(false);
-			home.getContentPane().remove(panelCategorias);
+			panelCategoriasSerie.setVisible(false);
+			home.getContentPane().remove(panelCategoriasSerie);
 			panelGeral.setVisible(true);
 			panelGeral.revalidate();
 			AddButtonSerieNoLabel();
@@ -1965,6 +998,62 @@ public class HomePage {
 		home.getContentPane().remove(voltarPaineis.get(1));
 		home.getContentPane().add(voltarPaineis.get(1), BorderLayout.CENTER);
 		return null;
+	}
+
+	public void addButtonsFilmes() {
+		ArrayList<String> list = arrayCat.addFilmes();
+		int size = list.size();
+		buttonCatFilmes = new JButton[size];
+		for (int i = 0; i < size; i++) {
+			String PlaylistName = list.get(i);
+			buttonCatFilmes[i] = new JButton(PlaylistName);
+			buttonCatFilmes[i].setPreferredSize(new Dimension(127, 135));
+			buttonCatFilmes[i].setFont(new Font("Tahoma", Font.BOLD, 14));
+			panelCategoriasFilmes.add(buttonCatFilmes[i]);
+			buttonCatFilmes[i].addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent evt) {
+					AcaoButtons(PlaylistName);
+				}
+			});
+
+		}
+	}
+	public void addButtonsSeries() {
+		ArrayList<String> list = arrayCat.addSeries();
+		int size = list.size();
+		buttonCatSeries = new JButton[size];
+		for (int i = 0; i < size; i++) {
+			String PlaylistName = list.get(i);
+			buttonCatSeries[i] = new JButton(PlaylistName);
+			buttonCatSeries[i].setPreferredSize(new Dimension(127, 135));
+			buttonCatSeries[i].setFont(new Font("Tahoma", Font.BOLD, 14));
+			panelCategoriasSerie.add(buttonCatSeries[i]);
+			buttonCatSeries[i].addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent evt) {
+					AcaoButtonsSerie(PlaylistName);
+				}
+			});
+
+		}
+	}
+	public void addButtonsMusica() {
+		ArrayList<String> list = arrayCat.addMusicas();
+		int size = list.size();
+		panelCategoriasMusica.removeAll();
+		buttonCatMusica = new JButton[size];
+		for (int i = 0; i < size; i++) {
+			String PlaylistName = list.get(i);
+			buttonCatMusica[i] = new JButton(PlaylistName);
+			buttonCatMusica[i].setPreferredSize(new Dimension(127, 135));
+			buttonCatMusica[i].setFont(new Font("Tahoma", Font.BOLD, 14));
+			panelCategoriasMusica.add(buttonCatMusica[i]);
+			buttonCatMusica[i].addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent evt) {
+					AcaoButtonsMusic(PlaylistName);
+				}
+			});
+
+		}
 	}
 
 }

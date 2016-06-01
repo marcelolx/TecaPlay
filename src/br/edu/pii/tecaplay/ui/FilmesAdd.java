@@ -21,6 +21,7 @@ import javax.swing.JTextField;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
+import br.edu.pii.tecaplay.util.ArrayCategorias;
 import br.edu.pii.tecaplay.util.GetNameSeries;
 import br.edu.pii.tecaplay.util.MoveArquivosPasta;
 import br.edu.pii.tecaplay.util.MoveFile;
@@ -41,6 +42,7 @@ public class FilmesAdd {
 	 *            nome do usuário atualmente logado
 	 */
 	private String caminho = null;
+	ArrayCategorias arrayCat = new ArrayCategorias();
 
 	public FilmesAdd(String usrName) {
 		/** Janela principal para Filmes, definido cor, tamanho, posição... */
@@ -173,31 +175,14 @@ public class FilmesAdd {
 		JFrameAddFilme.getContentPane().add(lblGeneroFilme);
 
 		JComboBox<String> panelListGenero = new JComboBox<String>();
-		ArrayList<String> listaGenero = new ArrayList<>();
-		listaGenero.add("Selecione");
-		listaGenero.add("Ação");
-		listaGenero.add("Anima\u00E7\u00E3o");
-		listaGenero.add("Aventura");
-		listaGenero.add("Cl\u00E1ssico");
-		listaGenero.add("Com\u00E9dia");
-		listaGenero.add("Com\u00E9dia Rom\u00E2ntica");
-		listaGenero.add("Crime");
-		listaGenero.add("Document\u00E1rio");
-		listaGenero.add("Drama");
-		listaGenero.add("Faroeste");
-		listaGenero.add("Fic\u00E7\u00E3o Cientifica");
-		listaGenero.add("Guerra");
-		listaGenero.add("Musical");
-		listaGenero.add("Policial");
-		listaGenero.add("Romance");
-		listaGenero.add("Suspense");
-		listaGenero.add("Terror");
-		listaGenero.add("Thriller");
+		ArrayList<String>  listGeneroFilmes = arrayCat.addFilmes();
 		panelListGenero.setBackground(Color.LIGHT_GRAY);
+		System.out.println(listGeneroFilmes);
 		panelListGenero.setFont(new Font("Tahoma", Font.BOLD, 13));
 		panelListGenero.setForeground(Color.BLACK);
-		for (int i = 0; i < listaGenero.size(); i++) {
-			panelListGenero.addItem(listaGenero.get(i));
+		panelListGenero.addItem("Selecione");
+		for (int i = 0; i < listGeneroFilmes.size(); i++) {
+			panelListGenero.addItem(listGeneroFilmes.get(i));
 		}
 		panelListGenero.setMaximumRowCount(15);
 		panelListGenero.setEditable(false);
@@ -484,26 +469,8 @@ public class FilmesAdd {
 		 * ComboBox para mostrar tipos de filmes que podem ser selecionados...
 		 */
 		JComboBox<String> panelListGenero = new JComboBox<String>();
-		ArrayList<String> listaGenero = new ArrayList<>();
-		listaGenero.add("Selecione");
-		listaGenero.add("A\u00E7\u00E3o");
-		listaGenero.add("Anima\u00E7\u00E3o");
-		listaGenero.add("Aventura");
-		listaGenero.add("Cl\u00E1ssico");
-		listaGenero.add("Com\u00E9dia");
-		listaGenero.add("Com\u00E9dia Rom\u00E2ntica");
-		listaGenero.add("Crime");
-		listaGenero.add("Document\u00E1rio");
-		listaGenero.add("Drama");
-		listaGenero.add("Faroeste");
-		listaGenero.add("Fic\u00E7\u00E3o Cientifica");
-		listaGenero.add("Guerra");
-		listaGenero.add("Médico");
-		listaGenero.add("Musical");
-		listaGenero.add("Policial");
-		listaGenero.add("Romance");
-		listaGenero.add("Suspense");
-		listaGenero.add("Terror");
+		ArrayList<String> listaGenero = arrayCat.addSeries();
+		panelListGenero.addItem("Selecione");
 		panelListGenero.setBackground(Color.LIGHT_GRAY);
 		panelListGenero.setFont(new Font("Tahoma", Font.BOLD, 13));
 		panelListGenero.setForeground(Color.BLACK);
@@ -526,7 +493,7 @@ public class FilmesAdd {
 					String teste = listaGenero.get(j);
 					teste = teste.toLowerCase();
 					if (teste.equals(listaTitulo2.get(acao))) {
-						panelListGenero.setSelectedIndex(j);
+						panelListGenero.setSelectedIndex(j+1);
 						break;
 					}
 				}
@@ -825,5 +792,6 @@ public class FilmesAdd {
 
 		return false;
 	}
+	
 
 }

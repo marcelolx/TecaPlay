@@ -1,4 +1,4 @@
-package br.edu.pii.tecaplay.util;
+package br.edu.pii.tecaplay.player;
 
 
 

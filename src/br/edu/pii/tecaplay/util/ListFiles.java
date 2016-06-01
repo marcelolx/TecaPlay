@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import br.edu.pii.tecaplay.player.VLCjPlayer;
 import br.edu.pii.tecaplay.ui.ListPlaylists;
 
 /**
@@ -26,8 +27,8 @@ public class ListFiles {
 	 * @param table
 	 *            passa a tabela por parâmetro e a partir da mesma seta algumas
 	 *            configurações a ela.
+	 * @return 
 	 */
-
 	public void tableInfo(JTable table) {
 
 		// table.setAutoCreateRowSorter(true);

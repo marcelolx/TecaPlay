@@ -31,6 +31,8 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.border.Border;
 
+import br.edu.pii.tecaplay.player.MusicPlayer;
+import br.edu.pii.tecaplay.player.VLCjPlayer;
 import br.edu.pii.tecaplay.util.AtualizePlaylists;
 import br.edu.pii.tecaplay.util.AtualizeSeries;
 import br.edu.pii.tecaplay.util.FRarquivos;
@@ -39,7 +41,7 @@ import br.edu.pii.tecaplay.util.ListFiles;
 import br.edu.pii.tecaplay.util.ListFilesPlaylist;
 import br.edu.pii.tecaplay.util.ListFilesSeries;
 import br.edu.pii.tecaplay.util.TimerToLabel;
-import br.edu.pii.tecaplay.util.VLCjPlayer;
+
 /**
  * 
  * @author Marcelo, Jonas
@@ -69,13 +71,9 @@ public class HomePage {
 	private final TimerToLabel timer;
 	private JPanel playlistPanel;
 	private JPanel panelPlayer;
-    private final JButton pauseButton;
-    private final JButton rewindButton;
-    private final JButton skipButton;
-    private final JSlider volumeSlider;
-    private final JButton muteButton;
-    private final JButton playAllButton;
-
+	private JButton playAllButton;
+	private boolean flag = false;
+	
 	/**
 	* 
 	*/
@@ -160,7 +158,8 @@ public class HomePage {
 		home.getContentPane().add(panelTopo, BorderLayout.NORTH);
 
 		/**
-		 * @panelPlayer É um painel que contem os botões do player de música, que geralmente serve para tocar as músicas da playlist
+		 * @panelPlayer É um painel que contem os botões do player de música,
+		 *              que geralmente serve para tocar as músicas da playlist
 		 */
 		panelPlayer = new JPanel();
 		panelPlayer.setAutoscrolls(true);
@@ -168,40 +167,10 @@ public class HomePage {
 		panelPlayer.setFocusCycleRoot(true);
 		panelPlayer.setIgnoreRepaint(true);
 		panelPlayer.setBackground(new Color(122, 122, 122));
-		//panelPlayer.setPreferredSize(new Dimension(width, 30));
+		// panelPlayer.setPreferredSize(new Dimension(width, 30));
 
-        rewindButton = new JButton();
-        rewindButton.setIcon(new ImageIcon("resources\\images\\rewindButton.png"));
-        rewindButton.setBackground(Color.GRAY);
-        rewindButton.setPreferredSize(new Dimension(32, 32));
-        panelPlayer.add(rewindButton, BorderLayout.CENTER);
-        pauseButton = new JButton();
-        pauseButton.setIcon(new ImageIcon("resources\\images\\pauseButton.png"));
-        pauseButton.setBackground(Color.GRAY);
-        pauseButton.setPreferredSize(new Dimension(32, 32));
-        panelPlayer.add(pauseButton, BorderLayout.CENTER); 
-        skipButton = new JButton();
-        skipButton.setIcon(new ImageIcon("resources\\images\\skipButton.png"));
-        skipButton.setBackground(Color.GRAY);
-        skipButton.setPreferredSize(new Dimension(32, 32));
-        panelPlayer.add(skipButton, BorderLayout.CENTER);
-        muteButton = new JButton();
-        muteButton.setIcon(new ImageIcon("resources\\images\\noMute.png"));
-        muteButton.setPreferredSize(new Dimension(32, 32));
-        muteButton.setBackground(Color.GRAY);
-        panelPlayer.add(muteButton, BorderLayout.CENTER);
-        volumeSlider = new JSlider();
-        volumeSlider.setPreferredSize(new Dimension(60, 32));
-        volumeSlider.setBackground(Color.GRAY);
-        volumeSlider.setValue(100);
-        panelPlayer.add(volumeSlider, BorderLayout.CENTER);
-        playAllButton = new JButton("Reproduzir Tudo");
-        //playAllButton.setIcon(new ImageIcon("resources\\images\\pauseButton.png"));
-        playAllButton.setPreferredSize(new Dimension(160, 32));
-        playAllButton.setBackground(Color.GRAY);
-        panelPlayer.add(playAllButton, BorderLayout.EAST);
-		
-		
+		MusicPlayer.InterfaceConstructor(panelPlayer);
+
 		home.getContentPane().add(panelPlayer, BorderLayout.SOUTH);
 		/**
 		 * cri de botoes video/musica/imagem
@@ -407,6 +376,12 @@ public class HomePage {
 		panelLateralMusica.add(btnSorteioMusica);
 		btnSorteioMusica.setBackground(Color.LIGHT_GRAY);
 
+		playAllButton = new JButton("Reproduzir Tudo");
+		playAllButton.setPreferredSize(new Dimension(172, 34));
+		playAllButton.setBackground(Color.LIGHT_GRAY);
+		playAllButton.setFont(new Font("Tahoma", Font.BOLD, 14));
+		playAllButton.setVisible(flag);
+		panelLateralMusica.add(playAllButton, BorderLayout.SOUTH);
 		/**
 		 * Jpanel Lateral para a chamada do panel de Videos
 		 */
@@ -965,6 +940,7 @@ public class HomePage {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				playAllButton.setVisible(false);
 				home.getContentPane().removeAll();
 				voltarPaineis.removeAll(voltarPaineis);
 				home.getContentPane().add(panelTopo, BorderLayout.NORTH);
@@ -999,6 +975,7 @@ public class HomePage {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				playAllButton.setVisible(false);
 				if (voltarPaineis.isEmpty()) {
 					home.getContentPane().add(panelTopo, BorderLayout.NORTH);
 					panelLateralVideo.setVisible(false);
@@ -1041,6 +1018,7 @@ public class HomePage {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				playAllButton.setVisible(false);
 				if (voltarPaineis.size() == 2) {
 					home.getContentPane().remove(voltarPaineis.get(1));
 				}
@@ -1063,6 +1041,7 @@ public class HomePage {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				playAllButton.setVisible(false);
 				String genero = "Playlist";
 				currentGenero = genero;
 				panelGeral.removeAll();
@@ -1758,7 +1737,13 @@ public class HomePage {
 			}
 		});
 
-	
+		playAllButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 	}
 
 	/**
@@ -1770,6 +1755,7 @@ public class HomePage {
 	 * @return null
 	 */
 	public ActionListener AcaoButtons(JPanel panelCategorias) {
+		playAllButton.setVisible(false);
 		music = "";
 		FRarquivos retorno = new FRarquivos();
 		Boolean ler = false;
@@ -1801,11 +1787,13 @@ public class HomePage {
 	 * @return null
 	 */
 	public ActionListener AcaoButtonsMusic(JPanel panelCategorias) {
+		playAllButton.setVisible(false);
 		music = "Musicas";
 		FRarquivos retorno = new FRarquivos();
 		Boolean ler = false;
 		ler = retorno.VerificaGeneroExistenteMusica(userName, currentGenero);
 		if (ler) {
+			playAllButton.setVisible(true);
 			voltarPaineis.add(panelGeral);
 			home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 			listFiles.reUpdateTable(table, userName, currentGenero, music);
@@ -1850,11 +1838,12 @@ public class HomePage {
 	}
 
 	public ActionListener acaoButtonPlayList() {
+		playAllButton.setVisible(false);
 		FRarquivos retorno = new FRarquivos();
 		Boolean ler = false;
 		ler = retorno.VerificaGeneroExistentePlaylist(userName, currentGenero);
 		if (ler) {
-			if(voltarPaineis.size() == 2){
+			if (voltarPaineis.size() == 2) {
 				home.getContentPane().remove(voltarPaineis.get(1));
 			}
 			voltarPaineis = new ArrayList<JPanel>();
@@ -1878,6 +1867,7 @@ public class HomePage {
 	 * Atualiza o Label que será usado como label principal
 	 */
 	public void AtualizaPanelGeral() {
+		playAllButton.setVisible(false);
 		panelGeral.removeAll();
 		panelGeral = new JPanel();
 		panelGeral.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -1919,6 +1909,7 @@ public class HomePage {
 	 * @return null
 	 */
 	public ActionListener addTempSerie(ActionEvent evt) {
+		playAllButton.setVisible(true);
 		panelGeral.removeAll();
 		JButton botao = (JButton) evt.getSource();
 		String name = botao.getText();
@@ -1953,11 +1944,12 @@ public class HomePage {
 	}
 
 	public ActionListener listPlaylistMusics(ActionEvent evt) {
+		playAllButton.setVisible(true);
 		JButton botao = (JButton) evt.getSource();
 		String name = botao.getText();
-		
-		//home.remove(voltarPaineis.get(1));
-		//home.add(voltarPaineis.get(1), BorderLayout.CENTER);
+
+		// home.remove(voltarPaineis.get(1));
+		// home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 		listFilePlayList.reUpdateTable(tablePlaylist, userName, name);
 		tableContainerPlaylist.setPreferredSize(new Dimension(790, 500));
 		playlistPanel = new JPanel();
@@ -1974,4 +1966,5 @@ public class HomePage {
 		home.getContentPane().add(voltarPaineis.get(1), BorderLayout.CENTER);
 		return null;
 	}
+
 }

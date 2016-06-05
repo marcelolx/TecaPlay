@@ -24,8 +24,11 @@ public class AtualizePlaylists {
 		File[] list = test.listFiles();
 		for(int i = 0; i < list.length; i++){
 			String name = list[i].getName();
+			int num = name.indexOf(".");
+			name = name.substring(0, num);
 			nomePlaylist.add(name);
 		}
+		
 		size = nomePlaylist.size();
 	}
 	

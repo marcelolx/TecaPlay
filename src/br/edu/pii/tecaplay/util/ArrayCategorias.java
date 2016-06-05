@@ -25,6 +25,7 @@ public class ArrayCategorias {
 		listaGeneroFilmes.add("Thriller");
 		return listaGeneroFilmes;
 	}
+
 	public ArrayList<String> addSeries() {
 		ArrayList<String> listaGenero = new ArrayList<>();
 		listaGenero.add("A\u00E7\u00E3o");
@@ -47,26 +48,27 @@ public class ArrayCategorias {
 		listaGenero.add("Terror");
 		return listaGenero;
 	}
+
 	public ArrayList<String> addMusicas() {
-	ArrayList<String> listaGenero =new ArrayList<>();
-	listaGenero.add("Antigas");
-	listaGenero.add("Axé");
-	listaGenero.add("Black");
-	listaGenero.add("Brega");
-	listaGenero.add("Dance");
-	listaGenero.add("Eletrônica");
-	listaGenero.add("Funk");
-	listaGenero.add("Forró");
-	listaGenero.add("Folclóricas");
-	listaGenero.add("Gospel");
-	listaGenero.add("Internacionais");
-	listaGenero.add("Moda de Viola");
-	listaGenero.add("Novas");
-	listaGenero.add("Pagode");
-	listaGenero.add("Romantica");
-	listaGenero.add("Reagge");
-	listaGenero.add("Samba");
-	listaGenero.add("Sertaneja");
-	return listaGenero;
+		ArrayList<String> listaGenero = new ArrayList<>();
+		listaGenero.add("Antigas");
+		listaGenero.add("Axé");
+		listaGenero.add("Black");
+		listaGenero.add("Brega");
+		listaGenero.add("Dance");
+		listaGenero.add("Eletrônica");
+		listaGenero.add("Funk");
+		listaGenero.add("Forró");
+		listaGenero.add("Folclóricas");
+		listaGenero.add("Gospel");
+		listaGenero.add("Internacionais");
+		listaGenero.add("Moda de Viola");
+		listaGenero.add("Novas");
+		listaGenero.add("Pagode");
+		listaGenero.add("Romantica");
+		listaGenero.add("Reagge");
+		listaGenero.add("Samba");
+		listaGenero.add("Sertaneja");
+		return listaGenero;
 	}
 }

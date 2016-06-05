@@ -51,7 +51,10 @@ public class ListPlaylists {
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				panel.dispose();
-				String nome = JOptionPane.showInputDialog("Informe o nome da Playlist a ser Criada");
+				String nome;
+				do{
+					nome = JOptionPane.showInputDialog("Informe o nome da Playlist a ser Criada");
+				}while((nome==null)&&(nome==""));
 				@SuppressWarnings("unused")
 				AddPlaylist add = new AddPlaylist(usrName, nome, caminho, catTypeP);
 			}
@@ -90,8 +93,8 @@ public class ListPlaylists {
 					JOptionPane.showMessageDialog(panel, "Adicionado com sucesso na playlist " + dados.get(i));
 					panel.dispose();
 				} else {
-					JOptionPane.showMessageDialog(panel, "O arquivo já está na Playlist,\n"
-							+ "se não estiver tente novamente.");
+					JOptionPane.showMessageDialog(panel,
+							"O arquivo já está na Playlist,\n" + "se não estiver tente novamente.");
 				}
 			}
 		});
@@ -100,9 +103,9 @@ public class ListPlaylists {
 
 	public void listPlaylist() {
 		String filePath;
-		if(catType.equals("Videos")){
+		if (catType.equals("Videos")) {
 			filePath = "c:\\TecaPlay\\" + userName + "\\" + catType + "\\Favoritos";
-		}else{
+		} else {
 			filePath = "c:\\TecaPlay\\" + userName + "\\" + catType + "\\Playlist";
 		}
 		File test = new File(filePath);
@@ -116,9 +119,10 @@ public class ListPlaylists {
 		diretorio = new ArrayList<>();
 		for (int i = 0; i < list.length; i++) {
 			String name = list[i].getName();
+			int num = name.indexOf(".");
+			name = name.substring(0, num);
 			dados.add(name);
 			diretorio.add(list[i].getAbsolutePath());
-			System.out.println(dados.get(i) + diretorio.get(i));
 		}
 
 	}
@@ -132,7 +136,7 @@ public class ListPlaylists {
 			BufferedReader br = new BufferedReader(fr);
 			String line = null;
 			while ((line = br.readLine()) != null) {
-				if(line.equals(strDados)){
+				if (line.equals(strDados)) {
 					isAdded = true;
 					break;
 				}
@@ -142,7 +146,7 @@ public class ListPlaylists {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//se não estiver na playlist ainda, então adiciona-a.
+		// se não estiver na playlist ainda, então adiciona-a.
 		if (!isAdded) {
 			// grava as informaões no txt
 			try {

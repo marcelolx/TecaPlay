@@ -2,12 +2,9 @@ package br.edu.pii.tecaplay.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,14 +22,11 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JSlider;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
-import javax.swing.border.Border;
 
 import br.edu.pii.tecaplay.player.MusicPlayer;
-import br.edu.pii.tecaplay.player.VLCjPlayer;
 import br.edu.pii.tecaplay.util.ArrayCategorias;
 import br.edu.pii.tecaplay.util.AtualizePlaylists;
 import br.edu.pii.tecaplay.util.AtualizeSeries;
@@ -66,7 +60,6 @@ public class HomePage {
 	private String music = "";
 	private JFrame home;
 	private JPanel panelGeral;
-	private JPanel panelSerie;
 	private JLabel labelFundo;
 	private final TimerToLabel timer;
 	private JPanel playlistPanel;
@@ -76,10 +69,11 @@ public class HomePage {
 	private JButton[] buttonCatFilmes;
 	private JButton[] buttonCatSeries;
 	private JButton[] buttonCatMusica;
-	ArrayCategorias arrayCat = new ArrayCategorias();
+	private ArrayCategorias arrayCat = new ArrayCategorias();
 	private JPanel panelCategoriasFilmes;
 	private JPanel panelCategoriasSerie;
 	private JPanel panelCategoriasMusica;
+
 	/**
 	* 
 	*/
@@ -463,11 +457,7 @@ public class HomePage {
 		panelLateralVideo.add(btnSorteioVideo);
 		btnSorteioVideo.setBackground(Color.LIGHT_GRAY);
 
-		panelSerie = new JPanel();
-		panelSerie.setLayout(new FlowLayout(FlowLayout.CENTER));
-		panelSerie.setPreferredSize(new Dimension(500, 300));
-		panelSerie.setBackground(new Color(120, 252, 120));
-		/*
+	/**
 		 * 
 		 * 
 		 * FILMES/CAREGORIAS Painel de categorias que serÐ± chamado ao apertar
@@ -481,8 +471,6 @@ public class HomePage {
 		panelCategoriasFilmes.setLayout(new FlowLayout(FlowLayout.CENTER));
 		panelCategoriasFilmes.setPreferredSize(new Dimension(500, 300));
 		panelCategoriasFilmes.setBackground(new Color(120, 120, 120));
-
-
 
 		// Jpanel para cada Categoria necessaria
 		panelGeral = new JPanel();
@@ -499,7 +487,7 @@ public class HomePage {
 		 * 
 		 */
 
-	    panelCategoriasSerie = new JPanel();
+		panelCategoriasSerie = new JPanel();
 		panelCategoriasSerie.setLayout(new FlowLayout(FlowLayout.CENTER));
 		panelCategoriasSerie.setPreferredSize(new Dimension(500, 300));
 		panelCategoriasSerie.setBackground(new Color(120, 120, 120));
@@ -767,12 +755,12 @@ public class HomePage {
 				}
 			}
 		});
-		
+
 		playAllButton.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 			}
 		});
 	}
@@ -869,8 +857,10 @@ public class HomePage {
 		return null;
 
 	}
-
-	public ActionListener acaoButtonPlayList() {
+/**
+ * Método para fazer ações dos botões de playlist
+ */
+	public void acaoButtonPlayList() {
 		playAllButton.setVisible(false);
 		FRarquivos retorno = new FRarquivos();
 		Boolean ler = false;
@@ -893,7 +883,6 @@ public class HomePage {
 		} else {
 			JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
 		}
-		return null;
 	}
 
 	/**
@@ -937,7 +926,7 @@ public class HomePage {
 	/**
 	 * Começa a listagem da ação do JTable da série requerida
 	 * 
-	 * @param evt,
+	 * @param evt
 	 *            botão que foi realizado o evento
 	 * @return null
 	 */
@@ -956,6 +945,10 @@ public class HomePage {
 		return null;
 
 	}
+	/**
+	 * Método usado para fazer a adição de botões na categoria playlist
+	 * 
+	 */
 
 	public void addButtonsPlaylist() {
 		AtualizePlaylists atualize = new AtualizePlaylists(userName);
@@ -975,12 +968,16 @@ public class HomePage {
 
 		}
 	}
+	/**
+	 * Faz a listagem das playlists músicais
+	 * @param evt para pegar as informações dos botões
+	 */
 
-	public ActionListener listPlaylistMusics(ActionEvent evt) {
+	public void listPlaylistMusics(ActionEvent evt) {
 		playAllButton.setVisible(true);
 		JButton botao = (JButton) evt.getSource();
 		String name = botao.getText();
-
+		name = name + ".txt";
 		// home.remove(voltarPaineis.get(1));
 		// home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 		listFilePlayList.reUpdateTable(tablePlaylist, userName, name);
@@ -997,8 +994,11 @@ public class HomePage {
 		panelGeral.setVisible(false);
 		home.getContentPane().remove(voltarPaineis.get(1));
 		home.getContentPane().add(voltarPaineis.get(1), BorderLayout.CENTER);
-		return null;
 	}
+	/**
+	 * Método usado para fazer a adição de botões na categoria Filmes
+	 * 
+	 */
 
 	public void addButtonsFilmes() {
 		ArrayList<String> list = arrayCat.addFilmes();
@@ -1018,6 +1018,11 @@ public class HomePage {
 
 		}
 	}
+	/**
+	 * Método usado para fazer a adição de botões na categoria Séries
+	 * 
+	 */
+
 	public void addButtonsSeries() {
 		ArrayList<String> list = arrayCat.addSeries();
 		int size = list.size();
@@ -1036,6 +1041,11 @@ public class HomePage {
 
 		}
 	}
+	/**
+	 * Método usado para fazer a adição de botões na categoria Musical
+	 * 
+	 */
+
 	public void addButtonsMusica() {
 		ArrayList<String> list = arrayCat.addMusicas();
 		int size = list.size();

@@ -21,11 +21,11 @@ import javax.swing.JTextField;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
-import br.edu.pii.tecaplay.util.ArrayCategorias;
-import br.edu.pii.tecaplay.util.GetNameSeries;
 import br.edu.pii.tecaplay.util.MoveArquivosPasta;
 import br.edu.pii.tecaplay.util.MoveFile;
-import br.edu.pii.tecaplay.util.ValidaPasta;
+import br.edu.pii.tecaplay.util.optimizationgui.ArrayCategorias;
+import br.edu.pii.tecaplay.util.validators.GetNameSeries;
+import br.edu.pii.tecaplay.util.validators.ValidaPasta;
 
 /**
  * 
@@ -682,6 +682,7 @@ public class FilmesAdd {
 					String duracao = textFieldDuracaoFilme.getText();
 					boolean ehNumero;
 					try {
+						@SuppressWarnings("unused")
 						int duracaoInt = (Integer.parseInt(textFieldDuracaoFilme.getText()));
 						ehNumero = true;
 					} catch (NumberFormatException e1) {

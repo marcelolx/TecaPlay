@@ -17,12 +17,10 @@ public class RemoveFile {
 	private String locationFile;
 	private String genero;
 	private File file;
-	private File arquivo;
 
 	public void RemoveTxtLine(int line, String generos, int lines, String patch) {
 		genero = generos.toLowerCase();
 		locationFile = patch;
-		arquivo = new File(locationFile);
 		try {
 			file = new File(locationFile);
 			FileReader fr = new FileReader(file);

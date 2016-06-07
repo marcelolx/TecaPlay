@@ -34,6 +34,6 @@ public class AddPlaylist {
 			buffer.close();
 		}catch(IOException e21){
 		}
-		ListPlaylists  teste= new ListPlaylists(usrName, caminho, catType);
+		new ListPlaylists(usrName, caminho, catType);
 	}
 }

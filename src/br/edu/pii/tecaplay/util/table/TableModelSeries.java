@@ -1,4 +1,4 @@
-package br.edu.pii.tecaplay.util;
+package br.edu.pii.tecaplay.util.table;
 
 import javax.swing.table.DefaultTableModel;
 /**
@@ -22,10 +22,10 @@ public class TableModelSeries extends DefaultTableModel{
 		dataVector = super.convertToVector(dados);
 	}
 	
-	private final Class types[] = new Class[] {java.lang.String.class, java.lang.String.class,java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,java.lang.String.class};
+	private final Class<?> types[] = new Class[] {java.lang.String.class, java.lang.String.class,java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,java.lang.String.class};
 	private final boolean[] canEdit = new boolean[] {false, false, false,false, false, true,true ,true};
 	
-	public Class getColumnClass(final int columnIndex){
+	public Class<?> getColumnClass(final int columnIndex){
 		return types[columnIndex];
 	}
 	

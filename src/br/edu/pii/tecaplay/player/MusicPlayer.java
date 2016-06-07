@@ -4,11 +4,14 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 
+import uk.co.caprica.vlcj.medialist.MediaList;
+import uk.co.caprica.vlcj.player.MediaPlayerFactory;
 import uk.co.caprica.vlcj.player.embedded.EmbeddedMediaPlayer;
 import uk.co.caprica.vlcj.player.list.MediaListPlayer;
 import uk.co.caprica.vlcj.player.list.MediaListPlayerMode;
@@ -50,19 +53,24 @@ public class MusicPlayer {
 	}
 
 	public static void play() {
-		EmbeddedMediaPlayer mediaPlayer = new EmbeddedMediaPlayer();
+		VLCjPlayer.registerLibrary();
+        MediaPlayerFactory mediaPlayerFactory = new MediaPlayerFactory();
+        EmbeddedMediaPlayer mediaPlayer = mediaPlayerFactory.newEmbeddedMediaPlayer();
+        
 
-		MediaListPlayer mediaListPlayer = mediaPlayerFactory.newMediaListPlayer();
-		String[] mediapath = new String[2];
-		mediapath[0] = "C:\\Users\\Public\\Videos\\Sample Videos\\Wildlife.wmv";
-		mediapath[1] = "C:\\Users\\Public\\Videos\\Sample Videos\\The International.mov";
-		cnt = 0;
-		while (cnt != mediapath.length) {
-			mediaList.addMedia(mediapath[cnt]);
-			cnt++;
-		}
-		mediaListPlayer.setMediaList(mediaList);
-		mediaListPlayer.setMode(MediaListPlayerMode.LOOP);
-		mediaListPlayer.play();
+        MediaListPlayer mediaListPlayer = mediaPlayerFactory.newMediaListPlayer();
+        mediaListPlayer.setMediaPlayer(mediaPlayer);
+        MediaList mediaList = mediaPlayerFactory.newMediaList();
+        String[] mediapath = new String[2];
+        mediapath[0] = "C:/Users/Marcelo/Music/YTM For Bus/Hardwell/Hardwell feat. Jake Reese - Mad World (Official Music Video).mp3";
+        mediapath[1] = "C:/Users/Marcelo/Music/YTM For Bus/Hardwell/Hardwell feat. Mitch Crown - Call Me A Spaceman (Official Video).mp3";
+         int cnt = 0;
+        while (cnt != mediapath.length) {
+            mediaList.addMedia(mediapath[cnt]);
+            cnt++;
+        }
+       mediaListPlayer.setMediaList(mediaList);
+       mediaListPlayer.setMode(MediaListPlayerMode.LOOP);
+       mediaListPlayer.play(); 
 	}
 }

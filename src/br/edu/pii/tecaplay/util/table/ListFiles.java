@@ -1,4 +1,4 @@
-package br.edu.pii.tecaplay.util;
+package br.edu.pii.tecaplay.util.table;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -14,6 +14,8 @@ import javax.swing.table.DefaultTableModel;
 
 import br.edu.pii.tecaplay.player.VLCjPlayer;
 import br.edu.pii.tecaplay.ui.ListPlaylists;
+import br.edu.pii.tecaplay.util.FileTextProvider;
+import br.edu.pii.tecaplay.util.RemoveFile;
 
 /**
  * @since 08/05/2016
@@ -113,7 +115,6 @@ public class ListFiles {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int modelRow = Integer.valueOf(e.getActionCommand());
 				String caminho = null;
 				for (int i = 0; i < lines.size(); i++) {
 					final String[] data = FileTextProvider.readData("#", lines.get(i));
@@ -121,24 +122,7 @@ public class ListFiles {
 						caminho = data[4];
 					}
 				}
-				VLCjPlayer player = new VLCjPlayer(caminho);
-				/**
-				 * try { Thread.currentThread().join(); } catch
-				 * (InterruptedException e1) { // TODO Auto-generated catch
-				 * block e1.printStackTrace(); }
-				 */
-				/*
-				 * Método que abre arquivos de vídeo/musica com player default
-				 * do windows try { Desktop.getDesktop().open( new File(caminho)
-				 * );
-				 * 
-				 * System.out.println(" Version: {}" +
-				 * LibVlc.INSTANCE.libvlc_get_version()); System.out.println(
-				 * " Compiler: {}" + LibVlc.INSTANCE.libvlc_get_compiler());
-				 * System.out.println(" ChangeSet: {}" +
-				 * LibVlc.INSTANCE.libvlc_get_changeset()); } catch (IOException
-				 * e1) { }
-				 */
+				new VLCjPlayer(caminho);
 			}
 		};
 
@@ -181,7 +165,6 @@ public class ListFiles {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JTable table = (JTable) e.getSource();
-				int modelRow = Integer.valueOf(e.getActionCommand());
 				String caminho = null;
 				for (int i = 0; i < lines.size(); i++) {
 					final String[] data = FileTextProvider.readData("#", lines.get(i));
@@ -189,7 +172,7 @@ public class ListFiles {
 						caminho = data[0]+"#"+data[1]+"#"+data[2]+"#"+data[3]+"#"+data[4];
 					}
 				}
-				ListPlaylists list = new ListPlaylists(usrName,caminho, musicORvideo);
+				new ListPlaylists(usrName, caminho, musicORvideo);
 			}
 		};
 		

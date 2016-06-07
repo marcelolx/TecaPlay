@@ -205,7 +205,7 @@ public class MoveFile {
 		}
 		boolean sucesso = SerieExiste(nomeSerie, genero);
 		if (sucesso) {
-			FilmesAdd newAdd = new FilmesAdd(usrName);
+			new FilmesAdd(usrName);
 		}
 
 	}
@@ -220,8 +220,6 @@ public class MoveFile {
 	 */
 	public boolean SerieExiste(String nomeSerie, String genero) {
 		String location = "C:\\TecaPlay\\" + usrName + "\\Videos\\serie\\Todas as Series.txt";
-
-		FileTextProvider file = new FileTextProvider();
 		ArrayList<String> fileProvider = FileTextProvider.loadLines(location);
 		boolean existe = false;
 		for (int i = 0; i < fileProvider.size(); i++) {

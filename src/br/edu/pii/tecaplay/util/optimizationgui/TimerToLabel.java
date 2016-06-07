@@ -1,4 +1,4 @@
-package br.edu.pii.tecaplay.util;
+package br.edu.pii.tecaplay.util.optimizationgui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

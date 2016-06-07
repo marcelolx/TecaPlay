@@ -27,15 +27,15 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
 import br.edu.pii.tecaplay.player.MusicPlayer;
-import br.edu.pii.tecaplay.util.ArrayCategorias;
-import br.edu.pii.tecaplay.util.AtualizePlaylists;
-import br.edu.pii.tecaplay.util.AtualizeSeries;
 import br.edu.pii.tecaplay.util.FRarquivos;
 import br.edu.pii.tecaplay.util.FileUtil;
-import br.edu.pii.tecaplay.util.ListFiles;
-import br.edu.pii.tecaplay.util.ListFilesPlaylist;
-import br.edu.pii.tecaplay.util.ListFilesSeries;
-import br.edu.pii.tecaplay.util.TimerToLabel;
+import br.edu.pii.tecaplay.util.optimizationgui.ArrayCategorias;
+import br.edu.pii.tecaplay.util.optimizationgui.AtualizePlaylists;
+import br.edu.pii.tecaplay.util.optimizationgui.AtualizeSeries;
+import br.edu.pii.tecaplay.util.optimizationgui.TimerToLabel;
+import br.edu.pii.tecaplay.util.table.ListFiles;
+import br.edu.pii.tecaplay.util.table.ListFilesPlaylist;
+import br.edu.pii.tecaplay.util.table.ListFilesSeries;
 
 /**
  * 
@@ -760,7 +760,7 @@ public class HomePage {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				MusicPlayer.play();
 			}
 		});
 	}

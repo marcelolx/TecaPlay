@@ -19,9 +19,8 @@ import javax.swing.JTextField;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
-import br.edu.pii.tecaplay.util.ArrayCategorias;
 import br.edu.pii.tecaplay.util.MoveMusic;
-import javax.swing.JSlider;
+import br.edu.pii.tecaplay.util.optimizationgui.ArrayCategorias;
 
 /**
  * 

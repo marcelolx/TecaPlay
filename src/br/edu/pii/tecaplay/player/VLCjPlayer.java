@@ -27,7 +27,6 @@ import com.sun.jna.NativeLibrary;
 
 import uk.co.caprica.vlcj.binding.LibVlc;
 import uk.co.caprica.vlcj.component.EmbeddedMediaPlayerComponent;
-import uk.co.caprica.vlcj.discovery.NativeDiscovery;
 import uk.co.caprica.vlcj.player.MediaPlayer;
 import uk.co.caprica.vlcj.player.MediaPlayerEventAdapter;
 import uk.co.caprica.vlcj.player.MediaPlayerFactory;
@@ -53,8 +52,6 @@ public class VLCjPlayer{
 
     private final JButton skipButton;
     
-    private int logoPlay = 0;
-    
     private final JSlider volumeSlider;
     
     private final JSlider timeSlider;
@@ -62,16 +59,6 @@ public class VLCjPlayer{
     private final JButton muteButton;
     
     private final JButton fullscreenButton;
-
-    public void Teste(String caminho) {
-        new NativeDiscovery().discover();
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new VLCjPlayer(caminho);
-            }
-        });
-    }
 
     public VLCjPlayer(String caminho) {
     	registerLibrary();
@@ -139,21 +126,14 @@ public class VLCjPlayer{
         pauseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mediaPlayerComponent.getMediaPlayer().pause();
-                if(logoPlay==0){
-                	pauseButton.setIcon(new ImageIcon("resources\\images\\playButton.png"));
-                	logoPlay = 1;
-                }else{
-                	pauseButton.setIcon(new ImageIcon("resources\\images\\pauseButton.png"));
-                	logoPlay = 0;
-                }
+            	PlayerButtonEvents.pauseButton(pauseButton, mediaPlayerComponent);
             }
         });
 
         rewindButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mediaPlayerComponent.getMediaPlayer().skip(-5000);
+            	PlayerButtonEvents.rewindButton(rewindButton, mediaPlayerComponent);
             }
         });
         
@@ -161,7 +141,7 @@ public class VLCjPlayer{
         skipButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mediaPlayerComponent.getMediaPlayer().skip(5000);
+               PlayerButtonEvents.skipButton(skipButton, mediaPlayerComponent);
             }
         });
         
@@ -169,12 +149,7 @@ public class VLCjPlayer{
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				boolean mute = mediaPlayerComponent.getMediaPlayer().mute();
-				if(mute){
-					muteButton.setIcon(new ImageIcon("resources\\images\\mute.png"));
-				}else{
-					muteButton.setIcon(new ImageIcon("resources\\images\\noMute.png"));
-				}
+				PlayerButtonEvents.muteButton(muteButton, mediaPlayerComponent);
 			}
 		});
         
@@ -182,7 +157,7 @@ public class VLCjPlayer{
 			
 			@Override
 			public void stateChanged(ChangeEvent e) {
-				mediaPlayerComponent.getMediaPlayer().setVolume(volumeSlider.getValue());
+				PlayerButtonEvents.volumeSlider(volumeSlider, mediaPlayerComponent);
 				
 			}
 		});
@@ -191,10 +166,7 @@ public class VLCjPlayer{
 			
 			@Override
 			public void stateChanged(ChangeEvent arg0) {
-				timeSlider.setMaximum((int)mediaPlayerComponent.getMediaPlayer().getLength());
-				mediaPlayerComponent.getMediaPlayer().setTime(timeSlider.getValue());
-			
-				
+				PlayerButtonEvents.timeSlider(timeSlider, mediaPlayerComponent);
 			}
 		});
        
@@ -202,13 +174,7 @@ public class VLCjPlayer{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				mediaPlayer.toggleFullScreen();
-				boolean realy = mediaPlayer.isFullScreen();
-				if(realy){
-					fullscreenButton.setIcon(new ImageIcon("resources\\images\\exitFull.png"));
-				}else{
-					fullscreenButton.setIcon(new ImageIcon("resources\\images\\togleFull.png"));
-				}
+				PlayerButtonEvents.fullSreen(fullscreenButton, mediaPlayerComponent, mediaPlayer);
 			}
 		});
         
@@ -261,7 +227,7 @@ public class VLCjPlayer{
 
         mediaPlayerComponent.getMediaPlayer().playMedia(caminho);
     }
-    private void registerLibrary() {
+    public static void registerLibrary() {
     			// setando acesso nativo a biblioteca LibV
     			NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "C:/Program Files/VideoLAN/VLC");
     			Native.loadLibrary(RuntimeUtil.getLibVlcLibraryName(), LibVlc.class);

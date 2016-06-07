@@ -11,6 +11,8 @@ import java.util.ArrayList;
 /**
  * @since 08/05/2016
  * @author Marcelo
+ * 
+ * @see 
  * Classe que vai trabalhar na leitura dos arquivos .txt e recuperar as informações necessárias.
  */
 public class FileTextProvider {

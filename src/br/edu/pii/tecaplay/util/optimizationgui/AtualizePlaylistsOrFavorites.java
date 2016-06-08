@@ -7,15 +7,21 @@ import java.util.ArrayList;
  * @author 
  *
  */
-public class AtualizePlaylists {
+public class AtualizePlaylistsOrFavorites {
 	private ArrayList<String> nomePlaylist = new ArrayList<>();
 	private int size = 0;
 	/**
 	 * Inicia o processo de atualizar as playlist de Musica
 	 * @param userName
 	 */
-	public AtualizePlaylists(String userName){
-		String location = "C:\\TecaPlay\\"+ userName + "\\Musicas\\Playlist";
+	public AtualizePlaylistsOrFavorites(String userName, String favORplay){
+		String location;
+		if(favORplay.equals("Playlist")){
+			location = "C:\\TecaPlay\\"+ userName + "\\Musicas\\Playlist";
+		}else{
+			location = "C:\\TecaPlay\\"+ userName + "\\Videos\\Favoritos";
+		}
+		
 		File test = new File(location);
 		if(!test.exists()){
 			test.mkdir();

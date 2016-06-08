@@ -30,11 +30,11 @@ import br.edu.pii.tecaplay.player.MusicPlayer;
 import br.edu.pii.tecaplay.util.FRarquivos;
 import br.edu.pii.tecaplay.util.FileUtil;
 import br.edu.pii.tecaplay.util.optimizationgui.ArrayCategorias;
-import br.edu.pii.tecaplay.util.optimizationgui.AtualizePlaylists;
+import br.edu.pii.tecaplay.util.optimizationgui.AtualizePlaylistsOrFavorites;
 import br.edu.pii.tecaplay.util.optimizationgui.AtualizeSeries;
 import br.edu.pii.tecaplay.util.optimizationgui.TimerToLabel;
 import br.edu.pii.tecaplay.util.table.ListFiles;
-import br.edu.pii.tecaplay.util.table.ListFilesPlaylist;
+import br.edu.pii.tecaplay.util.table.ListFilesPlaylistOrFavorites;
 import br.edu.pii.tecaplay.util.table.ListFilesSeries;
 
 /**
@@ -50,7 +50,7 @@ public class HomePage {
 	private JTable tablePlaylist = new JTable();
 	private ListFiles listFiles = new ListFiles();
 	private ListFilesSeries listFilesSeries = new ListFilesSeries();
-	private ListFilesPlaylist listFilePlayList = new ListFilesPlaylist();
+	private ListFilesPlaylistOrFavorites listFilePlayList = new ListFilesPlaylistOrFavorites();
 	private JButton[] arrayBtns;
 	private JScrollPane tableContainer = new JScrollPane(table);
 	private JScrollPane tableContainerSeries = new JScrollPane(tableSeries);
@@ -650,12 +650,22 @@ public class HomePage {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				playAllButton.setVisible(false);
-				String genero = "Playlist";
-				currentGenero = genero;
+				currentGenero = "Playlist";
 				panelGeral.removeAll();
 				AtualizaPanelGeral();
-				acaoButtonPlayList();
+				acaoButtonPlayListOrFavorites();
 
+			}
+		});
+		
+		btnFavoritosVideo.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				currentGenero = "Favoritos";
+				panelGeral.removeAll();
+				AtualizaPanelGeral();
+				acaoButtonPlayListOrFavorites();
 			}
 		});
 
@@ -860,11 +870,11 @@ public class HomePage {
 /**
  * Método para fazer ações dos botões de playlist
  */
-	public void acaoButtonPlayList() {
+	public void acaoButtonPlayListOrFavorites() {
 		playAllButton.setVisible(false);
 		FRarquivos retorno = new FRarquivos();
 		Boolean ler = false;
-		ler = retorno.VerificaGeneroExistentePlaylist(userName, currentGenero);
+		ler = retorno.VerifyPlaylistOrFavoriteExist(userName, currentGenero);
 		if (ler) {
 			if (voltarPaineis.size() == 2) {
 				home.getContentPane().remove(voltarPaineis.get(1));
@@ -879,7 +889,7 @@ public class HomePage {
 			panelGeral.setVisible(true);
 			panelGeral.revalidate();
 			timer.clse();
-			addButtonsPlaylist();
+			addButtonsPlaylistOrFavorites();
 		} else {
 			JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
 		}
@@ -950,8 +960,8 @@ public class HomePage {
 	 * 
 	 */
 
-	public void addButtonsPlaylist() {
-		AtualizePlaylists atualize = new AtualizePlaylists(userName);
+	public void addButtonsPlaylistOrFavorites() {
+		AtualizePlaylistsOrFavorites atualize = new AtualizePlaylistsOrFavorites(userName, currentGenero);
 		int size = atualize.Size();
 		arrayBtns = new JButton[size];
 		for (int i = 0; i < size; i++) {
@@ -962,7 +972,7 @@ public class HomePage {
 			panelGeral.add(arrayBtns[i]);
 			arrayBtns[i].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evt) {
-					listPlaylistMusics(evt);
+					listPlaylistOrFavorites(evt);
 				}
 			});
 
@@ -973,14 +983,14 @@ public class HomePage {
 	 * @param evt para pegar as informações dos botões
 	 */
 
-	public void listPlaylistMusics(ActionEvent evt) {
+	public void listPlaylistOrFavorites(ActionEvent evt) {
 		playAllButton.setVisible(true);
 		JButton botao = (JButton) evt.getSource();
 		String name = botao.getText();
 		name = name + ".txt";
 		// home.remove(voltarPaineis.get(1));
 		// home.add(voltarPaineis.get(1), BorderLayout.CENTER);
-		listFilePlayList.reUpdateTable(tablePlaylist, userName, name);
+		listFilePlayList.reUpdateTable(tablePlaylist, userName, name, currentGenero);
 		tableContainerPlaylist.setPreferredSize(new Dimension(790, 500));
 		playlistPanel = new JPanel();
 		playlistPanel.setLayout(new FlowLayout(FlowLayout.CENTER));

@@ -64,9 +64,9 @@ public class MusicPlayer {
         String[] mediapath = new String[2];
         mediapath[0] = "C:/Users/Marcelo/Music/YTM For Bus/Hardwell/Hardwell feat. Jake Reese - Mad World (Official Music Video).mp3";
         mediapath[1] = "C:/Users/Marcelo/Music/YTM For Bus/Hardwell/Hardwell feat. Mitch Crown - Call Me A Spaceman (Official Video).mp3";
-         int cnt = 0;
+        int cnt = 0;
         while (cnt != mediapath.length) {
-            mediaList.addMedia(mediapath[cnt]);
+           mediaList.addMedia(mediapath[cnt]);
             cnt++;
         }
        mediaListPlayer.setMediaList(mediaList);

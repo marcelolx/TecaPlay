@@ -17,7 +17,7 @@ import br.edu.pii.tecaplay.ui.ListPlaylists;
 import br.edu.pii.tecaplay.util.FileTextProvider;
 import br.edu.pii.tecaplay.util.RemoveFile;
 
-public class ListFilesPlaylist {
+public class ListFilesPlaylistOrFavorites {
 	private String  paisCanBan;
 	/**
 	 * @param table
@@ -69,10 +69,13 @@ public class ListFilesPlaylist {
 	 *            Necessário para saber em qual gênero o usuário está para
 	 *            listar os filmes.
 	 */
-	public void updateTable(final JTable table, String usrName, String playlistName) {
-		String directorie = "c:\\TecaPlay\\" + usrName + "\\Musicas\\Playlist\\"+playlistName;
-		System.out.println(directorie);
-		System.out.println(playlistName);
+	public void updateTable(final JTable table, String usrName, String playlistName, String favORplay) {
+		String directorie;
+		if(favORplay.equals("Playlist")){
+			directorie = "c:\\TecaPlay\\" + usrName + "\\Musicas\\Playlist\\"+playlistName;
+		}else{
+			directorie = "c:\\TecaPlay\\" + usrName + "\\Videos\\Favoritos\\"+playlistName;
+		}
 		final MyTableModel tableModel = (MyTableModel) table.getModel();
 		FileTextProvider fileTextProvider = new FileTextProvider();
 		final List<String> lines = FileTextProvider.loadLines(directorie);
@@ -186,7 +189,7 @@ public class ListFilesPlaylist {
 	 *            Método chamado toda vez que o usuário voltar para um JPanel
 	 *            anterior, ele atualiza o JTable.
 	 */
-	public void reUpdateTable(final JTable table, String usrName, String playlistName) {
+	public void reUpdateTable(final JTable table, String usrName, String playlistName, String favORplay) {
 		// criando um objeto para nossos dados
 		final Object[][] dados = null;
 		paisCanBan = "Cantor/Banda";
@@ -195,7 +198,7 @@ public class ListFilesPlaylist {
 		final MyTableModel myTableModel = new MyTableModel(dados, paisCanBan);
 		table.setModel(myTableModel);
 		tableInfo(table);
-		updateTable(table, usrName, playlistName);
+		updateTable(table, usrName, playlistName, favORplay);
 	}
 
 	public JTable Tabela(JTable tablee) {

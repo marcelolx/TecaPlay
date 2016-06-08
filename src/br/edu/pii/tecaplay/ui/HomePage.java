@@ -478,24 +478,12 @@ public class HomePage {
 		panelGeral.setPreferredSize(new Dimension(500, 300));
 		panelGeral.setBackground(new Color(120, 120, 120));
 
-		/*
-		 * 
-		 * 
-		 * SERIES/CAREGORIAS SERIES/CAREGORIAS SERIES/CAREGORIAS
-		 * SERIES/CAREGORIAS SERIES/CAREGORIAS
-		 * 
-		 * 
-		 */
-
+		// jpanel categorias series
 		panelCategoriasSerie = new JPanel();
 		panelCategoriasSerie.setLayout(new FlowLayout(FlowLayout.CENTER));
 		panelCategoriasSerie.setPreferredSize(new Dimension(500, 300));
 		panelCategoriasSerie.setBackground(new Color(120, 120, 120));
-
-		/**
-		 *
-		 * Categoria Musicais
-		 */
+		
 		// jpanel categorias musicais
 		panelCategoriasMusica = new JPanel();
 		panelCategoriasMusica.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -664,6 +652,9 @@ public class HomePage {
 			public void actionPerformed(ActionEvent arg0) {
 				currentGenero = "Favoritos";
 				panelGeral.removeAll();
+				home.getContentPane().remove(labelFundo);
+				home.getContentPane().remove(panelCategoriasFilmes);
+				home.getContentPane().remove(panelCategoriasSerie);
 				AtualizaPanelGeral();
 				acaoButtonPlayListOrFavorites();
 			}
@@ -677,6 +668,7 @@ public class HomePage {
 				if (voltarPaineis.size() == 2) {
 					home.getContentPane().remove(voltarPaineis.get(1));
 				}
+				panelGeral.removeAll();
 				panelGeral = new JPanel();
 				AtualizaPanelGeral();
 				voltarPaineis = new ArrayList<JPanel>();
@@ -703,6 +695,7 @@ public class HomePage {
 				if (voltarPaineis.size() == 2) {
 					home.getContentPane().remove(voltarPaineis.get(1));
 				}
+				panelGeral.removeAll();
 				panelGeral = new JPanel();
 				AtualizaPanelGeral();
 				voltarPaineis = new ArrayList<JPanel>();
@@ -735,7 +728,6 @@ public class HomePage {
 					panelTopo.revalidate();
 					home.revalidate();
 					timer.init();
-					AtualizaPanelGeral();
 				} else if (voltarPaineis.size() == 1) {
 					home.getContentPane().remove(voltarPaineis.get(0));
 					home.getContentPane().add(labelFundo, BorderLayout.CENTER);
@@ -745,7 +737,6 @@ public class HomePage {
 					labelFundo.revalidate();
 					labelFundo.repaint();
 					voltarPaineis.remove(voltarPaineis.size() - 1);
-					AtualizaPanelGeral();
 				} else if (voltarPaineis.size() == 2) {
 					home.getContentPane().remove(voltarPaineis.get(1));
 					voltarPaineis.get(1).revalidate();
@@ -756,7 +747,6 @@ public class HomePage {
 					voltarPaineis.get(0).revalidate();
 					voltarPaineis.get(0).repaint();
 					voltarPaineis.remove(voltarPaineis.size() - 1);
-					AtualizaPanelGeral();
 				}
 				try {
 					listFiles.reUpdateTable(table, userName, currentGenero, music);

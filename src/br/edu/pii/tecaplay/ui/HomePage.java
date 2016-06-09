@@ -760,7 +760,7 @@ public class HomePage {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MusicPlayer.play();
+				MusicPlayer.play(userName, currentGenero);
 			}
 		});
 	}

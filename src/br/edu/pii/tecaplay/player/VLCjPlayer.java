@@ -229,7 +229,6 @@ public class VLCjPlayer{
     }
     public static void registerLibrary() {
     			// setando acesso nativo a biblioteca LibV
-    	System.out.println("calling");
     			NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "C:/Program Files/VideoLAN/VLC");
     			Native.loadLibrary(RuntimeUtil.getLibVlcLibraryName(), LibVlc.class);
     			LibXUtil.initialise();

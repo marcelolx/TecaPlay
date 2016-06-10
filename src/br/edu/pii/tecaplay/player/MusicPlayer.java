@@ -26,7 +26,7 @@ import uk.co.caprica.vlcj.player.list.MediaListPlayer;
 import uk.co.caprica.vlcj.player.list.MediaListPlayerMode;
 
 public class MusicPlayer {
-
+	private static String[] mediapath;
 	private static JButton pauseButton;
 	private static JButton previousButton;
 	private static JButton nextButton;
@@ -35,6 +35,8 @@ public class MusicPlayer {
 	private static JButton releaseListButton;
 	private static JLabel actualMusicName;
 	private static EmbeddedMediaPlayer mediaPlayer;
+	private static MediaListPlayer mediaListPlayer;
+	private static MediaList mediaList;
 
 	public static void InterfaceConstructor(JPanel panelPlayer) {
 		JLabel posic = new JLabel();
@@ -83,7 +85,7 @@ public class MusicPlayer {
 		actualMusicName.setForeground(Color.WHITE);
 		panelPlayer.add(actualMusicName, BorderLayout.CENTER);
 	}
-
+	
 	public static void play(String user, String currentGenero) {
 		if(currentGenero.equals("Playlist")){//preciso de mais um vereficador, que é o que sabe o nome da playlist, farei sabado
 			//c:\\TecaPlay\\" + usrName + "\\Musicas\\" + genero + "\\" + genero + ".txt
@@ -92,12 +94,9 @@ public class MusicPlayer {
 		MediaPlayerFactory mediaPlayerFactory = new MediaPlayerFactory();
 		mediaPlayer = mediaPlayerFactory.newEmbeddedMediaPlayer();
 		
-		MediaListPlayer mediaListPlayer = mediaPlayerFactory.newMediaListPlayer();
+		mediaListPlayer = mediaPlayerFactory.newMediaListPlayer();
 		mediaListPlayer.setMediaPlayer(mediaPlayer);
-		MediaList mediaList = mediaPlayerFactory.newMediaList();
-		String[] mediapath = new String[2];
-		mediapath[0] = "C:\\Users\\Marcelo\\Music\\YTM For Bus\\Hardwell\\Hardwell feat. Jake Reese - Mad World (Official Music Video).mp3";
-		mediapath[1] = "C:\\Users\\Marcelo\\Music\\YTM For Bus\\Hardwell\\Hardwell feat. Mitch Crown - Call Me A Spaceman (Official Video).mp3";
+		mediaList = mediaPlayerFactory.newMediaList();
 		int cnt = 0;
 		while (cnt != mediapath.length) {
 			mediaList.addMedia(mediapath[cnt]);
@@ -179,5 +178,15 @@ public class MusicPlayer {
                 });
 			}
 		});
+
+	}
+	public static void PlayAll(String[] media) {
+        
+		mediapath = new String[media.length];
+		mediapath = media;
+	}
+	
+	public static void stop(){
+		PlayerButtonEvents.releasePlayer(mediaPlayer, mediaListPlayer, mediaList, pauseButton, nextButton, previousButton, releaseListButton, muteButton, volumeSlider, actualMusicName);
 	}
 }

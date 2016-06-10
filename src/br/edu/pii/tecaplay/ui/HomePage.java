@@ -73,7 +73,9 @@ public class HomePage {
 	private JPanel panelCategoriasFilmes;
 	private JPanel panelCategoriasSerie;
 	private JPanel panelCategoriasMusica;
-
+	private boolean firstPlay=false;
+	private boolean isPlay;
+	
 	/**
 	* 
 	*/
@@ -760,7 +762,13 @@ public class HomePage {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MusicPlayer.play(userName, currentGenero);
+				if(firstPlay){
+					MusicPlayer.stop();
+					MusicPlayer.play(userName, currentGenero);
+				}else{
+					MusicPlayer.play(userName, currentGenero);
+					firstPlay = true;
+				}
 			}
 		});
 	}

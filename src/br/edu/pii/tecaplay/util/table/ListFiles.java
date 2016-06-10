@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import br.edu.pii.tecaplay.player.MusicPlayer;
 import br.edu.pii.tecaplay.player.VLCjPlayer;
 import br.edu.pii.tecaplay.ui.ListPlaylists;
 import br.edu.pii.tecaplay.util.FileTextProvider;
@@ -88,6 +89,7 @@ public class ListFiles {
 		FileTextProvider fileTextProvider = new FileTextProvider();
 		final List<String> lines = FileTextProvider.loadLines(directorie);
 		final Object[][] dados = new Object[fileTextProvider.numOfLines()][7];
+		String[] mediapath = new String[fileTextProvider.numOfLines()];
 
 		for (int i = 0; i < lines.size(); i++) {
 			final String[] data = FileTextProvider.readData("#", lines.get(i));
@@ -99,10 +101,15 @@ public class ListFiles {
 			dados[i][5] = "-X-";
 			if (!musica.equals("")) {
 				dados[i][6] = "Ouvir";
+				mediapath[i] = data[4];
 			} else {
 				dados[i][6] = "Assistir";
 			}
 		}
+		if (!musica.equals("")) {
+			MusicPlayer.PlayAll(mediapath);
+		}
+		
 		//
 		// Ação dos botões assistir
 

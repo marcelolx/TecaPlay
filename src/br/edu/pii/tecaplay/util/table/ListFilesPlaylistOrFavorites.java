@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import br.edu.pii.tecaplay.player.MusicPlayer;
 import br.edu.pii.tecaplay.player.VLCjPlayer;
 import br.edu.pii.tecaplay.ui.ListPlaylists;
 import br.edu.pii.tecaplay.util.FileTextProvider;
@@ -80,20 +81,21 @@ public class ListFilesPlaylistOrFavorites {
 		FileTextProvider fileTextProvider = new FileTextProvider();
 		final List<String> lines = FileTextProvider.loadLines(directorie);
 		final Object[][] dados = new Object[fileTextProvider.numOfLines()][7];
-
+		String[] mediapath = new String[fileTextProvider.numOfLines()];
 		for (int i = 0; i < lines.size(); i++) {
 			final String[] data = FileTextProvider.readData("#", lines.get(i));
 			dados[i][0] = data[0];
 			dados[i][1] = data[1];
 			dados[i][2] = data[2];
 			dados[i][3] = data[3];
+			mediapath[i] = data[4];
 			dados[i][4] = "Adicionar";
 			dados[i][5] = "-X-";
 			dados[i][6] = "Ouvir";
 		}
 		//
 		// Ação dos botões assistir
-
+		MusicPlayer.PlayAll(mediapath);
 		Action open = new AbstractAction() {
 
 			/**

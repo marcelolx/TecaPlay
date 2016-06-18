@@ -20,7 +20,11 @@ import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 
 import br.edu.pii.tecaplay.util.AddPlaylist;
-
+/**
+ * faz a Listagem das playslist e depois para adicionar uma musica nela.
+ * @author jonas
+ *
+ */
 public class ListPlaylists {
 	private ArrayList<String> dados;
 	private ArrayList<String> diretorio;
@@ -28,7 +32,14 @@ public class ListPlaylists {
 	private String directorie = null;
 	private String strDados = null;
 	private String catType;
-
+	/**
+	 * JFrame para a listagem das playslists ja criadas
+	 * @param usrName nome do usuário
+	 * @param caminho String a ser adicionado com as informações do arquivo, tal como
+	 * 	nome e src do arquivo de midia
+	 * @param catTypeP Verefica se é video ou música
+	 */
+	
 	public ListPlaylists(String usrName, String caminho, String catTypeP) {
 		strDados = caminho;
 		userName = usrName;
@@ -54,8 +65,8 @@ public class ListPlaylists {
 				do{
 					nome = JOptionPane.showInputDialog("Informe o nome da Playlist a ser Criada");
 				}while((nome==null)&&(nome==""));
-				@SuppressWarnings("unused")
-				AddPlaylist add = new AddPlaylist(usrName, nome, caminho, catTypeP);
+
+				AddPlaylist.addPlaylist(usrName, nome, caminho, catTypeP);
 			}
 		});
 
@@ -99,7 +110,10 @@ public class ListPlaylists {
 		});
 
 	}
-
+	/**
+	 * Faz a listagem das playlists
+	 * primeiro verifica se é musica ou video para fazer a checagem das playlists existentes na categoria
+	 */
 	public void listPlaylist() {
 		String filePath;
 		if (catType.equals("Videos")) {
@@ -125,6 +139,11 @@ public class ListPlaylists {
 		}
 
 	}
+	/**
+	 * Caso o usuário selecionou uma playlist e quer adicionar, esse método faz a adição da linha das informações
+	 * no arquivo da playlist selecionada.
+	 * @return true se conseguiu gravar e false o oposto
+	 */
 
 	public boolean writeTxt() {
 

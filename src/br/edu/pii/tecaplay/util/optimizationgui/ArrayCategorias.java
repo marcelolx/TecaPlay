@@ -3,7 +3,7 @@ package br.edu.pii.tecaplay.util.optimizationgui;
 import java.util.ArrayList;
 
 public class ArrayCategorias {
-	public ArrayList<String> addFilmes() {
+	public static ArrayList<String> addFilmes() {
 		ArrayList<String> listaGeneroFilmes = new ArrayList<>();
 		listaGeneroFilmes.add("Ação");
 		listaGeneroFilmes.add("Anima\u00E7\u00E3o");
@@ -26,7 +26,7 @@ public class ArrayCategorias {
 		return listaGeneroFilmes;
 	}
 
-	public ArrayList<String> addSeries() {
+	public static ArrayList<String> addSeries() {
 		ArrayList<String> listaGenero = new ArrayList<>();
 		listaGenero.add("A\u00E7\u00E3o");
 		listaGenero.add("Anima\u00E7\u00E3o");
@@ -49,7 +49,7 @@ public class ArrayCategorias {
 		return listaGenero;
 	}
 
-	public ArrayList<String> addMusicas() {
+	public static ArrayList<String> addMusicas() {
 		ArrayList<String> listaGenero = new ArrayList<>();
 		listaGenero.add("Antigas");
 		listaGenero.add("Axé");

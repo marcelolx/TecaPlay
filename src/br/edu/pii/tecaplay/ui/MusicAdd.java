@@ -24,12 +24,7 @@ import br.edu.pii.tecaplay.util.optimizationgui.ArrayCategorias;
 
 /**
  * 
- * @author jonas
- * @since 17/05/2016
- */
-/**
- * 
- * Contrutor para a criação da janela de adicionar Musicas
+ * criação da janela de adicionar Musicas
  *
  */
 public class MusicAdd {
@@ -40,6 +35,10 @@ public class MusicAdd {
 	private String caminho;
 	ArrayCategorias array = new ArrayCategorias();
 
+	/**
+	 * JFrame para fazer a adição de músicas
+	 * @param usrName usuário logado
+	 */
 	public MusicAdd(String usrName) {
 		JFrame frame = new JFrame();
 		frame.setResizable(false);
@@ -183,9 +182,8 @@ public class MusicAdd {
 				if (new File(caminho).exists()) {
 					if (!(nome.equals("") || artista.equals("") || genero.equals("Selecione") || ano.equals("")
 							|| ano.equals(""))) {
-						if (ValidationFormat()) {
-							MoveMusic moveMusic = new MoveMusic();
-							boolean sucess = moveMusic.AddMusica(caminho, ano, nome, genero, usrName, artista);
+						if (validationFormat()) {
+							boolean sucess = MoveMusic.addMusica(caminho, ano, nome, genero, usrName, artista);
 							if (sucess) {
 								fieldArtista.setText("");
 								fieldNameMusic.setText("");
@@ -223,8 +221,11 @@ public class MusicAdd {
 		});
 
 	}
-
-	public boolean ValidationFormat() {
+	/**
+	 * Adição de uma pasta. caso tenha pastas dentro da pasta, não será executado
+	 * @return true se ocorreu bem e false não.
+	 */
+	public boolean validationFormat() {
 		File destino = new File(caminho);
 
 		if (destino.isDirectory()) {
@@ -233,14 +234,14 @@ public class MusicAdd {
 			// copia os sub-diretórios para uma classe File de vetor
 			for (int i = 0; i < files.length; i++) {
 				contemPastas = files[i].isDirectory();
-				if (contemPastas){
+				if (contemPastas) {
 					return false;
-				}	
+				}
 			}
 			for (int i = 0; i < files.length; i++) {
 				String extensao = files[i].getName()
 						.substring(files[i].getName().lastIndexOf('.', files[i].getName().length()));
-				if (!ValidationExtension(extensao)){
+				if (!validationExtension(extensao)) {
 					return false;
 				}
 			}
@@ -248,15 +249,19 @@ public class MusicAdd {
 		} else {
 			String extensao = destino.getName()
 					.substring(destino.getName().lastIndexOf('.', destino.getName().length()));
-			if (ValidationExtension(extensao)) {
+			if (validationExtension(extensao)) {
 				return true;
 			}
 
 			return false;
 		}
 	}
-
-	public boolean ValidationExtension(String extencao) {
+	/**
+	 * Valida o formato do arquivo que está sendo adicionado na categorias de músicas
+	 * 
+	 * @return true se o arquivo possui a estenção requerida e false pode ter acontecido um erro.
+	 */
+	public boolean validationExtension(String extencao) {
 		ArrayList<String> array = new ArrayList<String>();
 		array.add(".mp3");
 		array.add(".wav");

@@ -2,14 +2,14 @@ package br.edu.pii.tecaplay.ui;
 
 import java.awt.*;
 import javax.swing.*;
-
+/**
+ * 
+ * Splash Screen para carregar o sistema.
+ *
+ */
 public class SplashScreen extends JWindow {
     
-    /**
-     * @author jonas
-     * @since 03/05/2016
-	 * @version 0.0.54
-	 */
+  
 	private static final long serialVersionUID = 1L;
 	private int duration;
     /**
@@ -22,10 +22,7 @@ public class SplashScreen extends JWindow {
     
 // Este é um método simples para mostrar uma tela de apresentção
 // no centro da tela durante a quantidade de tempo passada no construtor
-    /**
-     * content = define o Jpanel a ser apresentado
-     * widht, height, x, y = pega a largura, altura, posição x, y respectivamente e acresenta no set bounds
-     */
+  
     public void showSplash() {        
         JPanel content = (JPanel)getContentPane();
         content.setBackground(Color.white);
@@ -48,21 +45,20 @@ public class SplashScreen extends JWindow {
         try { Thread.sleep(duration); } catch (Exception e) {}        
         setVisible(false);  
     }
-    /**
-     * @param iniciar = informa o chamamento da classe LoginGUI para apresentar a tela de login
-     */
+ 
     public void showSplashAndExit() {        
         showSplash();
         this.dispose();
         LoginGUI iniciar = new LoginGUI();
         iniciar.executa();
     }
-    /**
-     * @param args =
-     */
+ 
     public static void main(String[] args) {   
         // Mostra uma imagem com o título da aplicação, envia os milessimos SplashScreen
         SplashScreen splash = new SplashScreen(200);
+        /**
+         * Faz o setamento do look and feel
+         */
         try {
 
         	UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());

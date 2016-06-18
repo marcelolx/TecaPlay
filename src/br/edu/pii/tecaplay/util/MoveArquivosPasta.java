@@ -39,7 +39,7 @@ public class MoveArquivosPasta {
 	 */
 	private String caminho = null;
 	
-	public boolean MovePasta(String origem, String temporada, String nome, String nomeEp, String genero, String duracao, String episodio, String usrName){
+	public boolean movePasta(String origem, String temporada, String nome, String nomeEp, String genero, String duracao, String episodio, String usrName){
 		userName = usrName;
 		File raiz = new File(origem);
 		File[] files = raiz.listFiles();
@@ -55,13 +55,13 @@ public class MoveArquivosPasta {
 		boolean formatArquivo = false;
 		for (int i = 0; i < files.length; i++) {
 			caminho = files[i].getAbsolutePath();
-			formatArquivo = ValidationFormat();
+			formatArquivo = validationFormat();
 			if (!formatArquivo){
 				return false;
 			}	
 		}
 
-		boolean sucesso = SerieExiste(nome, genero);
+		boolean sucesso = serieExiste(nome, genero);
 		if (sucesso) {
 			new FilmesAdd(userName);
 		}
@@ -71,7 +71,7 @@ public class MoveArquivosPasta {
 		 */
 		int epis = Integer.parseInt(episodio);
 		for (int i = 0; i < files.length; i++) {
-			boolean retorno = AddSerie(files[i].getAbsolutePath(), temporada, nome, nomeEp, genero, duracao, epis++, usrName);
+			boolean retorno = addSerie(files[i].getAbsolutePath(), temporada, nome, nomeEp, genero, duracao, epis++, usrName);
 			if (!retorno) {
 				return false;
 			}
@@ -99,7 +99,7 @@ public class MoveArquivosPasta {
 	 * @return 
 	 * 				retorna se foi possivel mover o arquivo, se não o programa terminara a copia dos arquivos
 	 */
-	public boolean AddSerie(String origem, String temporada, String nomeSerie, String nomeEp, String genero, String duracao, int episodio, String usrName) {
+	public boolean addSerie(String origem, String temporada, String nomeSerie, String nomeEp, String genero, String duracao, int episodio, String usrName) {
 		userName = usrName;
 		origem = origem.toLowerCase();
 	
@@ -167,7 +167,7 @@ public class MoveArquivosPasta {
 
 		}
 	}
-	public boolean ValidationFormat() {
+	public boolean validationFormat() {
 		File destino = new File(caminho);
 		ArrayList<String> array = new ArrayList<String>();
 		array.add(".MKV");
@@ -189,7 +189,7 @@ public class MoveArquivosPasta {
 	
 		return false;
 	}
-	public boolean SerieExiste(String nomeSerie, String genero) {
+	public boolean serieExiste(String nomeSerie, String genero) {
 		String location = "C:\\TecaPlay\\" + userName + "\\Videos\\serie\\Todas as Series.txt";
 		ArrayList<String> fileProvider = FileTextProvider.loadLines(location);
 		boolean existe = false;

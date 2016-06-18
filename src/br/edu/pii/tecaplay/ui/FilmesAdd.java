@@ -42,8 +42,6 @@ public class FilmesAdd {
 	 *            nome do usuário atualmente logado
 	 */
 	private String caminho = null;
-	ArrayCategorias arrayCat = new ArrayCategorias();
-
 	public FilmesAdd(String usrName) {
 		/** Janela principal para Filmes, definido cor, tamanho, posição... */
 		JFrame JFrameSelecao = new JFrame();
@@ -80,13 +78,6 @@ public class FilmesAdd {
 		JFrameSelecao.getContentPane().add(btnFilmes);
 
 		/**
-		 * 
-		 * 
-		 * Função Botões * Função Botões * Função Botões * Função Botões *
-		 * Função Botões * Função Botões
-		 */
-
-		/**
 		 * Ação do botão Séries, caso acionado o botão, será aberta a opção para
 		 * adicionar...
 		 */
@@ -95,7 +86,7 @@ public class FilmesAdd {
 				if (e.getSource() == btnSeries) {
 					JFrameSelecao.dispose();
 					try {
-						AddSerie(usrName);
+						addSerie(usrName);
 					} catch (InterruptedException e1) {
 						e1.printStackTrace();
 					}
@@ -112,7 +103,7 @@ public class FilmesAdd {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource() == btnFilmes) {
 					JFrameSelecao.dispose();
-					AddFilme(usrName);
+					addFilme(usrName);
 
 				}
 			}
@@ -123,13 +114,7 @@ public class FilmesAdd {
 
 	}
 
-	public void AddFilme(String usrName) {
-
-		/**
-		 * 
-		 * JFRAME ADD FILMES JFRAME ADD FILMES JFRAME ADD FILMES JFRAME ADD
-		 * FILMES JFRAME ADD FILMES JFRAME ADD FILMES JFRAME ADD FILMES
-		 */
+	public void addFilme(String usrName) {
 
 		/**
 		 * Janela principal para Adicionar Filmes, definido cor, tamanho,
@@ -175,7 +160,7 @@ public class FilmesAdd {
 		JFrameAddFilme.getContentPane().add(lblGeneroFilme);
 
 		JComboBox<String> panelListGenero = new JComboBox<String>();
-		ArrayList<String>  listGeneroFilmes = arrayCat.addFilmes();
+		ArrayList<String> listGeneroFilmes = ArrayCategorias.addFilmes();
 		panelListGenero.setBackground(Color.LIGHT_GRAY);
 		System.out.println(listGeneroFilmes);
 		panelListGenero.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -351,12 +336,12 @@ public class FilmesAdd {
 					String pais = textFieldPaisFilme.getText();
 					String duracao = textFieldDuracaoFilme.getText();
 					// testa se existem fildtexts em branco
-					if (new File(origem).exists() && ValidationFormat()) {
+					if (new File(origem).exists() && validationFormat()) {
 						if (!(origem.equals("") || (ano.equals("")) || (duracao.equals("")) || (nome.equals(""))
 								|| (pais.equals("")))) {
 							JFrameAddFilme.setAlwaysOnTop(false);
 							// Executa o comando de mover o arquivo e renomealo.
-							boolean sucesso = MoveFile.AddFilme(origem, ano, nome, genero, duracao, pais, usrName);
+							boolean sucesso = MoveFile.addFilme(origem, ano, nome, genero, duracao, pais, usrName);
 							// Limpa os campos de escrita
 							if (sucesso) {
 								panelListGenero.setSelectedIndex(0);
@@ -397,12 +382,13 @@ public class FilmesAdd {
 	}
 
 	/**
+	 * Usado para adicinar séries na aplicação.
 	 * 
 	 * @param usrName
 	 *            Nome do usuario que está logado
 	 * @throws InterruptedException
 	 */
-	public void AddSerie(String usrName) throws InterruptedException {
+	public void addSerie(String usrName) throws InterruptedException {
 
 		JFrame JFrameAddSerie = new JFrame();
 		JFrameAddSerie.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
@@ -424,20 +410,6 @@ public class FilmesAdd {
 		lblTituloSerie.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblTituloSerie.setBounds(10, 22, 59, 17);
 		JFrameAddSerie.getContentPane().add(lblTituloSerie);
-
-		/**
-		 * Local para mostrar título da série, definido cor, tamanho, posição,
-		 * imagem...
-		 */
-		/**
-		 * JTextField textFieldTituloSerie = new JTextField();
-		 * textFieldTituloSerie.setToolTipText(
-		 * "Informe qual \u00E9 o t\u00EDtulo da Série!");
-		 * textFieldTituloSerie.setBackground(new Color(192, 192, 192));
-		 * textFieldTituloSerie.setBounds(87, 19, 337, 20);
-		 * JFrameAddSerie.getContentPane().add(textFieldTituloSerie);
-		 * textFieldTituloSerie.setColumns(10);
-		 */
 
 		JComboBox<String> panelListTitulo = new JComboBox<String>();
 		ArrayList<String> listaTitulo = new ArrayList<String>();
@@ -469,7 +441,7 @@ public class FilmesAdd {
 		 * ComboBox para mostrar tipos de filmes que podem ser selecionados...
 		 */
 		JComboBox<String> panelListGenero = new JComboBox<String>();
-		ArrayList<String> listaGenero = arrayCat.addSeries();
+		ArrayList<String> listaGenero = ArrayCategorias.addSeries();
 		panelListGenero.addItem("Selecione");
 		panelListGenero.setBackground(Color.LIGHT_GRAY);
 		panelListGenero.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -493,7 +465,7 @@ public class FilmesAdd {
 					String teste = listaGenero.get(j);
 					teste = teste.toLowerCase();
 					if (teste.equals(listaTitulo2.get(acao))) {
-						panelListGenero.setSelectedIndex(j+1);
+						panelListGenero.setSelectedIndex(j + 1);
 						break;
 					}
 				}
@@ -703,12 +675,12 @@ public class FilmesAdd {
 									// Executa o comando de mover o arquivo e
 									// renomealo.
 									MoveArquivosPasta MoveFile = new MoveArquivosPasta();
-									boolean sucesso = MoveFile.MovePasta(origem, numTemp, nome, nomeEp, genero, duracao,
+									boolean sucesso = MoveFile.movePasta(origem, numTemp, nome, nomeEp, genero, duracao,
 											numEpisodio, usrName);
 
 									if (sucesso) {
 										// Limpa os campos de escrita
-									
+
 										JOptionPane.showMessageDialog(JFrameAddSerie,
 												"Os arquivos foram movidos com Sucesso", "Sucesso", 1);
 										JFrameAddSerie.dispose();
@@ -720,13 +692,13 @@ public class FilmesAdd {
 												"Erro na cópia dos Arquivos", 0);
 									}
 								} else {
-									if (ValidationFormat()) {
+									if (validationFormat()) {
 										JFrameAddSerie.setAlwaysOnTop(false);
 										MoveFile MoveFile = new MoveFile();
 										// Executa o comando de mover o arquivo
 										// e
 										// renomealo.
-										boolean sucesso = MoveFile.AddSerie(origem, numTemp, nome, nomeEp, genero,
+										boolean sucesso = MoveFile.addSerie(origem, numTemp, nome, nomeEp, genero,
 												duracao, numEpisodio, usrName);
 										// Limpa os campos de escrita
 										if (sucesso) {
@@ -772,7 +744,13 @@ public class FilmesAdd {
 
 	}
 
-	public boolean ValidationFormat() {
+	/**
+	 * Valida o formato de adição de arquivos. só é adivionado se passar na
+	 * verificação
+	 * 
+	 * @return true se for igual e false o oposto.
+	 */
+	public boolean validationFormat() {
 		File destino = new File(caminho);
 		ArrayList<String> array = new ArrayList<String>();
 		array.add(".MKV");
@@ -793,6 +771,5 @@ public class FilmesAdd {
 
 		return false;
 	}
-	
 
 }

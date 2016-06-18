@@ -17,7 +17,7 @@ public class AddPlaylist {
 	 * @param caminho src da pasta
 	 * @param catType Verefica se é Musicas ou Videos
 	 */
-	public AddPlaylist(String usrName, String nomePlaylist, String caminho, String catType){
+	public static void addPlaylist(String usrName, String nomePlaylist, String caminho, String catType){
 		String criarTxt;
 		if(catType.equals("Videos")){
 			criarTxt = "c:\\TecaPlay\\" + usrName + "\\"+catType+"\\Favoritos\\"+nomePlaylist+".txt";

@@ -15,12 +15,12 @@ import javax.swing.JTextField;
 
 import br.edu.pii.tecaplay.util.FileUtil;
 /**
- * 
- * @author marcelo
- *
+ *Registrar um usuário através do Login.
  */
 public class RegisterUser {
-	
+	/**
+	 * janela que pede uma usuario novo, caso exista, não criara.
+	 */
 	public RegisterUser(){
 		JFrame reUser = new JFrame();
 		reUser.setSize(300, 100);

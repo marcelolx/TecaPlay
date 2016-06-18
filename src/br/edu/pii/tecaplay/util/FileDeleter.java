@@ -14,7 +14,7 @@ public class FileDeleter {
 	 * @param genero - genero
 	 * @return se falso não foi excluido, true, ao contrario
 	 */
-	public boolean DeletarPasta(String patchName, String genero){
+	public static boolean deletarPasta(String patchName, String genero){
 		File remo = new File(patchName);
 		File remo2 = new File(patchName);
 		if (remo.delete()&&remo2.delete()) {

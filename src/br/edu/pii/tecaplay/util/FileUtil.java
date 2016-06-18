@@ -24,7 +24,7 @@ public class FileUtil {
 	 * Verefica se existe o o usuário, se existir entra no sistema
 	 * @param usrName nome que a pessoa digita para o usuário
 	 */
-	public void FileUserVerify(String usrName){
+	public void fileUserVerify(String usrName){
 		main();
 		if(vo == 'W'){//se for windows executa
 			File file = new File("C:\\TecaPlay");//diretório padrão onde são salvos os conteúdos

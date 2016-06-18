@@ -17,8 +17,14 @@ public class RemoveFile {
 	private String locationFile;
 	private String genero;
 	private File file;
-
-	public void RemoveTxtLine(int line, String generos, int lines, String patch) {
+/**
+ * remove linha do txt
+ * @param line linha a ser removida
+ * @param generos genero para pegar o arquivo
+ * @param lines total de linhas do arquivo
+ * @param patch endereço do arquivo
+ */
+	public void removeTxtLine(int line, String generos, int lines, String patch) {
 		genero = generos.toLowerCase();
 		locationFile = patch;
 		try {
@@ -64,7 +70,7 @@ public class RemoveFile {
 
 	}
 	
-	public void FileRemove(String src){
+	public void fileRemove(String src){
 		File file = new File(src);
 		file.delete();
 	}

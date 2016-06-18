@@ -36,7 +36,7 @@ public class MoveFile {
 	 * @param usrName
 	 *            Armazena o nome do usuário atual logado no TecaPlay.
 	 */
-	public boolean AddFilme(String origem, String ano, String nome, String genero, String duracao, String pais,
+	public boolean addFilme(String origem, String ano, String nome, String genero, String duracao, String pais,
 			String userName) {
 		usrName = userName;
 		origem = origem.toLowerCase();
@@ -83,7 +83,7 @@ public class MoveFile {
 	 * 
 	 */
 
-	public boolean AddSerie(String origem, String temporada, String nomeSerie, String nomeEp, String genero,
+	public boolean addSerie(String origem, String temporada, String nomeSerie, String nomeEp, String genero,
 			String duracao, String episodio, String userName) {
 		
 		origem = origem.toLowerCase();
@@ -203,7 +203,7 @@ public class MoveFile {
 		} catch (IOException e) {
 
 		}
-		boolean sucesso = SerieExiste(nomeSerie, genero);
+		boolean sucesso = serieExiste(nomeSerie, genero);
 		if (sucesso) {
 			new FilmesAdd(usrName);
 		}
@@ -218,7 +218,7 @@ public class MoveFile {
 	 * @return se a série for nova, retorna verdadeiro e recarrega a pagina para a nova listagem
 	 * das séries existentes
 	 */
-	public boolean SerieExiste(String nomeSerie, String genero) {
+	public boolean serieExiste(String nomeSerie, String genero) {
 		String location = "C:\\TecaPlay\\" + usrName + "\\Videos\\serie\\Todas as Series.txt";
 		ArrayList<String> fileProvider = FileTextProvider.loadLines(location);
 		boolean existe = false;

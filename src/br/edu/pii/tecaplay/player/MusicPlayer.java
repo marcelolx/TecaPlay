@@ -24,7 +24,10 @@ import uk.co.caprica.vlcj.player.MediaPlayerFactory;
 import uk.co.caprica.vlcj.player.embedded.EmbeddedMediaPlayer;
 import uk.co.caprica.vlcj.player.list.MediaListPlayer;
 import uk.co.caprica.vlcj.player.list.MediaListPlayerMode;
-
+/**
+ * Musica player que foi integrado na HomePage
+ *
+ */
 public class MusicPlayer {
 	private static String[] mediapath;
 	private static JButton pauseButton;
@@ -37,7 +40,9 @@ public class MusicPlayer {
 	private static EmbeddedMediaPlayer mediaPlayer;
 	private static MediaListPlayer mediaListPlayer;
 	private static MediaList mediaList;
-
+/**
+ * @param panelPlayer panel da homePage que serão adicionados os botões entre outros.
+ */
 	public static void InterfaceConstructor(JPanel panelPlayer) {
 		JLabel posic = new JLabel();
 		posic.setPreferredSize(new Dimension(368, 32));
@@ -180,7 +185,7 @@ public class MusicPlayer {
 		});
 
 	}
-	public static void PlayAll(String[] media) {
+	public static void playAll(String[] media) {
         
 		mediapath = new String[media.length];
 		mediapath = media;

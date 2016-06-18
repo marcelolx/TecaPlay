@@ -73,12 +73,13 @@ public class HomePage {
 	private JPanel panelCategoriasFilmes;
 	private JPanel panelCategoriasSerie;
 	private JPanel panelCategoriasMusica;
-	private boolean firstPlay=false;
+	private boolean firstPlay = false;
 	private boolean isPlay;
-	
+
 	/**
-	* 
-	*/
+	 * Main da Tela Aqui é o codigo do programa principal daqui são chamados
+	 * todos os outros funções.
+	 */
 	public HomePage(String usrName) {
 		userName = usrName;
 		// formatcao do JFrame
@@ -450,23 +451,8 @@ public class HomePage {
 		btnSeries.setBackground(Color.LIGHT_GRAY);
 		panelLateralVideo.add(btnSeries);
 
-		// jButton Sorteio de algum filme
-		JButton btnSorteioVideo = new JButton("Sorteio de Filme");
-		btnSorteioVideo.setToolTipText("Op\u00E7\u00E3o de acesso a aba Sorteio!");
-		btnSorteioVideo.setPreferredSize(new Dimension(172, 34));
-		btnSorteioVideo.setIcon(new ImageIcon("resources\\images\\imgBtnRandom.png"));
-		btnSorteioVideo.setFont(new Font("Tahoma", Font.BOLD, 14));
-		panelLateralVideo.add(btnSorteioVideo);
-		btnSorteioVideo.setBackground(Color.LIGHT_GRAY);
-
-	/**
-		 * 
-		 * 
-		 * FILMES/CAREGORIAS Painel de categorias que serÐ± chamado ao apertar
-		 * no jbutton btnFilmes
-		 * 
-		 * 
-		 * 
+		/**
+		 * Panel Categorias de Filmes
 		 */
 
 		panelCategoriasFilmes = new JPanel();
@@ -485,7 +471,7 @@ public class HomePage {
 		panelCategoriasSerie.setLayout(new FlowLayout(FlowLayout.CENTER));
 		panelCategoriasSerie.setPreferredSize(new Dimension(500, 300));
 		panelCategoriasSerie.setBackground(new Color(120, 120, 120));
-		
+
 		// jpanel categorias musicais
 		panelCategoriasMusica = new JPanel();
 		panelCategoriasMusica.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -502,6 +488,7 @@ public class HomePage {
 				panelLateralMusica.setVisible(true); // Ativa o painel lateral
 														// referente ao Musica
 				panelLateralMusica.revalidate();// revalida o loyout
+				home.setTitle("Música - TecaPlay");
 			}
 		});
 		// que será realizada ao apertar o botao de Video do jpanelTopo
@@ -514,6 +501,7 @@ public class HomePage {
 				panelLateralVideo.setVisible(true); // Ativa o painel lateral
 													// referente ao video
 				panelLateralVideo.revalidate();// revalida o loyout
+				home.setTitle("Vídeo - TecaPlay");
 			}
 		});
 
@@ -529,6 +517,7 @@ public class HomePage {
 				labelFundo.setVisible(true);
 				labelFundo.revalidate();
 				timer.init();
+				home.setTitle("Home - TecaPlay");
 				panelTopo.setVisible(true);
 				panelTopo.revalidate();
 			}
@@ -546,6 +535,7 @@ public class HomePage {
 				labelFundo.setVisible(true);
 				labelFundo.revalidate();
 				timer.init();
+				home.setTitle("Home - TecaPlay");
 				panelTopo.setVisible(true);
 				panelTopo.revalidate();
 			}
@@ -563,6 +553,7 @@ public class HomePage {
 				labelFundo.setVisible(true);
 				labelFundo.revalidate();
 				timer.init();
+				home.setTitle("Home - TecaPlay");
 				panelTopo.setVisible(true);
 				panelTopo.revalidate();
 			}
@@ -579,6 +570,7 @@ public class HomePage {
 					home.getContentPane().remove(panelLateralMusica);
 					home.getContentPane().remove(panelGeral);
 					panelTopo.setVisible(true);
+					home.setTitle("Home - TecaPlay");
 					home.getContentPane().add(labelFundo, BorderLayout.CENTER);
 					panelTopo.revalidate();
 					home.revalidate();
@@ -589,6 +581,7 @@ public class HomePage {
 					voltarPaineis.get(0).setVisible(false);
 					voltarPaineis.get(0).revalidate();
 					voltarPaineis.get(0).repaint();
+					home.setTitle("Música - TecaPlay");
 					labelFundo.revalidate();
 					labelFundo.repaint();
 					voltarPaineis.remove(voltarPaineis.size() - 1);
@@ -623,6 +616,7 @@ public class HomePage {
 				voltarPaineis.removeAll(voltarPaineis);
 				voltarPaineis.add(panelCategoriasMusica);
 				panelGeral.removeAll();
+				home.setTitle("Estilos Musicais - TecaPlay");
 				home.getContentPane().remove(labelFundo);
 				home.getContentPane().remove(panelGeral);
 				home.getContentPane().remove(panelCategoriasMusica);
@@ -642,14 +636,15 @@ public class HomePage {
 				playAllButton.setVisible(false);
 				currentGenero = "Playlist";
 				panelGeral.removeAll();
-				AtualizaPanelGeral();
+				home.setTitle("Playlists - TecaPlay");
+				atualizaPanelGeral();
 				acaoButtonPlayListOrFavorites();
 
 			}
 		});
-		
+
 		btnFavoritosVideo.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				currentGenero = "Favoritos";
@@ -657,7 +652,8 @@ public class HomePage {
 				home.getContentPane().remove(labelFundo);
 				home.getContentPane().remove(panelCategoriasFilmes);
 				home.getContentPane().remove(panelCategoriasSerie);
-				AtualizaPanelGeral();
+				home.setTitle("Favoritos - TecaPlay");
+				atualizaPanelGeral();
 				acaoButtonPlayListOrFavorites();
 			}
 		});
@@ -671,8 +667,9 @@ public class HomePage {
 					home.getContentPane().remove(voltarPaineis.get(1));
 				}
 				panelGeral.removeAll();
+				home.setTitle("Filmes - TecaPlay");
 				panelGeral = new JPanel();
-				AtualizaPanelGeral();
+				atualizaPanelGeral();
 				voltarPaineis = new ArrayList<JPanel>();
 				voltarPaineis.removeAll(voltarPaineis);
 				voltarPaineis.add(panelCategoriasFilmes);
@@ -699,7 +696,8 @@ public class HomePage {
 				}
 				panelGeral.removeAll();
 				panelGeral = new JPanel();
-				AtualizaPanelGeral();
+				atualizaPanelGeral();
+				home.setTitle("Séries - TecaPlay");
 				voltarPaineis = new ArrayList<JPanel>();
 				voltarPaineis.removeAll(voltarPaineis);
 				voltarPaineis.add(panelCategoriasSerie);
@@ -728,6 +726,7 @@ public class HomePage {
 					panelTopo.setVisible(true);
 					home.getContentPane().add(labelFundo, BorderLayout.CENTER);
 					panelTopo.revalidate();
+					home.setTitle("Home - TecaPlay");
 					home.revalidate();
 					timer.init();
 				} else if (voltarPaineis.size() == 1) {
@@ -736,6 +735,7 @@ public class HomePage {
 					voltarPaineis.get(0).setVisible(false);
 					voltarPaineis.get(0).revalidate();
 					voltarPaineis.get(0).repaint();
+					home.setTitle("Vídeo - TecaPlay");
 					labelFundo.revalidate();
 					labelFundo.repaint();
 					voltarPaineis.remove(voltarPaineis.size() - 1);
@@ -762,10 +762,10 @@ public class HomePage {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(firstPlay){
+				if (firstPlay) {
 					MusicPlayer.stop();
 					MusicPlayer.play(userName, currentGenero);
-				}else{
+				} else {
 					MusicPlayer.play(userName, currentGenero);
 					firstPlay = true;
 				}
@@ -781,12 +781,11 @@ public class HomePage {
 	 *            Recebe o panel para serem feitas as ações
 	 * @return null
 	 */
-	public ActionListener AcaoButtons(String genero) {
+	public ActionListener acaoButtons(String genero) {
 		playAllButton.setVisible(false);
 		music = "";
-		FRarquivos retorno = new FRarquivos();
 		Boolean ler = false;
-		ler = retorno.VerificaGeneroExistente(userName, genero);
+		ler = FRarquivos.verificaGeneroExistente(userName, genero);
 		if (ler) {
 			voltarPaineis.add(panelGeral);
 			home.add(voltarPaineis.get(1), BorderLayout.CENTER);
@@ -813,13 +812,12 @@ public class HomePage {
 	 *            Recebe o panel para serem feitas as ações
 	 * @return null
 	 */
-	public ActionListener AcaoButtonsMusic(String genero) {
+	public ActionListener acaoButtonsMusic(String genero) {
 		currentGenero = genero;
 		playAllButton.setVisible(false);
 		music = "Musicas";
-		FRarquivos retorno = new FRarquivos();
 		Boolean ler = false;
-		ler = retorno.VerificaGeneroExistenteMusica(userName, currentGenero);
+		ler = FRarquivos.verificaGeneroExistenteMusica(userName, currentGenero);
 		if (ler) {
 			playAllButton.setVisible(true);
 			voltarPaineis.add(panelGeral);
@@ -846,11 +844,10 @@ public class HomePage {
 	 *            Recebe o panel para serem feitas as ações
 	 * @return null
 	 */
-	public ActionListener AcaoButtonsSerie(String genero) {
-		FRarquivos retorno = new FRarquivos();
+	public ActionListener acaoButtonsSerie(String genero) {
 		Boolean ler = false;
 		currentGenero = genero;
-		ler = retorno.VerificaGeneroExistenteSerie(userName, currentGenero);
+		ler = FRarquivos.verificaGeneroExistenteSerie(userName, currentGenero);
 		if (ler) {
 			voltarPaineis.add(panelGeral);
 			home.add(voltarPaineis.get(1), BorderLayout.CENTER);
@@ -858,21 +855,21 @@ public class HomePage {
 			home.getContentPane().remove(panelCategoriasSerie);
 			panelGeral.setVisible(true);
 			panelGeral.revalidate();
-			AddButtonSerieNoLabel();
+			addButtonSerieNoLabel();
 		} else {
 			JOptionPane.showMessageDialog(null, "Não à nada a ser listado", "Inválido", 0);
 		}
 		return null;
 
 	}
-/**
- * Método para fazer ações dos botões de playlist
- */
+
+	/**
+	 * Método para fazer ações dos botões de playlist
+	 */
 	public void acaoButtonPlayListOrFavorites() {
 		playAllButton.setVisible(false);
-		FRarquivos retorno = new FRarquivos();
 		Boolean ler = false;
-		ler = retorno.VerifyPlaylistOrFavoriteExist(userName, currentGenero);
+		ler = FRarquivos.verifyPlaylistOrFavoriteExist(userName, currentGenero);
 		if (ler) {
 			if (voltarPaineis.size() == 2) {
 				home.getContentPane().remove(voltarPaineis.get(1));
@@ -896,7 +893,7 @@ public class HomePage {
 	/**
 	 * Atualiza o Label que será usado como label principal
 	 */
-	public void AtualizaPanelGeral() {
+	public void atualizaPanelGeral() {
 		playAllButton.setVisible(false);
 		panelGeral.removeAll();
 		panelGeral = new JPanel();
@@ -910,7 +907,7 @@ public class HomePage {
 	 * será enviado para cá, é resposavel por verifica e fazer a adição
 	 * automatica dos buttons série, e consequentemente atualiza o label.
 	 */
-	public void AddButtonSerieNoLabel() {
+	public void addButtonSerieNoLabel() {
 		AtualizeSeries atualize = new AtualizeSeries(userName, currentGenero);
 		int size = atualize.Size();
 		arrayBtns = new JButton[size];
@@ -953,6 +950,7 @@ public class HomePage {
 		return null;
 
 	}
+
 	/**
 	 * Método usado para fazer a adição de botões na categoria playlist
 	 * 
@@ -976,9 +974,12 @@ public class HomePage {
 
 		}
 	}
+
 	/**
 	 * Faz a listagem das playlists músicais
-	 * @param evt para pegar as informações dos botões
+	 * 
+	 * @param evt
+	 *            para pegar as informações dos botões
 	 */
 
 	public void listPlaylistOrFavorites(ActionEvent evt) {
@@ -1003,8 +1004,9 @@ public class HomePage {
 		home.getContentPane().remove(voltarPaineis.get(1));
 		home.getContentPane().add(voltarPaineis.get(1), BorderLayout.CENTER);
 	}
+
 	/**
-	 * Método usado para fazer a adição de botões na categoria Filmes
+	 * Faz a adição de botões na categoria Filmes
 	 * 
 	 */
 
@@ -1020,14 +1022,15 @@ public class HomePage {
 			panelCategoriasFilmes.add(buttonCatFilmes[i]);
 			buttonCatFilmes[i].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evt) {
-					AcaoButtons(PlaylistName);
+					acaoButtons(PlaylistName);
 				}
 			});
 
 		}
 	}
+
 	/**
-	 * Método usado para fazer a adição de botões na categoria Séries
+	 * Faz a adição de botões na categoria Séries
 	 * 
 	 */
 
@@ -1043,14 +1046,15 @@ public class HomePage {
 			panelCategoriasSerie.add(buttonCatSeries[i]);
 			buttonCatSeries[i].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evt) {
-					AcaoButtonsSerie(PlaylistName);
+					acaoButtonsSerie(PlaylistName);
 				}
 			});
 
 		}
 	}
+
 	/**
-	 * Método usado para fazer a adição de botões na categoria Musical
+	 * Faz a adição de botões na categoria Musical
 	 * 
 	 */
 
@@ -1067,7 +1071,7 @@ public class HomePage {
 			panelCategoriasMusica.add(buttonCatMusica[i]);
 			buttonCatMusica[i].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent evt) {
-					AcaoButtonsMusic(PlaylistName);
+					acaoButtonsMusic(PlaylistName);
 				}
 			});
 

@@ -107,7 +107,7 @@ public class ListFiles {
 			}
 		}
 		if (!musica.equals("")) {
-			MusicPlayer.PlayAll(mediapath);
+			MusicPlayer.playAll(mediapath);
 		}
 		
 		//
@@ -154,8 +154,8 @@ public class ListFiles {
 				int op = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir esse filme?", "Excluir", JOptionPane.YES_NO_OPTION);
 				if(op == JOptionPane.YES_OPTION){
 					RemoveFile removeFile = new RemoveFile();
-					removeFile.RemoveTxtLine(table.getSelectedRow(), genero, lines.size(),directorie);
-					removeFile.FileRemove(caminho);
+					removeFile.removeTxtLine(table.getSelectedRow(), genero, lines.size(),directorie);
+					removeFile.fileRemove(caminho);
 					((DefaultTableModel) table.getModel()).removeRow(modelRow);
 				}
 		

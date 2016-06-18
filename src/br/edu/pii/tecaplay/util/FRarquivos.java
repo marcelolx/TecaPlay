@@ -20,7 +20,7 @@ public class FRarquivos {
 	 * @return retorna um valor booleano se existe arquivos para serem listado
 	 *         em tal genero
 	 */
-	public boolean VerificaGeneroExistente(String usrName, String genero) {
+	public static boolean verificaGeneroExistente(String usrName, String genero) {
 		// string para o caminho do genero
 		genero.toLowerCase();
 		String caminho = "C:\\TecaPlay\\" + usrName + "\\Videos\\filme\\" + genero + ".txt";
@@ -45,7 +45,7 @@ public class FRarquivos {
 	 * @return retorna um valor booleano se existe arquivos para serem listado
 	 *         em tal genero
 	 */
-	public boolean VerificaGeneroExistenteSerie(String usrName, String genero) {
+	public static boolean verificaGeneroExistenteSerie(String usrName, String genero) {
 		// string para o caminho do genero
 		genero.toLowerCase();
 		String caminho = "C:\\TecaPlay\\" + usrName + "\\Videos\\serie\\" + genero;
@@ -71,7 +71,7 @@ public class FRarquivos {
 	 *         em tal genero
 	 */
 
-	public boolean VerifyPlaylistOrFavoriteExist(String usrName, String genero) {
+	public static boolean verifyPlaylistOrFavoriteExist(String usrName, String genero) {
 		// string para o caminho do genero
 		genero.toLowerCase();
 		String caminho;
@@ -91,7 +91,7 @@ public class FRarquivos {
 
 	}
 	
-	public boolean VerificaGeneroExistenteMusica(String usrName, String genero) {
+	public static boolean verificaGeneroExistenteMusica(String usrName, String genero) {
 		// string para o caminho do genero
 		genero.toLowerCase();
 		String caminho = "C:\\TecaPlay\\" + usrName + "\\Musicas\\" + genero+"\\"+genero+".txt";

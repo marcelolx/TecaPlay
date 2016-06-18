@@ -19,7 +19,11 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 import br.edu.pii.tecaplay.util.FileUtil;
-
+/**
+ * Função para fazer o login do usuário.
+ * para fazer o login o usuário precisara ter um login, caso não tenha, ele pode criar no botao.
+ * 
+ */
 public class LoginGUI extends JFrame {
 	public LoginGUI() {
 	}
@@ -71,7 +75,7 @@ public class LoginGUI extends JFrame {
 								String userName;
 								userName = usr.getText();//pega usuário no textfield
 								usr.setText("");
-								FileUtil.FileUserVerify(userName);
+								FileUtil.fileUserVerify(userName);
 								if(FileUtil.loged() == true){
 									login.dispose();
 								}

@@ -15,8 +15,7 @@ import java.awt.Cursor;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 /**
- * 
- * @author jonas
+ * Info do programa.
  *
  */
 public class Sobre extends JFrame {
@@ -60,7 +59,7 @@ public class Sobre extends JFrame {
 		btnOk.setBackground(Color.LIGHT_GRAY);
 		panelRodape.add(btnOk);
 		
-		JLabel lblVersao = new JLabel("Vers\u00E3o: 0.1.91");
+		JLabel lblVersao = new JLabel("Vers\u00E3o: 0.1.110");
 		lblVersao.setFont(new Font("Sylfaen", Font.BOLD, 14));
 		lblVersao.setLabelFor(panelRodape);
 		lblVersao.setIcon(new ImageIcon("resources\\images\\imgVersion.png"));

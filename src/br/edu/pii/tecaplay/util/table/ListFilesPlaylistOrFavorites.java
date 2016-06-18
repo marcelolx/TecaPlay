@@ -95,7 +95,7 @@ public class ListFilesPlaylistOrFavorites {
 		}
 		//
 		// Ação dos botões assistir
-		MusicPlayer.PlayAll(mediapath);
+		MusicPlayer.playAll(mediapath);
 		Action open = new AbstractAction() {
 
 			/**
@@ -138,7 +138,7 @@ public class ListFilesPlaylistOrFavorites {
 				if(op == JOptionPane.YES_OPTION){
 					RemoveFile removeFile = new RemoveFile();
 					//removeFile.RemoveTxtLine(table.getSelectedRow(), genero, lines.size(),directorie);
-					removeFile.FileRemove(caminho);
+					removeFile.fileRemove(caminho);
 					((DefaultTableModel) table.getModel()).removeRow(modelRow);
 				}
 		

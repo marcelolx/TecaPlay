@@ -25,7 +25,7 @@ import uk.co.caprica.vlcj.player.embedded.EmbeddedMediaPlayer;
 import uk.co.caprica.vlcj.player.list.MediaListPlayer;
 import uk.co.caprica.vlcj.player.list.MediaListPlayerMode;
 /**
- * Musica player que foi integrado na HomePage
+ * Player de música que foi integrado na HomePage
  *
  */
 public class MusicPlayer {
@@ -41,7 +41,10 @@ public class MusicPlayer {
 	private static MediaListPlayer mediaListPlayer;
 	private static MediaList mediaList;
 /**
- * @param panelPlayer panel da homePage que serão adicionados os botões entre outros.
+ * Construtor da interface do player de música.
+ * 
+ * @param panelPlayer 
+ * 		panel da homePage que serão adicionados os botões e outros componentes do player.
  */
 	public static void InterfaceConstructor(JPanel panelPlayer) {
 		JLabel posic = new JLabel();
@@ -91,10 +94,11 @@ public class MusicPlayer {
 		panelPlayer.add(actualMusicName, BorderLayout.CENTER);
 	}
 	
-	public static void play(String user, String currentGenero) {
-		if(currentGenero.equals("Playlist")){//preciso de mais um vereficador, que é o que sabe o nome da playlist, farei sabado
-			//c:\\TecaPlay\\" + usrName + "\\Musicas\\" + genero + "\\" + genero + ".txt
-		}
+	/**
+	 * Método que executa o player.
+	 * Contendo todas as ações dos componentes do player.
+	 */
+	public static void play() {
 		VLCjPlayer.registerLibrary();
 		MediaPlayerFactory mediaPlayerFactory = new MediaPlayerFactory();
 		mediaPlayer = mediaPlayerFactory.newEmbeddedMediaPlayer();
@@ -185,12 +189,22 @@ public class MusicPlayer {
 		});
 
 	}
+	/**
+	 * Método chamado em duas classes diferentes, onde armazena os src's de todos os 
+	 * arquivos de mídia exibidos num JTable.
+	 * 
+	 * @param media Passa um Array de String com todos os src's das mídias.
+	 */
 	public static void playAll(String[] media) {
         
 		mediapath = new String[media.length];
 		mediapath = media;
 	}
 	
+	/**
+	 * Método a ser chamado quando o player estiver em execução e houver uma nova chamada
+	 * do método play().
+	 */
 	public static void stop(){
 		PlayerButtonEvents.releasePlayer(mediaPlayer, mediaListPlayer, mediaList, pauseButton, nextButton, previousButton, releaseListButton, muteButton, volumeSlider, actualMusicName);
 	}

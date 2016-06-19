@@ -23,9 +23,9 @@ import br.edu.pii.tecaplay.util.MoveMusic;
 import br.edu.pii.tecaplay.util.optimizationgui.ArrayCategorias;
 
 /**
- * 
  * criação da janela de adicionar Musicas
  *
+ * @author Jonas
  */
 public class MusicAdd {
 	private JTextField fieldNameMusic;
@@ -33,8 +33,6 @@ public class MusicAdd {
 	private JTextField textFieldAno;
 	private JTextField textFieldProcurar;
 	private String caminho;
-	ArrayCategorias array = new ArrayCategorias();
-
 	/**
 	 * JFrame para fazer a adição de músicas
 	 * @param usrName usuário logado
@@ -116,7 +114,7 @@ public class MusicAdd {
 		frame.getContentPane().add(panelListAno);
 
 		JComboBox<String> panelListGenero = new JComboBox<String>();
-		ArrayList<String> listaGenero = array.addMusicas();
+		ArrayList<String> listaGenero = ArrayCategorias.addMusicas();
 		panelListGenero.addItem("Selecione");
 		panelListGenero.setBackground(Color.LIGHT_GRAY);
 		panelListGenero.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -223,6 +221,7 @@ public class MusicAdd {
 	}
 	/**
 	 * Adição de uma pasta. caso tenha pastas dentro da pasta, não será executado
+	 * 
 	 * @return true se ocorreu bem e false não.
 	 */
 	public boolean validationFormat() {

@@ -8,8 +8,9 @@ import java.util.ArrayList;
 import br.edu.pii.tecaplay.ui.FilmesAdd;
 
 /**
+ * Classe que trabalha com arquivos.
  * 
- * @author jonas, Marcelo
+ * @author Jonas, Marcelo
  *
  */
 public class MoveFile {
@@ -85,14 +86,14 @@ public class MoveFile {
 
 	public boolean addSerie(String origem, String temporada, String nomeSerie, String nomeEp, String genero,
 			String duracao, String episodio, String userName) {
-		
+
 		origem = origem.toLowerCase();
 		usrName = userName;
 		String nomeEptoFile = episodio + " - " + nomeEp;
 		nomeEp = nomeEp.toLowerCase();
 		genero = genero.toLowerCase();
-		File destinoPasta = new File(
-				"c:\\TecaPlay\\" + usrName + "\\Videos\\serie\\" + genero + "\\" + nomeSerie.toLowerCase() + "\\" + temporada);
+		File destinoPasta = new File("c:\\TecaPlay\\" + usrName + "\\Videos\\serie\\" + genero + "\\"
+				+ nomeSerie.toLowerCase() + "\\" + temporada);
 		if (!(destinoPasta).exists()) {
 			destinoPasta.mkdirs();
 		}
@@ -121,12 +122,12 @@ public class MoveFile {
 																					// a
 																					// ser
 																					// copiado
-			gravarTxt(pasta, nomeSerie, temporada, episodio, duracao, genero, fileFinal,nomeEp); // envia
-																							// os
-																							// dados
-																							// para
-																							// o
-																							// gravartxt
+			gravarTxt(pasta, nomeSerie, temporada, episodio, duracao, genero, fileFinal, nomeEp); // envia
+			// os
+			// dados
+			// para
+			// o
+			// gravartxt
 			return true;
 		} else {
 			return false;
@@ -166,15 +167,15 @@ public class MoveFile {
 	// o mesmo pode ser utilizado para animes também.
 
 	/**
-	 * Função realizada após adicionar nova série.
-	 * ele irá acionar tambem a classe SerieExiste, para verificar se a série é nova ou não
-	 * sendo nova, ele irá adicionar o nome da nova série no campo "Seriado" do JcomboBox
+	 * Função realizada após adicionar nova série. ele irá acionar tambem a
+	 * classe SerieExiste, para verificar se a série é nova ou não sendo nova,
+	 * ele irá adicionar o nome da nova série no campo "Seriado" do JcomboBox
 	 * 
 	 * @param pasta
 	 *            pasta do usuario na categoria séries
 	 * @param nomeSerie
-	 *            nome do seriado para servir de base de verificação de existencia de série 
-	 *            e listagem das séries
+	 *            nome do seriado para servir de base de verificação de
+	 *            existencia de série e listagem das séries
 	 * @param temporada
 	 *            numero da temporada da serie
 	 * @param episodio
@@ -187,7 +188,7 @@ public class MoveFile {
 	 *            file localização final da série do arquivo movido
 	 */
 	public void gravarTxt(String pasta, String nomeSerie, String temporada, String episodio, String duracao,
-			String genero, String file,String nomeEp) {
+			String genero, String file, String nomeEp) {
 		// String do diretorio do TXT
 		String criarTemp = pasta + "\\" + genero + "\\nomeSerie\\" + nomeSerie.toLowerCase() + ".txt";
 		File pastaCriar = new File(pasta + "\\" + genero + "\\nomeSerie");
@@ -197,7 +198,8 @@ public class MoveFile {
 		try {
 			FileWriter buffer = null;
 			buffer = new FileWriter(criarTemp, true);
-			String texto = temporada + "#" + episodio + "#" + nomeSerie.toLowerCase() + "#"  + nomeEp.toLowerCase() + "#" + duracao + "#" + file;
+			String texto = temporada + "#" + episodio + "#" + nomeSerie.toLowerCase() + "#" + nomeEp.toLowerCase() + "#"
+					+ duracao + "#" + file;
 			buffer.write(texto + "\r\n");
 			buffer.close();
 		} catch (IOException e) {
@@ -211,12 +213,15 @@ public class MoveFile {
 	}
 
 	/**
-	 * Verifica se a série existe. caso o teste resulta que nao existe tal série,
-	 * será adicionada no arquivo txt.
-	 * @param nomeSerie Nome da série adicionado
-	 * @param genero seu respectivo genero
-	 * @return se a série for nova, retorna verdadeiro e recarrega a pagina para a nova listagem
-	 * das séries existentes
+	 * Verifica se a série existe. caso o teste resulta que nao existe tal
+	 * série, será adicionada no arquivo txt.
+	 * 
+	 * @param nomeSerie
+	 *            Nome da série adicionado
+	 * @param genero
+	 *            seu respectivo genero
+	 * @return se a série for nova, retorna verdadeiro e recarrega a pagina para
+	 *         a nova listagem das séries existentes
 	 */
 	public boolean serieExiste(String nomeSerie, String genero) {
 		String location = "C:\\TecaPlay\\" + usrName + "\\Videos\\serie\\Todas as Series.txt";
@@ -242,7 +247,7 @@ public class MoveFile {
 			} catch (IOException e) {
 				return false;
 			}
-			
+
 		}
 		return false;
 	}

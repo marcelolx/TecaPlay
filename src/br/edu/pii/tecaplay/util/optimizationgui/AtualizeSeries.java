@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 /**
  * Atualiza as séries
+ * 
  * @author jonas
  *
  */
@@ -39,8 +40,7 @@ public class AtualizeSeries {
 		return nameSerie;
 	}
 	/**
-	 * Tamanho de todas as linhas
-	 * @return linha total do array
+	 * @return Total de linhas no ArrayList.
 	 */
 	public int Size() {
 		return size;

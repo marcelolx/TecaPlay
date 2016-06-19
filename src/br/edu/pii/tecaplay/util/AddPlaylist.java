@@ -11,7 +11,7 @@ import br.edu.pii.tecaplay.ui.ListPlaylists;
  */
 public class AddPlaylist {
 	/**
-	 * ADD nova playlist
+	 * ADD nova playlist.
 	 * @param usrName Nome do Usuário Logado
 	 * @param nomePlaylist Nome da playlist
 	 * @param caminho src da pasta

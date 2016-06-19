@@ -15,7 +15,9 @@ import javax.swing.JTextField;
 
 import br.edu.pii.tecaplay.util.FileUtil;
 /**
- *Registrar um usuário através do Login.
+ * Registrar um usuário através do Login.
+ *
+ * @author Marcelo
  */
 public class RegisterUser {
 	/**

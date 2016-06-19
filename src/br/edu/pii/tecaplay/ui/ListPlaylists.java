@@ -34,9 +34,11 @@ public class ListPlaylists {
 	private String catType;
 	/**
 	 * JFrame para a listagem das playslists ja criadas
+	 * 
 	 * @param usrName nome do usuário
-	 * @param caminho String a ser adicionado com as informações do arquivo, tal como
-	 * 	nome e src do arquivo de midia
+	 * @param caminho 
+	 * 		String a ser adicionado com as informações do arquivo, tal como
+	 * 		nome e src do arquivo de midia
 	 * @param catTypeP Verefica se é video ou música
 	 */
 	
@@ -139,9 +141,11 @@ public class ListPlaylists {
 		}
 
 	}
+	
 	/**
 	 * Caso o usuário selecionou uma playlist e quer adicionar, esse método faz a adição da linha das informações
 	 * no arquivo da playlist selecionada.
+	 * 
 	 * @return true se conseguiu gravar e false o oposto
 	 */
 

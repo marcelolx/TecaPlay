@@ -18,8 +18,17 @@ import br.edu.pii.tecaplay.ui.ListPlaylists;
 import br.edu.pii.tecaplay.util.FileTextProvider;
 import br.edu.pii.tecaplay.util.RemoveFile;
 
+/**
+ * Classe que trabalha com listagem e configurações da tabela que exibe as
+ * informações dos vídeos/músicas nas telas de Favoritos ou Playlists.
+ * 
+ * @author Marcelo
+ *
+ */
+
 public class ListFilesPlaylistOrFavorites {
-	private String  paisCanBan;
+	private String paisCanBan;
+
 	/**
 	 * @param table
 	 *            passa a tabela por parâmetro e a partir da mesma seta algumas
@@ -60,6 +69,8 @@ public class ListFilesPlaylistOrFavorites {
 	}
 
 	/**
+	 * Popula a tabela através das informações do arquivo .txt X, que é
+	 * recuperado através dos parametros passados pelo método.
 	 * 
 	 * @param table
 	 *            Passa a tabela por parãmetro para setar as informações do
@@ -72,10 +83,10 @@ public class ListFilesPlaylistOrFavorites {
 	 */
 	public void updateTable(final JTable table, String usrName, String playlistName, String favORplay) {
 		String directorie;
-		if(favORplay.equals("Playlist")){
-			directorie = "c:\\TecaPlay\\" + usrName + "\\Musicas\\Playlist\\"+playlistName;
-		}else{
-			directorie = "c:\\TecaPlay\\" + usrName + "\\Videos\\Favoritos\\"+playlistName;
+		if (favORplay.equals("Playlist")) {
+			directorie = "c:\\TecaPlay\\" + usrName + "\\Musicas\\Playlist\\" + playlistName;
+		} else {
+			directorie = "c:\\TecaPlay\\" + usrName + "\\Videos\\Favoritos\\" + playlistName;
 		}
 		final MyTableModel tableModel = (MyTableModel) table.getModel();
 		FileTextProvider fileTextProvider = new FileTextProvider();
@@ -134,15 +145,16 @@ public class ListFilesPlaylistOrFavorites {
 						caminho = data[4];
 					}
 				}
-				int op = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir esse filme?", "Excluir", JOptionPane.YES_NO_OPTION);
-				if(op == JOptionPane.YES_OPTION){
+				int op = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir esse filme?", "Excluir",
+						JOptionPane.YES_NO_OPTION);
+				if (op == JOptionPane.YES_OPTION) {
 					RemoveFile removeFile = new RemoveFile();
-					//removeFile.RemoveTxtLine(table.getSelectedRow(), genero, lines.size(),directorie);
+					// removeFile.RemoveTxtLine(table.getSelectedRow(), genero,
+					// lines.size(),directorie);
 					removeFile.fileRemove(caminho);
 					((DefaultTableModel) table.getModel()).removeRow(modelRow);
 				}
-		
-			
+
 			}
 		};
 		Action addFavorite = new AbstractAction() {
@@ -159,19 +171,19 @@ public class ListFilesPlaylistOrFavorites {
 				for (int i = 0; i < lines.size(); i++) {
 					final String[] data = FileTextProvider.readData("#", lines.get(i));
 					if (i == table.getSelectedRow()) {
-						caminho = data[0]+"#"+data[1]+"#"+data[2]+"#"+data[3]+"#"+data[4];
+						caminho = data[0] + "#" + data[1] + "#" + data[2] + "#" + data[3] + "#" + data[4];
 					}
 				}
-				new ListPlaylists(usrName,caminho, "Musicas");
+				new ListPlaylists(usrName, caminho, "Musicas");
 			}
 		};
-		
+
 		ButtonColumn remover = new ButtonColumn(table, remove, 5);
 		remover.setMnemonic(KeyEvent.VK_D);
 
 		ButtonColumn addPlaylist = new ButtonColumn(table, addFavorite, 4);
 		addPlaylist.setMnemonic(KeyEvent.VK_D);
-		
+
 		ButtonColumn openPlayer = new ButtonColumn(table, open, 6);
 		openPlayer.setMnemonic(KeyEvent.VK_D);
 
@@ -183,13 +195,12 @@ public class ListFilesPlaylistOrFavorites {
 	}
 
 	/**
+	 * Método chamado toda vez que o usuário voltar para um JPanel anterior, ele
+	 * atualiza o JTable.
 	 * 
 	 * @param table
 	 * @param usrName
 	 * @param genero
-	 * 
-	 *            Método chamado toda vez que o usuário voltar para um JPanel
-	 *            anterior, ele atualiza o JTable.
 	 */
 	public void reUpdateTable(final JTable table, String usrName, String playlistName, String favORplay) {
 		// criando um objeto para nossos dados
@@ -203,7 +214,4 @@ public class ListFilesPlaylistOrFavorites {
 		updateTable(table, usrName, playlistName, favORplay);
 	}
 
-	public JTable Tabela(JTable tablee) {
-		return tablee;
-	}
 }

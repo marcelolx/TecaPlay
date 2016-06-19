@@ -16,7 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 /**
  * Info do programa.
- *
+ * @author Jonas
  */
 public class Sobre extends JFrame {
 

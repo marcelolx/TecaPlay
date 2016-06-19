@@ -21,8 +21,9 @@ import javax.swing.WindowConstants;
 import br.edu.pii.tecaplay.util.FileUtil;
 /**
  * Função para fazer o login do usuário.
- * para fazer o login o usuário precisara ter um login, caso não tenha, ele pode criar no botao.
+ * para fazer o login o usuário precisara ter um login, caso não tenha, ele pode criar no botao lado o jtextfield.
  * 
+ * @author Marcelo
  */
 public class LoginGUI extends JFrame {
 	public LoginGUI() {
@@ -50,7 +51,6 @@ public class LoginGUI extends JFrame {
 					
 					/**
 					 * Login somente com usuário, sem necessidade de senhas.
-					 * teste
 					 */
 					JPanel logPanel = new JPanel();
 					logPanel.setBackground(new Color(169, 169, 169));

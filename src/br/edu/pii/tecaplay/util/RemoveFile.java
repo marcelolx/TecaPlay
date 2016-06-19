@@ -70,6 +70,11 @@ public class RemoveFile {
 
 	}
 	
+	/**
+	 * Remove o arquivo do sistema.(Excluí)
+	 * 
+	 * @param src Caminho do arquivo a ser excluído.
+	 */
 	public void fileRemove(String src){
 		File file = new File(src);
 		file.delete();

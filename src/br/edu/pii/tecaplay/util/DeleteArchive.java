@@ -4,6 +4,7 @@ import java.io.File;
 /**
  * Deleta o arquivo que é recebido
  *
+ * @author Jonas
  */
 public class DeleteArchive {
 	/**

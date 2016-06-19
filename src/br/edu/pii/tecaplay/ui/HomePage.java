@@ -38,6 +38,9 @@ import br.edu.pii.tecaplay.util.table.ListFilesPlaylistOrFavorites;
 import br.edu.pii.tecaplay.util.table.ListFilesSeries;
 
 /**
+ * Nesta classe jaz todo o código da interface principal do TecaPlay.
+ * Além de conter alguns métodos que auxiliam na adição de alguns componentes 
+ * a interface do TecaPlay quando hà mudança de telas.
  * 
  * @author Marcelo, Jonas
  *
@@ -69,16 +72,15 @@ public class HomePage {
 	private JButton[] buttonCatFilmes;
 	private JButton[] buttonCatSeries;
 	private JButton[] buttonCatMusica;
-	private ArrayCategorias arrayCat = new ArrayCategorias();
 	private JPanel panelCategoriasFilmes;
 	private JPanel panelCategoriasSerie;
 	private JPanel panelCategoriasMusica;
 	private boolean firstPlay = false;
-	private boolean isPlay;
-
+	
 	/**
-	 * Main da Tela Aqui é o codigo do programa principal daqui são chamados
-	 * todos os outros funções.
+	 * Construtor da nossa classe.
+	 * 
+	 * @param usrName Passar o nome do usuário logado.
 	 */
 	public HomePage(String usrName) {
 		userName = usrName;
@@ -176,7 +178,7 @@ public class HomePage {
 
 		home.getContentPane().add(panelPlayer, BorderLayout.SOUTH);
 		/**
-		 * cri de botoes video/musica/imagem
+		 * criação de botoes video/musica/imagem
 		 */
 
 		JButton btnVideo = new JButton("V\u00EDdeo");
@@ -269,7 +271,7 @@ public class HomePage {
 		JButton btnAdicionarImagem = new JButton("Adicionar");
 		btnAdicionarImagem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				@SuppressWarnings("unused")
+				@SuppressWarnings({ "unused", "deprecation" })
 				ImagemAdd addFilme = new ImagemAdd();
 			}
 		});
@@ -764,9 +766,9 @@ public class HomePage {
 			public void actionPerformed(ActionEvent e) {
 				if (firstPlay) {
 					MusicPlayer.stop();
-					MusicPlayer.play(userName, currentGenero);
+					MusicPlayer.play();
 				} else {
-					MusicPlayer.play(userName, currentGenero);
+					MusicPlayer.play();
 					firstPlay = true;
 				}
 			}
@@ -785,7 +787,7 @@ public class HomePage {
 		playAllButton.setVisible(false);
 		music = "";
 		Boolean ler = false;
-		ler = FRarquivos.verificaGeneroExistente(userName, genero);
+		ler = FRarquivos.verificaGeneroExistenteFilmes(userName, genero);
 		if (ler) {
 			voltarPaineis.add(panelGeral);
 			home.add(voltarPaineis.get(1), BorderLayout.CENTER);
@@ -891,7 +893,7 @@ public class HomePage {
 	}
 
 	/**
-	 * Atualiza o Label que será usado como label principal
+	 * Atualiza o Panel que será usado como panel principal.
 	 */
 	public void atualizaPanelGeral() {
 		playAllButton.setVisible(false);
@@ -904,8 +906,8 @@ public class HomePage {
 
 	/**
 	 * Função que será usada para atualizar os botões das séries Cada genero que
-	 * será enviado para cá, é resposavel por verifica e fazer a adição
-	 * automatica dos buttons série, e consequentemente atualiza o label.
+	 * será enviado para cá, é resposavel por verificar e fazer a adição
+	 * automatica dos buttons série, e consequentemente atualiza o panel.
 	 */
 	public void addButtonSerieNoLabel() {
 		AtualizeSeries atualize = new AtualizeSeries(userName, currentGenero);
@@ -1011,7 +1013,7 @@ public class HomePage {
 	 */
 
 	public void addButtonsFilmes() {
-		ArrayList<String> list = arrayCat.addFilmes();
+		ArrayList<String> list = ArrayCategorias.addFilmes();
 		int size = list.size();
 		buttonCatFilmes = new JButton[size];
 		for (int i = 0; i < size; i++) {
@@ -1035,7 +1037,7 @@ public class HomePage {
 	 */
 
 	public void addButtonsSeries() {
-		ArrayList<String> list = arrayCat.addSeries();
+		ArrayList<String> list = ArrayCategorias.addSeries();
 		int size = list.size();
 		buttonCatSeries = new JButton[size];
 		for (int i = 0; i < size; i++) {
@@ -1059,7 +1061,7 @@ public class HomePage {
 	 */
 
 	public void addButtonsMusica() {
-		ArrayList<String> list = arrayCat.addMusicas();
+		ArrayList<String> list = ArrayCategorias.addMusicas();
 		int size = list.size();
 		panelCategoriasMusica.removeAll();
 		buttonCatMusica = new JButton[size];

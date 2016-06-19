@@ -2,7 +2,18 @@ package br.edu.pii.tecaplay.util.optimizationgui;
 
 import java.util.ArrayList;
 
+/**
+ * Classe que contém os ArrayList com os nomes do botões das categorias de Filmes, Séries e Músicas.
+ * 
+ * @author Jonas
+ *
+ */
 public class ArrayCategorias {
+	/**
+	 * ArrayList para o nome dos botões das categorias do tipo Filmes.
+	 * 
+	 * @return o ArrayList com os nomes.
+	 */
 	public static ArrayList<String> addFilmes() {
 		ArrayList<String> listaGeneroFilmes = new ArrayList<>();
 		listaGeneroFilmes.add("Ação");
@@ -26,6 +37,11 @@ public class ArrayCategorias {
 		return listaGeneroFilmes;
 	}
 
+	/**
+	 * ArrayList para o nome dos botões das categorias do tipo Séries.
+	 * 
+	 * @return o ArrayList com os nomes.
+	 */
 	public static ArrayList<String> addSeries() {
 		ArrayList<String> listaGenero = new ArrayList<>();
 		listaGenero.add("A\u00E7\u00E3o");
@@ -49,6 +65,11 @@ public class ArrayCategorias {
 		return listaGenero;
 	}
 
+	/**
+	 * ArrayList para o nome dos botões das categorias do tipo Música.
+	 * 
+	 * @return o ArrayList com os nomes.
+	 */
 	public static ArrayList<String> addMusicas() {
 		ArrayList<String> listaGenero = new ArrayList<>();
 		listaGenero.add("Antigas");

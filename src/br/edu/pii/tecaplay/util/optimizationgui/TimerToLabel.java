@@ -7,6 +7,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 /**
+ * Timer que de um certo tempo vai trocando o banner de fundo do TecaPlay quando o usuário está
+ * na HomePage, ou só com o panelLateral aberto.
  * 
  * @author Marcelo
  *

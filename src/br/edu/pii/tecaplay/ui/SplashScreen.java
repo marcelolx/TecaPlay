@@ -6,6 +6,7 @@ import javax.swing.*;
  * 
  * Splash Screen para carregar o sistema.
  *
+ * @author Jonas
  */
 public class SplashScreen extends JWindow {
     

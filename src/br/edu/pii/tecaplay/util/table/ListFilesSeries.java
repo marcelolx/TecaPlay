@@ -18,6 +18,9 @@ import br.edu.pii.tecaplay.util.FileTextProvider;
 import br.edu.pii.tecaplay.util.RemoveFile;
 
 /**
+ * Classe que trabalha com listagem e configurações da tabela que exibe as
+ * informações dos vídeos das séries.
+ * 
  * @since 08/05/2016
  * @author Marcelo
  *
@@ -78,7 +81,8 @@ public class ListFilesSeries {
 	 */
 	public void updateTable(final JTable table, String usrName, String genero, String nomeSerie) {
 		String directorie;
-		directorie = "c:\\TecaPlay\\" + usrName + "\\Videos\\serie\\" + genero + "\\nomeSerie\\" + nomeSerie.toLowerCase() + ".txt";
+		directorie = "c:\\TecaPlay\\" + usrName + "\\Videos\\serie\\" + genero + "\\nomeSerie\\"
+				+ nomeSerie.toLowerCase() + ".txt";
 		final TableModelSeries tableModel = (TableModelSeries) table.getModel();
 		FileTextProvider fileTextProvider = new FileTextProvider();
 		final List<String> lines = FileTextProvider.loadLines(directorie);
@@ -136,15 +140,15 @@ public class ListFilesSeries {
 						caminho = data[4];
 					}
 				}
-				int op = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir esse filme?", "Excluir", JOptionPane.YES_NO_OPTION);
-				if(op == JOptionPane.YES_OPTION){
+				int op = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir esse filme?", "Excluir",
+						JOptionPane.YES_NO_OPTION);
+				if (op == JOptionPane.YES_OPTION) {
 					RemoveFile removeFile = new RemoveFile();
-					removeFile.removeTxtLine(table.getSelectedRow(), genero, lines.size(),directorie);
+					removeFile.removeTxtLine(table.getSelectedRow(), genero, lines.size(), directorie);
 					removeFile.fileRemove(caminho);
 					((DefaultTableModel) table.getModel()).removeRow(modelRow);
 				}
-		
-			
+
 			}
 		};
 		Action addFavorite = new AbstractAction() {
@@ -161,19 +165,19 @@ public class ListFilesSeries {
 				for (int i = 0; i < lines.size(); i++) {
 					final String[] data = FileTextProvider.readData("#", lines.get(i));
 					if (i == table.getSelectedRow()) {
-						caminho = data[0]+"#"+data[1]+"#"+data[2]+"#"+data[3]+"#"+data[4];
+						caminho = data[0] + "#" + data[1] + "#" + data[2] + "#" + data[3] + "#" + data[4];
 					}
 				}
-				new ListPlaylists(usrName,caminho,"Videos");
+				new ListPlaylists(usrName, caminho, "Videos");
 			}
 		};
-		
+
 		ButtonColumn remover = new ButtonColumn(table, remove, 6);
 		remover.setMnemonic(KeyEvent.VK_D);
 
 		ButtonColumn addPlaylist = new ButtonColumn(table, addFavorite, 5);
 		addPlaylist.setMnemonic(KeyEvent.VK_D);
-		
+
 		ButtonColumn openPlayer = new ButtonColumn(table, open, 7);
 		openPlayer.setMnemonic(KeyEvent.VK_D);
 
@@ -196,7 +200,7 @@ public class ListFilesSeries {
 	public void reUpdateTable(final JTable table, String usrName, String genero, String nomeSerie) {
 		// criando um objeto para nossos dados
 		final Object[][] dados = null;
-	
+
 		// chamando o método MyTableModel para adicionar a tabela ao
 		// jpanel
 		final TableModelSeries myTableModel = new TableModelSeries(dados);
@@ -208,5 +212,5 @@ public class ListFilesSeries {
 	public JTable Tabela(JTable tablee) {
 		return tablee;
 	}
-	
+
 }

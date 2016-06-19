@@ -1,7 +1,10 @@
 package br.edu.pii.tecaplay.util.validators;
 
 import java.io.File;
+
 /**
+ * Valida pasta, faz uma verificação para saber se a pasta ou diretório existe.
+ * 
  * @version 0.0.57
  * @author jonas
  * @since 05/05/2016
@@ -9,8 +12,10 @@ import java.io.File;
 public class ValidaPasta {
 	/**
 	 * 
-	 * @param origem define o caminho do diretório para ser analizado
-	 * @return retorna true como sendo caminho de pasta e false como caminho de arquivo
+	 * @param origem
+	 *            define o caminho do diretório para ser analizado
+	 * @return retorna true como sendo caminho de pasta e false como caminho de
+	 *         arquivo
 	 */
 	public boolean validaPasta(String origem) {
 		File arquivo = new File(origem);

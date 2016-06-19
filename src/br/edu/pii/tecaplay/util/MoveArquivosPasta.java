@@ -11,13 +11,14 @@ import br.edu.pii.tecaplay.ui.FilmesAdd;
 
 /**
  * @version 0.0.57
- * @author jonas
+ * @author Jonas
  * @since 05/05/2016
  *
  */
 public class MoveArquivosPasta {
 	private String userName= null;
 	/**
+	 * Move o arquivo para um diretório especifico.
 	 * 
 	 * @param origem
 	 * 				Diretório de onde a série está no sistema
@@ -34,7 +35,7 @@ public class MoveArquivosPasta {
 	 * @param episodio
 	 * 				numero do episódio		
 	 * @param usrName
-	 * 	usuario logado
+	 * 				usuario logado
 	 * 
 	 */
 	private String caminho = null;
@@ -79,6 +80,7 @@ public class MoveArquivosPasta {
 		return true;
 	}
 	/**
+	 * Pega o arquivo e move ele para o diretório especifico.
 	 * 
 	 * @param origem
 	 * 				Diretório de onde a série está no sistema
@@ -130,6 +132,8 @@ public class MoveArquivosPasta {
 	
 
 	/**
+	 * Grava as informações da nova mídia adicionada num .txt que será usado para depois listar
+	 * as informações de cada arquivo num JTable.
 	 * 
 	 * @param pasta	 pasta pasta onde sera criado o arquivo txt
 	 * @param nomeEp	 nome que sera adicionado ao arquivo txt
@@ -167,6 +171,13 @@ public class MoveArquivosPasta {
 
 		}
 	}
+	
+	/**
+	 * Valida os tipos de arquivos que podem ser adicionados.
+	 * 
+	 * @return
+	 * 		Se o tipo de arquivo for válido, retorna true, senão false. 
+	 */
 	public boolean validationFormat() {
 		File destino = new File(caminho);
 		ArrayList<String> array = new ArrayList<String>();
@@ -189,6 +200,14 @@ public class MoveArquivosPasta {
 	
 		return false;
 	}
+	
+	/**
+	 * Verefica se série X existe. 
+	 * 
+	 * @param nomeSerie - nome da Série.
+	 * @param genero - genrero.
+	 * @return true se existe, senão false.
+	 */
 	public boolean serieExiste(String nomeSerie, String genero) {
 		String location = "C:\\TecaPlay\\" + userName + "\\Videos\\serie\\Todas as Series.txt";
 		ArrayList<String> fileProvider = FileTextProvider.loadLines(location);

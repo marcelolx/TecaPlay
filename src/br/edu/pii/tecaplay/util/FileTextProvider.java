@@ -9,11 +9,10 @@ import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.util.ArrayList;
 /**
+ * Classe que vai trabalhar na leitura dos arquivos .txt e recuperar as informações necessárias.
+ * 
  * @since 08/05/2016
  * @author Marcelo
- * 
- * @see 
- * Classe que vai trabalhar na leitura dos arquivos .txt e recuperar as informações necessárias.
  */
 public class FileTextProvider {
 	 private static int numLines;

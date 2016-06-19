@@ -19,18 +19,20 @@ import br.edu.pii.tecaplay.util.FileTextProvider;
 import br.edu.pii.tecaplay.util.RemoveFile;
 
 /**
+ * Classe que trabalha com listagem e configurações da tabela que exibe as informações dos vídeos/músicas.
+ * 
  * @since 08/05/2016
  * @author Marcelo
  *
  */
 public class ListFiles {
-	private String  paisCanBan;
+	private String paisCanBan;
 	private String musicORvideo;
+
 	/**
 	 * @param table
 	 *            passa a tabela por parâmetro e a partir da mesma seta algumas
 	 *            configurações a ela.
-	 * @return 
 	 */
 	public void tableInfo(JTable table) {
 
@@ -66,6 +68,8 @@ public class ListFiles {
 	}
 
 	/**
+	 * Popula a tabela através das informações do arquivo .txt X, que é
+	 * recuperado através dos parametros passados pelo método.
 	 * 
 	 * @param table
 	 *            Passa a tabela por parãmetro para setar as informações do
@@ -109,7 +113,7 @@ public class ListFiles {
 		if (!musica.equals("")) {
 			MusicPlayer.playAll(mediapath);
 		}
-		
+
 		//
 		// Ação dos botões assistir
 
@@ -151,15 +155,15 @@ public class ListFiles {
 						caminho = data[4];
 					}
 				}
-				int op = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir esse filme?", "Excluir", JOptionPane.YES_NO_OPTION);
-				if(op == JOptionPane.YES_OPTION){
+				int op = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir esse filme?", "Excluir",
+						JOptionPane.YES_NO_OPTION);
+				if (op == JOptionPane.YES_OPTION) {
 					RemoveFile removeFile = new RemoveFile();
-					removeFile.removeTxtLine(table.getSelectedRow(), genero, lines.size(),directorie);
+					removeFile.removeTxtLine(table.getSelectedRow(), genero, lines.size(), directorie);
 					removeFile.fileRemove(caminho);
 					((DefaultTableModel) table.getModel()).removeRow(modelRow);
 				}
-		
-			
+
 			}
 		};
 		Action addFavorite = new AbstractAction() {
@@ -176,19 +180,19 @@ public class ListFiles {
 				for (int i = 0; i < lines.size(); i++) {
 					final String[] data = FileTextProvider.readData("#", lines.get(i));
 					if (i == table.getSelectedRow()) {
-						caminho = data[0]+"#"+data[1]+"#"+data[2]+"#"+data[3]+"#"+data[4];
+						caminho = data[0] + "#" + data[1] + "#" + data[2] + "#" + data[3] + "#" + data[4];
 					}
 				}
 				new ListPlaylists(usrName, caminho, musicORvideo);
 			}
 		};
-		
+
 		ButtonColumn remover = new ButtonColumn(table, remove, 5);
 		remover.setMnemonic(KeyEvent.VK_D);
 
 		ButtonColumn addPlaylist = new ButtonColumn(table, addFavorite, 4);
 		addPlaylist.setMnemonic(KeyEvent.VK_D);
-		
+
 		ButtonColumn openPlayer = new ButtonColumn(table, open, 6);
 		openPlayer.setMnemonic(KeyEvent.VK_D);
 
@@ -200,13 +204,13 @@ public class ListFiles {
 	}
 
 	/**
+	 * Método chamado toda vez que o usuário voltar para um JPanel anterior, ele
+	 * atualiza o JTable. Os paramétros passados a ele, são os mesmos que são
+	 * passados ao updateTable
 	 * 
 	 * @param table
 	 * @param usrName
 	 * @param genero
-	 * 
-	 *            Método chamado toda vez que o usuário voltar para um JPanel
-	 *            anterior, ele atualiza o JTable.
 	 */
 	public void reUpdateTable(final JTable table, String usrName, String genero, String musica) {
 		// criando um objeto para nossos dados
@@ -224,8 +228,4 @@ public class ListFiles {
 		updateTable(table, usrName, genero, musica);
 	}
 
-	public JTable Tabela(JTable tablee) {
-		return tablee;
-	}
-	
 }

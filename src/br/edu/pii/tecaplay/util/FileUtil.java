@@ -6,14 +6,15 @@ import javax.swing.JOptionPane;
 
 import br.edu.pii.tecaplay.ui.HomePage;
 /**
+ * Classe que trabalha na vereficação de login e criação de novos usuários.
  * 
  * @author Marcelo
  *
  */
 public class FileUtil {
 
-	static char vo;
-	boolean logou=false;
+	private static char vo;
+	private boolean logou=false;
 
 	public static void main() {
 		String vos;
@@ -21,7 +22,8 @@ public class FileUtil {
 		vo = vos.charAt(0);
 	}
 	/**
-	 * Verefica se existe o o usuário, se existir entra no sistema
+	 * Verefica se existe o usuário, se existir entra no sistema.
+	 * 
 	 * @param usrName nome que a pessoa digita para o usuário
 	 */
 	public void fileUserVerify(String usrName){
@@ -51,10 +53,17 @@ public class FileUtil {
 		}
 	}
 	
+	/**
+	 * @return retorna se logou ou não.
+	 */
 	public boolean loged(){
 		return logou;
 	}
 	
+	/**
+	 * Registra um novo usuário.
+	 * @param newUsrName Nome do novo usuário.
+	 */
 	public void RegisterNewUser(String newUsrName){
 		//String newUsrName = reUser.getNewUser();//pega do JTextField o nome do usuário
 		newUsrName = newUsrName.toLowerCase();
@@ -75,7 +84,9 @@ public class FileUtil {
 		}
 	}
 	
-	
+	/**
+	 * Fecha a aplicação.
+	 */
 	public static void sair() {
 		int op = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Sair", JOptionPane.YES_NO_OPTION);
 		if(op == JOptionPane.YES_OPTION){

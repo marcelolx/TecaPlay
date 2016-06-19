@@ -3,8 +3,9 @@ package br.edu.pii.tecaplay.util;
 import java.io.File;
 
 /**
- * Classe para remover os arquivos se alguma pasta esta vazia e sem arquivos
- * @author jonas
+ * Classe para remover os arquivos se alguma pasta esta vazia e sem arquivos.
+ * 
+ * @author Jonas
  *
  */
 public class FileDeleter {

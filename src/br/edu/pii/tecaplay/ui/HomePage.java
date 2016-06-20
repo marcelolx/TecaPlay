@@ -847,7 +847,7 @@ public class HomePage {
 	 * @return null
 	 */
 	public ActionListener acaoButtonsSerie(String genero) {
-		Boolean ler = false; 
+		Boolean ler = false;  
 		currentGenero = genero;
 		ler = FRarquivos.verificaGeneroExistenteSerie(userName, currentGenero);
 		if (ler) {

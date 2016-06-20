@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="TrabalhoEscrito"/>
+	<classpathentry kind="src" path="JavaDOC"/>
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry including="jna-4.2.2.jar|jna-platform-4.2.2.jar|slf4j-api-1.7.5.jar|vlcj-3.10.1.jar" kind="src" path="APIs"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>

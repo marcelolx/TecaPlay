@@ -85,7 +85,7 @@ public class Sobre extends JFrame {
 		lblCriaoJonasHalmenschlager.setBounds(38, 169, 430, 44);
 		panelRodape.add(lblCriaoJonasHalmenschlager);
 		
-		JLabel lblTodos = new JLabel("Todos os Direitos Reservados ");
+		JLabel lblTodos = new JLabel("<html>Software openSource, fique livre </br>para modificar e redistribui-lo.</html>");
 		lblTodos.setFont(new Font("Sylfaen", Font.BOLD, 14));
 		lblTodos.setBounds(148, 219, 203, 42);
 		panelRodape.add(lblTodos);

@@ -372,15 +372,6 @@ public class HomePage {
 		panelLateralMusica.add(btnEstilosMusica);
 		btnEstilosMusica.setBackground(Color.LIGHT_GRAY);
 
-		// jButton Sorteio filmes
-		JButton btnSorteioMusica = new JButton("Random Musica");
-		btnSorteioMusica.setToolTipText("Op\u00E7\u00E3o de acesso a aba Sorteio!");
-		btnSorteioMusica.setPreferredSize(new Dimension(172, 34));
-		btnSorteioMusica.setIcon(new ImageIcon("resources\\images\\imgBtnRandom.png"));
-		btnSorteioMusica.setFont(new Font("Tahoma", Font.BOLD, 14));
-		panelLateralMusica.add(btnSorteioMusica);
-		btnSorteioMusica.setBackground(Color.LIGHT_GRAY);
-
 		playAllButton = new JButton("Reproduzir Tudo");
 		playAllButton.setPreferredSize(new Dimension(172, 34));
 		playAllButton.setBackground(Color.LIGHT_GRAY);

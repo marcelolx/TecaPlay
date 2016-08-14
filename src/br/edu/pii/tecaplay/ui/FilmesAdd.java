@@ -626,7 +626,7 @@ public class FilmesAdd {
 				if (e.getSource() == btnProcurarFilme) {
 					JFileChooser file = new JFileChooser();
 					JFrameAddSerie.setAlwaysOnTop(false);
-					file.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+					file.setFileSelectionMode(JFileChooser.FILES_ONLY);
 					int i = file.showSaveDialog(null);
 					if (i == 1) {
 						textFieldProcurarFilme.setText("");

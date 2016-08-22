@@ -34,9 +34,7 @@ import uk.co.caprica.vlcj.runtime.RuntimeUtil;
 import uk.co.caprica.vlcj.runtime.x.LibXUtil;
 
 /**
- * Player de áudio/vídeo, contendo todos os componentes visuais do player e suas
- * ações.
- * 
+ * Player de áudio/vídeo.
  * @author Marcelo
  *
  */
@@ -63,10 +61,10 @@ public class VLCjPlayer {
 	/**
 	 * Construtor da classe VLCjPlayer.
 	 * 
-	 * @param caminho
+	 * @param src
 	 *            Passa o src do arquivo a ser executado.
 	 */
-	public VLCjPlayer(String caminho) {
+	public VLCjPlayer(String src) {
 		registerLibrary();
 		frame = new JFrame("TecaPlay Player");
 		frame.setBounds(100, 100, 700, 440);
@@ -85,10 +83,7 @@ public class VLCjPlayer {
 		mediaPlayerComponent = new EmbeddedMediaPlayerComponent();
 		contentPane.add(mediaPlayerComponent, BorderLayout.CENTER);
 		MediaPlayerFactory mediaPlayerFactory = new MediaPlayerFactory();
-		// Create a full-screen strategy
 		FullScreenStrategy fullScreenStrategy = new DefaultFullScreenStrategy(frame);
-		// Create a media player instance (in this example an embedded media
-		// player)
 		EmbeddedMediaPlayer mediaPlayer = mediaPlayerFactory.newEmbeddedMediaPlayer(fullScreenStrategy);
 
 		JPanel controlsPane = new JPanel();
@@ -223,7 +218,7 @@ public class VLCjPlayer {
 		frame.setContentPane(contentPane);
 		frame.setVisible(true);
 
-		mediaPlayerComponent.getMediaPlayer().playMedia(caminho);
+		mediaPlayerComponent.getMediaPlayer().playMedia(src);
 	}
 
 	/**
@@ -238,7 +233,7 @@ public class VLCjPlayer {
 	}
 
 	/**
-	 * Fecha o JFrame do player.
+	 * Close JFrame
 	 */
 	private void closeWindow() {
 		frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));

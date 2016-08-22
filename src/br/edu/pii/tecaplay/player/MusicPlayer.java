@@ -96,7 +96,6 @@ public class MusicPlayer {
 	
 	/**
 	 * Método que executa o player.
-	 * Contendo todas as ações dos componentes do player.
 	 */
 	public static void play() {
 		VLCjPlayer.registerLibrary();

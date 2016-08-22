@@ -5,19 +5,19 @@ import java.io.IOException;
 
 import br.edu.pii.tecaplay.ui.ListPlaylists;
 /**
- * Cria o arquivo das Playlist ou favoritos
+ * Create file of Playlist and Favorites
  * @author Marcelo
  *
  */
 public class AddPlaylist {
 	/**
-	 * ADD nova playlist.
-	 * @param usrName Nome do Usuário Logado
-	 * @param nomePlaylist Nome da playlist
-	 * @param caminho src da pasta
-	 * @param catType Verefica se é Musicas ou Videos
+	 * Add new playlist or favorite
+	 * @param usrName User logged
+	 * @param nomePlaylist 
+	 * @param src of folder
+	 * @param catType Verify if is music or video
 	 */
-	public static void addPlaylist(String usrName, String nomePlaylist, String caminho, String catType){
+	public static void addPlaylist(String usrName, String nomePlaylist, String src, String catType){
 		String criarTxt;
 		if(catType.equals("Videos")){
 			criarTxt = "c:\\TecaPlay\\" + usrName + "\\"+catType+"\\Favoritos\\"+nomePlaylist+".txt";
@@ -25,15 +25,13 @@ public class AddPlaylist {
 			criarTxt = "c:\\TecaPlay\\" + usrName + "\\"+catType+"\\Playlist\\"+nomePlaylist+".txt";
 		}
 		
-		
-		//cria o arquivo das informaões no txt
-		
+		//create txt file with informations of playlist or favorite
 		try{
 			FileWriter buffer = null;
 			buffer = new FileWriter(criarTxt, true);
 			buffer.close();
 		}catch(IOException e21){
 		}
-		new ListPlaylists(usrName, caminho, catType);
+		new ListPlaylists(usrName, src, catType);
 	}
 }

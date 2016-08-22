@@ -20,9 +20,7 @@ import javax.swing.WindowConstants;
 
 import br.edu.pii.tecaplay.util.FileUtil;
 /**
- * Função para fazer o login do usuário.
- * para fazer o login o usuário precisara ter um login, caso não tenha, ele pode criar no botao lado o jtextfield.
- * 
+ * Login user interface
  * @author Marcelo
  */
 public class LoginGUI extends JFrame {
@@ -38,7 +36,6 @@ public class LoginGUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					//RegisterUser ru = new RegisterUser();
 					JFrame login = new JFrame();
 					login.setSize(320, 254);
 					login.setVisible(true);
@@ -50,7 +47,7 @@ public class LoginGUI extends JFrame {
 					login.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 					
 					/**
-					 * Login somente com usuário, sem necessidade de senhas.
+					 * Only user without password
 					 */
 					JPanel logPanel = new JPanel();
 					logPanel.setBackground(new Color(169, 169, 169));
@@ -73,7 +70,7 @@ public class LoginGUI extends JFrame {
 							if(e.getKeyCode() == KeyEvent.VK_ENTER){
 								FileUtil FileUtil = new FileUtil();
 								String userName;
-								userName = usr.getText();//pega usuário no textfield
+								userName = usr.getText();
 								usr.setText("");
 								FileUtil.fileUserVerify(userName);
 								if(FileUtil.loged() == true){

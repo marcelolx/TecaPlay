@@ -23,7 +23,7 @@ import br.edu.pii.tecaplay.util.MoveMusic;
 import br.edu.pii.tecaplay.util.optimizationgui.ArrayCategorias;
 
 /**
- * criação da janela de adicionar Musicas
+ * Music add frame
  *
  * @author Jonas
  */
@@ -34,8 +34,7 @@ public class MusicAdd {
 	private JTextField textFieldProcurar;
 	private String caminho;
 	/**
-	 * JFrame para fazer a adição de músicas
-	 * @param usrName usuário logado
+	 * @param usrName User logged.
 	 */
 	public MusicAdd(String usrName) {
 		JFrame frame = new JFrame();
@@ -150,7 +149,6 @@ public class MusicAdd {
 		frame.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[] { fieldNameMusic, panelListGenero,
 				fieldArtista, textFieldAno, btnProcurar, btnCancelar, btnAdicionar }));
 
-		// Ação do botão procurar que abrirar um FileChooser
 		btnProcurar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource() == btnProcurar) {
@@ -169,7 +167,6 @@ public class MusicAdd {
 			}
 		});
 
-		// Ação do botão Adicionar
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String nome = fieldNameMusic.getText();
@@ -208,7 +205,6 @@ public class MusicAdd {
 			}
 		});
 
-		// Ação do botão Cancelar
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (e.getSource() == btnCancelar) {
@@ -222,7 +218,7 @@ public class MusicAdd {
 	/**
 	 * Adição de uma pasta. caso tenha pastas dentro da pasta, não será executado
 	 * 
-	 * @return true se ocorreu bem e false não.
+	 * @return true or false
 	 */
 	public boolean validationFormat() {
 		File destino = new File(caminho);
@@ -256,9 +252,9 @@ public class MusicAdd {
 		}
 	}
 	/**
-	 * Valida o formato do arquivo que está sendo adicionado na categorias de músicas
+	 * Validate if is music extension file.
 	 * 
-	 * @return true se o arquivo possui a estenção requerida e false pode ter acontecido um erro.
+	 * @return true or false
 	 */
 	public boolean validationExtension(String extencao) {
 		ArrayList<String> array = new ArrayList<String>();

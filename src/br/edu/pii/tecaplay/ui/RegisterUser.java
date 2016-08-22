@@ -15,14 +15,11 @@ import javax.swing.JTextField;
 
 import br.edu.pii.tecaplay.util.FileUtil;
 /**
- * Registrar um usuário através do Login.
+ * Register a new user
  *
  * @author Marcelo
  */
 public class RegisterUser {
-	/**
-	 * janela que pede uma usuario novo, caso exista, não criara.
-	 */
 	public RegisterUser(){
 		JFrame reUser = new JFrame();
 		reUser.setSize(300, 100);
@@ -71,11 +68,11 @@ public class RegisterUser {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FileUtil FileUtil = new FileUtil();//Chama classe FileUtil
+				FileUtil FileUtil = new FileUtil();
 				String newUserName;
-				newUserName = usrNameField.getText();//Var que armazena o nome do novo usuário
-				usrNameField.setText("");//limpando o textfield
-				FileUtil.RegisterNewUser(newUserName);//chamando o método que vai executar a tarefa de criar o novo usuário
+				newUserName = usrNameField.getText();
+				usrNameField.setText("");
+				FileUtil.RegisterNewUser(newUserName);
 			}
 		});
 	}

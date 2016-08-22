@@ -2,15 +2,15 @@ package br.edu.pii.tecaplay.util;
 
 import java.io.File;
 /**
- * Deleta o arquivo que é recebido
+ * Remove file
  *
  * @author Jonas
  */
 public class DeleteArchive {
 	/**
 	 * 
-	 * @param filePa Arquivo a ser removido
-	 * @return true se consegue
+	 * @param filePa Path of file to remove
+	 * @return true or false
 	 */
 	public boolean remove(String filePa) {
 		File directory = new File(filePa);

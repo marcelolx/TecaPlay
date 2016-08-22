@@ -21,7 +21,7 @@ import javax.swing.ListSelectionModel;
 
 import br.edu.pii.tecaplay.util.AddPlaylist;
 /**
- * faz a Listagem das playslist e depois para adicionar uma musica nela.
+ * List playlist and add music to she
  * @author jonas
  *
  */
@@ -33,13 +33,12 @@ public class ListPlaylists {
 	private String strDados = null;
 	private String catType;
 	/**
-	 * JFrame para a listagem das playslists ja criadas
+	 * Frame to list playlist created
 	 * 
-	 * @param usrName nome do usuário
+	 * @param usrName UserName loged
 	 * @param caminho 
-	 * 		String a ser adicionado com as informações do arquivo, tal como
-	 * 		nome e src do arquivo de midia
-	 * @param catTypeP Verefica se é video ou música
+	 * 		src of the file
+	 * @param catTypeP Verefy if music or movie
 	 */
 	
 	public ListPlaylists(String usrName, String caminho, String catTypeP) {
@@ -113,8 +112,7 @@ public class ListPlaylists {
 
 	}
 	/**
-	 * Faz a listagem das playlists
-	 * primeiro verifica se é musica ou video para fazer a checagem das playlists existentes na categoria
+	 * Check if is music or movie and list playlist.
 	 */
 	public void listPlaylist() {
 		String filePath;
@@ -143,10 +141,9 @@ public class ListPlaylists {
 	}
 	
 	/**
-	 * Caso o usuário selecionou uma playlist e quer adicionar, esse método faz a adição da linha das informações
-	 * no arquivo da playlist selecionada.
+	 * Write at playlist file modifications.
 	 * 
-	 * @return true se conseguiu gravar e false o oposto
+	 * @return true or false
 	 */
 
 	public boolean writeTxt() {
@@ -168,9 +165,8 @@ public class ListPlaylists {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		// se não estiver na playlist ainda, então adiciona-a.
 		if (!isAdded) {
-			// grava as informaões no txt
+			// write at the txt file
 			try {
 				FileWriter buffer = null;
 				buffer = new FileWriter(criarTxt, true);

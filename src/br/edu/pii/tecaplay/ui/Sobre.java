@@ -15,7 +15,7 @@ import java.awt.Cursor;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 /**
- * Info do programa.
+ * Info of program.
  * @author Jonas
  */
 public class Sobre extends JFrame {

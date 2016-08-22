@@ -12,7 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Dialog.ModalExclusionType;
 
 /**
- * @deprecated Adiciona Imagens para o programa faz a listagem
+ * @deprecated Add and list images, but not functional
  * @author matheus
  *
  */

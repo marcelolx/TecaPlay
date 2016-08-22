@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.util.ArrayList;
 /**
- * Classe que vai trabalhar na leitura dos arquivos .txt e recuperar as informações necessárias.
+ * Read .txt files and recover informations.
  * 
  * @since 08/05/2016
  * @author Marcelo
@@ -18,10 +18,8 @@ public class FileTextProvider {
 	 private static int numLines;
 	private static LineNumberReader lineRead;
 	/**
-	 * @param path
-	 * 		Passa o caminho do arquivo .txt
-	 * @return
-	 * 		Retorna um ArrayList com todas as linhas gravadas no arquivo.
+	 * @param path src of ile
+	 * @return return an ArrayList with all lines of the file
 	 */
     public static ArrayList<String> loadLines(String path){
         File arq = new File(path);
@@ -35,17 +33,14 @@ public class FileTextProvider {
             }
             br.close();
             fr.close();
-            //contar o número de linhas no arquivo, já que esse valor sempre vai variar.
-            // pega o tamanho
+            //count number of lines into file
             long lengthFile = arq.length();
             FileInputStream fs = new FileInputStream(arq);
             DataInputStream in = new DataInputStream(fs);
            
             lineRead = new LineNumberReader(new InputStreamReader(in));
             lineRead.skip(lengthFile);
-            // conta o numero de linhas do arquivo
             numLines = lineRead.getLineNumber();
-            //
             fs.close();
             in.close();
             return lista;
@@ -56,20 +51,16 @@ public class FileTextProvider {
     }
     /**
      * 
-     * @param separador
-     * 		Caractere a ser usado como separador.
-     * @param linha
-     * 		Linha a ser percorrida.
-     * @return
-     * 		Retorna a String quebrada.
+     * @param separador caracter spliter.
+     * @param linha row to be traveled
+     * @return return line splited.
      */
     public static String[] readData(String separador, String linha){
         return linha.split(separador);
     }
     /**
      * 
-     * @return
-     * 	Retorna o número total de linhas que um arquivo possui.
+     * @return return total lines of file have
      */
     public int numOfLines(){
     	return numLines;

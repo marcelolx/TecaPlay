@@ -87,7 +87,7 @@ public class FileUtil {
 	/**
 	 * Fecha a aplicação.
 	 */
-	public static void sair() {
+	public static void exit() {
 		int op = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Sair", JOptionPane.YES_NO_OPTION);
 		if(op == JOptionPane.YES_OPTION){
 			System.exit(0);

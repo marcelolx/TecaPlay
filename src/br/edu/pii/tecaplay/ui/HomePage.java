@@ -38,6 +38,9 @@ import br.edu.pii.tecaplay.util.table.ListFilesPlaylistOrFavorites;
 import br.edu.pii.tecaplay.util.table.ListFilesSeries;
 
 /**
+ * Antes de mais nada, não uso do WindowBuilder aqui, foi feito tudo a mão, pelo fato das transições de
+ * JPanels.
+ * 
  * Nesta classe jaz todo o código da interface principal do TecaPlay.
  * Além de conter alguns métodos que auxiliam na adição de alguns componentes 
  * a interface do TecaPlay quando hà mudança de telas.
@@ -78,24 +81,22 @@ public class HomePage {
 	private boolean firstPlay = false;
 	
 	/**
-	 * Construtor da nossa classe.
-	 * 
-	 * @param usrName Passar o nome do usuário logado.
+	 *
+	 * @param usrName User logged
 	 */
 	public HomePage(String usrName) {
 		userName = usrName;
-		// formatcao do JFrame
 		home = new JFrame();
 		home.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent args) {
 				home.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-				FileUtil.sair();
+				FileUtil.exit();
 			}
 		});
-		home.setVisible(true);// Deixar visivel
-		home.setBackground(new Color(25, 25, 25));// cor de Background
-		home.setTitle("Home - TecaPlay"); // titulo na barra do windows
+		home.setVisible(true);
+		home.setBackground(new Color(25, 25, 25));
+		home.setTitle("Home - TecaPlay"); 
 
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 		System.out.println(screen);
@@ -103,38 +104,30 @@ public class HomePage {
 		int height = 798 - 208;
 		int x = (screen.width - width) / 2;
 		int y = (screen.height - height) / 2;
-		home.setBounds(x, y, width, height);// seta o tamanho da janela e sua
-											// posição na tela.
-		home.setResizable(false); // impossibilidade de altarar tamanho da
-									// janela
-		home.setIconImage(Toolkit.getDefaultToolkit().getImage("resources\\images\\newLogo.png")); // icone
-																									// da
-																									// barra
-		// cri do menu superior
+		home.setBounds(x, y, width, height);
+		home.setResizable(false); 
+		home.setIconImage(Toolkit.getDefaultToolkit().getImage("resources\\images\\newLogo.png")); 
+
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBackground(Color.LIGHT_GRAY);// background do menu
+		menuBar.setBackground(Color.LIGHT_GRAY);
 		home.setJMenuBar(menuBar);
 
-		// adiÐ·Ð³o de botao de menu
 		JMenu menuArquivo = new JMenu("Arquivo");
 		menuArquivo.setMnemonic('A');
 		menuArquivo.setBackground(Color.DARK_GRAY);
-		menuArquivo.setIcon(new ImageIcon("resources\\images\\imgMenuArquivo.png"));// adiÐ·Ð³o
-		menuBar.add(menuArquivo); // adicionado ao container do menu do topo
+		menuArquivo.setIcon(new ImageIcon("resources\\images\\imgMenuArquivo.png"));
+		menuBar.add(menuArquivo); 
 
-		// submenu do menu arquivo com a funÐ·Ð³o de sair do programa
 		JMenuItem subMenuSair = new JMenuItem("Sair");
-		// evento de fechar o programa
 		subMenuSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				FileUtil.sair();
+				FileUtil.exit();
 			}
 		});
 		subMenuSair.setIcon(new ImageIcon("resources\\images\\imgMenuSair.png"));
 		subMenuSair.setSelected(true);
 		menuArquivo.add(subMenuSair);
 
-		// menu sobre adicionado do lado do menu arquivo
 		JMenu menuAjuda = new JMenu("Ajuda");
 		menuAjuda.setMnemonic('J');
 		menuAjuda.setHorizontalAlignment(SwingConstants.LEFT);
@@ -150,10 +143,7 @@ public class HomePage {
 		});
 		mntmSobre.setIcon(new ImageIcon("resources\\images\\imgBtnSobre.png"));
 		menuAjuda.add(mntmSobre);
-
-		// criado painel aonde ficarÐ³o os botoes para a escolha de musica,
-		// video
-		// ou imagem
+		
 		JPanel panelTopo = new JPanel();
 		panelTopo.setAutoscrolls(true);
 		panelTopo.setFocusTraversalPolicyProvider(true);
@@ -163,8 +153,7 @@ public class HomePage {
 		home.getContentPane().add(panelTopo, BorderLayout.NORTH);
 
 		/**
-		 * @panelPlayer É um painel que contem os botões do player de música,
-		 *              que geralmente serve para tocar as músicas da playlist
+		 * @panelPlayer panel containing music player buttons
 		 */
 		panelPlayer = new JPanel();
 		panelPlayer.setAutoscrolls(true);
@@ -172,24 +161,17 @@ public class HomePage {
 		panelPlayer.setFocusCycleRoot(true);
 		panelPlayer.setIgnoreRepaint(true);
 		panelPlayer.setBackground(new Color(122, 122, 122));
-		// panelPlayer.setPreferredSize(new Dimension(width, 30));
 
 		MusicPlayer.InterfaceConstructor(panelPlayer);
 
 		home.getContentPane().add(panelPlayer, BorderLayout.SOUTH);
-		/**
-		 * criação de botoes video/musica/imagem
-		 */
 
 		JButton btnVideo = new JButton("V\u00EDdeo");
 
 		panelTopo.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		btnVideo.setToolTipText("Op\u00E7\u00E3o de acesso a aba V\u00EDdeo!");
-		btnVideo.setIcon(new ImageIcon("resources\\images\\imgBtnVideo.png"));// icone
-																				// do
-																				// botao
-		btnVideo.setFont(new Font("Tahoma", Font.BOLD, 14)); // tipo de fonte do
-																// botao
+		btnVideo.setIcon(new ImageIcon("resources\\images\\imgBtnVideo.png"));
+		btnVideo.setFont(new Font("Tahoma", Font.BOLD, 14)); 
 		btnVideo.setBackground(Color.LIGHT_GRAY);
 		btnVideo.setPreferredSize(new Dimension(173, 42));
 		panelTopo.add(btnVideo);
@@ -197,11 +179,8 @@ public class HomePage {
 
 		JButton btnMusica = new JButton("Música");
 		btnMusica.setToolTipText("Op\u00E7\u00E3o de acesso a aba M\u00FAsica!");
-		btnMusica.setIcon(new ImageIcon("resources\\images\\imgBtnMusica.png"));// icone
-																				// do
-		// botao
-		btnMusica.setFont(new Font("Tahoma", Font.BOLD, 14)); // tipo de fonte
-																// do botao
+		btnMusica.setIcon(new ImageIcon("resources\\images\\imgBtnMusica.png"));
+		btnMusica.setFont(new Font("Tahoma", Font.BOLD, 14)); 
 		btnMusica.setPreferredSize(new Dimension(173, 42));
 		btnMusica.setBackground(Color.LIGHT_GRAY);
 		panelTopo.add(btnMusica);
@@ -209,11 +188,8 @@ public class HomePage {
 
 		JButton btnImagem = new JButton("Imagem");
 		btnImagem.setToolTipText("Op\u00E7\u00E3o de acesso a aba Imagem!");
-		btnImagem.setIcon(new ImageIcon("resources\\images\\imgBtnImagem.png")); // icone
-																					// do
-																					// botao
-		btnImagem.setFont(new Font("Tahoma", Font.BOLD, 14)); // tipo de fonte
-																// do botao
+		btnImagem.setIcon(new ImageIcon("resources\\images\\imgBtnImagem.png")); 
+		btnImagem.setFont(new Font("Tahoma", Font.BOLD, 14)); 
 		btnImagem.setPreferredSize(new Dimension(173, 42));
 		btnImagem.setBackground(Color.LIGHT_GRAY);
 		panelTopo.add(btnImagem);
@@ -223,22 +199,12 @@ public class HomePage {
 		labelFundo.setSize(400, 400);
 		labelFundo.setIcon(new ImageIcon("resources\\images\\bannerPrincipal.jpg"));
 		/**
-		 * @TimerToLabel Classe que faz o trabalho de mudar a imagem de fundo.
+		 * @TimerToLabel switch background wallpapers
 		 */
 		timer = new TimerToLabel(30000, labelFundo);
 		timer.init();
 		home.getContentPane().add(labelFundo, BorderLayout.CENTER);
-
-		/**
-		 * 
-		 * AdiÐ·Ð³o de Painel Lateral para abrigar os botoes de gerenciar o que
-		 * serÐ± apresentado
-		 * 
-		 * 
-		 * Imagem LATERAL
-		 * 
-		 */
-
+		
 		JPanel panelLateralImagem = new JPanel();
 		panelLateralImagem.setLayout(new FlowLayout(FlowLayout.LEFT, 4, 4));
 		panelLateralImagem.setPreferredSize(new Dimension(180, 400));
@@ -267,7 +233,7 @@ public class HomePage {
 		btnHomePageImagem.setBackground(Color.LIGHT_GRAY);
 		btnHomePageImagem.setIcon(new ImageIcon("resources\\images\\btnHomePage.png"));
 		panelLateralImagem.add(btnHomePageImagem);
-		// jButton Adicionar
+
 		JButton btnAdicionarImagem = new JButton("Adicionar");
 		btnAdicionarImagem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -284,7 +250,6 @@ public class HomePage {
 		btnAdicionarImagem.setBackground(Color.LIGHT_GRAY);
 		home.isCursorSet();
 
-		// jButton Favoritos
 		JButton btnFavoritosImagem = new JButton("Favoritos");
 		btnFavoritosImagem.setToolTipText("Op\u00E7\u00E3o de acesso a aba dos Favoritos!");
 		btnFavoritosImagem.setIcon(new ImageIcon("resources\\images\\imgBtnFavorito.png"));
@@ -293,7 +258,6 @@ public class HomePage {
 		panelLateralImagem.add(btnFavoritosImagem);
 		btnFavoritosImagem.setBackground(Color.LIGHT_GRAY);
 
-		// jButton Sorteio de algum
 		JButton btnColecaoImagem = new JButton("Listar ColeÐ·Ð³o");
 		btnColecaoImagem.setToolTipText("Op\u00E7\u00E3o de acesso a aba ColeÐ·Ð³o!");
 		btnColecaoImagem.setPreferredSize(new Dimension(172, 34));
@@ -302,23 +266,16 @@ public class HomePage {
 		panelLateralImagem.add(btnColecaoImagem);
 		btnColecaoImagem.setBackground(Color.LIGHT_GRAY);
 
-		// que serÐ± realizada ao apertar o botao de Imagem do jpanelTopo
 		btnImagem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				home.getContentPane().add(panelLateralImagem, BorderLayout.WEST);
-				panelTopo.setVisible(false); // Torna a visibilidade do
-												// paineltopo falsa
-				home.getContentPane().remove(panelTopo); // Remove esse painel
-				panelLateralImagem.setVisible(true); // Ativa o painel lateral
-														// referente ao video
-				panelLateralImagem.revalidate();// revalida o loyout
+				panelTopo.setVisible(false); 
+				home.getContentPane().remove(panelTopo); 
+				panelLateralImagem.setVisible(true); 
+				panelLateralImagem.revalidate();
 			}
 		});
-
-		/**
-		 * JPanel Lateral para a mostrar o panel Musica LATERAL
-		 */
-
+		
 		JPanel panelLateralMusica = new JPanel();
 		panelLateralMusica.setLayout(new FlowLayout(FlowLayout.LEFT, 4, 4));
 		panelLateralMusica.setPreferredSize(new Dimension(180, 400));
@@ -338,7 +295,6 @@ public class HomePage {
 		btnHomePageMusica.setIcon(new ImageIcon("resources\\images\\btnHomePage.png"));
 		panelLateralMusica.add(btnHomePageMusica);
 
-		// jButton Adicionar
 		JButton btnAdicionarMusica = new JButton("Adicionar");
 		btnAdicionarMusica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -354,7 +310,6 @@ public class HomePage {
 		btnAdicionarMusica.setBackground(Color.LIGHT_GRAY);
 		home.isCursorSet();
 
-		// jButton Playlists
 		JButton btnPlaylistMusica = new JButton("PlayList's");
 		btnPlaylistMusica.setToolTipText("Op\u00E7\u00E3o de acesso a aba dos playList!");
 		btnPlaylistMusica.setIcon(new ImageIcon("resources\\images\\playlist.png"));
@@ -363,7 +318,6 @@ public class HomePage {
 		panelLateralMusica.add(btnPlaylistMusica);
 		btnPlaylistMusica.setBackground(Color.LIGHT_GRAY);
 
-		// jButton Estilos Musicais
 		JButton btnEstilosMusica = new JButton("Estilos Musicais");
 		btnEstilosMusica.setToolTipText("Opção de acesso a aba dos Favoritos!");
 		btnEstilosMusica.setIcon(new ImageIcon("resources\\images\\btnEstilosMusicais.png"));
@@ -378,9 +332,6 @@ public class HomePage {
 		playAllButton.setFont(new Font("Tahoma", Font.BOLD, 14));
 		playAllButton.setVisible(flag);
 		panelLateralMusica.add(playAllButton, BorderLayout.SOUTH);
-		/**
-		 * Jpanel Lateral para a chamada do panel de Videos
-		 */
 
 		JPanel panelLateralVideo = new JPanel();
 		panelLateralVideo.setLayout(new FlowLayout(FlowLayout.LEFT, 4, 4));
@@ -401,7 +352,6 @@ public class HomePage {
 		btnHomePageVideo.setIcon(new ImageIcon("resources\\images\\btnHomePage.png"));
 		panelLateralVideo.add(btnHomePageVideo);
 
-		// jButton Adicionar
 		JButton btnAdicionarVideo = new JButton("Adicionar");
 		btnAdicionarVideo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -416,7 +366,6 @@ public class HomePage {
 		panelLateralVideo.add(btnAdicionarVideo);
 		btnAdicionarVideo.setBackground(Color.LIGHT_GRAY);
 
-		// jButton Favoritos
 		JButton btnFavoritosVideo = new JButton("Favoritos");
 		btnFavoritosVideo.setToolTipText("Op\u00E7\u00E3o de acesso a aba dos Favoritos!");
 		btnFavoritosVideo.setIcon(new ImageIcon("resources\\images\\imgBtnFavorito.png"));
@@ -424,8 +373,6 @@ public class HomePage {
 		btnFavoritosVideo.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelLateralVideo.add(btnFavoritosVideo);
 		btnFavoritosVideo.setBackground(Color.LIGHT_GRAY);
-
-		// Jbuttom para listar os Filmes
 
 		JButton btnFilmes = new JButton("Filmes");
 		btnFilmes.setIcon(new ImageIcon("resources\\images\\imgBtnFilme.png"));
@@ -435,7 +382,6 @@ public class HomePage {
 		btnFilmes.setBackground(Color.LIGHT_GRAY);
 		panelLateralVideo.add(btnFilmes);
 
-		// Jbuttom para listar as SÐ¹ries
 		JButton btnSeries = new JButton("S\u00E9ries");
 		btnSeries.setIcon(new ImageIcon("resources\\images\\imgBtnSeries.png"));
 		btnSeries.setToolTipText("Op\u00E7\u00E3o de acesso a aba Adicionar!");
@@ -444,56 +390,43 @@ public class HomePage {
 		btnSeries.setBackground(Color.LIGHT_GRAY);
 		panelLateralVideo.add(btnSeries);
 
-		/**
-		 * Panel Categorias de Filmes
-		 */
-
 		panelCategoriasFilmes = new JPanel();
 		panelCategoriasFilmes.setLayout(new FlowLayout(FlowLayout.CENTER));
 		panelCategoriasFilmes.setPreferredSize(new Dimension(500, 300));
 		panelCategoriasFilmes.setBackground(new Color(120, 120, 120));
 
-		// Jpanel para cada Categoria necessaria
 		panelGeral = new JPanel();
 		panelGeral.setLayout(new FlowLayout(FlowLayout.CENTER));
 		panelGeral.setPreferredSize(new Dimension(500, 300));
 		panelGeral.setBackground(new Color(120, 120, 120));
 
-		// jpanel categorias series
 		panelCategoriasSerie = new JPanel();
 		panelCategoriasSerie.setLayout(new FlowLayout(FlowLayout.CENTER));
 		panelCategoriasSerie.setPreferredSize(new Dimension(500, 300));
 		panelCategoriasSerie.setBackground(new Color(120, 120, 120));
 
-		// jpanel categorias musicais
 		panelCategoriasMusica = new JPanel();
 		panelCategoriasMusica.setLayout(new FlowLayout(FlowLayout.CENTER));
 		panelCategoriasMusica.setPreferredSize(new Dimension(500, 300));
 		panelCategoriasMusica.setBackground(new Color(120, 120, 120));
 
-		// que será realizada ao apertar o botao de Musica do jpanelTopo
 		btnMusica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				home.getContentPane().add(panelLateralMusica, BorderLayout.WEST);
-				panelTopo.setVisible(false); // Torna a visibilidade do painel
-												// topo falsa
-				home.getContentPane().remove(panelTopo); // Remove esse painel
-				panelLateralMusica.setVisible(true); // Ativa o painel lateral
-														// referente ao Musica
-				panelLateralMusica.revalidate();// revalida o loyout
+				panelTopo.setVisible(false); 
+				home.getContentPane().remove(panelTopo); 
+				panelLateralMusica.setVisible(true); 
+				panelLateralMusica.revalidate();
 				home.setTitle("Música - TecaPlay");
 			}
 		});
-		// que será realizada ao apertar o botao de Video do jpanelTopo
 		btnVideo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				home.getContentPane().add(panelLateralVideo, BorderLayout.WEST);
-				panelTopo.setVisible(false); // Torna a visibilidade do painel
-												// topo falsa
-				home.getContentPane().remove(panelTopo); // Remove esse painel
-				panelLateralVideo.setVisible(true); // Ativa o painel lateral
-													// referente ao video
-				panelLateralVideo.revalidate();// revalida o loyout
+				panelTopo.setVisible(false); 
+				home.getContentPane().remove(panelTopo); 
+				panelLateralVideo.setVisible(true); 
+				panelLateralVideo.revalidate();
 				home.setTitle("Vídeo - TecaPlay");
 			}
 		});
@@ -621,7 +554,7 @@ public class HomePage {
 				addButtonsMusica();
 			}
 		});
-		// Botão PlayList
+		
 		btnPlaylistMusica.addActionListener(new ActionListener() {
 
 			@Override
@@ -651,7 +584,6 @@ public class HomePage {
 			}
 		});
 
-		// ação ao clicar no button lateral Filmes
 		btnFilmes.addActionListener(new ActionListener() {
 
 			@Override
@@ -707,7 +639,7 @@ public class HomePage {
 				addButtonsSeries();
 			}
 		});
-		// ação do botão voltar
+
 		btnVoltarVideo.addActionListener(new ActionListener() {
 
 			@Override
@@ -736,7 +668,6 @@ public class HomePage {
 					home.getContentPane().remove(voltarPaineis.get(1));
 					voltarPaineis.get(1).revalidate();
 					voltarPaineis.get(1).repaint();
-					// home.getContentPane().add(panelCategoria);
 					home.getContentPane().add(voltarPaineis.get(0), BorderLayout.CENTER);
 					voltarPaineis.get(0).setVisible(true);
 					voltarPaineis.get(0).revalidate();
@@ -767,11 +698,8 @@ public class HomePage {
 	}
 
 	/**
-	 * Acão que será executada quando aperta alguma opção de genero na categoria
-	 * Filmes
+	 * Action if button clicked at movie.
 	 * 
-	 * @param panelCategorias
-	 *            Recebe o panel para serem feitas as ações
 	 * @return null
 	 */
 	public ActionListener acaoButtons(String genero) {
@@ -798,11 +726,8 @@ public class HomePage {
 	}
 
 	/**
-	 * Acão que será executada quando aperta alguma opção de genero na categoria
-	 * Musica
+	 * Action if button clicked at music.
 	 * 
-	 * @param panelCategorias
-	 *            Recebe o panel para serem feitas as ações
 	 * @return null
 	 */
 	public ActionListener acaoButtonsMusic(String genero) {
@@ -830,11 +755,8 @@ public class HomePage {
 	}
 
 	/**
-	 * Acão que será executada quando aperta alguma opção de genero na categoria
-	 * Serie
+	 * Action if button clicked at series.
 	 * 
-	 * @param panelCategorias
-	 *            Recebe o panel para serem feitas as ações
 	 * @return null
 	 */
 	public ActionListener acaoButtonsSerie(String genero) {
@@ -857,7 +779,7 @@ public class HomePage {
 	}
 
 	/**
-	 * Método para fazer ações dos botões de playlist
+	 * Action of playlist buttons
 	 */
 	public void acaoButtonPlayListOrFavorites() {
 		playAllButton.setVisible(false);
@@ -884,7 +806,7 @@ public class HomePage {
 	}
 
 	/**
-	 * Atualiza o Panel que será usado como panel principal.
+	 * Update panel to use as a main panel
 	 */
 	public void atualizaPanelGeral() {
 		playAllButton.setVisible(false);
@@ -896,9 +818,7 @@ public class HomePage {
 	}
 
 	/**
-	 * Função que será usada para atualizar os botões das séries Cada genero que
-	 * será enviado para cá, é resposavel por verificar e fazer a adição
-	 * automatica dos buttons série, e consequentemente atualiza o panel.
+	 * Function to update and populate panel with buttons gives series of genre x
 	 */
 	public void addButtonSerieNoLabel() {
 		AtualizeSeries atualize = new AtualizeSeries(userName, currentGenero);
@@ -922,10 +842,9 @@ public class HomePage {
 	}
 
 	/**
-	 * Começa a listagem da ação do JTable da série requerida
+	 * List files at Table
 	 * 
 	 * @param evt
-	 *            botão que foi realizado o evento
 	 * @return null
 	 */
 	public ActionListener addTempSerie(ActionEvent evt) {
@@ -944,10 +863,6 @@ public class HomePage {
 
 	}
 
-	/**
-	 * Método usado para fazer a adição de botões na categoria playlist
-	 * 
-	 */
 
 	public void addButtonsPlaylistOrFavorites() {
 		AtualizePlaylistsOrFavorites atualize = new AtualizePlaylistsOrFavorites(userName, currentGenero);
@@ -969,10 +884,9 @@ public class HomePage {
 	}
 
 	/**
-	 * Faz a listagem das playlists músicais
+	 * List playlists
 	 * 
 	 * @param evt
-	 *            para pegar as informações dos botões
 	 */
 
 	public void listPlaylistOrFavorites(ActionEvent evt) {
@@ -980,8 +894,6 @@ public class HomePage {
 		JButton botao = (JButton) evt.getSource();
 		String name = botao.getText();
 		name = name + ".txt";
-		// home.remove(voltarPaineis.get(1));
-		// home.add(voltarPaineis.get(1), BorderLayout.CENTER);
 		listFilePlayList.reUpdateTable(tablePlaylist, userName, name, currentGenero);
 		tableContainerPlaylist.setPreferredSize(new Dimension(790, 500));
 		playlistPanel = new JPanel();
@@ -999,7 +911,7 @@ public class HomePage {
 	}
 
 	/**
-	 * Faz a adição de botões na categoria Filmes
+	 * Add buttons at filmes panel
 	 * 
 	 */
 
@@ -1023,7 +935,7 @@ public class HomePage {
 	}
 
 	/**
-	 * Faz a adição de botões na categoria Séries
+	 * Add buttons at series panel
 	 * 
 	 */
 
@@ -1047,7 +959,7 @@ public class HomePage {
 	}
 
 	/**
-	 * Faz a adição de botões na categoria Musical
+	 * Add buttons at music panel
 	 * 
 	 */
 
